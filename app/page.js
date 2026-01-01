@@ -74,7 +74,7 @@ export default function Home() {
 
             <div className="flex glass-panel p-2 rounded-full border border-white/5">
               <button className="bg-primary-copper text-white px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest">Day 01</button>
-              <button className="text-text-muted px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:text-white transition-all">Day 02</button>
+              <button className="text-white/60 px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:text-white transition-all">Day 02</button>
             </div>
           </div>
 
