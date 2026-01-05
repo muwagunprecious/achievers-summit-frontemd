@@ -2,9 +2,9 @@
 
 :root {
   /* Premium Midnight Palette */
-  --primary-copper: #FF5F1F;
-  --primary-copper-light: #FF824D;
-  --primary-copper-dark: #D4440D;
+  --primary-copper: #A1887F;
+  --primary-copper-light: #D7CCC8;
+  --primary-copper-dark: #6D4C41;
 
   --midnight-black: #05000A;
   --midnight-obsidian: #0A0014;
@@ -29,7 +29,7 @@
   --glass-shadow: 0 8px 64px 0 rgba(0, 0, 0, 0.5);
 
   /* Gradients */
-  --grad-sunset: linear-gradient(135deg, #FF5F1F 0%, #FF2E00 100%);
+  --grad-sunset: linear-gradient(135deg, #A1887F 0%, #6D4C41 100%);
   --grad-midnight: linear-gradient(180deg, #0A0014 0%, #05000A 100%);
   --grad-premium: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
 

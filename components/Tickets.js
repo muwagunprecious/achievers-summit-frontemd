@@ -64,7 +64,7 @@ export default function Tickets({ onBuy }) {
                             <div
                                 key={ticket.id}
                                 className={`group relative glass-panel p-10 flex flex-col transition-all duration-700 border border-white/5 ${active ? 'hover:border-primary-copper/30' : 'opacity-40 grayscale'} ${isPopular && active ? 'lg:scale-105 shadow-2xl shadow-primary-copper/10' : ''}`}
-                                style={{ background: isPopular && active ? 'rgba(255, 95, 31, 0.03)' : 'rgba(255, 255, 255, 0.02)' }}
+                                style={{ background: isPopular && active ? 'rgba(161, 136, 127, 0.03)' : 'rgba(255, 255, 255, 0.02)' }}
                             >
                                 {!active && (
                                     <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-midnight-black/40 backdrop-blur-[2px] rounded-[40px]">

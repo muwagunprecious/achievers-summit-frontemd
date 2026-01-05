@@ -41,7 +41,7 @@ async function main() {
                 'Access to the Summit',
                 'Reserved seating in the Overflow Auditorium',
                 'Light refreshments',
-                'Free transportation (designated routes)'
+                'Transportation to Venue (Designated Bus Stops)'
             ],
             status: 'ACTIVE'
         },
@@ -55,7 +55,7 @@ async function main() {
                 'Full access to the Summit',
                 'Reserved Economy Seating in Main Hall',
                 'One-course meal',
-                'Free transportation to the venue',
+                'transportation at Designated location',
                 'Hard copy Certificate',
                 'Economy Souvenir Pack',
                 'Summit Raffle Draw eligibility'

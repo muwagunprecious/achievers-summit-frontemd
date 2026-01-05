@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 88, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/TINGO-AI-010/Documents/ACHIEVERS%20SUM/proxy.js"],"sourcesContent":["import { withAuth } from \"next-auth/middleware\";\r\n\r\nexport default withAuth({\r\n    pages: {\r\n        signIn: \"/admin/login\",\r\n    },\r\n});\r\n\r\nexport const config = {\r\n    matcher: [\"/admin/dashboard/:path*\"],\r\n};\r\n"],"names":[],"mappings":";;;;;;AAAA;;uCAEe,IAAA,sJAAQ,EAAC;IACpB,OAAO;QACH,QAAQ;IACZ;AACJ;AAEO,MAAM,SAAS;IAClB,SAAS;QAAC;KAA0B;AACxC"}}]
+}

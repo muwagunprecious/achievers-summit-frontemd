@@ -2,11 +2,13 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function check() {
-    const categories = await prisma.ticketCategory.findMany();
-    console.log('Categories in DB:');
-    categories.forEach(c => {
-        console.log(`- ${c.name}: ₦${c.price} (${c.id})`);
-    });
+    try {
+        const categories = await prisma.ticketCategory.findMany();
+        console.log(JSON.stringify(categories, null, 2));
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await prisma.$disconnect();
+    }
 }
-
-check().then(() => prisma.$disconnect());
+check();

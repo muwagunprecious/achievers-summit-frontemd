@@ -20,6 +20,7 @@ export default function Navbar({ isHidden }) {
         { name: 'Schedule', href: '#schedule' },
         { name: 'Tickets', href: '#tickets' },
         { name: 'Find Ticket', href: '#find-ticket' },
+        { name: 'Volunteer', href: '#' },
     ];
 
     return (
@@ -54,7 +55,7 @@ export default function Navbar({ isHidden }) {
                         </a>
                     ))}
                     <a href="#tickets" className="btn btn-primary !py-3 !px-8 !text-[11px]">
-                        Register Now
+                        Donate now
                     </a>
                 </div>
 
@@ -82,7 +83,7 @@ export default function Navbar({ isHidden }) {
                         </a>
                     ))}
                     <a href="#tickets" className="btn btn-primary w-full max-w-xs mt-4" onClick={() => setIsMenuOpen(false)}>
-                        Secure Your Pass
+                        Donate now
                     </a>
                 </div>
             </div>

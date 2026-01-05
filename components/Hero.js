@@ -37,7 +37,7 @@ export default function Hero() {
 
                         <div className="flex flex-wrap justify-center gap-8 mb-16">
                             <a href="#tickets" className="btn btn-primary !py-4 !px-10 group">
-                                <span className="text-xs">Complete Registration</span>
+                                <span className="text-xs">Register Now</span>
                                 <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                             </a>
                             <a href="#schedule" className="btn btn-outline !py-4 !px-10 text-xs">
@@ -52,7 +52,7 @@ export default function Hero() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-[10px] uppercase text-text-muted font-black tracking-widest mb-1.5">Primary Venue</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">Eko Atlantic, Lagos</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">Landmark Lekki</p>
                                 </div>
                             </div>
 
@@ -62,7 +62,7 @@ export default function Hero() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-[10px] uppercase text-text-muted font-black tracking-widest mb-1.5">Official Dates</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">MAR 31 – APR 01</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">AUG 12 – AUG 13</p>
                                 </div>
                             </div>
                         </div>
@@ -79,8 +79,8 @@ export default function Hero() {
 
             <style jsx>{`
                 .text-primary-copper { color: var(--primary-copper); }
-                .bg-primary-copper\/10 { background-color: rgba(255, 95, 31, 0.1); }
-                .bg-primary-copper\/5 { background-color: rgba(255, 95, 31, 0.05); }
+                .bg-primary-copper\/10 { background-color: rgba(161, 136, 127, 0.1); }
+                .bg-primary-copper\/5 { background-color: rgba(161, 136, 127, 0.05); }
                 .glass-panel {
                     background: rgba(255, 255, 255, 0.03);
                     backdrop-filter: blur(24px);
