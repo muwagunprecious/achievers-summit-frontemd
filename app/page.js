@@ -16,6 +16,7 @@ const CheckoutModal = dynamic(() => import('../components/CheckoutModal'), { ssr
 export default function Home() {
   const router = useRouter();
   const [selectedTicket, setSelectedTicket] = useState(null);
+  const [activeDay, setActiveDay] = useState(1);
 
   const handleBuy = (ticket) => {
     setSelectedTicket(ticket);
@@ -24,6 +25,29 @@ export default function Home() {
   const handleComplete = (ticketData) => {
     // Redirect to the dedicated ticket result page
     router.push(`/ticket-confirmation?id=${ticketData.ticketId}`);
+  };
+
+  const scheduleData = {
+    1: [
+      { time: '08:00', title: 'Registration & Protocol Arrival', host: 'VVIP Reception' },
+      { time: '09:30', title: 'Opening Keynote: African Resilience 2026', host: 'John Adewale' },
+      { time: '11:00', title: 'Panel: Digital Sovereignty & Economic Growth', host: 'Tech Ministers' },
+      { time: '13:00', title: 'High-Level Networking Luncheon', host: 'Grand Ballroom' },
+      { time: '14:30', title: 'Workshop: Future-Proofing Leadership', host: 'Maria Thompson' },
+    ],
+    2: [
+      { time: '09:00', title: 'Breakfast & Networking', host: 'Lounge Area' },
+      { time: '10:30', title: 'Keynote: artificial Intelligence in Africa', host: 'Dr. Sarah Okafor' },
+      { time: '12:00', title: 'Panel: Sustainable Energy for the Future', host: 'Energy Experts' },
+      { time: '13:30', title: 'Closing Ceremony & Awards', host: 'Main Hall' },
+    ]
+  };
+
+  const scrollToTickets = () => {
+    const ticketsSection = document.getElementById('tickets');
+    if (ticketsSection) {
+      ticketsSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -73,19 +97,23 @@ export default function Home() {
             </div>
 
             <div className="flex glass-panel p-2 rounded-full border border-white/5">
-              <button className="bg-primary-copper text-white px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest">Day 01</button>
-              <button className="text-white/60 px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:text-white transition-all">Day 02</button>
+              <button
+                onClick={() => setActiveDay(1)}
+                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeDay === 1 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
+              >
+                Day 01
+              </button>
+              <button
+                onClick={() => setActiveDay(2)}
+                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeDay === 2 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
+              >
+                Day 02
+              </button>
             </div>
           </div>
 
           <div className="space-y-6 max-w-5xl mx-auto">
-            {[
-              { time: '08:00', title: 'Registration & Protocol Arrival', host: 'VVIP Reception' },
-              { time: '09:30', title: 'Opening Keynote: African Resilience 2026', host: 'John Adewale' },
-              { time: '11:00', title: 'Panel: Digital Sovereignty & Economic Growth', host: 'Tech Ministers' },
-              { time: '13:00', title: 'High-Level Networking Luncheon', host: 'Grand Ballroom' },
-              { time: '14:30', title: 'Workshop: Future-Proofing Leadership', host: 'Maria Thompson' },
-            ].map((item, i) => (
+            {scheduleData[activeDay].map((item, i) => (
               <div key={i} className="group relative overflow-hidden glass-panel p-8 md:p-10 rounded-[32px] flex flex-col md:flex-row gap-10 items-center border border-white/5 hover:border-primary-copper/30 transition-all duration-500">
                 <div className="text-primary-copper font-black text-3xl italic min-w-[100px] tracking-tighter">{item.time}</div>
                 <div className="h-10 w-[1px] bg-white/10 hidden md:block"></div>
@@ -95,7 +123,7 @@ export default function Home() {
                     Moderated by <span className="text-white">{item.host}</span>
                   </p>
                 </div>
-                <button className="btn btn-outline !py-3 !px-8 !text-[10px] border-white/10">Reserve Seat</button>
+                <button onClick={scrollToTickets} className="btn btn-outline !py-3 !px-8 !text-[10px] border-white/10">Reserve Seat</button>
 
                 {/* Hover Accent */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary-copper/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>

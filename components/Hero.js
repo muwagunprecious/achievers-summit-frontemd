@@ -40,8 +40,8 @@ export default function Hero() {
                                 <span className="text-xs">Register Now</span>
                                 <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                             </a>
-                            <a href="#schedule" className="btn btn-outline !py-4 !px-10 text-xs">
-                                View Full Agenda
+                            <a href="/prospectus.pdf" download className="btn btn-outline !py-4 !px-10 text-xs">
+                                Download Prospectus
                             </a>
                         </div>
 
@@ -52,7 +52,7 @@ export default function Hero() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-[10px] uppercase text-text-muted font-black tracking-widest mb-1.5">Primary Venue</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">Landmark Lekki</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">Lekki Lagos</p>
                                 </div>
                             </div>
 

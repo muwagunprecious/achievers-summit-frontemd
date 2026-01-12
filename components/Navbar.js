@@ -20,7 +20,7 @@ export default function Navbar({ isHidden }) {
         { name: 'Schedule', href: '#schedule' },
         { name: 'Tickets', href: '#tickets' },
         { name: 'Find Ticket', href: '#find-ticket' },
-        { name: 'Volunteer', href: '#' },
+        { name: 'Volunteer', href: 'https://forms.gle/7PeSzZQzAo6T36BQ6', external: true },
     ];
 
     return (
@@ -48,6 +48,8 @@ export default function Navbar({ isHidden }) {
                         <a
                             key={link.name}
                             href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noopener noreferrer" : undefined}
                             className="text-[11px] font-black text-white/60 hover:text-white transition-all duration-300 tracking-[0.2em] uppercase relative group/link"
                         >
                             {link.name}
@@ -75,6 +77,8 @@ export default function Navbar({ isHidden }) {
                         <a
                             key={link.name}
                             href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noopener noreferrer" : undefined}
                             className={`text-3xl font-black text-white hover:text-primary-copper transition-all duration-300 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                             style={{ transitionDelay: `${i * 100}ms` }}
                             onClick={() => setIsMenuOpen(false)}
