@@ -71,8 +71,14 @@ export default function Navbar({ isHidden }) {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden fixed inset-0 z-[-1] transition-all duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                <div className="absolute inset-0 bg-midnight-black/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 p-8">
+            <div className={`md:hidden fixed inset-0 z-[100] transition-all duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                <div className="absolute inset-0 bg-midnight-black/98 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 p-8">
+                    <button
+                        className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 text-white border border-white/10"
+                        onClick={() => setIsMenuOpen(false)}
+                    >
+                        <X size={24} />
+                    </button>
                     {navLinks.map((link, i) => (
                         <a
                             key={link.name}

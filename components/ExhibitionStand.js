@@ -27,14 +27,13 @@ export default function ExhibitionStand() {
             <div className="container relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center gap-10 md:gap-20 lg:gap-32">
                     {/* Left Column: Fixed Portrait Handshake Visual */}
-                    <div className="flex justify-center md:justify-start order-1 md:order-1">
-                        <div className="relative group">
-                            <div className="relative rounded-[40px] overflow-hidden shadow-2xl border border-white/10 bg-midnight-obsidian" style={{ width: '450px', height: '700px', maxWidth: '100%' }}>
+                    <div className="flex justify-center md:justify-start order-1 md:order-1 w-full">
+                        <div className="relative group w-full max-w-[450px]">
+                            <div className="relative rounded-[40px] overflow-hidden shadow-2xl border border-white/10 bg-midnight-obsidian aspect-[3/4.5] md:h-[700px]">
                                 <img
                                     src="/images/handshake.jpg"
                                     alt="Partnership Handshake"
-                                    style={{ width: '450px', height: '700px', objectFit: 'cover' }}
-                                    className="transition-all duration-1000 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent"></div>
                             </div>

@@ -99,13 +99,13 @@ export default function Home() {
             <div className="flex glass-panel p-2 rounded-full border border-white/5">
               <button
                 onClick={() => setActiveDay(1)}
-                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeDay === 1 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
+                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 relative z-10 ${activeDay === 1 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
               >
                 Day 01
               </button>
               <button
                 onClick={() => setActiveDay(2)}
-                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${activeDay === 2 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
+                className={`px-10 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-500 relative z-10 ${activeDay === 2 ? 'bg-primary-copper text-white' : 'text-white/60 hover:text-white'}`}
               >
                 Day 02
               </button>

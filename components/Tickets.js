@@ -86,14 +86,6 @@ export default function Tickets({ onBuy }) {
                                     </div>
                                 )}
 
-                                {active && (
-                                    <div className="absolute -top-4 right-10 bg-primary-copper text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl shadow-primary-copper/30 opacity-0 pointer-events-none">
-                                        {/* Hidden original price tag to maintain layout if needed, or just remove it. 
-                                            User asked to move it, so I will remove the absolute one and place it below name.
-                                            Actually, I should just remove this block and insert it below the name.
-                                         */}
-                                    </div>
-                                )}
                                 <div className="mb-12">
                                     <div className="w-14 h-14 glass-panel flex items-center justify-center text-primary-copper mb-8 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 rounded-2xl">
                                         {iconMap[ticket.name] || defaultIcon}
@@ -102,8 +94,10 @@ export default function Tickets({ onBuy }) {
                                         {ticket.name.replace(' PASS', '')} <span className="text-primary-copper NOT-italic text-[10px] tracking-[0.3em] ml-2">PASS</span>
                                     </h3>
                                     {active && (
-                                        <div className="text-lg font-black text-primary-copper tracking-widest mt-2">
-                                            {ticket.price === 0 ? 'COMPLIMENTARY' : `₦${ticket.price.toLocaleString()}`}
+                                        <div className="inline-block px-4 py-1.5 bg-primary-copper/10 border border-primary-copper/30 rounded-full mt-4">
+                                            <span className="text-lg font-black text-white tracking-widest">
+                                                {ticket.price === 0 ? 'COMPLIMENTARY' : `₦${ticket.price.toLocaleString()}`}
+                                            </span>
                                         </div>
                                     )}
                                 </div>
