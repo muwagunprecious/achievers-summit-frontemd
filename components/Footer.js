@@ -37,9 +37,14 @@ export default function Footer() {
 
                 {/* Social Section */}
                 <div className="flex justify-center gap-6 mb-20">
-                    {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                        <a key={i} href="#" className="w-12 h-12 glass-panel flex items-center justify-center text-text-muted hover:text-primary-copper hover:border-primary-copper/30 transition-all duration-300 rounded-2xl border border-white/5">
-                            <Icon size={20} />
+                    {[
+                        { Icon: Facebook, href: 'https://facebook.com/achieverssummit' },
+                        { Icon: Twitter, href: 'https://twitter.com/achieverssummit' },
+                        { Icon: Instagram, href: 'https://instagram.com/achievers_summit' },
+                        { Icon: Linkedin, href: 'https://linkedin.com/company/achievers-summit' }
+                    ].map((social, i) => (
+                        <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-panel flex items-center justify-center text-text-muted hover:text-primary-copper hover:border-primary-copper/30 transition-all duration-300 rounded-2xl border border-white/5">
+                            <social.Icon size={20} />
                         </a>
                     ))}
                 </div>
@@ -50,9 +55,9 @@ export default function Footer() {
                         © 2026 Achievers Summit Africa • All Rights Reserved
                     </p>
                     <div className="flex flex-wrap justify-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-text-muted/60">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Protocol</a>
-                        <a href="#" className="hover:text-white transition-colors">Digital Terms</a>
-                        <a href="#" className="hover:text-white transition-colors">Verified Portal</a>
+                        <a href="/privacy" className="hover:text-white transition-colors">Privacy Protocol</a>
+                        <a href="/terms" className="hover:text-white transition-colors">Digital Terms</a>
+                        <a href="/find-ticket" className="hover:text-white transition-colors">Verified Portal</a>
                     </div>
                 </div>
             </div>

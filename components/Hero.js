@@ -20,49 +20,57 @@ export default function Hero() {
             <div className="container relative z-10 pt-52 pb-20">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-col items-center text-center animate-fade-in">
-                        <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full text-white text-[9px] font-black tracking-[0.3em] uppercase mb-10">
+                        <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full text-white text-xs font-black tracking-widest uppercase mb-10">
                             <Sparkles size={12} className="text-primary-copper" />
-                            <span>Africa's Most Influential summit</span>
+                            <span>AFRICA’S MOST INFLUENTIAL LEADERSHIP & ENTREPRENEURSHIP SUMMIT</span>
                         </div>
 
-                        <h1 className="text-white mb-8 w-full flex flex-col md:flex-row justify-between items-center tracking-[-0.06em] uppercase" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
+                        <h1 className="text-white mb-2 w-full flex flex-col md:flex-row justify-between items-center tracking-tighter uppercase" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
                             <span>CONNECT.</span>
                             <span className="text-gradient">LEAD.</span>
                             <span>ACHIEVE.</span>
                         </h1>
+
+                        <div className="mb-12">
+                            <p className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">The Theme</p>
+                            <h2 className="text-white text-xl md:text-3xl font-light italic leading-tight">
+                                “The Global Emerging Leader: <br className="hidden md:block" />
+                                <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
+                            </h2>
+                        </div>
 
                         <p className="text-text-secondary text-base md:text-lg mb-12 max-w-2xl font-light leading-relaxed">
                             A convergence of visionaries, industry titans, and policy makers shaping the future of African excellence.
                         </p>
 
                         <div className="flex flex-wrap justify-center gap-8 mb-16">
-                            <a href="#tickets" className="btn btn-primary !py-4 !px-10 group">
+                            <a href="/tickets" className="btn btn-primary py-4 px-10 group">
                                 <span className="text-xs">Register Now</span>
                                 <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                             </a>
-                            <a href="/prospectus.pdf" download className="btn btn-outline !py-4 !px-10 text-xs">
+                            <a href="/prospectus.pdf" download className="btn btn-outline py-4 px-10 text-xs">
                                 Download Prospectus
                             </a>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-xl border-t border-white/5 pt-10">
                             <div className="flex items-center justify-center md:justify-start gap-5 group">
-                                <div className="w-16 h-16 rounded-[24px] glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
+                                <div className="w-16 h-16 rounded-3xl glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
                                     <MapPin size={28} />
                                 </div>
                                 <div className="text-left">
-                                    <p className="text-[10px] uppercase text-text-muted font-black tracking-widest mb-1.5">Primary Venue</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">Lekki Lagos</p>
+                                    <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Primary Venue</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">Victoria Island, Lagos</p>
                                 </div>
                             </div>
 
                             <div className="flex items-center justify-center md:justify-start gap-5 group">
-                                <div className="w-16 h-16 rounded-[24px] glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
+                                <div className="w-16 h-16 rounded-3xl glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
                                     <Calendar size={28} />
                                 </div>
                                 <div className="text-left">
-                                    <p className="text-[10px] uppercase text-text-muted font-black tracking-widest mb-1.5">Official Dates</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">AUG 12 – AUG 13</p>
+                                    <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Official Dates</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">12th - 13th August 2026</p>
                                 </div>
                             </div>
                         </div>

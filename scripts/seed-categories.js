@@ -6,22 +6,6 @@ async function seed() {
     try {
         const categories = [
             {
-                id: 'regular-pass',
-                name: 'REGULAR PASS',
-                price: 0,
-                capacity: 1000,
-                description: 'Community Pass',
-                features: [
-                    'Access to the Summit',
-                    'Overflow Auditorium Seating',
-                    'Light refreshments',
-                    'Designated Route Transport'
-                ],
-                status: 'ACTIVE',
-                isEnabled: true,
-                updatedAt: new Date()
-            },
-            {
                 id: 'economy-pass',
                 name: 'ECONOMY PASS',
                 price: 20000,
@@ -33,7 +17,8 @@ async function seed() {
                     'One-course Buffet Meal',
                     'Hard copy Certificate',
                     'Souvenir Pack',
-                    'Raffle Draw Entry'
+                    'Raffle Draw Entry',
+                    'Transportation (designated venue)'
                 ],
                 status: 'ACTIVE',
                 isEnabled: true,
@@ -82,7 +67,7 @@ async function seed() {
                 name: 'BIZJET PASS',
                 price: 1500000,
                 capacity: 5,
-                description: 'Institutional Pass',
+                description: 'Institutional Pass (Limited to 5 Slots Only)',
                 features: [
                     'Unlimited VVIP Access',
                     'Personal Event Assistant',

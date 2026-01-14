@@ -46,7 +46,7 @@ export default function Tickets({ onBuy }) {
         <section id="tickets" className="section bg-bg-deep relative overflow-hidden">
             <div className="container">
                 <div className="text-center mb-24 max-w-4xl mx-auto">
-                    <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-4">Registration Open</div>
+                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">Registration Open</div>
                     <h2 className="text-5xl md:text-8xl text-white mb-8 italic">Get Your <span className="text-gradient font-black NOT-italic">Official Pass.</span></h2>
                     <p className="text-xl text-text-secondary font-light">
                         Select your preferred experience level and secure your seat instantly. Each pass is issued as a digital PDF delivered to your email.
@@ -67,8 +67,8 @@ export default function Tickets({ onBuy }) {
                                 style={{ background: isPopular && active ? 'rgba(161, 136, 127, 0.03)' : 'rgba(255, 255, 255, 0.02)' }}
                             >
                                 {!active && (
-                                    <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-midnight-black/40 backdrop-blur-[2px] rounded-[40px]">
-                                        <div className="px-6 py-3 bg-red-500 text-white font-black text-[10px] uppercase tracking-[0.4em] rounded-full shadow-2xl transform -rotate-12">
+                                    <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-midnight-black/40 backdrop-blur-md rounded-[40px]">
+                                        <div className="px-6 py-3 bg-red-500 text-white font-black text-xs uppercase tracking-widest rounded-full shadow-2xl transform -rotate-12">
                                             Category Closed
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@ export default function Tickets({ onBuy }) {
                                 )}
 
                                 {isLimited && active && (
-                                    <div className="absolute -top-4 left-10 bg-white text-midnight-black text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl">
+                                    <div className="absolute -top-4 left-10 bg-white text-midnight-black text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl">
                                         {slotsLeft} Slots Only
                                     </div>
                                 )}
@@ -90,11 +90,16 @@ export default function Tickets({ onBuy }) {
                                     <div className="w-14 h-14 glass-panel flex items-center justify-center text-primary-copper mb-8 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 rounded-2xl">
                                         {iconMap[ticket.name] || defaultIcon}
                                     </div>
-                                    <h3 className="text-xl font-black text-white italic tracking-tighter uppercase mb-2">
-                                        {ticket.name.replace(' PASS', '')} <span className="text-primary-copper NOT-italic text-[10px] tracking-[0.3em] ml-2">PASS</span>
+                                    <h3 className="text-xl font-black text-white italic tracking-tighter uppercase mb-1">
+                                        {ticket.name.replace(' PASS', '')} <span className="text-primary-copper NOT-italic text-xs tracking-widest ml-2">PASS</span>
                                     </h3>
+                                    {ticket.description && (
+                                        <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${ticket.description.includes('Limited') ? 'text-primary-copper animate-pulse' : 'text-text-muted'}`}>
+                                            {ticket.description}
+                                        </div>
+                                    )}
                                     {active && (
-                                        <div className="inline-block px-4 py-1.5 bg-primary-copper/10 border border-primary-copper/30 rounded-full mt-4">
+                                        <div className="inline-block px-4 py-1.5 bg-primary-copper/10 border border-primary-copper/30 rounded-full mt-2">
                                             <span className="text-lg font-black text-white tracking-widest">
                                                 {ticket.price === 0 ? 'COMPLIMENTARY' : `₦${ticket.price.toLocaleString()}`}
                                             </span>
@@ -106,8 +111,8 @@ export default function Tickets({ onBuy }) {
                                     <ul className="space-y-5">
                                         {(ticket.features || []).map((feature, idx) => (
                                             <li key={idx} className="flex gap-4 items-start group/item">
-                                                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-primary-copper opacity-40 group-hover/item:opacity-100 transition-opacity" />
-                                                <span className="text-sm font-medium text-text-secondary group-hover/item:text-white transition-colors tracking-tight">{feature}</span>
+                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-copper opacity-60 group-hover/item:opacity-100 transition-opacity flex-shrink-0" />
+                                                <span className="text-sm font-medium text-text-secondary group-hover/item:text-white transition-colors tracking-tight leading-relaxed">{feature}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -122,32 +127,19 @@ export default function Tickets({ onBuy }) {
                                         }
                                     }}
                                     disabled={!active || loadingTicketId === ticket.id}
-                                    className={`btn w-full !py-4 transition-all duration-500 flex items-center justify-center gap-3 ${isPopular && active ? 'btn-primary shadow-lg shadow-primary-copper/20' : 'btn-outline border-white/10 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed'}`}
+                                    className={`btn w-full py-4 transition-all duration-500 flex items-center justify-center gap-3 ${isPopular && active ? 'btn-primary shadow-lg shadow-primary-copper/20' : 'btn-outline border-white/10 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed'}`}
                                 >
                                     {loadingTicketId === ticket.id ? (
                                         <Loader2 className="w-4 h-4 animate-spin" />
                                     ) : (
-                                        <span className="tracking-[0.2em]">{active ? 'GET MY TICKET' : 'Locked'}</span>
+                                        <span className="tracking-widest">{active ? 'GET MY TICKET' : 'Locked'}</span>
                                     )}
                                 </button>
-
-                                {/* Decorative Background Accent */}
-                                <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary-copper/5 rounded-tl-[100px] blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                             </div>
                         );
                     })}
                 </div>
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    border-radius: 40px;
-                }
-                .text-primary-copper { color: var(--primary-copper); }
-            `}</style>
         </section>
     );
 }
