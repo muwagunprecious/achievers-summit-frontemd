@@ -6,13 +6,6 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
     try {
         const categories = await prisma.ticketCategory.findMany({
-            where: {
-                NOT: {
-                    id: {
-                        in: ['regular-pass', 'cat_regular']
-                    }
-                }
-            },
             orderBy: {
                 price: 'asc'
             },

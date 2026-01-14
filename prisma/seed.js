@@ -32,6 +32,20 @@ async function main() {
     // 3. Seed Ticket Categories
     const categories = [
         {
+            id: 'cat_regular',
+            name: 'REGULAR',
+            price: 0,
+            description: 'Access to the Summit with overflow seating.',
+            capacity: 2000,
+            features: [
+                'Access to the Summit',
+                'Reserved seating in the Overflow Auditorium',
+                'Light refreshments',
+                'Transportation to Venue (Designated Bus Stops)'
+            ],
+            status: 'ACTIVE'
+        },
+        {
             id: 'cat_economy',
             name: 'ECONOMY',
             price: 20000,

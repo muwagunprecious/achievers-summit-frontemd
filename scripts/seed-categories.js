@@ -6,7 +6,21 @@ async function seed() {
     try {
         const categories = [
             {
-                id: 'economy-pass',
+                id: 'cat_regular',
+                name: 'REGULAR PASS',
+                price: 0,
+                capacity: 1000,
+                description: 'Community Pass',
+                features: [
+                    'Access to the Summit',
+                    'Overflow Auditorium Seating'
+                ],
+                status: 'ACTIVE',
+                isEnabled: true,
+                updatedAt: new Date()
+            },
+            {
+                id: 'cat_economy',
                 name: 'ECONOMY PASS',
                 price: 20000,
                 capacity: 500,
@@ -25,7 +39,7 @@ async function seed() {
                 updatedAt: new Date()
             },
             {
-                id: 'business-pass',
+                id: 'cat_business',
                 name: 'BUSINESS PASS',
                 price: 250000,
                 capacity: 200,
@@ -44,7 +58,7 @@ async function seed() {
                 updatedAt: new Date()
             },
             {
-                id: 'first-class-pass',
+                id: 'cat_firstclass',
                 name: 'FIRST CLASS PASS',
                 price: 500000,
                 capacity: 50,
@@ -63,7 +77,7 @@ async function seed() {
                 updatedAt: new Date()
             },
             {
-                id: 'bizjet-pass',
+                id: 'cat_bizjet',
                 name: 'BIZJET PASS',
                 price: 1500000,
                 capacity: 5,
