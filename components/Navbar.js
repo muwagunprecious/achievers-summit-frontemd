@@ -16,7 +16,7 @@ export default function Navbar({ isHidden }) {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: '/#about-summit' },
+        { name: 'About', href: '/about' },
         { name: 'Why Attend', href: '/why-attend' },
         { name: 'Theme', href: '/theme' },
         { name: 'Program', href: '/program' },
