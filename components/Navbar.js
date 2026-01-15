@@ -40,8 +40,8 @@ export default function Navbar({ isHidden }) {
                         } ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 >
                     <a href="/" className="flex items-center gap-3 group cursor-pointer">
-                        <div className="w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500">
-                            <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
+                        <div className="w-24 h-16 flex items-center justify-center transform group-hover:scale-105 transition-all duration-500">
+                            <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain object-left" />
                         </div>
                     </a>
 

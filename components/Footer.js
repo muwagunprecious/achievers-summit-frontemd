@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="container relative z-10 flex flex-col items-center">
                 {/* Logo Section */}
                 <div className="flex flex-col items-center mb-16 group cursor-pointer">
-                    <div className="w-20 h-20 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500 mb-6">
+                    <div className="w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-all duration-500 mb-6">
                         <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
                     </div>
                     <p className="text-text-secondary text-lg font-light leading-relaxed max-w-xl mx-auto text-center">
