@@ -15,14 +15,19 @@ export default function AboutPage() {
             {/* Hero Section */}
             <section className="relative py-32 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
-                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6">Our DNA</div>
+                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6">About the Summit</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
-                        About the <br />
-                        <span className="text-gradient NOT-italic font-black">Achievers Summit.</span>
+                        Inspire. Equip. <br />
+                        <span className="text-gradient NOT-italic font-black">Elevate.</span>
                     </h1>
-                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed mb-16">
-                        The Achievers Summit is Africa’s premier convergence of leadership and entrepreneurship. Convened annually by <span className="text-white font-bold">Emmanuel Agida International (EAI)</span>, we bridge the gap between visionary thinking and institutional transformation.
-                    </p>
+                    <div className="space-y-8 text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed mb-16">
+                        <p>
+                            The Achievers Summit is an annual International Youth Day Leadership and Entrepreneurship Conference designed to inspire, equip, and elevate the next generation of African leaders. Convened by <span className="text-white font-bold">Emmanuel Agida International (EAI)</span>, the Summit brings together young innovators, policymakers, professionals, industry experts, development partners, and influential leaders from across Nigeria, Africa, and the global community.
+                        </p>
+                        <p>
+                            The Summit serves as a strategic platform for young people to explore the future of leadership, governance, entrepreneurship, and innovation within Africa’s rapidly evolving socio-economic landscape. It provides a unique environment where emerging leaders gain access to transformative ideas, mentorship, opportunities, and real-world insights that shape their journey toward global relevance.
+                        </p>
+                    </div>
 
                     {/* Context & Theme Teaser - Centered */}
                     <div className="max-w-3xl mx-auto">
@@ -31,7 +36,7 @@ export default function AboutPage() {
 
                             <div className="relative z-10">
                                 <p className="text-white text-xl md:text-2xl font-light leading-relaxed mb-10 italic">
-                                    “This year’s edition is uniquely positioned, coinciding with the <span className="text-primary-copper font-bold NOT-italic">Convener’s 23rd birthday</span> and aligned perfectly with <span className="text-white font-bold NOT-italic">International Youth Day</span>.”
+                                    “This edition holds special significance as it commemorates the <span className="text-primary-copper font-bold NOT-italic">23rd birthday of the Convener on the 12th of August</span>, aligning with International Youth Day, a global celebration dedicated to empowering the voices and possibilities of young people.”
                                 </p>
 
                                 <div className="pt-8 border-t border-white/10">
@@ -39,9 +44,12 @@ export default function AboutPage() {
                                         <span className="text-[10px] font-black text-primary-copper uppercase tracking-widest">Official 2026 Theme</span>
                                     </div>
                                     <h3 className="text-3xl font-black text-white italic uppercase tracking-tighter leading-tight mt-2">
-                                        "Redefining the <br />
-                                        <span className="text-gradient NOT-italic">African Narrative"</span>
+                                        "The Global Emerging Leader: <br />
+                                        <span className="text-gradient NOT-italic">Redefining the African Narrative"</span>
                                     </h3>
+                                    <p className="mt-6 text-text-secondary text-sm font-light leading-relaxed max-w-2xl mx-auto italic">
+                                        Reflecting a bold commitment to shaping a generation of African leaders who are confident, visionary, globally competitive, and ready to influence systems at scale.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +72,7 @@ export default function AboutPage() {
                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Vision</h2>
                             </div>
                             <blockquote className="text-2xl md:text-3xl text-text-secondary font-light leading-relaxed italic max-w-4xl mx-auto">
-                                "To raise and empower 10 million visionary leaders across Africa by 2030, equipped with the innovation and integrity to redefine the global leadership landscape."
+                                "To build a generation of globally competent African leaders who inspire excellence, drive innovation, and redefine the continent’s narrative through leadership, entrepreneurship, and civic responsibility."
                             </blockquote>
                         </div>
 
@@ -76,21 +84,9 @@ export default function AboutPage() {
                                 </div>
                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Mission</h2>
                             </div>
-                            <div className="max-w-3xl mx-auto">
-                                <ul className="space-y-8">
-                                    {[
-                                        "Catalyzing value-based leadership and governance reforms.",
-                                        "Fostering an ecosystem for high-impact entrepreneurship.",
-                                        "Providing mentorship from global industry titans.",
-                                        "Amplifying the African narrative through excellence."
-                                    ].map((text, i) => (
-                                        <li key={i} className="flex flex-col items-center group/item">
-                                            <div className="mb-4 w-2 h-2 rounded-full bg-primary-copper shadow-[0_0_12px_rgba(161,136,127,0.6)] transition-all" />
-                                            <span className="text-text-secondary text-xl md:text-2xl font-light leading-tight group-hover/item:text-white transition-colors">{text}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <blockquote className="text-2xl md:text-3xl text-text-secondary font-light leading-relaxed italic max-w-4xl mx-auto">
+                                "To provide a transformative platform that empowers young Africans with knowledge, mentorship, networks, and opportunities for leadership growth, entrepreneurial development, social impact, and global exposure."
+                            </blockquote>
                         </div>
                     </div>
                 </div>
@@ -106,11 +102,11 @@ export default function AboutPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { icon: <Users />, label: "Young Leaders", desc: "Visionary changemakers" },
+                            { icon: <Target />, label: "Young leaders", desc: "Visionary changemakers" },
                             { icon: <Lightbulb />, label: "Entrepreneurs", desc: "Startup founders & innovators" },
                             { icon: <Landmark />, label: "Policymakers", desc: "Government officials & advisors" },
-                            { icon: <GraduationCap />, label: "Professionals", desc: "Emerging sector leaders" },
-                            { icon: <Building2 />, label: "Executives", desc: "C-Suite & corporate heads" },
+                            { icon: <GraduationCap />, label: "Emerging Professionals", desc: "Students & sector leaders" },
+                            { icon: <Building2 />, label: "Corporate Executives", desc: "C-Suite & industry heads" },
                             { icon: <Briefcase />, label: "Investors", desc: "Venture capitalists & donors" },
                             { icon: <HeartHandshake />, label: "CSO Leaders", desc: "Civil society advocates" },
                             { icon: <Rocket />, label: "Delegates", desc: "High-impact individuals" }

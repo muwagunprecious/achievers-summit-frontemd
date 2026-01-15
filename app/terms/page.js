@@ -1,137 +1,140 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { ChevronDown, ShieldCheck, Scale, FileText, AlertCircle, Ban, Gavel, Radio } from 'lucide-react';
+import { ChevronDown, Scale, ShieldCheck, Mail } from 'lucide-react';
 
-const AccordionItem = ({ title, icon, children, isOpen, onToggle }) => (
-    <div className={`glass-panel mb-4 overflow-hidden border border-white/5 transition-all duration-500 ${isOpen ? 'border-primary-copper/30 bg-primary-copper/[0.02]' : 'hover:border-white/10'}`}>
-        <button
-            onClick={onToggle}
-            className="w-full p-8 flex items-center justify-between text-left transition-all"
-        >
-            <div className="flex items-center gap-6">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary-copper text-white' : 'bg-white/5 text-primary-copper'}`}>
-                    {icon}
+const TermSection = ({ title, children, defaultOpen = false }) => {
+    const [isOpen, setIsOpen] = React.useState(defaultOpen);
+    return (
+        <div className="border-b border-white/5 last:border-0">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full py-10 flex items-center justify-between text-left group"
+            >
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
+                    {title}
+                </h3>
+                <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} size={24} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-[1000px] mb-10' : 'max-h-0'}`}>
+                <div className="text-text-secondary text-lg font-light leading-relaxed prose prose-invert max-w-none">
+                    {children}
                 </div>
-                <h3 className="text-lg font-black text-white italic uppercase tracking-widest">{title}</h3>
-            </div>
-            <ChevronDown className={`text-text-muted transition-transform duration-500 ${isOpen ? 'rotate-180 text-primary-copper' : ''}`} size={24} />
-        </button>
-        <div className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="p-8 pt-0 border-t border-white/5 text-text-secondary font-light leading-relaxed space-y-4">
-                {children}
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default function TermsPage() {
-    const [openIndex, setOpenIndex] = useState(0);
-
-    const sections = [
-        {
-            title: "Acceptance of Terms",
-            icon: <Scale size={22} />,
-            content: (
-                <>
-                    <p>By registering for or attending the Achievers Summit 2026, you agree to be bound by these Terms and Conditions. These terms apply to all delegates, speakers, exhibitors, and partners.</p>
-                    <p>The organizers, Emmanuel Agida International (EAI), reserve the right to modify these terms at any time. Continued use of the website or attendance at the summit constitutes acceptance of the updated terms.</p>
-                </>
-            )
-        },
-        {
-            title: "Registration & Payment",
-            icon: <FileText size={22} />,
-            content: (
-                <>
-                    <p>Full payment of registration fees is required to secure your pass. All prices are in Nigerian Naira (NGN) unless otherwise stated.</p>
-                    <p>Digital passes will be issued upon successful verification of payment. Each pass is unique and tied to the registered delegate's identity.</p>
-                </>
-            )
-        },
-        {
-            title: "Cancellation & Refund Policy",
-            icon: <Ban size={22} />,
-            content: (
-                <>
-                    <p>Registration fees are non-refundable. However, you may transfer your registration to another individual by providing written notice to the organizers at least 14 days prior to the summit start date (11th August 2026).</p>
-                    <p>In the event of a summit postponement or cancellation by the organizers due to force majeure, delegates will be offered the option to transfer their registration to the new date or receive a credit for future events.</p>
-                </>
-            )
-        },
-        {
-            title: "Conduct & Security",
-            icon: <ShieldCheck size={22} />,
-            content: (
-                <>
-                    <p>All attendees must maintain a high standard of professional decorum. Harassment, discrimination, or disruptive behavior of any kind will not be tolerated.</p>
-                    <p>The organizers reserve the right to refuse entry or expel any individual from the summit premises for violation of security protocols or conduct codes without refund.</p>
-                </>
-            )
-        },
-        {
-            title: "Media Rights",
-            icon: <Radio size={22} />,
-            content: (
-                <>
-                    <p>By attending the Achievers Summit, you acknowledge that you may be photographed or recorded. You grant the organizers the irrevocable right to use your image and voice in promotional materials, broadcasts, and social media without compensation.</p>
-                    <p>Flash photography and unauthorized professional recording equipment are prohibited during keynote sessions unless prior approval is obtained.</p>
-                </>
-            )
-        },
-        {
-            title: "Liability & Governing Law",
-            icon: <Gavel size={22} />,
-            content: (
-                <>
-                    <p>The organizers are not liable for personal injury, loss, or damage to property during the summit. It is recommended that international delegates obtain appropriate travel and health insurance.</p>
-                    <p>These terms are governed by and construed in accordance with the laws of the Federal Republic of Nigeria.</p>
-                </>
-            )
-        }
-    ];
-
     return (
-        <main className="min-h-screen bg-bg-deep pt-40 pb-40">
+        <main className="min-h-screen bg-bg-deep pt-40">
             <Navbar />
-            <div className="container max-w-4xl">
-                <div className="text-center mb-24">
-                    <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6">Legal Framework</div>
-                    <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter">Terms & <span className="text-gradient NOT-italic">Conditions.</span></h1>
-                    <p className="text-text-muted text-xs font-black tracking-widest uppercase italic">Last Updated: January 15, 2026</p>
-                </div>
 
-                <div className="space-y-4">
-                    {sections.map((section, index) => (
-                        <AccordionItem
-                            key={index}
-                            title={section.title}
-                            icon={section.icon}
-                            isOpen={openIndex === index}
-                            onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
-                        >
-                            {section.content}
-                        </AccordionItem>
-                    ))}
-                </div>
-
-                <div className="mt-20 p-8 glass-panel rounded-3xl border border-red-500/10 bg-red-500/[0.01] flex gap-6 items-start">
-                    <AlertCircle className="text-red-500 shrink-0" size={24} />
-                    <p className="text-sm text-text-secondary leading-relaxed font-medium">
-                        <span className="text-white font-bold block mb-1 uppercase tracking-widest text-[10px]">Important Note:</span>
-                        Participation in the Achievers Summit is subject to strict adherence to the venue's safety protocols and local health regulations. Failure to comply may result in revoked access.
+            {/* Hero Section */}
+            <section className="relative py-32 overflow-hidden border-b border-white/5">
+                <div className="container relative z-10 text-center">
+                    <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6 uppercase">Governance</div>
+                    <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
+                        Digital <br />
+                        <span className="text-gradient NOT-italic font-black text-primary-copper">Terms.</span>
+                    </h1>
+                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed">
+                        Last Updated: 31st December 2025. Please read these terms carefully before completing your registration.
                     </p>
                 </div>
-            </div>
+            </section>
+
+            {/* Content Section */}
+            <section className="py-40 bg-midnight-black relative">
+                <div className="container">
+                    <div className="max-w-5xl mx-auto glass-panel p-10 md:p-20 rounded-[64px] border border-white/5">
+                        <TermSection title="1. Acceptance of Terms" defaultOpen={true}>
+                            <p>By registering for the Achievers Summit (the "Summit"), organized by EA International ("Organizer," "we," "us," "our"), you ("Participant," "Delegate," "you," "your") agree to be bound by these Terms and Conditions. Please read them carefully before completing your registration.</p>
+                        </TermSection>
+
+                        <TermSection title="2. Event Details">
+                            <ul className="space-y-4">
+                                <li><strong>Event:</strong> Achievers Summit – International Youth Day Leadership and Entrepreneurship Summit.</li>
+                                <li><strong>Dates:</strong> August 11-12, 2026.</li>
+                                <li><strong>Venue:</strong> Lagos, Nigeria.</li>
+                                <li>The Organizer reserves the right to change the venue, schedule, speakers, or any other aspect of the Summit due to unforeseen circumstances, while striving to maintain the overall quality and intent of the event.</li>
+                            </ul>
+                        </TermSection>
+
+                        <TermSection title="3. Registration & Payment">
+                            <ul className="space-y-4">
+                                <li>Registration is confirmed only upon receipt of full payment.</li>
+                                <li>All fees are as quoted on the official registration platform. Fees are non-refundable except as explicitly stated in the Cancellation & Refund Policy (Clause 5).</li>
+                                <li>Registration is personal and non-transferable without the prior written consent of the Organizer.</li>
+                            </ul>
+                        </TermSection>
+
+                        <TermSection title="4. Participant Conduct">
+                            <p>As an international youth leadership summit, we expect all participants to:</p>
+                            <ul className="space-y-4 mt-6">
+                                <li>Conduct themselves professionally, respectfully, and inclusively.</li>
+                                <li>Adhere to the schedule and instructions of Summit staff and venue personnel.</li>
+                                <li>Not engage in any form of harassment, discrimination, or disruptive behavior.</li>
+                                <li>Respect the intellectual property of speakers, sponsors, and fellow participants.</li>
+                                <li>Recording of sessions may be prohibited unless explicitly authorized.</li>
+                                <li>The Organizer reserves the right to deny entry or remove any participant whose conduct is deemed inappropriate, without obligation for a refund.</li>
+                            </ul>
+                        </TermSection>
+
+                        <TermSection title="5. Cancellation & Refund Policy">
+                            <ul className="space-y-4">
+                                <li><strong>No refund will be issued after payment has been made.</strong> Ticket transfer is possible and request must be written to <a href="mailto:info@achieverssummit.com.ng" className="text-primary-copper underline">info@achieverssummit.com.ng</a></li>
+                                <li><strong>By Organizer:</strong> EA International reserves the right to cancel or postpone the Summit due to force majeure events.</li>
+                                <li>If the Summit is postponed, your registration will be automatically transferred to the new dates.</li>
+                                <li>If the Summit is canceled, participants will be entitled to a full refund of the registration fee.</li>
+                                <li>The Organizer is not liable for any additional costs incurred (e.g., travel, accommodation, visa fees).</li>
+                            </ul>
+                        </TermSection>
+
+                        <TermSection title="6. Liability & Responsibility">
+                            <ul className="space-y-4">
+                                <li>Participation is at your own risk. The Organizer is not liable for any loss, injury, damage to person or property, or any other claim arising from your participation.</li>
+                                <li>Participants are solely responsible for their personal belongings, travel arrangements, health insurance, and obtaining any necessary visas or travel documents.</li>
+                            </ul>
+                        </TermSection>
+
+                        <TermSection title="7. Media & Promotional Rights">
+                            <p>By attending the Summit, you grant EA International the irrevocable right to use photographs, video, and audio recordings featuring your image, voice, or likeness taken during the event for promotional, archival, and news purposes across all media worldwide, in perpetuity, without compensation.</p>
+                        </TermSection>
+
+                        <TermSection title="8. Data Privacy">
+                            <p>Your personal data will be handled in accordance with our <a href="/privacy" className="text-primary-copper underline">Privacy Policy</a>, which forms an integral part of these Terms.</p>
+                        </TermSection>
+
+                        <TermSection title="9. Amendments">
+                            <p>EA International reserves the right to amend these Terms and Conditions at any time. The most current version will be posted on the official Summit website.</p>
+                        </TermSection>
+
+                        <TermSection title="10. Governing Law & Jurisdiction">
+                            <p>These Terms shall be governed by and construed in accordance with the laws of the Federal Republic of Nigeria, without regard to its conflict of law principles.</p>
+                        </TermSection>
+
+                        <div className="mt-20 pt-16 border-t border-white/5 text-center space-y-8">
+                            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary-copper mx-auto">
+                                <Mail size={32} />
+                            </div>
+                            <p className="text-text-secondary">For any questions regarding these Terms, please contact:</p>
+                            <a href="mailto:info@achieverssummit.com.ng" className="text-2xl md:text-3xl font-black text-white hover:text-primary-copper transition-colors">
+                                info@achieverssummit.com.ng
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <Footer />
 
             <style jsx>{`
                 .glass-panel {
                     background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
+                    backdrop-filter: blur(40px);
                     border: 1px solid rgba(255, 255, 255, 0.05);
-                    border-radius: 32px;
                 }
                 .text-gradient {
                     background: linear-gradient(to right, #ffffff, var(--primary-copper));

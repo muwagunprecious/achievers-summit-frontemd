@@ -1,133 +1,141 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { ChevronDown, Lock, Eye, Database, Share2, UserCheck, Clock, ShieldAlert } from 'lucide-react';
+import { ChevronDown, Shield, Lock, Eye } from 'lucide-react';
 
-const PrivacySection = ({ title, icon, children, isOpen, onToggle }) => (
-    <div className={`glass-panel mb-4 overflow-hidden border border-white/5 transition-all duration-500 ${isOpen ? 'border-primary-copper/30 bg-primary-copper/[0.02]' : 'hover:border-white/10'}`}>
-        <button
-            onClick={onToggle}
-            className="w-full p-8 flex items-center justify-between text-left"
-        >
-            <div className="flex items-center gap-6">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-primary-copper text-white' : 'bg-white/5 text-primary-copper'}`}>
-                    {icon}
+const PrivacySection = ({ title, children, defaultOpen = false }) => {
+    const [isOpen, setIsOpen] = React.useState(defaultOpen);
+    return (
+        <div className="border-b border-white/5 last:border-0">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full py-10 flex items-center justify-between text-left group"
+            >
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
+                    {title}
+                </h3>
+                <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} size={24} />
+            </button>
+            <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-[1500px] mb-10' : 'max-h-0'}`}>
+                <div className="text-text-secondary text-lg font-light leading-relaxed prose prose-invert max-w-none">
+                    {children}
                 </div>
-                <h3 className="text-lg font-black text-white italic uppercase tracking-widest">{title}</h3>
-            </div>
-            <ChevronDown className={`text-text-muted transition-transform duration-500 ${isOpen ? 'rotate-180 text-primary-copper' : ''}`} size={24} />
-        </button>
-        <div className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="p-8 pt-0 border-t border-white/5 text-text-secondary font-light leading-relaxed space-y-4">
-                {children}
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default function PrivacyPage() {
-    const [openIndex, setOpenIndex] = useState(0);
-
-    const sections = [
-        {
-            title: "Data Collection",
-            icon: <Database size={22} />,
-            content: (
-                <>
-                    <p>We collect personal information that you provide voluntarily when registering for the Achievers Summit, including your full name, email address, phone number, and professional affiliations.</p>
-                    <p>We also collect technical data such as your IP address and browsing behavior on our platform to optimize the user experience and ensure platform security.</p>
-                </>
-            )
-        },
-        {
-            title: "Usage & Purpose",
-            icon: <Eye size={22} />,
-            content: (
-                <>
-                    <p>Your data is used primarily for event coordination, ticket issuance, and providing summit-related updates. We also use your information for security verification at the venue.</p>
-                    <p>We comply with the Global Data Protection Regulation (GDPR) standards, ensuring that your data is processed only for explicit and legitimate purposes.</p>
-                </>
-            )
-        },
-        {
-            title: "Data Security",
-            icon: <Lock size={22} />,
-            content: (
-                <>
-                    <p>Achievers Summit employs industry-standard security measures, including multi-layer encryption and secure socket layers (SSL), to protect your personal datasets from unauthorized access or disclosure.</p>
-                    <p>Payment information is processed via certified third-party gateways and is never stored directly on our servers.</p>
-                </>
-            )
-        },
-        {
-            title: "Data Sharing",
-            icon: <Share2 size={22} />,
-            content: (
-                <>
-                    <p>We do not sell or trade your personal data to third parties for marketing purposes. Data may be shared with trusted service providers who assist us in operating our platform and conducting the summit, provided they agree to maintain strict confidentiality.</p>
-                </>
-            )
-        },
-        {
-            title: "Your Rights",
-            icon: <UserCheck size={22} />,
-            content: (
-                <>
-                    <p>You have the right to access, rectify, or request the deletion of your personal data at any time. You may also object to processing or request data portability by contacting our data protection officer at <span className="text-primary-copper font-bold">privacy@achieverssummit.africa</span>.</p>
-                </>
-            )
-        },
-        {
-            title: "Retention & Storage",
-            icon: <Clock size={22} />,
-            content: (
-                <>
-                    <p>We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy or to comply with legal obligations.</p>
-                </>
-            )
-        }
-    ];
-
     return (
-        <main className="min-h-screen bg-bg-deep pt-40 pb-40">
+        <main className="min-h-screen bg-bg-deep pt-40">
             <Navbar />
-            <div className="container max-w-4xl">
-                <div className="text-center mb-24">
-                    <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6">Data Responsibility</div>
-                    <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter">Privacy <span className="text-gradient NOT-italic">Protocol.</span></h1>
-                    <p className="text-text-muted text-xs font-black tracking-widest uppercase italic">Committed to GDPR & NDPR Standards</p>
-                </div>
 
-                <div className="space-y-4">
-                    {sections.map((section, index) => (
-                        <PrivacySection
-                            key={index}
-                            title={section.title}
-                            icon={section.icon}
-                            isOpen={openIndex === index}
-                            onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
-                        >
-                            {section.content}
-                        </PrivacySection>
-                    ))}
-                </div>
-
-                <div className="mt-20 p-8 glass-panel rounded-3xl border border-white/5 bg-white/[0.01] flex gap-6 items-center">
-                    <ShieldAlert className="text-primary-copper shrink-0" size={24} />
-                    <p className="text-sm text-text-secondary leading-relaxed">
-                        For any privacy-related inquiries or data requests, please reach out to our legal department via <span className="text-white font-bold underline">legal@achieverssummit.africa</span>.
+            {/* Hero Section */}
+            <section className="relative py-32 overflow-hidden border-b border-white/5">
+                <div className="container relative z-10 text-center">
+                    <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6 uppercase">Data Security</div>
+                    <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
+                        Privacy <br />
+                        <span className="text-gradient NOT-italic font-black text-primary-copper">Protocol.</span>
+                    </h1>
+                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed">
+                        Last Updated: 31st December 2025. EA International is committed to protecting the privacy of all participants.
                     </p>
                 </div>
-            </div>
+            </section>
+
+            {/* Content Section */}
+            <section className="py-40 bg-midnight-black relative">
+                <div className="container">
+                    <div className="max-w-5xl mx-auto glass-panel p-10 md:p-20 rounded-[64px] border border-white/5">
+                        <PrivacySection title="1. Introduction" defaultOpen={true}>
+                            <p>EA International ("we," "our," "us") is committed to protecting the privacy of all participants ("you," "your") of the Achievers Summit 2026. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you register for and participate in our Summit.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="2. Information We Collect">
+                            <p>We collect information you provide directly to us:</p>
+                            <ul className="space-y-4 mt-6">
+                                <li><strong>Identity & Contact Data:</strong> Full name, email address, phone number, country of residence, affiliation (school/university/organization).</li>
+                                <li><strong>Registration & Profile Data:</strong> Date of birth (for age verification), dietary preferences (if applicable), accessibility requirements, areas of interest.</li>
+                                <li><strong>Transaction Data:</strong> Payment confirmation details (note: we do not store full credit card numbers; these are processed by secure third-party payment gateways).</li>
+                                <li><strong>Technical & Usage Data:</strong> IP address, browser type, pages viewed, and interaction data via cookies and similar technologies.</li>
+                            </ul>
+                        </PrivacySection>
+
+                        <PrivacySection title="3. How We Use Your Information">
+                            <p>We use your personal data to:</p>
+                            <ul className="space-y-4 mt-6">
+                                <li>Process your registration and manage your participation.</li>
+                                <li>Communicate with you about Summit details, updates, and logistics.</li>
+                                <li>Ensure a safe, tailored, and inclusive event experience.</li>
+                                <li>Analyze participation trends to improve future events.</li>
+                                <li>Send post-event surveys and initiatives (you may opt-out at any time).</li>
+                                <li>Comply with legal obligations.</li>
+                            </ul>
+                        </PrivacySection>
+
+                        <PrivacySection title="4. Legal Basis for Processing">
+                            <p>Our processing is based on:</p>
+                            <ul className="space-y-4 mt-6">
+                                <li><strong>Performance of a Contract:</strong> To fulfill your registration.</li>
+                                <li><strong>Legitimate Interests:</strong> For event management, security, and improvement.</li>
+                                <li><strong>Consent:</strong> For direct marketing communications, where applicable.</li>
+                            </ul>
+                        </PrivacySection>
+
+                        <PrivacySection title="5. Sharing of Your Information">
+                            <p>We may share your information with:</p>
+                            <ul className="space-y-4 mt-6">
+                                <li><strong>Service Providers:</strong> Trusted third parties who assist in operations (e.g., registration platform, payment processor).</li>
+                                <li><strong>Partners/Sponsors:</strong> We may share a general attendee list (name, affiliation) with event partners. We will never sell your personal data.</li>
+                                <li><strong>Legal Authorities:</strong> If required by law or to protect our rights and the safety of participants.</li>
+                            </ul>
+                        </PrivacySection>
+
+                        <PrivacySection title="6. International Data Transfers">
+                            <p>As an international summit, your data may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="7. Data Security">
+                            <p>We implement reasonable technical and organizational measures to protect your data. However, no electronic transmission or storage is 100% secure.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="8. Your Rights & Choices">
+                            <ul className="space-y-4">
+                                <li>Access, correct, or delete your personal data.</li>
+                                <li>Restrict or object to our processing.</li>
+                                <li>Data portability.</li>
+                                <li>Withdraw consent (where processing is based on consent).</li>
+                            </ul>
+                        </PrivacySection>
+
+                        <PrivacySection title="9. Data Retention">
+                            <p>We retain your personal data for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required by law. Typically, this is for 36 months after the event.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="10. Children's Privacy">
+                            <p>The Summit is targeted at youth. If you are under the age of majority in your country, you confirm you have obtained consent from a parent or guardian to register and provide your data.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="11. Changes to This Policy">
+                            <p>We may update this Privacy Policy. The updated version will be posted on the Summit website with a revised "Last Updated" date.</p>
+                        </PrivacySection>
+
+                        <PrivacySection title="12. Contact us">
+                            <p>For any privacy-specific questions or to exercise your rights, please contact our Data Protection contact at: <a href="mailto:privacy@eainternational.net" className="text-primary-copper underline">privacy@eainternational.net</a> or <a href="mailto:contact@achieverssummit.com.ng" className="text-primary-copper underline">contact@achieverssummit.com.ng</a></p>
+                        </PrivacySection>
+                    </div>
+                </div>
+            </section>
+
             <Footer />
 
             <style jsx>{`
                 .glass-panel {
                     background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
+                    backdrop-filter: blur(40px);
                     border: 1px solid rgba(255, 255, 255, 0.05);
-                    border-radius: 32px;
                 }
                 .text-gradient {
                     background: linear-gradient(to right, #ffffff, var(--primary-copper));

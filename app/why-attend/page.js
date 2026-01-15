@@ -3,61 +3,61 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import {
-    Zap, Rocket, Users, Target, Globe, Award, Shield,
-    TrendingUp, Briefcase, Lightbulb, HeartHandshake, ArrowRight
+    Zap, Target, Share2, Rocket, Globe, Award,
+    MessageSquare, GraduationCap, Star, Users, ArrowRight
 } from 'lucide-react';
 
 export default function WhyAttendPage() {
     const benefits = [
         {
-            icon: <Zap />,
-            title: "Transformational Knowledge",
-            desc: "Gain deep insights from global thought leaders who are successfully redefining leadership paradigms."
+            title: "Access to Transformational Knowledge",
+            desc: "Learn directly from accomplished leaders, industry experts, policymakers, and innovators shaping Africa’s future.",
+            icon: <Zap />
         },
         {
-            icon: <Users />,
-            title: "High-Impact Networking",
-            desc: "Connect with a high-level network of CEOs, policymakers, and visionary youth from across Africa and beyond."
+            title: "Leadership and Personal Development",
+            desc: "Gain mindset-shifting insights, practical tools, and strategies that sharpen your leadership potential.",
+            icon: <Target />
         },
         {
-            icon: <TrendingUp />,
-            title: "leadership & personal development",
-            desc: "Immerse yourself in curated sessions designed to elevate your professional capacity and personal growth."
+            title: "High-Impact Networking Opportunities",
+            desc: "Connect with a vibrant community of over 2,000 young leaders, mentors, entrepreneurs, and investors.",
+            icon: <Users />
         },
         {
-            icon: <Rocket />,
-            title: "Entrepreneurship & Innovation",
-            desc: "Access an ecosystem built to support startup founders and provide the tools for scalable innovation."
+            title: "Entrepreneurship & Innovation Opportunities",
+            desc: "Explore ideas, pitch solutions, meet investors, and learn how to build sustainable ventures or scale your business.",
+            icon: <Rocket />
         },
         {
-            icon: <Globe />,
             title: "Exposure to Global Conversations",
-            desc: "Be at the center of discussions that are shaping Africa's positioning in the global economic landscape."
+            desc: "Engage in discussions on leadership, governance, technology, and policy shaping the continent at global levels.",
+            icon: <Globe />
         },
         {
-            icon: <Award />,
-            title: "100Under40 Young Achievers Award",
-            desc: "Witness the recognition of excellence and be inspired by the continent's most impactful young figures."
+            title: "Access to the 100Under40 Young Achievers Award",
+            desc: "Witness the recognition of outstanding young leaders across Africa and be inspired to elevate your impact.",
+            icon: <Award />
         },
         {
-            icon: <Target />,
-            title: "Engagement with Policymakers",
-            desc: "Direct access to government officials and industry titans for advocacy and strategic partnerships."
+            title: "Direct Engagement with Policymakers",
+            desc: "Participate in sessions featuring government officials and corporate executives influencing national change.",
+            icon: <MessageSquare />
         },
         {
-            icon: <Lightbulb />,
             title: "Career & Capacity Development",
-            desc: "Bridging the gap between ambition and high-level execution through specialized masterclasses."
+            desc: "Gain access to trainings, development tracks, and professional pathways introduced during the Summit.",
+            icon: <GraduationCap />
         },
         {
-            icon: <Shield />,
-            title: "Exclusive Premium Opportunities",
-            desc: "Unlock access to closed-door VIP sessions, deal rooms, and private networking dinners."
+            title: "Exclusive Opportunities for Premium Holders",
+            desc: "Access VIP deal rooms, mentoring circles, high-level receptions, and special networking with global guests.",
+            icon: <Star />
         },
         {
-            icon: <HeartHandshake />,
-            title: "Transformational Movement",
-            desc: "Join a community dedicated to rewriting the African narrative and building institutional excellence."
+            title: "Be Part of a Transformational Movement",
+            desc: "Join a new wave of African youth committed to shaping the future, driving development and positive change.",
+            icon: <Share2 />
         }
     ];
 
@@ -66,44 +66,54 @@ export default function WhyAttendPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-24 overflow-hidden border-b border-white/5">
+            <section className="relative py-32 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
-                    <div className="inline-block text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-8">Elevate Your Strategy</div>
+                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6 uppercase tracking-[0.4em]">Value Proposition</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
-                        Why You <span className="text-gradient NOT-italic">Should Attend.</span>
+                        Why You <br />
+                        <span className="text-gradient NOT-italic font-black text-primary-copper">Should Attend.</span>
                     </h1>
-                    <p className="text-xl text-text-secondary font-light max-w-3xl mx-auto leading-relaxed">
-                        More than a conference — the Achievers Summit is a transformational movement designed for those ready to lead the future.
+                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed">
+                        Whether you are a student, emerging leader, young professional, entrepreneur, policymaker, or change-maker, the Achievers Summit offers unmatched value.
                     </p>
                 </div>
             </section>
 
             {/* Benefits Grid */}
-            <section className="py-40">
+            <section className="py-40 bg-midnight-black relative">
                 <div className="container">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
                         {benefits.map((benefit, i) => (
-                            <div key={i} className="glass-panel p-10 rounded-[40px] border border-white/5 hover:border-primary-copper/30 transition-all duration-700 group flex flex-col items-start h-full">
-                                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary-copper mb-8 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-xl group-hover:shadow-primary-copper/20">
-                                    {React.cloneElement(benefit.icon, { size: 28 })}
+                            <div key={i} className="glass-panel p-10 md:p-16 rounded-[48px] border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group relative overflow-hidden">
+                                <div className="absolute top-0 left-0 w-24 h-24 bg-primary-copper/5 rounded-br-[48px] -translate-x-12 -translate-y-12 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700"></div>
+                                <div className="flex flex-col md:flex-row gap-10 items-start relative z-10 text-center md:text-left items-center md:items-start">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-2xl">
+                                        {React.cloneElement(benefit.icon, { size: 36 })}
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-4 justify-center md:justify-start">
+                                            <span className="text-4xl font-black text-white/5 group-hover:text-primary-copper/20 transition-colors italic">0{i + 1}</span>
+                                            <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter leading-tight">{benefit.title}</h3>
+                                        </div>
+                                        <p className="text-text-secondary text-lg font-light leading-relaxed">{benefit.desc}</p>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-black text-white italic uppercase tracking-tighter mb-4">{benefit.title}</h3>
-                                <p className="text-text-secondary font-light leading-relaxed flex-grow">{benefit.desc}</p>
                             </div>
                         ))}
                     </div>
 
-                    <div className="mt-24 text-center glass-panel p-16 rounded-[48px] border border-primary-copper/20 bg-primary-copper/[0.02]">
-                        <h2 className="text-3xl md:text-5xl text-white font-black italic uppercase tracking-tighter mb-12">
-                            Ready to <span className="text-gradient NOT-italic">Step Up?</span>
-                        </h2>
-                        <div className="flex flex-col sm:flex-row justify-center gap-6">
-                            <a href="/tickets" className="btn btn-primary py-5 px-12 group transition-all">
-                                <span className="tracking-[0.2em] font-black text-xs">REGISTER NOW</span>
-                                <ArrowRight size={16} className="ml-2 inline group-hover:translate-x-1 transition-transform" />
-                            </a>
-                            <a href="/#tickets" className="btn btn-outline py-5 px-12 border-white/10 hover:border-white">
-                                <span className="tracking-[0.2em] font-black text-xs">VIEW CATEGORIES</span>
+                    <div className="mt-40 text-center">
+                        <div className="max-w-4xl mx-auto glass-panel p-16 rounded-[64px] border border-primary-copper/20 bg-primary-copper/[0.03] space-y-10">
+                            <h2 className="text-4xl md:text-6xl text-white font-black italic uppercase tracking-tighter leading-tight">
+                                Ready to join the <br />
+                                <span className="text-gradient NOT-italic">New Wave?</span>
+                            </h2>
+                            <p className="text-xl text-text-secondary font-light max-w-2xl mx-auto">
+                                Join over 2,000 visionary leaders committed to redefining the African narrative. Secure your spot today.
+                            </p>
+                            <a href="/tickets" className="btn btn-primary py-6 px-16 group">
+                                <span className="tracking-[0.3em] font-black text-xs">RESERVE YOUR SEAT</span>
+                                <ArrowRight size={20} className="ml-4 group-hover:translate-x-2 transition-transform" />
                             </a>
                         </div>
                     </div>
@@ -115,7 +125,7 @@ export default function WhyAttendPage() {
             <style jsx>{`
                 .glass-panel {
                     background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
+                    backdrop-filter: blur(40px);
                     border: 1px solid rgba(255, 255, 255, 0.05);
                 }
                 .text-gradient {

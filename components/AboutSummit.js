@@ -21,12 +21,12 @@ export default function AboutSummit() {
                             Conference.
                         </h2>
 
-                        <div className="space-y-8 text-text-secondary text-xl font-light leading-relaxed mb-16 mx-auto max-w-2xl">
+                        <div className="space-y-8 text-text-secondary text-xl font-light leading-relaxed mb-16 mx-auto max-w-3xl">
                             <p>
                                 The Achievers Summit is Africa’s premier convergence of leadership and entrepreneurship. Convened annually by <span className="text-white font-bold">Emmanuel Agida International (EAI)</span>, this summit serves as a high-level platform for global and African participation.
                             </p>
                             <p>
-                                With a core focus on <span className="text-primary-copper font-bold italic">Leadership & Entrepreneurship</span>, we bridge the gap between visionary thinking and institutional transformation.
+                                Designed to <span className="text-primary-copper font-bold italic uppercase tracking-widest text-sm">Inspire, Equip, and Elevate</span> the next generation, we bridge the gap between visionary thinking and institutional transformation.
                             </p>
                         </div>
 
