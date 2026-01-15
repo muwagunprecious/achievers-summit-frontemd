@@ -27,11 +27,11 @@ export default function Footer() {
                 {/* Navigation Section */}
                 <nav className="mb-12">
                     <ul className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black tracking-[0.3em] uppercase">
-                        <li><a href="#home" className="text-text-secondary hover:text-white transition-all duration-300">Home</a></li>
-                        <li><a href="#speakers" className="text-text-secondary hover:text-white transition-all duration-300">Speakers</a></li>
-                        <li><a href="#schedule" className="text-text-secondary hover:text-white transition-all duration-300">Schedule</a></li>
-                        <li><a href="#tickets" className="text-text-secondary hover:text-white transition-all duration-300">Tickets</a></li>
-                        <li><a href="#find-ticket" className="text-text-secondary hover:text-white transition-all duration-300">Find Pass</a></li>
+                        <li><a href="/" className="text-text-secondary hover:text-white transition-all duration-300">Home</a></li>
+                        <li><a href="/why-attend" className="text-text-secondary hover:text-white transition-all duration-300">Why Attend</a></li>
+                        <li><a href="/theme" className="text-text-secondary hover:text-white transition-all duration-300">Theme</a></li>
+                        <li><a href="/program" className="text-text-secondary hover:text-white transition-all duration-300">Program</a></li>
+                        <li><a href="/#tickets" className="text-text-secondary hover:text-white transition-all duration-300">Tickets</a></li>
                     </ul>
                 </nav>
 

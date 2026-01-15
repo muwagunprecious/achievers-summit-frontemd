@@ -9,6 +9,7 @@ import Tickets from '../components/Tickets';
 import Footer from '../components/Footer';
 import Speakers from '../components/Speakers';
 import FindTicket from '../components/FindTicket';
+import AboutSummit from '../components/AboutSummit';
 
 const CheckoutModal = dynamic(() => import('../components/CheckoutModal'), { ssr: false });
 
@@ -31,6 +32,8 @@ export default function Home() {
       <section id="home">
         <Hero />
       </section>
+
+      <AboutSummit />
 
       {/* Stats Section - Premium Redesign */}
       <section className="bg-midnight-black py-40 relative overflow-hidden">

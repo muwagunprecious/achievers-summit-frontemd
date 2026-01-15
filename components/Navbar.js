@@ -16,11 +16,12 @@ export default function Navbar({ isHidden }) {
 
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
+        { name: 'About', href: '/#about-summit' },
+        { name: 'Why Attend', href: '/why-attend' },
+        { name: 'Theme', href: '/theme' },
+        { name: 'Program', href: '/program' },
         { name: 'Faculty', href: '/#speakers' },
         { name: 'Tickets', href: '/#tickets' },
-        { name: 'Find Pass', href: '/#find-pass' },
-        { name: 'Volunteer', href: 'https://forms.gle/7PeSzZQzAo6T36BQ6', external: true },
     ];
 
     return (
