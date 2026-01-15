@@ -198,6 +198,39 @@ p {
   z-index: 100;
 }
 
+/* Color Utilities */
+.bg-bg-deep {
+  background-color: var(--bg-deep);
+}
+
+.bg-midnight-black {
+  background-color: #05000A;
+}
+
+.bg-primary-copper {
+  background-color: var(--primary-copper);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-primary-copper {
+  color: var(--primary-copper);
+}
+
+.text-text-secondary {
+  color: var(--text-secondary);
+}
+
+.border-white\/5 {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
 .z-\[-1\] {
   z-index: -1;
 }
@@ -602,6 +635,10 @@ p {
 
 .mb-24 {
   margin-bottom: 6rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .mt-1 {
