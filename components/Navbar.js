@@ -40,8 +40,8 @@ export default function Navbar({ isHidden }) {
                         } ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 >
                     <a href="/" className="flex items-center gap-3 group cursor-pointer">
-                        <div className="w-10 h-10 bg-primary-copper rounded-xl flex items-center justify-center transform group-hover:rotate-[15deg] transition-all duration-500 shadow-lg shadow-primary-copper/20">
-                            <span className="text-white font-black text-2xl italic">A</span>
+                        <div className="w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500">
+                            <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
                         </div>
                         <div className="text-xl font-black tracking-tighter">
                             <span className="text-white">ACHIEVERS</span>

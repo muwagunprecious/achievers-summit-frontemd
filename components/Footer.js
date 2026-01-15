@@ -12,8 +12,8 @@ export default function Footer() {
             <div className="container relative z-10 flex flex-col items-center">
                 {/* Logo Section */}
                 <div className="flex flex-col items-center mb-16 group cursor-pointer">
-                    <div className="w-14 h-14 bg-primary-copper rounded-2xl flex items-center justify-center transform group-hover:rotate-[15deg] transition-all duration-500 shadow-xl shadow-primary-copper/20 mb-6">
-                        <span className="text-white font-black text-3xl italic">A</span>
+                    <div className="w-20 h-20 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500 mb-6">
+                        <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
                     </div>
                     <div className="text-3xl font-black tracking-tighter mb-6">
                         <span className="text-white">ACHIEVERS</span>
