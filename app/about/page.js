@@ -31,39 +31,43 @@ export default function AboutPage() {
             <section className="py-40 bg-midnight-black relative overflow-hidden">
                 <div className="motif-bg opacity-5"></div>
                 <div className="container relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
-                        <div className="glass-panel p-12 rounded-[48px] border border-white/5 relative group h-full">
-                            <div className="flex items-center gap-6 mb-10">
-                                <div className="w-14 h-14 bg-primary-copper rounded-[20px] flex items-center justify-center text-white shadow-xl shadow-primary-copper/20">
-                                    <Target size={28} />
+                    <div className="max-w-5xl mx-auto space-y-24">
+                        {/* Vision - Centered */}
+                        <div className="glass-panel p-16 rounded-[56px] border border-white/5 relative group text-center">
+                            <div className="flex flex-col items-center mb-10">
+                                <div className="w-16 h-16 bg-primary-copper rounded-[24px] flex items-center justify-center text-white shadow-2xl shadow-primary-copper/30 mb-6">
+                                    <Target size={32} />
                                 </div>
-                                <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Vision</h2>
+                                <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Vision</h2>
                             </div>
-                            <blockquote className="text-2xl text-text-secondary font-light leading-relaxed border-l-2 border-primary-copper/30 pl-8 italic">
+                            <blockquote className="text-2xl md:text-3xl text-text-secondary font-light leading-relaxed italic max-w-4xl mx-auto">
                                 "To raise and empower 10 million visionary leaders across Africa by 2030, equipped with the innovation and integrity to redefine the global leadership landscape."
                             </blockquote>
                         </div>
 
-                        <div className="glass-panel p-12 rounded-[48px] border border-white/5 relative group h-full">
-                            <div className="flex items-center gap-6 mb-10">
-                                <div className="w-14 h-14 bg-white/5 rounded-[20px] flex items-center justify-center text-primary-copper border border-white/10">
-                                    <Rocket size={28} />
+                        {/* Mission - Centered */}
+                        <div className="glass-panel p-16 rounded-[56px] border border-white/5 relative group text-center">
+                            <div className="flex flex-col items-center mb-10">
+                                <div className="w-16 h-16 bg-white/5 rounded-[24px] flex items-center justify-center text-primary-copper border border-white/10 mb-6">
+                                    <Rocket size={32} />
                                 </div>
-                                <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Mission</h2>
+                                <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Mission</h2>
                             </div>
-                            <ul className="space-y-8">
-                                {[
-                                    "Catalyzing value-based leadership and governance reforms.",
-                                    "Fostering an ecosystem for high-impact entrepreneurship.",
-                                    "Providing mentorship from global industry titans.",
-                                    "Amplifying the African narrative through excellence."
-                                ].map((text, i) => (
-                                    <li key={i} className="flex gap-6 items-start group/item">
-                                        <div className="mt-2.5 w-2 h-2 rounded-full bg-primary-copper shadow-[0_0_10px_rgba(161,136,127,0.5)] transition-all" />
-                                        <span className="text-text-secondary text-xl font-light leading-tight group-hover/item:text-white transition-colors">{text}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="max-w-3xl mx-auto">
+                                <ul className="space-y-8">
+                                    {[
+                                        "Catalyzing value-based leadership and governance reforms.",
+                                        "Fostering an ecosystem for high-impact entrepreneurship.",
+                                        "Providing mentorship from global industry titans.",
+                                        "Amplifying the African narrative through excellence."
+                                    ].map((text, i) => (
+                                        <li key={i} className="flex flex-col items-center group/item">
+                                            <div className="mb-4 w-2 h-2 rounded-full bg-primary-copper shadow-[0_0_12px_rgba(161,136,127,0.6)] transition-all" />
+                                            <span className="text-text-secondary text-xl md:text-2xl font-light leading-tight group-hover/item:text-white transition-colors">{text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
