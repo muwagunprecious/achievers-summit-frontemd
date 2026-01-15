@@ -111,7 +111,9 @@ export default function Tickets({ onBuy }) {
                                     <ul className="space-y-4">
                                         {(ticket.features || []).map((feature, idx) => (
                                             <li key={idx} className="flex gap-4 items-start group/item">
-                                                <div className="mt-1.5 w-2 h-2 rounded-full bg-primary-copper shadow-[0_0_10px_rgba(161,136,127,0.5)] flex-shrink-0" />
+                                                <div className="flex-shrink-0 w-5 h-5 bg-primary-copper/10 rounded-full flex items-center justify-center border border-primary-copper/20 group-hover/item:bg-primary-copper group-hover/item:text-white transition-all duration-300">
+                                                    <Check size={10} className="text-primary-copper group-hover/item:text-white" strokeWidth={4} />
+                                                </div>
                                                 <span className="text-sm font-medium text-text-secondary group-hover/item:text-white transition-colors tracking-tight leading-relaxed">{feature}</span>
                                             </li>
                                         ))}
