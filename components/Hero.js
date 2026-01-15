@@ -31,14 +31,6 @@ export default function Hero() {
                             <span>ACHIEVE.</span>
                         </h1>
 
-                        <div className="mb-12">
-                            <p className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">The Theme</p>
-                            <h2 className="text-white text-xl md:text-3xl font-light italic leading-tight">
-                                “The Global Emerging Leader: <br className="hidden md:block" />
-                                <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
-                            </h2>
-                        </div>
-
                         <p className="text-text-secondary text-base md:text-lg mb-12 max-w-2xl font-light leading-relaxed">
                             A convergence of visionaries, industry titans, and policy makers shaping the future of African excellence.
                         </p>
@@ -53,7 +45,7 @@ export default function Hero() {
                             </a>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-xl border-t border-white/5 pt-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-xl border-t border-white/5 pt-10 mb-12">
                             <div className="flex items-center justify-center md:justify-start gap-5 group">
                                 <div className="w-16 h-16 rounded-3xl glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
                                     <MapPin size={28} />
@@ -70,9 +62,17 @@ export default function Hero() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Official Dates</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">12th - 13th August 2026</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">11th - 12th August 2026</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+                            <p className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">The Theme</p>
+                            <h2 className="text-white text-xl md:text-3xl font-light italic leading-tight">
+                                “The Global Emerging Leader: <br className="hidden md:block" />
+                                <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
+                            </h2>
                         </div>
                     </div>
                 </div>

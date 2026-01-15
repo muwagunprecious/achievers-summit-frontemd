@@ -7,6 +7,8 @@ import Hero from '../components/Hero';
 import ExhibitionStand from '../components/ExhibitionStand';
 import Tickets from '../components/Tickets';
 import Footer from '../components/Footer';
+import Speakers from '../components/Speakers';
+import FindTicket from '../components/FindTicket';
 
 const CheckoutModal = dynamic(() => import('../components/CheckoutModal'), { ssr: false });
 
@@ -54,10 +56,16 @@ export default function Home() {
         </div>
       </section>
 
+      <Speakers />
+
       <ExhibitionStand />
 
       <section id="tickets">
         <Tickets onBuy={handleBuy} />
+      </section>
+
+      <section id="find-pass">
+        <FindTicket />
       </section>
 
       <Footer />

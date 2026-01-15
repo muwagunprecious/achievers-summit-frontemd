@@ -1033,6 +1033,14 @@ p {
   transform: translateY(5rem);
 }
 
+.z-100 {
+  z-index: 100;
+}
+
+.z-1000 {
+  z-index: 1000;
+}
+
 /* Modern Buttons */
 .btn {
   display: inline-flex;

@@ -3,11 +3,11 @@ import React from 'react';
 import { Check, Sparkle, Zap, Crown, Rocket, Star, Loader2 } from 'lucide-react';
 
 const iconMap = {
-    'REGULAR': <Sparkle size={20} />,
-    'ECONOMY': <Rocket size={20} />,
-    'BUSINESS CLASS': <Zap size={20} />,
-    'FIRST CLASS': <Crown size={20} />,
-    'EXCLUSIVE BIZJET': <Star size={20} />,
+    'REGULAR PASS': <Sparkle size={20} />,
+    'ECONOMY PASS': <Rocket size={20} />,
+    'BUSINESS CLASS PASS': <Zap size={20} />,
+    'FIRST CLASS PASS': <Crown size={20} />,
+    'EXCLUSIVE BIZJET PASS': <Star size={20} />,
 };
 
 const defaultIcon = <Sparkle size={20} />;
@@ -107,11 +107,11 @@ export default function Tickets({ onBuy }) {
                                     )}
                                 </div>
 
-                                <div className="flex-grow mb-12">
-                                    <ul className="space-y-5">
+                                <div className="flex-grow mb-12 max-h-[350px] overflow-y-auto custom-scrollbar pr-4">
+                                    <ul className="space-y-4">
                                         {(ticket.features || []).map((feature, idx) => (
                                             <li key={idx} className="flex gap-4 items-start group/item">
-                                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-copper opacity-60 group-hover/item:opacity-100 transition-opacity flex-shrink-0" />
+                                                <div className="mt-1.5 w-2 h-2 rounded-full bg-primary-copper shadow-[0_0_10px_rgba(161,136,127,0.5)] flex-shrink-0" />
                                                 <span className="text-sm font-medium text-text-secondary group-hover/item:text-white transition-colors tracking-tight leading-relaxed">{feature}</span>
                                             </li>
                                         ))}
