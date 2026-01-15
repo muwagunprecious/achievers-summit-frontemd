@@ -15,11 +15,7 @@ export default function Footer() {
                     <div className="w-20 h-20 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500 mb-6">
                         <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
                     </div>
-                    <div className="text-3xl font-black tracking-tighter mb-6">
-                        <span className="text-white">ACHIEVERS</span>
-                        <span className="text-primary-copper">.</span>
-                    </div>
-                    <p className="text-text-secondary text-lg font-light leading-relaxed max-w-xl mx-auto">
+                    <p className="text-text-secondary text-lg font-light leading-relaxed max-w-xl mx-auto text-center">
                         Catalyzing the next era of African excellence through visionary leadership and institutional transformation.
                     </p>
                 </div>

@@ -43,11 +43,6 @@ export default function Navbar({ isHidden }) {
                         <div className="w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-all duration-500">
                             <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
                         </div>
-                        <div className="text-xl font-black tracking-tighter">
-                            <span className="text-white">ACHIEVERS</span>
-                            <span className="text-primary-copper ml-1 uppercase">SUMMIT</span>
-                            <span className="text-primary-copper">.</span>
-                        </div>
                     </a>
 
                     {/* Desktop Menu */}
