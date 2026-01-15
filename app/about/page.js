@@ -20,9 +20,32 @@ export default function AboutPage() {
                         About the <br />
                         <span className="text-gradient NOT-italic font-black">Achievers Summit.</span>
                     </h1>
-                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed mb-16">
                         The Achievers Summit is Africa’s premier convergence of leadership and entrepreneurship. Convened annually by <span className="text-white font-bold">Emmanuel Agida International (EAI)</span>, we bridge the gap between visionary thinking and institutional transformation.
                     </p>
+
+                    {/* Context & Theme Teaser - Centered */}
+                    <div className="max-w-3xl mx-auto">
+                        <div className="glass-panel p-10 md:p-12 rounded-[48px] border border-white/10 bg-white/[0.02] backdrop-blur-xl relative overflow-hidden text-center">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-copper/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+
+                            <div className="relative z-10">
+                                <p className="text-white text-xl md:text-2xl font-light leading-relaxed mb-10 italic">
+                                    “This year’s edition is uniquely positioned, coinciding with the <span className="text-primary-copper font-bold NOT-italic">Convener’s 23rd birthday</span> and aligned perfectly with <span className="text-white font-bold NOT-italic">International Youth Day</span>.”
+                                </p>
+
+                                <div className="pt-8 border-t border-white/10">
+                                    <div className="inline-block px-4 py-1.5 rounded-full border border-primary-copper/30 bg-primary-copper/5 mb-4">
+                                        <span className="text-[10px] font-black text-primary-copper uppercase tracking-widest">Official 2026 Theme</span>
+                                    </div>
+                                    <h3 className="text-3xl font-black text-white italic uppercase tracking-tighter leading-tight mt-2">
+                                        "Redefining the <br />
+                                        <span className="text-gradient NOT-italic">African Narrative"</span>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-primary-copper/30 to-transparent"></div>
             </section>
