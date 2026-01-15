@@ -81,8 +81,8 @@ export default function Tickets({ onBuy }) {
                                 )}
 
                                 {isLimited && active && (
-                                    <div className="absolute -top-4 left-10 bg-white text-midnight-black text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl">
-                                        {slotsLeft} Slots Only
+                                    <div className="absolute -top-4 left-10 bg-white text-midnight-black text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl">
+                                        Limited to {slotsLeft} slots only
                                     </div>
                                 )}
 
