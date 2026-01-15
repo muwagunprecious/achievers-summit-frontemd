@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import {
     Target, Users, Award, Shield, Rocket, Sparkles,
-    Lightbulb, Building2, Landmark, HeartHandshake, ArrowRight, GraduationCap
+    Lightbulb, Building2, Landmark, HeartHandshake, ArrowRight, GraduationCap, Briefcase
 } from 'lucide-react';
 
 export default function AboutPage() {
