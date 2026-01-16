@@ -507,6 +507,14 @@ p {
   gap: 3rem;
 }
 
+.gap-x-12 {
+  column-gap: 3rem;
+}
+
+.gap-y-6 {
+  row-gap: 1.5rem;
+}
+
 .gap-14 {
   gap: 3.5rem;
 }
