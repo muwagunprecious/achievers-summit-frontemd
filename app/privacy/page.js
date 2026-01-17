@@ -12,7 +12,7 @@ const PrivacySection = ({ title, children, defaultOpen = false }) => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full py-10 flex items-center justify-between text-left group"
             >
-                <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black text-black uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
                     {title}
                 </h3>
                 <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} size={24} />
