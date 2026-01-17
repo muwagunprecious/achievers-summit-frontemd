@@ -7,18 +7,19 @@ import { ChevronDown, Shield, Lock, Eye } from 'lucide-react';
 const PrivacySection = ({ title, children, defaultOpen = false }) => {
     const [isOpen, setIsOpen] = React.useState(defaultOpen);
     return (
-        <div className="border-b border-white/5 last:border-0">
+        <div className="border-b border-white/5 last:border-0" style={{ backgroundColor: 'transparent' }}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full py-10 flex items-center justify-between text-left group"
+                style={{ backgroundColor: 'transparent' }}
             >
-                <h3 className="text-2xl md:text-3xl font-black text-black uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black !text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
                     {title}
                 </h3>
                 <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} size={24} />
             </button>
-            <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-[1500px] mb-10' : 'max-h-0'}`}>
-                <div className="text-text-secondary text-lg font-light leading-relaxed prose prose-invert max-w-none">
+            <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-[1500px] mb-10' : 'max-h-0'}`} style={{ backgroundColor: 'transparent' }}>
+                <div className="text-white text-lg font-medium leading-relaxed prose prose-invert max-w-none" style={{ backgroundColor: 'transparent' }}>
                     {children}
                 </div>
             </div>
@@ -48,7 +49,7 @@ export default function PrivacyPage() {
             {/* Content Section */}
             <section className="py-40 bg-midnight-black relative">
                 <div className="container">
-                    <div className="max-w-5xl mx-auto glass-panel p-10 md:p-20 rounded-[64px] border border-white/5">
+                    <div className="max-w-5xl mx-auto p-4 md:p-10" style={{ backgroundColor: 'transparent', color: 'white' }}>
                         <PrivacySection title="1. Introduction" defaultOpen={true}>
                             <p>EA International ("we," "our," "us") is committed to protecting the privacy of all participants ("you," "your") of the Achievers Summit 2026. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you register for and participate in our Summit.</p>
                         </PrivacySection>
