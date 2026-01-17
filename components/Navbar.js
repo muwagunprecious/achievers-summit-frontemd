@@ -21,6 +21,7 @@ export default function Navbar({ isHidden }) {
         { name: 'Theme', href: '/theme' },
         { name: 'Program', href: '/program' },
         { name: 'Faculty', href: '/#speakers' },
+        { name: 'Nominate', href: '/nominate' },
         { name: 'Tickets', href: '/#tickets' },
     ];
 
@@ -28,6 +29,7 @@ export default function Navbar({ isHidden }) {
         <>
             {/* Main Navbar Wrapper */}
             <nav
+                suppressHydrationWarning
                 className={`fixed top-0 left-0 w-full z-100 transition-all duration-700 ${isScrolled ? 'py-4' : 'py-8'} ${isHidden ? 'opacity-0 pointer-events-none translate-y-[-100%]' : 'opacity-100 translate-y-0'}`}
             >
                 {/* Mobile Navbar Background - Consistent background for mobile header */}
@@ -76,10 +78,10 @@ export default function Navbar({ isHidden }) {
 
             {/* Mobile Menu Overlay - Moved OUTSIDE the main nav to ensure full coverage and avoid clipping */}
             <div
-                className={`md:hidden fixed inset-0 z-1000 bg-midnight-black/95 backdrop-blur-3xl transform transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-[-100%] opacity-0 pointer-events-none'}`}
+                className={`md:hidden fixed top-0 left-0 right-0 z-1000 bg-midnight-black/95 backdrop-blur-3xl border-b border-white/10 shadow-2xl transform transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : 'translate-y-[-100%] opacity-0 pointer-events-none'}`}
             >
                 {/* Mobile Menu Header */}
-                <div className="flex items-center justify-between p-6 border-b border-white/10">
+                <div className="flex items-center justify-between p-4 border-b border-white/10">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 bg-primary-copper rounded-xl flex items-center justify-center">
                             <span className="text-white font-black text-2xl italic">A</span>
@@ -97,21 +99,21 @@ export default function Navbar({ isHidden }) {
                     </button>
                 </div>
 
-                <div className="flex flex-col items-center justify-center h-[calc(100vh-100px)] gap-10 p-10 overflow-y-auto">
+                <div className="flex flex-col items-center justify-center gap-4 py-6 px-4 overflow-y-auto">
                     {navLinks.map((link, i) => (
                         <a
                             key={link.name}
                             href={link.href}
                             target={link.external ? "_blank" : undefined}
                             rel={link.external ? "noopener noreferrer" : undefined}
-                            className={`text-4xl font-black text-white hover:text-primary-copper transition-all duration-300 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-                            style={{ transitionDelay: `${i * 70}ms` }}
+                            className={`text-xl font-bold text-white hover:text-primary-copper transition-all duration-300 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                            style={{ transitionDelay: `${i * 30}ms` }}
                             onClick={() => setIsMenuOpen(false)}
                         >
                             {link.name}
                         </a>
                     ))}
-                    <a href="/tickets" className="btn btn-primary w-full max-w-xs mt-6" onClick={() => setIsMenuOpen(false)}>
+                    <a href="/tickets" className="btn btn-primary w-full mt-2 !py-2 text-sm" onClick={() => setIsMenuOpen(false)}>
                         Donate now
                     </a>
                 </div>

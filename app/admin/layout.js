@@ -26,7 +26,7 @@ export default function AdminLayout({ children }) {
 
     if (status === 'loading') {
         return (
-            <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+            <div className="min-h-screen bg-[#050505] flex items-center justify-center" suppressHydrationWarning>
                 <div className="animate-spin w-8 h-8 border-2 border-primary-copper border-t-transparent rounded-full"></div>
             </div>
         );

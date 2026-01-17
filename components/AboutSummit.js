@@ -23,10 +23,7 @@ export default function AboutSummit() {
 
                         <div className="space-y-8 text-text-secondary text-xl font-light leading-relaxed mb-16 mx-auto max-w-3xl">
                             <p>
-                                The Achievers Summit is Africa’s premier convergence of leadership and entrepreneurship. Convened annually by <span className="text-white font-bold">Emmanuel Agida International (EAI)</span>, this summit serves as a high-level platform for global and African participation.
-                            </p>
-                            <p>
-                                Designed to <span className="text-primary-copper font-bold italic uppercase tracking-widest text-sm">Inspire, Equip, and Elevate</span> the next generation, we bridge the gap between visionary thinking and institutional transformation.
+                                The Achievers Summit is an annual International Youth Day Leadership and Entrepreneurship Conference designed to inspire, equip, and elevate the next generation of African leaders. Convened by Emmanuel Agida International (EAI), the Summit brings together young innovators, policymakers, professionals, industry experts, development partners, and influential leaders from across Nigeria, Africa, and the global community.
                             </p>
                         </div>
 

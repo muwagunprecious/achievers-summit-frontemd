@@ -8,18 +8,32 @@ export const dynamic = 'force-dynamic';
 
 async function getTicketData() {
     try {
-        const [categories, tickets] = await Promise.all([
+        const [categories, tickets, allEventTickets] = await Promise.all([
             prisma.ticketCategory.findMany({
-                orderBy: { price: 'asc' },
-                include: { _count: { select: { tickets: true } } }
+                orderBy: { price: 'asc' }
             }),
-            prisma.ticket.findMany({
+            prisma.eventTicket.findMany({
                 take: 50,
-                orderBy: { purchaseDate: 'desc' },
-                include: { user: true, category: true }
+                orderBy: { purchaseDate: 'desc' }
+            }),
+            prisma.eventTicket.findMany({
+                select: { ticketType: true }
             })
         ]);
-        return { categories, tickets };
+
+        // Manually count tickets for each category
+        const ticketCounts = allEventTickets.reduce((acc, ticket) => {
+            acc[ticket.ticketType] = (acc[ticket.ticketType] || 0) + 1;
+            return acc;
+        }, {});
+
+        // Add _count to each category
+        const categoriesWithCount = categories.map(cat => ({
+            ...cat,
+            _count: { tickets: ticketCounts[cat.name] || 0 }
+        }));
+
+        return { categories: categoriesWithCount, tickets };
     } catch (error) {
         console.error("Failed to fetch ticket data:", error);
         return { categories: [], tickets: [] };
@@ -73,14 +87,14 @@ export default async function TicketManagementPage() {
                         <tbody>
                             {tickets.length > 0 ? tickets.map((ticket) => (
                                 <tr key={ticket.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                    <td className="p-4 font-mono text-primary-copper font-bold text-xs">{ticket.ticketNumber}</td>
+                                    <td className="p-4 font-mono text-primary-copper font-bold text-xs">{ticket.ticketId}</td>
                                     <td className="p-4">
-                                        <div className="font-bold text-white text-sm">{ticket.user?.name || 'Unknown User'}</div>
-                                        <div className="text-[10px] text-text-muted">{ticket.user?.email || 'N/A'}</div>
+                                        <div className="font-bold text-white text-sm">{ticket.fullName}</div>
+                                        <div className="text-[10px] text-text-muted">{ticket.email}</div>
                                     </td>
                                     <td className="p-4">
                                         <span className="px-2 py-1 rounded text-[10px] font-bold uppercase bg-white/5 border border-white/10 text-white">
-                                            {ticket.category?.name || 'Standard'}
+                                            {ticket.ticketType}
                                         </span>
                                     </td>
                                     <td className="p-4 text-xs text-text-muted">

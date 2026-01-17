@@ -66,6 +66,7 @@ export default async function NomineesPage({ searchParams }) {
                             <tr className="border-b border-white/5 bg-white/5">
                                 <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider">Nominee</th>
                                 <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider">Category</th>
+                                <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider">Contact & Socials</th>
                                 <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider">Nominator</th>
                                 <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider">Status</th>
                                 <th className="p-4 text-xs font-bold text-text-muted uppercase tracking-wider text-right">Actions</th>
@@ -77,11 +78,38 @@ export default async function NomineesPage({ searchParams }) {
                                     <td className="p-4">
                                         <div className="font-bold text-white text-sm">{nom.nomineeName}</div>
                                         <div className="text-[10px] text-text-muted">{nom.nomineeEmail}</div>
+                                        {nom.nomineePhone && <div className="text-[10px] text-text-muted">{nom.nomineePhone}</div>}
                                     </td>
                                     <td className="p-4">
                                         <span className="px-2 py-1 rounded text-[10px] font-bold uppercase bg-white/5 border border-white/10 text-white">
                                             {nom.category}
                                         </span>
+                                    </td>
+                                    <td className="p-4">
+                                        <div className="space-y-1">
+                                            {nom.nomineeWhatsApp && (
+                                                <div className="text-[10px] text-green-400 flex items-center gap-1">
+                                                    <span>WA:</span> {nom.nomineeWhatsApp}
+                                                </div>
+                                            )}
+                                            <div className="flex gap-2 mt-1">
+                                                {nom.nomineeTwitter && (
+                                                    <a href={`https://twitter.com/${nom.nomineeTwitter.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-white transition-colors">
+                                                        Twitter
+                                                    </a>
+                                                )}
+                                                {nom.nomineeLinkedIn && (
+                                                    <a href={nom.nomineeLinkedIn.startsWith('http') ? nom.nomineeLinkedIn : `https://${nom.nomineeLinkedIn}`} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-white transition-colors">
+                                                        LinkedIn
+                                                    </a>
+                                                )}
+                                                {nom.nomineeInstagram && (
+                                                    <a href={`https://instagram.com/${nom.nomineeInstagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-white transition-colors">
+                                                        IG
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
                                     </td>
                                     <td className="p-4">
                                         <div className="font-bold text-white text-xs">{nom.nominatorName}</div>

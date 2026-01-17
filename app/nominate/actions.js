@@ -9,8 +9,13 @@ export async function submitNomination(formData) {
         description: formData.get('reason'),
         nomineeEmail: formData.get('nomineeEmail'),
         nomineePhone: formData.get('nomineePhone'),
+        nomineeWhatsApp: formData.get('nomineeWhatsApp'),
+        nomineeTwitter: formData.get('nomineeTwitter'),
+        nomineeLinkedIn: formData.get('nomineeLinkedIn'),
+        nomineeInstagram: formData.get('nomineeInstagram'),
         nominatorName: formData.get('nominatorName'),
         nominatorEmail: formData.get('nominatorEmail'),
+        id: 'nom_' + Math.random().toString(36).substr(2, 9), // Prisma schema requires ID but it's not autoincrement
     };
 
     try {

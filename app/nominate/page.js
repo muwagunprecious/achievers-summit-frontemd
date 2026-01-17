@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { User, Mail, Phone, Award, Send, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Phone, Award, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -10,6 +10,10 @@ export default function NominationPage() {
         nomineeName: '',
         nomineeEmail: '',
         nomineePhone: '',
+        nomineeWhatsApp: '',
+        nomineeTwitter: '',
+        nomineeLinkedIn: '',
+        nomineeInstagram: '',
         category: '',
         reason: '',
         nominatorName: '',
@@ -77,7 +81,7 @@ export default function NominationPage() {
                         onClick={() => {
                             setStatus('IDLE');
                             setFormData({
-                                nomineeName: '', nomineeEmail: '', nomineePhone: '', category: '', reason: '', nominatorName: '', nominatorEmail: ''
+                                nomineeName: '', nomineeEmail: '', nomineePhone: '', nomineeWhatsApp: '', nomineeTwitter: '', nomineeLinkedIn: '', nomineeInstagram: '', category: '', reason: '', nominatorName: '', nominatorEmail: ''
                             });
                         }}
                         className="mt-4 text-xs font-bold text-text-muted uppercase tracking-widest hover:text-white transition-colors"
@@ -141,9 +145,9 @@ export default function NominationPage() {
                                         value={formData.category}
                                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                     >
-                                        <option value="" disabled>Select Category</option>
+                                        <option value="" disabled className="bg-white text-black">Select Category</option>
                                         {categories.map(cat => (
-                                            <option key={cat} value={cat} className="bg-black">{cat}</option>
+                                            <option key={cat} value={cat} className="bg-white text-black">{cat}</option>
                                         ))}
                                     </select>
                                     <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">▼</div>
@@ -176,8 +180,54 @@ export default function NominationPage() {
                             </div>
                         </div>
 
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="group">
+                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">WhatsApp Number</label>
+                                <input
+                                    type="tel"
+                                    className="w-full h-14 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl px-6 outline-none text-white transition-all"
+                                    placeholder="+234 XXX XXX XXXX"
+                                    value={formData.nomineeWhatsApp}
+                                    onChange={(e) => setFormData({ ...formData, nomineeWhatsApp: e.target.value })}
+                                />
+                            </div>
+                            <div className="group">
+                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Twitter Handle</label>
+                                <input
+                                    type="text"
+                                    className="w-full h-14 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl px-6 outline-none text-white transition-all"
+                                    placeholder="@username"
+                                    value={formData.nomineeTwitter}
+                                    onChange={(e) => setFormData({ ...formData, nomineeTwitter: e.target.value })}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="group">
+                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">LinkedIn Profile</label>
+                                <input
+                                    type="text"
+                                    className="w-full h-14 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl px-6 outline-none text-white transition-all"
+                                    placeholder="linkedin.com/in/username"
+                                    value={formData.nomineeLinkedIn}
+                                    onChange={(e) => setFormData({ ...formData, nomineeLinkedIn: e.target.value })}
+                                />
+                            </div>
+                            <div className="group">
+                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Instagram Handle</label>
+                                <input
+                                    type="text"
+                                    className="w-full h-14 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl px-6 outline-none text-white transition-all"
+                                    placeholder="@username"
+                                    value={formData.nomineeInstagram}
+                                    onChange={(e) => setFormData({ ...formData, nomineeInstagram: e.target.value })}
+                                />
+                            </div>
+                        </div>
+
                         <div className="group">
-                            <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Reason for Nomination</label>
+                            <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Achievements & Reason for Nomination</label>
                             <textarea
                                 required
                                 className="w-full h-32 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl p-6 outline-none text-white transition-all resize-none"

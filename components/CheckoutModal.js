@@ -55,7 +55,7 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    ticketType: ticket.name
+                    ticketType: ticket.name // This matches the backend expectation
                 })
             });
 
