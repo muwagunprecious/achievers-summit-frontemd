@@ -1,11 +1,14 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { X, CheckCircle, AlertCircle, Loader2, Send, Download } from 'lucide-react';
+import { X, CheckCircle, AlertCircle, Loader2, Send, Download, CreditCard } from 'lucide-react';
 import api from '@/lib/api';
+import { usePaystackPayment } from 'react-paystack';
 
 const ModalState = {
     FORM: 'form',
     PROCESSING: 'processing',
+    PAYMENT: 'payment',
+    VERIFYING: 'verifying',
     SUCCESS: 'success',
     ERROR: 'error'
 };
@@ -20,6 +23,67 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
     const [state, setState] = useState(ModalState.FORM);
     const [errorMessage, setErrorMessage] = useState('');
     const [createdTicket, setCreatedTicket] = useState(null);
+    const [paymentReference, setPaymentReference] = useState('');
+
+    const config = {
+        reference: (new Date()).getTime().toString(),
+        email: formData.email,
+        amount: ticket.price * 100, // Paystack expects amount in kobo
+        publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+        metadata: {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            ticketType: ticket.name
+        }
+    };
+
+    const initializePayment = usePaystackPayment(config);
+
+    const onSuccess = (reference) => {
+        setPaymentReference(reference.reference);
+        setState(ModalState.VERIFYING);
+        // Start polling or wait for webhook
+        checkPaymentStatus(reference.reference);
+    };
+
+    const onClosePayment = () => {
+        setState(ModalState.FORM);
+    };
+
+    const checkPaymentStatus = async (reference) => {
+        let attempts = 0;
+        const maxAttempts = 10;
+
+        const poll = async () => {
+            try {
+                // We add a small delay before first check to allow webhook to process
+                await new Promise(resolve => setTimeout(resolve, 3000));
+
+                const response = await fetch(`/api/tickets/search?query=${reference}`);
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    setCreatedTicket(data[0]);
+                    setState(ModalState.SUCCESS);
+                    return;
+                }
+
+                attempts++;
+                if (attempts < maxAttempts) {
+                    setTimeout(poll, 3000);
+                } else {
+                    setState(ModalState.ERROR);
+                    setErrorMessage('Payment was successful, but we are still processing your ticket. Please check your email in a few minutes or contact support with reference: ' + reference);
+                }
+            } catch (error) {
+                console.error('Error polling payment status:', error);
+                setState(ModalState.ERROR);
+                setErrorMessage('Error verifying payment. Please contact support with reference: ' + reference);
+            }
+        };
+
+        poll();
+    };
 
     useEffect(() => {
         if (isOpen) {
@@ -46,10 +110,15 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
             return;
         }
 
+        if (ticket.price > 0) {
+            initializePayment(onSuccess, onClosePayment);
+            return;
+        }
+
         setState(ModalState.PROCESSING);
 
         try {
-            // Updated API call to the instant issuance endpoint
+            // Updated API call to the instant issuance endpoint (only for free tickets now)
             const response = await fetch('/api/tickets/create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -167,6 +236,8 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                                 >
                                     {state === ModalState.PROCESSING ? (
                                         <Loader2 size={20} className="animate-spin" />
+                                    ) : ticket.price > 0 ? (
+                                        <><CreditCard size={20} /> PAY ₦{ticket.price.toLocaleString()}</>
                                     ) : (
                                         'GET MY TICKET'
                                     )}
@@ -187,6 +258,22 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                             <h3 className="text-3xl font-black italic text-white mb-4 uppercase tracking-tighter">Generating Your Ticket</h3>
                             <p className="text-text-muted text-sm font-light leading-relaxed max-w-[280px] mx-auto italic">
                                 Please wait while we generate your personalized ticket and send it to your email.
+                            </p>
+                        </div>
+                    )}
+
+                    {state === ModalState.VERIFYING && (
+                        <div className="text-center py-20 animate-fade-in">
+                            <div className="relative w-32 h-32 mx-auto mb-10">
+                                <div className="absolute inset-0 rounded-full border-2 border-primary-copper/10 animate-ping"></div>
+                                <div className="absolute inset-2 rounded-full border-4 border-t-primary-copper border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <Loader2 className="w-12 h-12 text-primary-copper" />
+                                </div>
+                            </div>
+                            <h3 className="text-3xl font-black italic text-white mb-4 uppercase tracking-tighter">Verifying Payment</h3>
+                            <p className="text-text-muted text-sm font-light leading-relaxed max-w-[280px] mx-auto italic">
+                                We've received your payment. We are now generating your ticket. This will only take a moment.
                             </p>
                         </div>
                     )}
