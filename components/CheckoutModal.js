@@ -94,7 +94,11 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                 })
             });
 
-            if (!ticketResponse.ok) throw new Error('Ticket creation failed');
+            if (!ticketResponse.ok) {
+                const errorData = await ticketResponse.json();
+                console.error('❌ Ticket creation API error:', errorData);
+                throw new Error(errorData.error || errorData.details || 'Ticket creation failed');
+            }
 
             const ticketData = await ticketResponse.json();
             console.log('✅ Ticket created:', ticketData);
