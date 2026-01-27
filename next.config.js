@@ -7,7 +7,7 @@ const nextConfig = {
         },
     },
     async rewrites() {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://achievers-summit-backend.vercel.app';
         return [
             {
                 source: '/api/tickets/:path*',
