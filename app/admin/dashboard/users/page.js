@@ -1,34 +1,53 @@
-"use client";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Search, Download, Filter, Mail, User, Ticket as TicketIcon, Calendar } from 'lucide-react';
+import prisma from "@/lib/prisma";
 
-export default function DelegateManagement() {
-    const [delegates, setDelegates] = useState([]);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [filterType, setFilterType] = useState('All');
+export const dynamic = 'force-dynamic';
 
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('achievers_registrations') || '[]');
-        setDelegates(data);
-    }, []);
+async function getDelegates() {
+    try {
+        const [normalTickets, eventTickets] = await Promise.all([
+            prisma.ticket.findMany({
+                include: {
+                    user: true,
+                    category: true
+                },
+                orderBy: { purchaseDate: 'desc' }
+            }),
+            prisma.eventTicket.findMany({
+                orderBy: { purchaseDate: 'desc' }
+            })
+        ]);
 
-    const filteredDelegates = delegates.filter(d =>
-        (d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            d.email.toLowerCase().includes(searchQuery.toLowerCase())) &&
-        (filterType === 'All' || d.ticket === filterType)
-    );
+        const mappedNormal = normalTickets.map(t => ({
+            id: t.ticketNumber,
+            name: t.user.name,
+            email: t.user.email,
+            ticket: t.category.name,
+            date: new Date(t.purchaseDate).toLocaleDateString(),
+            rawDate: t.purchaseDate
+        }));
 
-    const handleExport = () => {
-        const csvContent = "data:text/csv;charset=utf-8,"
-            + ["ID,Name,Email,Ticket,Date"].join(",") + "\n"
-            + filteredDelegates.map(d => `${d.id},${d.name},${d.email},${d.ticket},${d.date}`).join("\n");
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "achievers_delegates_2026.csv");
-        document.body.appendChild(link);
-        link.click();
-    };
+        const mappedEvent = eventTickets.map(t => ({
+            id: t.ticketId,
+            name: t.fullName,
+            email: t.email,
+            ticket: t.ticketType,
+            date: new Date(t.purchaseDate).toLocaleDateString(),
+            rawDate: t.purchaseDate
+        }));
+
+        return [...mappedNormal, ...mappedEvent].sort((a, b) =>
+            new Date(b.rawDate) - new Date(a.rawDate)
+        );
+    } catch (error) {
+        console.error("Failed to fetch delegates:", error);
+        return [];
+    }
+}
+
+export default async function DelegateManagement() {
+    const delegates = await getDelegates();
 
     return (
         <div className="space-y-10 animate-fade-in">
@@ -38,7 +57,6 @@ export default function DelegateManagement() {
                     <p className="text-text-muted text-sm font-bold uppercase tracking-[0.3em]">Authorized access to verified attendee data.</p>
                 </div>
                 <button
-                    onClick={handleExport}
                     className="btn btn-outline flex items-center gap-3 !py-4 !px-8 !text-[10px] border-white/10 hover:border-primary-copper/50"
                 >
                     <Download size={16} />
@@ -46,7 +64,7 @@ export default function DelegateManagement() {
                 </button>
             </div>
 
-            {/* Controls */}
+            {/* Controls - Note: Search/Filter would need client interaction or URL params for full functionality */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-2 relative group">
                     <Search size={18} className="absolute left-6 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary-copper transition-colors" />
@@ -54,16 +72,13 @@ export default function DelegateManagement() {
                         type="text"
                         placeholder="SEARCH BY NAME OR EMAIL..."
                         className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-2xl pl-16 pr-6 outline-none text-white font-bold tracking-widest transition-all"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
                 <div className="relative group">
                     <Filter size={18} className="absolute left-6 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary-copper transition-colors" />
                     <select
                         className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-2xl pl-16 pr-6 outline-none text-white font-black text-xs uppercase tracking-widest appearance-none cursor-pointer"
-                        value={filterType}
-                        onChange={(e) => setFilterType(e.target.value)}
+                        defaultValue="All"
                     >
                         <option value="All" className="bg-midnight-obsidian">ALL TIERS</option>
                         <option value="VIP PASS" className="bg-midnight-obsidian">VIP PASS</option>
@@ -87,7 +102,7 @@ export default function DelegateManagement() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
-                            {filteredDelegates.length > 0 ? filteredDelegates.map((d, i) => (
+                            {delegates.length > 0 ? delegates.map((d, i) => (
                                 <tr key={i} className="hover:bg-white/2 transition-colors group">
                                     <td className="px-10 py-8">
                                         <div className="flex items-center gap-4">

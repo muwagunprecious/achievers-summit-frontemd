@@ -52,19 +52,34 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
 
     const checkPaymentStatus = async (reference) => {
         let attempts = 0;
-        const maxAttempts = 10;
+        const maxAttempts = 20; // Increased for better tolerance
 
         const poll = async () => {
             try {
-                // We add a small delay before first check to allow webhook to process
-                await new Promise(resolve => setTimeout(resolve, 3000));
-
-                const response = await fetch(`/api/tickets/search?query=${reference}`);
+                // Poll the dedicated status endpoint
+                const response = await fetch(`/api/payments/status?reference=${reference}`);
                 const data = await response.json();
 
-                if (data && data.length > 0) {
-                    setCreatedTicket(data[0]);
-                    setState(ModalState.SUCCESS);
+                if (data.status === 'SUCCESS') {
+                    // Success detected! Stop polling and show result.
+
+                    // Fetch the actual ticket for display/download
+                    const ticketResponse = await fetch(`/api/tickets/search?query=${reference}`);
+                    const ticketData = await ticketResponse.json();
+
+                    if (ticketData && ticketData.length > 0) {
+                        setCreatedTicket(ticketData[0]);
+                        setState(ModalState.SUCCESS);
+                        return;
+                    }
+                    // If ticket isn't ready but transaction is success, wait a tiny bit and retry
+                    setTimeout(poll, 1500);
+                    return;
+                }
+
+                if (data.status === 'FAILED') {
+                    setState(ModalState.ERROR);
+                    setErrorMessage('Payment verification failed. Please contact support.');
                     return;
                 }
 
@@ -73,12 +88,12 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                     setTimeout(poll, 3000);
                 } else {
                     setState(ModalState.ERROR);
-                    setErrorMessage('Payment was successful, but we are still processing your ticket. Please check your email in a few minutes or contact support with reference: ' + reference);
+                    setErrorMessage('We are still verifying your payment. Please check your email in a few minutes or contact support with reference: ' + reference);
                 }
             } catch (error) {
                 console.error('Error polling payment status:', error);
-                setState(ModalState.ERROR);
-                setErrorMessage('Error verifying payment. Please contact support with reference: ' + reference);
+                // Don't stop on single error, keep trying
+                setTimeout(poll, 3000);
             }
         };
 
@@ -111,20 +126,51 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
         }
 
         if (ticket.price > 0) {
-            initializePayment(onSuccess, onClosePayment);
+            setState(ModalState.PROCESSING);
+            try {
+                // 1. Initialize Transaction in DB
+                const initResponse = await fetch('/api/payments/initialize', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        reference: config.reference,
+                        email: formData.email,
+                        fullName: formData.fullName,
+                        phone: formData.phone,
+                        amount: ticket.price,
+                        ticketType: ticket.name
+                    })
+                });
+
+                if (!initResponse.ok) throw new Error('Failed to initialize transaction');
+
+                // 2. IMPORTANT: Start polling IMMEDIATELY
+                // This makes the flow "Self-Healing": even if the Paystack popup
+                // fails to call onSuccess, our background polling will detect the 
+                // Webhook-driven success and show the ticket.
+                checkPaymentStatus(config.reference);
+
+                // 3. Open Paystack UI
+                initializePayment(onSuccess, onClosePayment);
+                setState(ModalState.PAYMENT);
+            } catch (error) {
+                console.error('Initialization error:', error);
+                setState(ModalState.ERROR);
+                setErrorMessage('Failed to start payment process. Please try again.');
+            }
             return;
         }
 
         setState(ModalState.PROCESSING);
 
         try {
-            // Updated API call to the instant issuance endpoint (only for free tickets now)
+            // Instant issuance for free tickets
             const response = await fetch('/api/tickets/create', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    ticketType: ticket.name // This matches the backend expectation
+                    ticketType: ticket.name
                 })
             });
 
@@ -135,21 +181,11 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
             }
 
             setCreatedTicket(data);
-
-            if (data.emailSent === false) {
-                setState(ModalState.ERROR);
-                setErrorMessage('Your ticket was generated successfully, but we were unable to send it to your email.');
-            } else {
-                setState(ModalState.SUCCESS);
-            }
+            setState(ModalState.SUCCESS);
         } catch (error) {
             console.error('Registration error:', error);
             setState(ModalState.ERROR);
-            if (error.message.includes('network')) {
-                setErrorMessage('We couldn’t complete your request due to a network issue. Please check your internet connection and try again.');
-            } else {
-                setErrorMessage(error.message || 'Something went wrong while processing your request.');
-            }
+            setErrorMessage(error.message || 'Something went wrong while processing your request.');
         }
     };
 
@@ -258,6 +294,22 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                             <h3 className="text-3xl font-black italic text-white mb-4 uppercase tracking-tighter">Generating Your Ticket</h3>
                             <p className="text-text-muted text-sm font-light leading-relaxed max-w-[280px] mx-auto italic">
                                 Please wait while we generate your personalized ticket and send it to your email.
+                            </p>
+                        </div>
+                    )}
+
+                    {state === ModalState.PAYMENT && (
+                        <div className="text-center py-20 animate-fade-in">
+                            <div className="relative w-32 h-32 mx-auto mb-10">
+                                <div className="absolute inset-0 rounded-full border-2 border-primary-copper/10 animate-ping"></div>
+                                <div className="absolute inset-2 rounded-full border-4 border-t-primary-copper border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <CreditCard className="w-12 h-12 text-primary-copper" />
+                                </div>
+                            </div>
+                            <h3 className="text-3xl font-black italic text-white mb-4 uppercase tracking-tighter">Awaiting Payment</h3>
+                            <p className="text-text-muted text-sm font-light leading-relaxed max-w-[280px] mx-auto italic">
+                                The Paystack secure payment portal is active. Please complete your transaction to proceed.
                             </p>
                         </div>
                     )}

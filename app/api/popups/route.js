@@ -8,9 +8,6 @@ export async function GET() {
     try {
         // Popup model doesn't exist in schema yet - returning empty array
         // TODO: Add Popup model to schema.prisma when needed
-        return NextResponse.json({ popups: [] });
-
-        /* Commented out until Popup model is added to schema
         const activePopups = await prisma.popup.findMany({
             where: {
                 isEnabled: true
@@ -21,7 +18,6 @@ export async function GET() {
         });
 
         return NextResponse.json({ popups: activePopups });
-        */
     } catch (error) {
         console.error('Error fetching popups:', error);
         return NextResponse.json(

@@ -15,19 +15,23 @@ async function getDashboardData() {
         // Note: We use standard prisma calls for models that were ALREADY in the client
         // We only need raw SQL for NEW models like Activity and Speaker if the client hasn't been regenerated.
         const [
-            totalTickets,
+            totalTicketsNormal,
+            totalTicketsEvent,
             totalUsers,
             totalNominees,
             votes,
-            ticketsWithPrice
+            ticketsWithPrice,
+            eventTicketsWithPrice
         ] = await Promise.all([
             prisma.ticket.count(),
+            prisma.eventTicket.count(),
             prisma.user.count(),
             prisma.nominee.count({ where: { isVisible: true } }),
             prisma.vote.findMany({ select: { createdAt: true } }),
             prisma.ticket.findMany({
                 include: { category: true }
-            })
+            }),
+            prisma.eventTicket.findMany({})
         ]);
 
         // Fetch activities using Raw SQL workaround
@@ -40,8 +44,13 @@ async function getDashboardData() {
             console.error("Failed to fetch activities via Raw SQL:", e);
         }
 
-        // Calculate Revenue
-        const totalRevenue = ticketsWithPrice.reduce((sum, t) => sum + (t.category.price || 0), 0);
+        // Calculate Unified Totals
+        const totalTickets = totalTicketsNormal + totalTicketsEvent;
+
+        // Calculate Revenue from both sources
+        const normalRevenue = ticketsWithPrice.reduce((sum, t) => sum + (t.category.price || 0), 0);
+        const eventRevenue = eventTicketsWithPrice.reduce((sum, t) => sum + (parseFloat(t.ticketPrice) || 0), 0);
+        const totalRevenue = normalRevenue + eventRevenue;
 
         // Process Vote Data for Chart (Group by Day)
         const votesByDay = votes.reduce((acc, vote) => {

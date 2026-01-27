@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-bg-deep">
+    <main className="min-h-screen bg-bg-deep" suppressHydrationWarning>
       <Navbar isHidden={!!selectedTicket} />
 
       <section id="home">

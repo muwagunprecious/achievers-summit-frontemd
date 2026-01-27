@@ -8,22 +8,54 @@ export const dynamic = 'force-dynamic';
 
 async function getTicketData() {
     try {
-        const [categories, tickets, allEventTickets] = await Promise.all([
+        const [categories, normalTickets, eventTickets] = await Promise.all([
             prisma.ticketCategory.findMany({
                 orderBy: { price: 'asc' }
             }),
-            prisma.eventTicket.findMany({
-                take: 50,
+            prisma.ticket.findMany({
+                include: {
+                    category: true,
+                    user: true
+                },
                 orderBy: { purchaseDate: 'desc' }
             }),
             prisma.eventTicket.findMany({
-                select: { ticketType: true }
+                orderBy: { purchaseDate: 'desc' }
             })
         ]);
 
-        // Manually count tickets for each category
-        const ticketCounts = allEventTickets.reduce((acc, ticket) => {
-            acc[ticket.ticketType] = (acc[ticket.ticketType] || 0) + 1;
+        // Map Normal Tickets to a unified format
+        const mappedNormal = normalTickets.map(t => ({
+            id: t.id,
+            ticketId: t.ticketNumber,
+            fullName: t.user.name,
+            email: t.user.email,
+            ticketType: t.category.name,
+            purchaseDate: t.purchaseDate,
+            status: t.status,
+            source: 'normalized'
+        }));
+
+        // Map Event Tickets to the same format
+        const mappedEvent = eventTickets.map(t => ({
+            id: t.id,
+            ticketId: t.ticketId,
+            fullName: t.fullName,
+            email: t.email,
+            ticketType: t.ticketType,
+            purchaseDate: t.purchaseDate,
+            status: t.status,
+            source: 'event'
+        }));
+
+        // Combine and Sort
+        const combinedTickets = [...mappedNormal, ...mappedEvent].sort((a, b) =>
+            new Date(b.purchaseDate) - new Date(a.purchaseDate)
+        );
+
+        // Calculate Category Counts
+        const ticketCounts = combinedTickets.reduce((acc, t) => {
+            acc[t.ticketType] = (acc[t.ticketType] || 0) + 1;
             return acc;
         }, {});
 
@@ -33,7 +65,7 @@ async function getTicketData() {
             _count: { tickets: ticketCounts[cat.name] || 0 }
         }));
 
-        return { categories: categoriesWithCount, tickets };
+        return { categories: categoriesWithCount, tickets: combinedTickets };
     } catch (error) {
         console.error("Failed to fetch ticket data:", error);
         return { categories: [], tickets: [] };
