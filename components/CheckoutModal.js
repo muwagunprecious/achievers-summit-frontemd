@@ -312,9 +312,23 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                     {state === ModalState.SUCCESS && (
                         <div className="text-center py-10">
                             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-                            <h3 className="text-3xl font-black italic text-white mb-4">SUCCESS! 🎉</h3>
-                            <p className="text-text-muted text-sm mb-10 italic">Your ticket is ready and sent to your email.</p>
-                            <button onClick={handleDownload} className="btn btn-primary w-full h-14 text-[10px] font-black uppercase tracking-widest mb-4">DOWNLOAD TICKET</button>
+                            <h3 className="text-3xl font-black italic text-white mb-2">SUCCESS! 🎉</h3>
+                            <p className="text-text-muted text-sm mb-6 italic">Your ticket has been sent to your email.</p>
+
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Ticket Number</p>
+                                <p className="text-2xl font-black text-primary-copper mb-4">{createdTicket?.ticketId || createdTicket?.ticketNumber}</p>
+
+                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">Reference</p>
+                                <p className="text-sm font-mono text-white/60">{createdTicket?.reference || createdTicket?.paymentReference}</p>
+                            </div>
+
+                            {createdTicket?.pdfBase64 ? (
+                                <button onClick={handleDownload} className="btn btn-primary w-full h-14 text-[10px] font-black uppercase tracking-widest mb-4">DOWNLOAD PDF</button>
+                            ) : (
+                                <p className="text-xs text-white/30 italic mb-6">Check your email for the printable PDF ticket.</p>
+                            )}
+
                             <button onClick={onClose} className="text-white/40 text-[10px] font-black uppercase">CLOSE</button>
                         </div>
                     )}
