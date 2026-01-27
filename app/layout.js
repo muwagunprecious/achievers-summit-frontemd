@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 
 import { Providers } from "@/components/Providers";
 import AnnouncementPopup from "@/components/AnnouncementPopup";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
           {children}
           <AnnouncementPopup />
         </Providers>
+        <Script src="https://js.paystack.co/v1/inline.js" strategy="afterInteractive" />
       </body>
     </html>
   );
