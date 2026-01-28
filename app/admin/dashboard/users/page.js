@@ -148,14 +148,5 @@ export default async function DelegateManagement() {
                     </table>
                 </div>
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
-                }
-                .bg-white\/2 { background-color: rgba(255, 255, 255, 0.02); }
-            `}</style>
-        </div>
-    );
+            );
 }
