@@ -148,6 +148,7 @@ export default async function DelegateManagement() {
                     </table>
                 </div>
             </div>
-            );
+        </div>
+    );
 }
-// Syntax fix applied
+// Final syntax fix applied
