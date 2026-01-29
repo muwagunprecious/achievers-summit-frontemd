@@ -6,8 +6,6 @@ const prisma = new PrismaClient();
 // GET - Fetch active popups/announcements
 export async function GET() {
     try {
-        // Popup model doesn't exist in schema yet - returning empty array
-        // TODO: Add Popup model to schema.prisma when needed
         const activePopups = await prisma.popup.findMany({
             where: {
                 isEnabled: true

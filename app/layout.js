@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
             {children}
             <AnnouncementPopup />
           </Providers>
-          <Script src="https://js.paystack.co/v1/inline.js" strategy="afterInteractive" />
         </StyledJsxRegistry>
+        <Script src="https://js.paystack.co/v1/inline.js" strategy="afterInteractive" />
       </body>
     </html>
   );
