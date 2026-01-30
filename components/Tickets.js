@@ -49,7 +49,7 @@ export default function Tickets({ onBuy }) {
                     <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">Registration Open</div>
                     <h2 className="text-5xl md:text-8xl text-white mb-8 italic">Get Your <span className="text-gradient font-black NOT-italic">Official Pass.</span></h2>
                     <p className="text-xl text-text-secondary font-light">
-                        Select your preferred experience level and secure your seat instantly. Each pass is issued as a digital PDF delivered to your email.
+                        Get Your Ticket Now - 3,000 Free Regular Tickets and 2,000 Paid Executive Passes Available. Select your preferred experience Level and secure your seat instantly. Each pass is issued as a digital PDF delivered to your email.
                     </p>
                 </div>
 
