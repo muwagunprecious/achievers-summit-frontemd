@@ -85,6 +85,18 @@ export async function POST(req) {
                 },
             });
 
+            // 4b. Update Transaction Status in DB
+            console.log(`Updating transaction status to SUCCESS for: ${reference}`);
+            try {
+                await prisma.transaction.update({
+                    where: { reference },
+                    data: { status: 'SUCCESS' }
+                });
+            } catch (transactionError) {
+                console.error('Failed to update transaction status:', transactionError);
+                // We don't return error here because the ticket was already created
+            }
+
             // 5. Generate PDF
             console.log('Generating PDF for:', ticketId);
             const pdfBuffer = await generateTicketPDF({

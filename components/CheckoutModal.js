@@ -123,6 +123,11 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
         const maxAttempts = 20;
 
         const poll = async () => {
+            // Stop polling if we've already reached success or error state elsewhere
+            // Use setState with a function to check current state safely if needed, 
+            // but for a simple modal, checking the state variable is usually sufficient
+            // if we ensure we don't proceed if success is already reached.
+
             try {
                 const response = await fetch(`/api/payments/status?reference=${reference}`);
                 const data = await response.json();
@@ -134,10 +139,8 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                     if (ticketData && ticketData.length > 0) {
                         setCreatedTicket(ticketData[0]);
                         setState(ModalState.SUCCESS);
-                        return;
+                        return; // Stop polling on success
                     }
-                    setTimeout(poll, 1500);
-                    return;
                 }
 
                 if (data.status === 'FAILED') {
@@ -148,10 +151,25 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
 
                 attempts++;
                 if (attempts < maxAttempts) {
-                    setTimeout(poll, 3000);
+                    // Only continue polling if we haven't reached success yet
+                    setTimeout(() => {
+                        // Re-check state inside the timeout to avoid overwriting success
+                        setState(current => {
+                            if (current !== ModalState.SUCCESS) {
+                                poll();
+                            }
+                            return current;
+                        });
+                    }, 3000);
                 } else {
-                    setState(ModalState.ERROR);
-                    setErrorMessage('Verification timed out. Check your email or contact support.');
+                    // Only show timeout error if we haven't already succeeded
+                    setState(current => {
+                        if (current !== ModalState.SUCCESS) {
+                            setErrorMessage('Verification timed out. Check your email or contact support.');
+                            return ModalState.ERROR;
+                        }
+                        return current;
+                    });
                 }
             } catch (error) {
                 console.error('Error polling status:', error);
