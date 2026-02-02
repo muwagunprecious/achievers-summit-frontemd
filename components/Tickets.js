@@ -107,8 +107,8 @@ export default function Tickets({ onBuy }) {
                                     )}
                                 </div>
 
-                                <div className="flex-grow mb-12 max-h-[350px] overflow-y-auto custom-scrollbar pr-4">
-                                    <ul className="space-y-4">
+                                <div className="mb-0 max-h-[450px] overflow-y-auto custom-scrollbar pr-4">
+                                    <ul className="space-y-4 mb-8">
                                         {(ticket.features || []).map((feature, idx) => (
                                             <li key={idx} className="flex gap-4 items-start group/item">
                                                 <div className="flex-shrink-0 w-5 h-5 bg-primary-copper/10 rounded-full flex items-center justify-center border border-primary-copper/20 group-hover/item:bg-primary-copper group-hover/item:text-white transition-all duration-300">
@@ -118,25 +118,24 @@ export default function Tickets({ onBuy }) {
                                             </li>
                                         ))}
                                     </ul>
+                                    <button
+                                        onClick={async () => {
+                                            if (active) {
+                                                setLoadingTicketId(ticket.id);
+                                                await onBuy(ticket);
+                                                setLoadingTicketId(null);
+                                            }
+                                        }}
+                                        disabled={!active || loadingTicketId === ticket.id}
+                                        className={`btn w-full py-4 transition-all duration-500 flex items-center justify-center gap-3 ${isPopular && active ? 'btn-primary shadow-lg shadow-primary-copper/20' : 'btn-outline border-white/10 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed'}`}
+                                    >
+                                        {loadingTicketId === ticket.id ? (
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                        ) : (
+                                            <span className="tracking-widest">{active ? 'GET MY TICKET' : 'Locked'}</span>
+                                        )}
+                                    </button>
                                 </div>
-
-                                <button
-                                    onClick={async () => {
-                                        if (active) {
-                                            setLoadingTicketId(ticket.id);
-                                            await onBuy(ticket);
-                                            setLoadingTicketId(null);
-                                        }
-                                    }}
-                                    disabled={!active || loadingTicketId === ticket.id}
-                                    className={`btn w-full py-4 transition-all duration-500 flex items-center justify-center gap-3 ${isPopular && active ? 'btn-primary shadow-lg shadow-primary-copper/20' : 'btn-outline border-white/10 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed'}`}
-                                >
-                                    {loadingTicketId === ticket.id ? (
-                                        <Loader2 className="w-4 h-4 animate-spin" />
-                                    ) : (
-                                        <span className="tracking-widest">{active ? 'GET MY TICKET' : 'Locked'}</span>
-                                    )}
-                                </button>
                             </div>
                         );
                     })}
