@@ -4,24 +4,22 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function AboutSummit() {
     return (
-        <section id="about-summit" className="py-32 bg-midnight-black relative overflow-hidden border-t border-white/5">
+        <section id="about-summit" className="pt-32 pb-12 bg-midnight-black relative overflow-hidden">
             <div className="motif-bg opacity-5"></div>
 
             <div className="container relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="animate-fade-in-up">
-                        <div className="inline-flex items-center gap-3 text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-10">
+                        <div className="inline-flex items-center gap-3 text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-4">
                             <Sparkles size={12} />
                             About the Summit
                         </div>
 
-                        <h2 className="text-5xl md:text-7xl text-white font-black italic uppercase tracking-tighter mb-12 leading-tight">
-                            The Annual <br />
-                            <span className="text-gradient NOT-italic font-black">International Youth Day</span> <br />
-                            Conference.
+                        <h2 className="text-4xl md:text-6xl text-white font-black italic uppercase tracking-tighter mb-6 leading-tight max-w-5xl mx-auto">
+                            The Annual <span className="text-gradient NOT-italic font-black">International Youth Day</span> Conference.
                         </h2>
 
-                        <div className="space-y-8 text-text-secondary text-xl font-light leading-relaxed mb-16 mx-auto max-w-3xl">
+                        <div className="space-y-4 text-text-secondary text-xl font-light leading-relaxed mb-8 mx-auto max-w-3xl">
                             <p>
                                 The Achievers Summit is an annual International Youth Day Leadership and Entrepreneurship Conference designed to inspire, equip, and elevate the next generation of African leaders. Convened by Emmanuel Agida International (EAI), the Summit brings together young innovators, policymakers, professionals, industry experts, development partners, and influential leaders from across Nigeria, Africa, and the global community.
                             </p>

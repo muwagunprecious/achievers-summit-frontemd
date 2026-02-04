@@ -103,7 +103,7 @@ export default function NominationPage() {
                 <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-primary-copper/5 rounded-full blur-[150px]"></div>
             </div>
 
-            <div className="relative z-10 pt-32 pb-20 px-6 max-w-4xl mx-auto">
+            <div className="relative z-10 pt-48 pb-20 px-6 max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-copper/30 bg-primary-copper/10 text-primary-copper text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
                         <Award size={14} />

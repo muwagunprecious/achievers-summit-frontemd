@@ -10,12 +10,13 @@ const TermSection = ({ title, children, defaultOpen = false }) => {
         <div className="border-b border-white/5 last:border-0">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full py-10 flex items-center justify-between text-left group"
+                className="w-full py-10 flex items-center justify-between text-left group focus:outline-none appearance-none border-none outline-none"
+                style={{ backgroundColor: 'transparent', background: 'transparent' }}
             >
-                <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors">
+                <h3 className="text-2xl md:text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-primary-copper transition-colors bg-transparent">
                     {title}
                 </h3>
-                <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} size={24} />
+                <ChevronDown className={`text-primary-copper transition-transform duration-500 ${isOpen ? 'rotate-180' : ''} bg-transparent`} size={24} />
             </button>
             <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isOpen ? 'max-h-[1000px] mb-10' : 'max-h-0'}`}>
                 <div className="text-text-secondary text-lg font-light leading-relaxed prose prose-invert max-w-none">
@@ -28,16 +29,15 @@ const TermSection = ({ title, children, defaultOpen = false }) => {
 
 export default function TermsPage() {
     return (
-        <main className="min-h-screen bg-bg-deep pt-40">
+        <main className="min-h-screen bg-bg-deep pt-48">
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden border-b border-white/5">
+            <section className="relative pt-24 pb-16 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
                     <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6 uppercase">Governance</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
-                        Digital <br />
-                        <span className="text-gradient NOT-italic font-black text-primary-copper">Terms.</span>
+                        Digital <span className="text-gradient NOT-italic font-black text-primary-copper">Terms.</span>
                     </h1>
                     <p className="text-xl text-text-secondary font-light max-w-4xl mx-auto leading-relaxed">
                         Last Updated: 31st December 2025. Please read these terms carefully before completing your registration.
@@ -46,9 +46,9 @@ export default function TermsPage() {
             </section>
 
             {/* Content Section */}
-            <section className="py-40 bg-midnight-black relative">
+            <section className="pt-12 pb-40 bg-bg-deep relative">
                 <div className="container">
-                    <div className="max-w-5xl mx-auto glass-panel p-10 md:p-20 rounded-[64px] border border-white/5">
+                    <div className="max-w-5xl mx-auto glass-panel p-10 md:p-20 rounded-[64px] border border-white/5 bg-black/40">
                         <TermSection title="1. Acceptance of Terms" defaultOpen={true}>
                             <p>By registering for the Achievers Summit (the "Summit"), organized by EA International ("Organizer," "we," "us," "our"), you ("Participant," "Delegate," "you," "your") agree to be bound by these Terms and Conditions. Please read them carefully before completing your registration.</p>
                         </TermSection>
@@ -132,7 +132,7 @@ export default function TermsPage() {
 
             <style jsx>{`
                 .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: #0a0a0a !important;
                     backdrop-filter: blur(40px);
                     border: 1px solid rgba(255, 255, 255, 0.05);
                 }

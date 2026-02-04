@@ -23,15 +23,17 @@ export default function Speakers() {
     }
 
     return (
-        <section id="speakers" className="section-sm bg-midnight-obsidian py-24 border-y border-white/5">
-            <div className="container relative text-center">
-                <div className="inline-block text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-4">The Faculty</div>
-                <h2 className="text-4xl md:text-5xl text-white font-black italic uppercase tracking-tighter mb-4">
-                    Speakers to be announced soon
-                </h2>
-                <p className="text-text-muted text-sm font-medium uppercase tracking-[0.2em]">
-                    Faculty selection in progress
-                </p>
+        <section id="speakers" className="bg-midnight-obsidian py-96 mt-10 border-y border-white/5">
+            <div className="container relative flex flex-col items-center">
+                <div className="max-w-4xl w-full glass-panel p-8 md:p-12 rounded-[32px] border border-white/5 bg-black/20 text-center animate-fade-in">
+                    <div className="inline-block text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-2">The Faculty</div>
+                    <h2 className="text-4xl md:text-5xl text-white font-black italic uppercase tracking-tighter mb-2">
+                        Speakers to be announced soon
+                    </h2>
+                    <p className="text-text-muted text-sm font-medium uppercase tracking-[0.2em]">
+                        Faculty selection in progress
+                    </p>
+                </div>
             </div>
 
             <style jsx>{`
