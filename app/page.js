@@ -41,18 +41,20 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="flex flex-row flex-nowrap justify-between items-start gap-4 md:gap-8 overflow-x-auto hide-scrollbar mb-20">
             {[
-              { label: 'Attendees', value: '2000+', desc: 'Across Africa' },
-              { label: 'Delegates', value: '200+', desc: 'Leadership Tier' },
-              { label: 'Exhibitors', value: '20+', desc: 'Global Entities' },
-              { label: 'Faculty', value: '20+', desc: 'Keynote speakers' },
-              { label: 'VIP Guests', value: '20%', desc: 'C-Suite Leaders' },
+              { label: 'Physical', value: '5000+', desc: 'Attendees' },
+              { label: 'Virtual', value: '25000+', desc: 'Audience' },
+              { label: 'International', value: '200+', desc: 'Delegates' },
+              { label: 'Exhibitors', value: '50+', desc: 'Global Presence' },
+              { label: 'Countries', value: '20+', desc: 'Representation' },
+              { label: 'Global', value: '20+', desc: 'Speakers' },
+              { label: 'VIP Guest', value: '20%', desc: '& Influencers' },
             ].map((stat, i) => (
-              <div key={i} className="text-center group flex-1 min-w-[120px]">
-                <div className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-2 group-hover:text-primary-copper transition-all duration-700 italic tracking-tighter">
+              <div key={i} className="text-center group flex-1 min-w-[140px]">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-primary-copper transition-all duration-700 italic tracking-tighter">
                   {stat.value}
                 </div>
-                <div className="text-xs md:text-sm font-black uppercase tracking-widest text-primary-copper mb-1">{stat.label}</div>
-                <div className="text-xs md:text-sm text-text-muted uppercase tracking-widest font-medium leading-tight">{stat.desc}</div>
+                <div className="text-[10px] md:text-xs font-black uppercase tracking-widest text-primary-copper mb-1 leading-tight">{stat.label}</div>
+                <div className="text-[9px] md:text-[10px] text-text-muted uppercase tracking-widest font-medium leading-tight">{stat.desc}</div>
               </div>
             ))}
           </div>
