@@ -23,7 +23,7 @@ export default function Speakers() {
     }
 
     return (
-        <section id="speakers" className="bg-midnight-obsidian py-96 mt-10 border-y border-white/5">
+        <section id="speakers" className="bg-midnight-obsidian py-32 border-y border-white/5">
             <div className="container relative flex flex-col items-center">
                 <div className="max-w-4xl w-full glass-panel p-8 md:p-12 rounded-[32px] border border-white/5 bg-black/20 text-center animate-fade-in">
                     <div className="inline-block text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-2">The Faculty</div>

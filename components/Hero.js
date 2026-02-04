@@ -17,7 +17,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-deep/50 to-bg-deep"></div>
             </div>
 
-            <div className="container relative z-10 pt-52 pb-20">
+            <div className="container relative z-10 pt-52 pb-32">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-col items-center text-center animate-fade-in">
                         <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full text-white text-xs font-black tracking-widest uppercase mb-10">

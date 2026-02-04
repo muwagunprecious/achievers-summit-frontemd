@@ -36,7 +36,7 @@ export default function Home() {
       <AboutSummit />
 
       {/* Stats Section - Premium Redesign */}
-      <section className="bg-midnight-black pt-32 pb-96 mb-10 relative overflow-hidden">
+      <section className="bg-midnight-black py-32 relative overflow-hidden">
         <div className="motif-bg opacity-5"></div>
         <div className="container relative z-10">
           <div className="flex flex-row flex-nowrap justify-between items-start gap-4 md:gap-8 overflow-x-auto hide-scrollbar mb-20">

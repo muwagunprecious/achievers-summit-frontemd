@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function AboutSummit() {
     return (
-        <section id="about-summit" className="pt-32 pb-12 bg-midnight-black relative overflow-hidden">
+        <section id="about-summit" className="py-32 bg-midnight-black relative overflow-hidden">
             <div className="motif-bg opacity-5"></div>
 
             <div className="container relative z-10">
