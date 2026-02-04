@@ -29,11 +29,11 @@ const PrivacySection = ({ title, children, defaultOpen = false }) => {
 
 export default function PrivacyPage() {
     return (
-        <main className="min-h-screen bg-bg-deep pt-40">
+        <main className="min-h-screen bg-bg-deep pt-32">
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden border-b border-white/5">
+            <section className="relative pt-16 pb-24 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
                     <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6 uppercase">Data Security</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
