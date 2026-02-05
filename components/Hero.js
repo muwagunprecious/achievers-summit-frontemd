@@ -17,7 +17,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-deep/50 to-bg-deep"></div>
             </div>
 
-            <div className="container relative z-10 pt-52 pb-32">
+            <div className="container relative z-10 pt-48 pb-[100px]">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-col items-center text-center animate-fade-in">
                         <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full text-white text-xs font-black tracking-widest uppercase mb-10">
@@ -31,9 +31,9 @@ export default function Hero() {
                             <span>ACHIEVE.</span>
                         </h1>
 
-                        <p className="text-text-secondary text-base md:text-lg mb-12 max-w-2xl font-light leading-relaxed">
-                            A convergence of visionaries, industry titans, and policy makers shaping the future of African excellence.
-                        </p>
+                        <h2 className="text-white text-base md:text-xl font-light italic leading-relaxed mb-12 max-w-4xl mx-auto">
+                            “The Global Emerging Leader: <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
+                        </h2>
 
                         <div className="flex flex-wrap justify-center gap-8 mb-16">
                             <a href="/tickets" className="btn btn-primary py-4 px-10 group">
@@ -67,13 +67,7 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        <div className="animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-                            <p className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">The Theme</p>
-                            <h2 className="text-white text-xl md:text-3xl font-light italic leading-tight">
-                                “The Global Emerging Leader: <br className="hidden md:block" />
-                                <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
-                            </h2>
-                        </div>
+
                     </div>
                 </div>
             </div>

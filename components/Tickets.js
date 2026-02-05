@@ -43,7 +43,7 @@ export default function Tickets({ onBuy }) {
     }
 
     return (
-        <section id="tickets" className="py-32 bg-bg-deep relative overflow-hidden">
+        <section id="tickets" className="pb-32 bg-bg-deep relative overflow-hidden" style={{ paddingTop: '90px' }}>
             <div className="container">
                 <div className="text-center mb-24 max-w-4xl mx-auto">
                     <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">Registration Open</div>

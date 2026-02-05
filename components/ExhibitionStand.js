@@ -17,7 +17,7 @@ export default function ExhibitionStand() {
     };
 
     return (
-        <section id="partner" className="py-32 bg-midnight-black relative overflow-hidden">
+        <section id="partner" className="pt-32 bg-midnight-black relative overflow-hidden" style={{ paddingBottom: '90px' }}>
             {/* Background Accents */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="motif-bg opacity-[0.02]"></div>

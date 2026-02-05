@@ -4,14 +4,14 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function AboutSummit() {
     return (
-        <section id="about-summit" className="py-32 bg-midnight-black relative overflow-hidden">
+        <section id="about-summit" className="pt-12 pb-20 bg-midnight-black relative border-none text-white overflow-visible">
             <div className="motif-bg opacity-5"></div>
 
             <div className="container relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="animate-fade-in-up">
-                        <div className="inline-flex items-center gap-3 text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-4">
-                            <Sparkles size={12} />
+                        <div className="inline-flex items-center gap-3 text-primary-copper font-black text-sm tracking-[0.4em] uppercase mb-4">
+                            <Sparkles size={16} />
                             About the Summit
                         </div>
 
@@ -19,7 +19,7 @@ export default function AboutSummit() {
                             The Annual <span className="text-gradient NOT-italic font-black">International Youth Day</span> Conference.
                         </h2>
 
-                        <div className="space-y-4 text-text-secondary text-xl font-light leading-relaxed mb-8 mx-auto max-w-3xl">
+                        <div className="space-y-4 text-text-secondary text-base font-light leading-relaxed mb-8 mx-auto max-w-3xl">
                             <p>
                                 The Achievers Summit is an annual International Youth Day Leadership and Entrepreneurship Conference designed to inspire, equip, and elevate the next generation of African leaders. Convened by Emmanuel Agida International (EAI), the Summit brings together young innovators, policymakers, professionals, industry experts, development partners, and influential leaders from across Nigeria, Africa, and the global community.
                             </p>
