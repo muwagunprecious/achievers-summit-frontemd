@@ -53,8 +53,24 @@ export default function Tickets({ onBuy }) {
                     </p>
                 </div>
 
+                {/* Top Row: 2 Tickets (Centered) */}
+                {/* Top Row: 2 Tickets (Centered) */}
+                <div className="flex flex-col md:flex-row justify-center items-stretch mb-10" style={{ gap: '120px' }}>
+                    {categories.slice(0, 2).map((ticket) => (
+                        <div key={ticket.id} className="w-full flex-shrink-0" style={{ maxWidth: '400px' }}>
+                            <TicketCard
+                                ticket={ticket}
+                                onBuy={onBuy}
+                                loadingTicketId={loadingTicketId}
+                                setLoadingTicketId={setLoadingTicketId}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Bottom Row: 3 Tickets */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
-                    {categories.map((ticket, index) => (
+                    {categories.slice(2).map((ticket) => (
                         <TicketCard
                             key={ticket.id}
                             ticket={ticket}
@@ -77,8 +93,8 @@ function TicketCard({ ticket, onBuy, loadingTicketId, setLoadingTicketId }) {
     const isLimited = ticket.name.includes('BIZJET');
     const slotsLeft = ticket.capacity - (ticket._count?.tickets || 0);
     const features = ticket.features || [];
-    const hasMoreFeatures = features.length > 5;
-    const displayedFeatures = showAll ? features : features.slice(0, 5);
+    const hasMoreFeatures = features.length > 4;
+    const displayedFeatures = showAll ? features : features.slice(0, 4);
 
     return (
         <div
@@ -99,11 +115,7 @@ function TicketCard({ ticket, onBuy, loadingTicketId, setLoadingTicketId }) {
                 </div>
             )}
 
-            {isLimited && active && (
-                <div className="absolute -top-4 left-10 bg-white text-midnight-black text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-xl">
-                    Limited to {slotsLeft} slots only
-                </div>
-            )}
+
 
             <div className="mb-12">
                 <div className="w-14 h-14 glass-panel flex items-center justify-center text-primary-copper mb-8 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 rounded-2xl">
