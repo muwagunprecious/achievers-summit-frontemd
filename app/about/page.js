@@ -13,7 +13,7 @@ export default function AboutPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden border-b border-white/5">
+            <section className="relative pt-20 pb-32 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
                     <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6">About the Summit</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
@@ -93,7 +93,7 @@ export default function AboutPage() {
             </section>
 
             {/* Who Should Attend */}
-            <section className="py-40">
+            <section className="pt-20 pb-40">
                 <div className="container">
                     <div className="text-center mb-24">
                         <div className="inline-block text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-4">Target Audience</div>

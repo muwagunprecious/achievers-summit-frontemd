@@ -66,7 +66,7 @@ export default function WhyAttendPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden border-b border-white/5">
+            <section className="relative pt-20 pb-32 overflow-hidden border-b border-white/5">
                 <div className="container relative z-10 text-center">
                     <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6 uppercase tracking-[0.4em]">Value Proposition</div>
                     <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
