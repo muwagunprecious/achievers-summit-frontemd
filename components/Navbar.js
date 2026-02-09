@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import DonateModal from './DonateModal';
 
 export default function Navbar({ isHidden }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDonateOpen, setIsDonateOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,8 +19,7 @@ export default function Navbar({ isHidden }) {
     const navLinks = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
-        { name: 'Why Attend', href: '/why-attend' },
-        { name: 'Theme', href: '/theme' },
+        { name: 'Community', href: '/community' },
         { name: 'Program', href: '/program' },
         { name: 'Faculty', href: '/#speakers' },
         { name: 'Nominate', href: '/nominate' },
@@ -48,7 +49,7 @@ export default function Navbar({ isHidden }) {
                     </a>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-10">
+                    <div className="hidden md:flex items-center gap-16">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -61,9 +62,9 @@ export default function Navbar({ isHidden }) {
                                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary-copper transition-all duration-300 group-hover/link:w-full"></span>
                             </a>
                         ))}
-                        <a href="/tickets" className="btn btn-primary !py-3 !px-8 !text-xs">
+                        <button onClick={() => setIsDonateOpen(true)} className="btn btn-primary !py-3 !px-8 !text-xs">
                             Donate now
-                        </a>
+                        </button>
                     </div>
 
                     {/* Mobile Toggle */}
@@ -113,11 +114,13 @@ export default function Navbar({ isHidden }) {
                             {link.name}
                         </a>
                     ))}
-                    <a href="/tickets" className="btn btn-primary w-full mt-2 !py-2 text-sm" onClick={() => setIsMenuOpen(false)}>
+                    <button className="btn btn-primary w-full mt-2 !py-2 text-sm" onClick={() => { setIsMenuOpen(false); setIsDonateOpen(true); }}>
                         Donate now
-                    </a>
+                    </button>
                 </div>
             </div>
+
+            <DonateModal isOpen={isDonateOpen} onClose={() => setIsDonateOpen(false)} />
         </>
     );
 }

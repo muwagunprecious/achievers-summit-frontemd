@@ -39,7 +39,7 @@ export default function Home() {
       <section className="bg-midnight-black pt-20 pb-32 relative overflow-hidden border-none -mt-[1px]" style={{ paddingTop: '80px' }}>
         <div className="motif-bg opacity-5"></div>
         <div className="container relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-32 mb-20">
             {[
               { label: 'Physical', value: '5000+', desc: 'Attendees' },
               { label: 'Virtual', value: '25000+', desc: 'Audience' },
@@ -49,11 +49,11 @@ export default function Home() {
               { label: 'Global', value: '20+', desc: 'Speakers' },
               { label: 'VIP Guest', value: '20%', desc: '& Influencers' },
             ].map((stat, i) => (
-              <div key={i} className="text-center group">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 group-hover:text-primary-copper transition-all duration-700 italic tracking-tighter">
+              <div key={i} className="text-center group py-10">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-primary-copper transition-all duration-700 italic tracking-tighter">
                   {stat.value}
                 </div>
-                <div className="text-xs md:text-sm font-black uppercase tracking-widest text-primary-copper mb-2 leading-tight">{stat.label}</div>
+                <div className="text-xs md:text-sm font-black uppercase tracking-widest text-primary-copper mb-1 leading-tight">{stat.label}</div>
                 <div className="text-[10px] md:text-xs text-text-muted uppercase tracking-widest font-medium leading-tight">{stat.desc}</div>
               </div>
             ))}

@@ -13,7 +13,8 @@ import {
     Shield,
     Building2,
     XCircle,
-    X
+    X,
+    Heart
 } from 'lucide-react';
 
 const AdminSidebar = () => {
@@ -26,6 +27,7 @@ const AdminSidebar = () => {
         { name: 'Ticketing', icon: Ticket, path: '/admin/dashboard/tickets' },
         { name: 'Speakers', icon: Mic, path: '/admin/dashboard/speakers' },
         { name: 'Exhibitors', icon: Building2, path: '/admin/dashboard/bookings' },
+        { name: 'Community', icon: Heart, path: '/admin/dashboard/community' },
         { name: 'Voting Analytics', icon: BarChart3, path: '/admin/dashboard/voting-analytics' },
         { name: 'Settings', icon: Settings, path: '/admin/dashboard/settings' },
     ];
