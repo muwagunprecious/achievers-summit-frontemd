@@ -40,26 +40,6 @@ export default function CommunityPage() {
                 <div className="motif-bg opacity-5"></div>
                 <div className="container relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        {/* WhatsApp Card */}
-                        <div className="glass-panel p-3 rounded-lg border border-white/5 hover:border-green-500/30 transition-all duration-500 group flex flex-col h-full bg-green-500/[0.02]">
-                            <div className="w-6 h-6 bg-green-500/10 rounded-md flex items-center justify-center text-green-500 mb-2 border border-green-500/20 group-hover:scale-110 transition-transform">
-                                <MessageCircle size={14} />
-                            </div>
-                            <h3 className="text-sm font-black text-white italic uppercase tracking-tighter mb-1">WhatsApp Community</h3>
-                            <p className="text-text-secondary [font-size:8px] font-light mb-2 flex-grow leading-[1.1]">
-                                Join our official WhatsApp group to get real-time updates, network with other members, and never miss an announcement.
-                            </p>
-                            <a
-                                href="https://chat.whatsapp.com/G3P2qD8V9j6H1Y2Z3L4M5N" // Replace with real link
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn btn-primary bg-green-600 border-green-600 hover:bg-green-700 w-full py-1.5 flex items-center justify-center gap-1.5"
-                            >
-                                <span className="font-black [font-size:8px] tracking-widest uppercase text-white">JOIN</span>
-                                <ArrowRight size={10} />
-                            </a>
-                        </div>
-
                         {/* Volunteer Card */}
                         <div className="glass-panel p-3 rounded-lg border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group flex flex-col h-full">
                             <div className="w-6 h-6 bg-primary-copper/10 rounded-md flex items-center justify-center text-primary-copper mb-2 border border-primary-copper/20 group-hover:scale-110 transition-transform">
@@ -94,6 +74,26 @@ export default function CommunityPage() {
                                 <span className="font-black [font-size:8px] tracking-widest uppercase text-white">BECOME</span>
                                 <ArrowRight size={10} />
                             </button>
+                        </div>
+
+                        {/* WhatsApp Card */}
+                        <div className="glass-panel p-3 rounded-lg border border-white/5 hover:border-green-500/30 transition-all duration-500 group flex flex-col h-full bg-green-500/[0.02]">
+                            <div className="w-6 h-6 bg-green-500/10 rounded-md flex items-center justify-center text-green-500 mb-2 border border-green-500/20 group-hover:scale-110 transition-transform">
+                                <MessageCircle size={14} />
+                            </div>
+                            <h3 className="text-sm font-black text-white italic uppercase tracking-tighter mb-1">WhatsApp Community</h3>
+                            <p className="text-text-secondary [font-size:8px] font-light mb-2 flex-grow leading-[1.1]">
+                                Join our official WhatsApp group to get real-time updates, network with other members, and never miss an announcement.
+                            </p>
+                            <a
+                                href="https://chat.whatsapp.com/G3P2qD8V9j6H1Y2Z3L4M5N" // Replace with real link
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn btn-primary bg-green-600 border-green-600 hover:bg-green-700 w-full py-1.5 flex items-center justify-center gap-1.5"
+                            >
+                                <span className="font-black [font-size:8px] tracking-widest uppercase text-white">JOIN</span>
+                                <ArrowRight size={10} />
+                            </a>
                         </div>
                     </div>
                 </div>
