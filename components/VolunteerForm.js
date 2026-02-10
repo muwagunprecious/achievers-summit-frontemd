@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {
     ChevronRight, ChevronLeft, Send, CheckCircle2,
-    User, Mail, Phone, MapPin, Briefcase, Info, AlertCircle, Zap, Users
+    User, Mail, Phone, MapPin, Briefcase, Info, AlertCircle, Zap, Users, Loader2
 } from 'lucide-react';
 import Navbar from './Navbar';
 

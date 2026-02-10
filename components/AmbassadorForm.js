@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {
     ChevronRight, ChevronLeft, Send, CheckCircle2,
-    User, Mail, Phone, MapPin, GraduationCap, Info, AlertCircle, Building2
+    User, Mail, Phone, MapPin, GraduationCap, Info, AlertCircle, Building2, Loader2
 } from 'lucide-react';
 import Navbar from './Navbar';
 
@@ -244,11 +244,11 @@ export default function AmbassadorForm({ onBack }) {
                                                         name="institution"
                                                         value={formData.institution}
                                                         onChange={handleChange}
-                                                        className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm appearance-none cursor-pointer"
+                                                        className="w-full h-16 bg-white border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white transition-all font-medium text-sm appearance-none cursor-pointer"
                                                     >
-                                                        <option value="" className="bg-[#0A0A0A]">Select Institution</option>
+                                                        <option value="" className="bg-white">Select Institution</option>
                                                         {lagosInstitutions.map((inst, i) => (
-                                                            <option key={i} value={inst} className="bg-[#0A0A0A]">{inst}</option>
+                                                            <option key={i} value={inst} className="bg-white">{inst}</option>
                                                         ))}
                                                     </select>
                                                     {formData.institution === 'Other' && (
