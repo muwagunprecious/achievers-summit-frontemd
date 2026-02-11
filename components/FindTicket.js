@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Search, AlertCircle, Fingerprint } from 'lucide-react';
+import { Search, AlertCircle, Fingerprint, Loader2 } from 'lucide-react';
 import TicketResult from './TicketResult';
 
 export default function FindTicket() {

@@ -160,31 +160,31 @@ export default function AmbassadorForm({ onBack }) {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">Full Name <span className="text-primary-copper">*</span></label>
-                                            <input type="text" name="fullName" required value={formData.fullName} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="E.g. Jane Doe" />
+                                            <input type="text" name="fullName" required value={formData.fullName} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="E.g. Jane Doe" />
                                         </div>
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">Email Address <span className="text-primary-copper">*</span></label>
-                                            <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="jane@example.com" />
+                                            <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="jane@example.com" />
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">Phone No 1 (Call) <span className="text-primary-copper">*</span></label>
-                                            <input type="tel" name="phone1" required value={formData.phone1} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="+234..." />
+                                            <input type="tel" name="phone1" required value={formData.phone1} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="+234..." />
                                         </div>
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">Phone No 2 (WhatsApp) <span className="text-primary-copper">*</span></label>
-                                            <input type="tel" name="phone2" required value={formData.phone2} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="+234..." />
+                                            <input type="tel" name="phone2" required value={formData.phone2} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="+234..." />
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">State of Residence <span className="text-primary-copper">*</span></label>
-                                            <input type="text" name="state" required value={formData.state} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="Lagos" />
+                                            <input type="text" name="state" required value={formData.state} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="Lagos" />
                                         </div>
                                         <div className="space-y-3">
                                             <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 pl-2">L.G.A of Residence <span className="text-primary-copper">*</span></label>
-                                            <input type="text" name="lga" required value={formData.lga} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="Victoria Island" />
+                                            <input type="text" name="lga" required value={formData.lga} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm placeholder:text-white/10" placeholder="Victoria Island" />
                                         </div>
                                     </div>
                                     <div className="pt-8">
@@ -252,13 +252,13 @@ export default function AmbassadorForm({ onBack }) {
                                                         ))}
                                                     </select>
                                                     {formData.institution === 'Other' && (
-                                                        <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm mt-4" placeholder="Type your institution name..." />
+                                                        <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm mt-4" placeholder="Type your institution name..." />
                                                     )}
                                                 </div>
                                             ) : (
                                                 <div className="space-y-4">
                                                     <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Name of Institution (Outside Lagos) <span className="text-primary-copper">*</span></label>
-                                                    <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-white outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm" placeholder="Type your institution name..." />
+                                                    <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm" placeholder="Type your institution name..." />
                                                 </div>
                                             )}
                                         </div>
