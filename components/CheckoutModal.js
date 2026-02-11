@@ -262,7 +262,8 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
                 {(state === ModalState.FORM || state === ModalState.SUCCESS || state === ModalState.ERROR || state === ModalState.PAYMENT) && (
                     <button
                         onClick={onClose}
-                        className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center rounded-full bg-black text-white hover:bg-zinc-900 transition-all z-20"
+                        style={{ backgroundColor: '#000000' }}
+                        className="absolute top-8 right-8 w-10 h-10 flex items-center justify-center rounded-full text-white hover:bg-zinc-900 transition-all z-20"
                     >
                         <X size={20} />
                     </button>
