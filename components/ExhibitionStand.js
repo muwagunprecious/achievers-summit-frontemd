@@ -31,8 +31,8 @@ export default function ExhibitionStand() {
                         <div className="relative group h-full w-full max-w-[450px]">
                             <div className="relative rounded-[40px] overflow-hidden shadow-2xl border border-white/10 bg-midnight-obsidian h-full min-h-[500px]">
                                 <img
-                                    src="/images/handshake.jpg"
-                                    alt="Partnership Handshake"
+                                    src="/images/partner.jpeg"
+                                    alt="Strategic Partnership"
                                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-60"></div>
