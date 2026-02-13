@@ -17,6 +17,7 @@ export default function AmbassadorForm({ onBack }) {
     const [step, setStep] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null);
+    const [showError, setShowError] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -51,6 +52,7 @@ export default function AmbassadorForm({ onBack }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        if (showError) setShowError(false);
     };
 
     const handleNext = () => {
@@ -63,7 +65,15 @@ export default function AmbassadorForm({ onBack }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate availability selection
+        if (step === 2 && formData.availableActivation === null) {
+            setShowError(true);
+            return;
+        }
+
         setIsSubmitting(true);
+        setShowError(false);
         setError(null);
 
         try {
@@ -291,15 +301,21 @@ export default function AmbassadorForm({ onBack }) {
                                         <div className="flex gap-6">
                                             <button
                                                 type="button"
-                                                onClick={() => setFormData(prev => ({ ...prev, availableActivation: true, unavailableWhy: '' }))}
-                                                className={`flex-1 h-18 rounded-2xl border-2 font-black text-[10px] uppercase tracking-[0.3em] transition-all active:scale-95 ${formData.availableActivation === true ? 'bg-primary-copper text-white border-primary-copper shadow-[0_10px_30px_rgba(210,164,120,0.3)]' : 'bg-white/[0.03] border-white/10 text-white/40'}`}
+                                                onClick={() => {
+                                                    setFormData(prev => ({ ...prev, availableActivation: true, unavailableWhy: '' }));
+                                                    setShowError(false);
+                                                }}
+                                                className={`flex-1 h-24 px-10 rounded-full border-2 font-black text-xs md:text-sm uppercase tracking-[0.2em] transition-all active:scale-95 ${formData.availableActivation === true ? 'bg-primary-copper text-white border-primary-copper shadow-[0_10px_30px_rgba(210,164,120,0.3)]' : 'bg-white/[0.03] border-white/10 text-white/60 hover:text-white hover:bg-white/5'}`}
                                             >
-                                                SYSTEAMTIC YES
+                                                YES, AVAILABLE
                                             </button>
                                             <button
                                                 type="button"
-                                                onClick={() => setFormData(prev => ({ ...prev, availableActivation: false }))}
-                                                className={`flex-1 h-18 rounded-2xl border-2 font-black text-[10px] uppercase tracking-[0.3em] transition-all active:scale-95 ${formData.availableActivation === false ? 'bg-red-500/20 border-red-500 text-red-500' : 'bg-white/[0.03] border-white/10 text-white/40'}`}
+                                                onClick={() => {
+                                                    setFormData(prev => ({ ...prev, availableActivation: false }));
+                                                    setShowError(false);
+                                                }}
+                                                className={`flex-1 h-24 px-10 rounded-full border-2 font-black text-xs md:text-sm uppercase tracking-[0.2em] transition-all active:scale-95 ${formData.availableActivation === false ? 'bg-red-500/20 border-red-500 text-red-500' : 'bg-white/[0.03] border-white/10 text-white/60 hover:text-white hover:bg-white/5'}`}
                                             >
                                                 NOT AVAILABLE
                                             </button>
@@ -325,7 +341,7 @@ export default function AmbassadorForm({ onBack }) {
                                         <button type="button" onClick={handlePrev} className="w-28 h-18 rounded-2xl bg-white border-2 border-white/10 hover:bg-white/90 text-black flex items-center justify-center transition-all active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.05)]" disabled={isSubmitting}>
                                             <ChevronLeft size={24} />
                                         </button>
-                                        <button type="submit" disabled={isSubmitting || formData.availableActivation === null} className="btn bg-primary-copper hover:bg-primary-copper/90 text-white flex-grow h-18 rounded-2xl shadow-[0_10px_40px_rgba(210,164,120,0.3)] flex items-center justify-center gap-4 transition-all active:scale-[0.98] group/btn">
+                                        <button type="submit" disabled={isSubmitting} className="btn bg-primary-copper hover:bg-primary-copper/90 text-white flex-grow h-18 rounded-2xl shadow-[0_10px_40px_rgba(210,164,120,0.3)] flex items-center justify-center gap-4 transition-all active:scale-[0.98] group/btn">
                                             <span className="font-black text-xs tracking-[0.3em] uppercase">{isSubmitting ? 'PROCESSING APPLICATION...' : 'SUBMIT AMBASSADOR FORM'}</span>
                                             {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
                                         </button>
@@ -387,6 +403,34 @@ export default function AmbassadorForm({ onBack }) {
                 }
                 .btn { cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
             `}</style>
+            {/* Validation Popup Modal */}
+            {showError && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+                    <div className="bg-[#0A0A0A] border border-red-500/30 p-8 rounded-[32px] max-w-sm w-full shadow-2xl transform scale-100 animate-scale-in relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500/0 via-red-500 to-red-500/0 opacity-50"></div>
+
+                        <div className="flex flex-col items-center text-center gap-6">
+                            <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 mb-2">
+                                <AlertCircle size={32} />
+                            </div>
+
+                            <div className="space-y-2">
+                                <h3 className="text-xl font-black text-white uppercase italic tracking-tighter">Action Required</h3>
+                                <p className="text-text-muted text-sm font-medium leading-relaxed">
+                                    Please select whether you are <span className="text-white font-bold">AVAILABLE</span> or <span className="text-white font-bold">NOT AVAILABLE</span> for the activation program.
+                                </p>
+                            </div>
+
+                            <button
+                                onClick={() => setShowError(false)}
+                                className="w-full py-4 rounded-xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors"
+                            >
+                                Understood
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
