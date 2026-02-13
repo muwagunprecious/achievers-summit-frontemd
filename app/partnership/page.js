@@ -94,7 +94,7 @@ export default function PartnershipPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
 
                         {/* Left Content: Branding & Info */}
-                        <div className="animate-fade-in">
+                        <div className="animate-fade-in flex flex-col items-center text-center">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-copper/30 bg-primary-copper/10 text-primary-copper text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
                                 <Handshake size={14} />
                                 <span>Strategic Partnership</span>
@@ -105,7 +105,7 @@ export default function PartnershipPage() {
                                 <span className="text-gradient NOT-italic">AFRICAN FUTURE.</span>
                             </h1>
 
-                            <p className="text-xl text-text-secondary font-light mb-20 max-w-xl leading-relaxed text-justify">
+                            <p className="text-xl text-text-secondary font-light mb-20 max-w-xl leading-relaxed mx-auto">
                                 Join Africa's premier summit for achievers. Our strategic partners gain exclusive access to a high-net-worth network of industry titans and continental policy makers.
                             </p>
 
