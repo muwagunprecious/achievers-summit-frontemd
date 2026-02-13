@@ -126,6 +126,15 @@ export default function PartnershipPage() {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* Partnership Image */}
+                            <div className="mt-16 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
+                                <img
+                                    src="/images/partner.jpeg"
+                                    alt="Partnership"
+                                    className="w-full h-auto object-cover"
+                                />
+                            </div>
                         </div>
 
                         {/* Right Content: Form */}

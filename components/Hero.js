@@ -5,8 +5,19 @@ import { MapPin, Calendar, Sparkles, ChevronDown } from 'lucide-react';
 export default function Hero() {
     return (
         <section id="home" className="relative min-h-screen flex items-center bg-bg-deep overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/images/banner.jpeg"
+                    alt="Summit Banner"
+                    className="w-full h-full object-cover"
+                />
+                {/* Dark overlay for text readability */}
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}></div>
+            </div>
+
             {/* Premium Atmospheric Background */}
-            <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 pointer-events-none z-[1]">
                 <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-primary-copper/10 rounded-full blur-[160px] animate-pulse"></div>
                 <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-primary-copper/5 rounded-full blur-[140px]"></div>
 
