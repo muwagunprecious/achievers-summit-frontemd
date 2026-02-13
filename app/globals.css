@@ -1,37 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Updated: 2026-02-13 - Ensuring consistent background colors */
 :root {
-  /* Cream, Black & Brown Palette */
-  --primary-copper: #8B4513;
-  --primary-copper-light: #A0522D;
-  --primary-copper-dark: #654321;
+  /* Premium Midnight Palette */
+  --primary-copper: #783A28;
+  --primary-copper-light: #B67E6D;
+  --primary-copper-dark: #4A2419;
 
-  --midnight-black: #1A1A1A;
-  --midnight-obsidian: #2A2A2A;
-  --midnight-purple: #1A1A1A;
+  --midnight-black: #05000A;
+  --midnight-obsidian: #0A0014;
+  --midnight-purple: #1A0033;
 
-  --accent-gold: #D4A574;
+  --accent-gold: #FFD700;
 
   /* Neutral Palette - Refined */
-  --bg-deep: #1A1A1A;
-  --bg-surface: #2A2A2A;
-  --bg-glass: rgba(245, 230, 211, 0.03);
+  --bg-deep: #05000A;
+  --bg-surface: #121212;
+  --bg-glass: rgba(255, 255, 255, 0.03);
 
-  --text-primary: #F5E6D3;
-  --text-secondary: rgba(245, 230, 211, 0.8);
-  --text-muted: rgba(245, 230, 211, 0.5);
-  --text-dark: #1A1A1A;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --text-dark: #0A0014;
 
   /* Glassmorphism Refined */
-  --glass-bg: rgba(245, 230, 211, 0.03);
-  --glass-border: rgba(245, 230, 211, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: blur(24px);
   --glass-shadow: 0 8px 64px 0 rgba(0, 0, 0, 0.5);
 
   /* Gradients */
-  --grad-sunset: linear-gradient(135deg, #8B4513 0%, #654321 100%);
-  --grad-midnight: linear-gradient(180deg, #2A2A2A 0%, #1A1A1A 100%);
-  --grad-premium: linear-gradient(135deg, rgba(245, 230, 211, 0.1) 0%, rgba(245, 230, 211, 0) 100%);
+  --grad-sunset: linear-gradient(135deg, #783A28 0%, #4A2419 100%);
+  --grad-midnight: linear-gradient(180deg, #0A0014 0%, #05000A 100%);
+  --grad-premium: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
 
   /* Spacing & Borders */
   --radius-sm: 8px;
@@ -204,7 +205,7 @@ p {
 }
 
 .bg-midnight-black {
-  background-color: var(--midnight-black);
+  background-color: #05000A;
 }
 
 .bg-primary-copper {
