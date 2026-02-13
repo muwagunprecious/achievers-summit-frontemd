@@ -86,7 +86,7 @@ export default function CommunityPage() {
                                 Join our official WhatsApp group to get real-time updates, network with other members, and never miss an announcement.
                             </p>
                             <a
-                                href="https://chat.whatsapp.com/G3P2qD8V9j6H1Y2Z3L4M5N" // Replace with real link
+                                href="https://chat.whatsapp.com/BVSQbb1TcNkD8ZYwHmwtyO"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-primary bg-green-600 border-green-600 hover:bg-green-700 w-full py-1.5 flex items-center justify-center gap-1.5"
