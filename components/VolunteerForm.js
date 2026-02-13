@@ -190,7 +190,7 @@ export default function VolunteerForm({ onBack }) {
                                         <button
                                             type="button"
                                             onClick={() => setFormData(prev => ({ ...prev, unitSection: 'PRODUCT', unitSubSection: '' }))}
-                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.unitSection === 'PRODUCT' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-white/[0.03] border-white/5 hover:border-white/20'}`}
+                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.unitSection === 'PRODUCT' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-primary-copper/5 border-primary-copper/20 hover:border-primary-copper/40'}`}
                                         >
                                             <div className={`w-20 h-20 rounded-[28px] flex items-center justify-center transition-all duration-700 ${formData.unitSection === 'PRODUCT' ? 'bg-primary-copper text-white scale-110 shadow-[0_10px_20px_rgba(210,164,120,0.3)]' : 'bg-white/5 text-primary-copper group-hover:bg-white/10'}`}>
                                                 <Zap size={32} />
@@ -205,7 +205,7 @@ export default function VolunteerForm({ onBack }) {
                                         <button
                                             type="button"
                                             onClick={() => setFormData(prev => ({ ...prev, unitSection: 'SERVICE', unitSubSection: '' }))}
-                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.unitSection === 'SERVICE' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-white/[0.03] border-white/5 hover:border-white/20'}`}
+                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.unitSection === 'SERVICE' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-primary-copper/5 border-primary-copper/20 hover:border-primary-copper/40'}`}
                                         >
                                             <div className={`w-20 h-20 rounded-[28px] flex items-center justify-center transition-all duration-700 ${formData.unitSection === 'SERVICE' ? 'bg-primary-copper text-white scale-110 shadow-[0_10px_20px_rgba(210,164,120,0.3)]' : 'bg-white/5 text-primary-copper group-hover:bg-white/10'}`}>
                                                 <Users size={32} />
