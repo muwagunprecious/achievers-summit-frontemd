@@ -44,7 +44,7 @@ export default function Navbar({ isHidden }) {
                 >
                     <a href="/" className="flex items-center gap-3 group cursor-pointer">
                         <div className="w-24 h-16 flex items-center justify-center transform group-hover:scale-105 transition-all duration-500">
-                            <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain object-left" />
+                            <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain object-left mix-blend-screen" />
                         </div>
                     </a>
 

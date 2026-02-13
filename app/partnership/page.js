@@ -100,16 +100,16 @@ export default function PartnershipPage() {
                                 <span>Strategic Partnership</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter mb-10 leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter mb-12 leading-tight">
                                 SHAPING THE <br />
                                 <span className="text-gradient NOT-italic">AFRICAN FUTURE.</span>
                             </h1>
 
-                            <p className="text-xl text-text-secondary font-light mb-16 max-w-xl leading-relaxed">
+                            <p className="text-xl text-text-secondary font-light mb-20 max-w-xl leading-relaxed text-justify">
                                 Join Africa's premier summit for achievers. Our strategic partners gain exclusive access to a high-net-worth network of industry titans and continental policy makers.
                             </p>
 
-                            <div className="space-y-8">
+                            <div className="space-y-12">
                                 {[
                                     { title: 'Global Exposure', desc: 'Brand synchronization with continental leaders.' },
                                     { title: 'Premium Access', desc: 'VIP networking with top-tier delegates.' },
@@ -127,14 +127,7 @@ export default function PartnershipPage() {
                                 ))}
                             </div>
 
-                            {/* Partnership Image */}
-                            <div className="mt-16 rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
-                                <img
-                                    src="/images/partner.jpeg"
-                                    alt="Partnership"
-                                    className="w-full h-auto object-cover"
-                                />
-                            </div>
+
                         </div>
 
                         {/* Right Content: Form */}

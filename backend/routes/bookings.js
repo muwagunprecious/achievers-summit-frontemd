@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
  */
 router.post('/create', async (req, res) => {
     try {
-        const { bookingId, orgName, contactName, email, phone, standType, notes } = req.body;
+        const { bookingId, orgName, contactName, email, phone, natureOfBusiness, standType, notes } = req.body;
 
         if (!bookingId || !orgName || !contactName || !email) {
             return res.status(400).json({
@@ -42,6 +42,7 @@ router.post('/create', async (req, res) => {
                 contactName,
                 email,
                 phone: phone || '',
+                natureOfBusiness: natureOfBusiness || '',
                 standType,
                 notes: notes || '',
                 status: 'Pending',

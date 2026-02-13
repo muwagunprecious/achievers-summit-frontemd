@@ -8,6 +8,7 @@ export default function StandBookingModal({ onClose }) {
         contactName: '',
         email: '',
         phone: '',
+        natureOfBusiness: '',
         standType: 'Premium',
         notes: ''
     });
@@ -68,7 +69,7 @@ export default function StandBookingModal({ onClose }) {
                     <div className="flex justify-between items-start mb-6">
                         <div>
                             <p className="text-[10px] font-black text-primary-copper uppercase tracking-[0.4em] mb-1">Corporate Relations</p>
-                            <h3 className="text-2xl font-black text-white uppercase italic tracking-tighter">STAND BOOKING</h3>
+                            <h3 className="text-2xl font-black text-white uppercase italic tracking-tighter">BOOK EXHIBITION STAND</h3>
                         </div>
                         <button onClick={onClose} className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full transition-all text-white border border-white/10">
                             <X size={20} />
@@ -78,37 +79,45 @@ export default function StandBookingModal({ onClose }) {
                     <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="space-y-6">
                             <InputField
-                                label="ORGANIZATION NAME"
-                                icon={<Building2 size={14} />}
-                                placeholder="ENTER COMPANY NAME"
-                                value={formData.orgName}
-                                onChange={(val) => setFormData({ ...formData, orgName: val })}
-                            />
-
-                            <InputField
-                                label="CONTACT PROTOCOL"
+                                label="FULL NAME"
                                 icon={<User size={14} />}
-                                placeholder="ENTER NAME"
+                                placeholder="ENTER FULL NAME"
                                 value={formData.contactName}
                                 onChange={(val) => setFormData({ ...formData, contactName: val })}
                             />
 
                             <InputField
-                                label="OFFICIAL EMAIL"
+                                label="BUSINESS NAME"
+                                icon={<Building2 size={14} />}
+                                placeholder="ENTER BUSINESS NAME"
+                                value={formData.orgName}
+                                onChange={(val) => setFormData({ ...formData, orgName: val })}
+                            />
+
+                            <InputField
+                                label="E-MAIL"
                                 icon={<Mail size={14} />}
-                                placeholder="OFFICIAL@ORG.AFRICA"
+                                placeholder="OFFICIAL EMAIL"
                                 type="email"
                                 value={formData.email}
                                 onChange={(val) => setFormData({ ...formData, email: val })}
                             />
 
                             <InputField
-                                label="CONTACT LINE"
+                                label="PHONE NO"
                                 icon={<Phone size={14} />}
                                 placeholder="+234 ..."
                                 type="tel"
                                 value={formData.phone}
                                 onChange={(val) => setFormData({ ...formData, phone: val })}
+                            />
+
+                            <InputField
+                                label="NATURE OF BUSINESS"
+                                icon={<BookOpen size={14} />}
+                                placeholder="DESCRIBE BUSINESS TYPE"
+                                value={formData.natureOfBusiness}
+                                onChange={(val) => setFormData({ ...formData, natureOfBusiness: val })}
                             />
 
                             <div className="group">

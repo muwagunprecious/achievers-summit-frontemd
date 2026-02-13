@@ -85,6 +85,7 @@ model StandBooking {
   email          String
   phone          String
   standType      String
+  natureOfBusiness String?
   notes          String?
   status         String   @default("Pending")
   submissionDate DateTime @default(now())
