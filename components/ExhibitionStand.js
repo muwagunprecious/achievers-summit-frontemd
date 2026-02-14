@@ -31,7 +31,7 @@ export default function ExhibitionStand() {
                         <div className="relative group h-full w-full max-w-[450px]">
                             <div className="relative rounded-[40px] overflow-hidden shadow-2xl border border-white/10 bg-midnight-obsidian h-full min-h-[500px]">
                                 <img
-                                    src="/images/book_a_stand.jpeg"
+                                    src="/images/handshake.jpg"
                                     alt="Strategic Partnership"
                                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                 />
