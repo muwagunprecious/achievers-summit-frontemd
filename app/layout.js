@@ -7,7 +7,7 @@ import StyledJsxRegistry from "./registry";
 
 export const metadata = {
   title: "Achievers Summit 2026 | Connect. Lead. Achieve.",
-  description: "Achievers Summit 2026 brings together leaders, innovators, policymakers, and visionaries shaping Africa’s future in Victoria Island, Lagos.",
+  description: "Achievers Summit 2026 brings together leaders, innovators, policymakers, and visionaries shaping Africa’s future in Lagos, Nigeria.",
 };
 
 export default function RootLayout({ children }) {

@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import BoldMinds from '../components/BoldMinds';
 import ExhibitionStand from '../components/ExhibitionStand';
 import Tickets from '../components/Tickets';
 import Footer from '../components/Footer';
@@ -32,6 +33,8 @@ export default function Home() {
       <section id="home">
         <Hero />
       </section>
+
+      <BoldMinds />
 
       <AboutSummit />
 

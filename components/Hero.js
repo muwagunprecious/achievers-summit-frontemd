@@ -4,28 +4,14 @@ import { MapPin, Calendar, Sparkles, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
     return (
-        <section id="home" className="relative min-h-screen flex items-center bg-bg-deep overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0 z-0">
-                <img
-                    src="/images/banner.jpeg"
-                    alt="Summit Banner"
-                    className="w-full h-full object-cover"
-                />
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}></div>
-            </div>
-
+        <section id="home" className="relative min-h-[80vh] flex items-center bg-[#0D001A] overflow-hidden pt-20">
             {/* Premium Atmospheric Background */}
             <div className="absolute inset-0 pointer-events-none z-[1]">
                 <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-primary-copper/10 rounded-full blur-[160px] animate-pulse"></div>
                 <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-primary-copper/5 rounded-full blur-[140px]"></div>
 
                 {/* Subtle Motif Overlay */}
-                <div className="motif-bg opacity-[0.05]"></div>
-
-                {/* Gradient Overlay for Depth */}
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-deep/50 to-bg-deep"></div>
+                <div className="motif-bg opacity-[0.03]"></div>
             </div>
 
             <div className="container relative z-10 pt-48 pb-[100px]">
@@ -63,7 +49,7 @@ export default function Hero() {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Primary Venue</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">Victoria Island, Lagos</p>
+                                    <p className="text-white font-bold text-xl uppercase italic">Lagos, Nigeria</p>
                                 </div>
                             </div>
 
