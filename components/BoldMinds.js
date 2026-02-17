@@ -6,7 +6,7 @@ export default function BoldMinds() {
     return (
         <section className="relative w-full overflow-hidden bg-midnight-black">
             {/* Background Image Container */}
-            <div className="relative w-full h-[500px] md:h-[700px]">
+            <div className="relative w-full h-[600px] md:h-[850px]">
                 <img
                     src="/images/banner.jpeg"
                     alt="Auditorium"
@@ -14,13 +14,13 @@ export default function BoldMinds() {
                 />
 
                 {/* Floating White Card */}
-                <div className="absolute top-10 right-4 md:top-20 md:right-[10%] w-[90%] md:w-[400px] bg-white p-8 md:p-12 shadow-2xl rounded-sm animate-fade-in-up">
-                    <div className="w-12 h-0.5 bg-gray-200 mb-8"></div>
-                    <h2 className="text-3xl md:text-4xl font-heading text-[#1A0033] mb-6 font-medium">
+                <div className="absolute top-10 right-4 w-[90%] glass-panel p-12 shadow-2xl rounded-sm animate-fade-in-up min-h-[400px] flex flex-col justify-center lg:right-[10%] lg:w-[450px]">
+                    <div className="w-12 h-0.5 bg-primary-copper mb-8"></div>
+                    <h2 className="text-4xl font-heading text-white mb-6 font-medium uppercase italic">
                         Bold minds
                     </h2>
-                    <p className="text-gray-600 text-lg leading-relaxed">
-                        bold minds as we gather for a day of courage, clarity, and unstoppable inspiration.
+                    <p className="text-text-secondary text-xl leading-relaxed font-medium">
+                        Join bold minds as we gather for a day of courage, clarity, and unstoppable inspiration.
                     </p>
                 </div>
 

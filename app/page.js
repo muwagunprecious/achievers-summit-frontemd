@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import Speakers from '../components/Speakers';
 import FindTicket from '../components/FindTicket';
 import AboutSummit from '../components/AboutSummit';
+import FAQ from '../components/FAQ';
 
 const CheckoutModal = dynamic(() => import('../components/CheckoutModal'), { ssr: false });
 
@@ -47,7 +48,7 @@ export default function Home() {
               { label: 'Physical', value: '5000+', desc: 'Attendees' },
               { label: 'Virtual', value: '25000+', desc: 'Audience' },
               { label: 'International', value: '200+', desc: 'Delegates' },
-              { label: 'Exhibitors', value: '50+', desc: 'Global Presence' },
+              { label: 'Exhibitors', value: '50+', desc: '' },
               { label: 'Countries', value: '20+', desc: 'Representation' },
               { label: 'Global', value: '20+', desc: 'Speakers' },
               { label: 'VIP Guest', value: '20%', desc: '& Influencers' },
@@ -80,6 +81,8 @@ export default function Home() {
       <section id="tickets">
         <Tickets onBuy={handleBuy} />
       </section>
+
+      <FAQ />
 
       <section id="find-pass">
         <FindTicket />

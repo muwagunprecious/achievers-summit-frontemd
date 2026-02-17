@@ -196,7 +196,6 @@ export default function VolunteerForm({ onBack }) {
                                                 <Zap size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className={`block text-xs font-black uppercase tracking-[0.3em] mb-1 transition-colors ${formData.unitSection === 'PRODUCT' ? 'text-primary-copper' : 'text-white/40'}`}>TECHNICAL</span>
                                                 <span className="text-lg font-black uppercase tracking-tighter text-white italic">Product Units</span>
                                             </div>
                                             {formData.unitSection === 'PRODUCT' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
@@ -211,7 +210,6 @@ export default function VolunteerForm({ onBack }) {
                                                 <Users size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className={`block text-xs font-black uppercase tracking-[0.3em] mb-1 transition-colors ${formData.unitSection === 'SERVICE' ? 'text-primary-copper' : 'text-white/40'}`}>OPERATIONS</span>
                                                 <span className="text-lg font-black uppercase tracking-tighter text-white italic">Service Units</span>
                                             </div>
                                             {formData.unitSection === 'SERVICE' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}

@@ -1016,6 +1016,22 @@ p {
   color: var(--text-muted);
 }
 
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.text-gray-800 {
+  color: #1f2937;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1171,6 +1187,14 @@ p {
 
 .aspect-\[10\/13\] {
   aspect-ratio: 10/13;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-\[4\/3\] {
+  aspect-ratio: 4 / 3;
 }
 
 .overflow-hidden {
@@ -1376,4 +1400,12 @@ p {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-full {
+  width: 100%;
 }
