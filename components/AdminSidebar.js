@@ -14,7 +14,8 @@ import {
     Building2,
     XCircle,
     X,
-    Heart
+    Heart,
+    FileEdit
 } from 'lucide-react';
 
 const AdminSidebar = () => {
@@ -28,6 +29,7 @@ const AdminSidebar = () => {
         { name: 'Speakers', icon: Mic, path: '/admin/dashboard/speakers' },
         { name: 'Exhibitors', icon: Building2, path: '/admin/dashboard/bookings' },
         { name: 'Community', icon: Heart, path: '/admin/dashboard/community' },
+        { name: 'Content CMS', icon: FileEdit, path: '/admin/dashboard/cms' },
         { name: 'Voting Analytics', icon: BarChart3, path: '/admin/dashboard/voting-analytics' },
         { name: 'Settings', icon: Settings, path: '/admin/dashboard/settings' },
     ];

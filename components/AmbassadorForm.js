@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     ChevronRight, ChevronLeft, Send, CheckCircle2,
     User, Mail, Phone, MapPin, GraduationCap, Info, AlertCircle, Building2, Loader2
@@ -25,7 +25,7 @@ export default function AmbassadorForm({ onBack }) {
         state: '',
         lga: '',
         phone2: '',
-        status: '', // Professional/Graduate or Undergraduate
+        status: '', // Professional or Undergraduate
         institution: '',
         outsideLagosInst: '',
         profGraduateInfo: '',
@@ -33,21 +33,31 @@ export default function AmbassadorForm({ onBack }) {
         unavailableWhy: ''
     });
 
-    const lagosInstitutions = [
-        "Lagos State University (LASU)",
-        "University of Lagos (UNILAG)",
-        "Caleb University",
-        "Anchor University",
-        "Augustine University",
-        "Pan Atlantic University",
-        "James Hope University",
-        "Eko University of Medical and Health Sciences",
-        "Mountain Top University",
-        "National Open University of Nigeria",
-        "Lagos State University of Education",
-        "Lagos State University of Science and Technology Ikorodu (Government)",
-        "Other"
-    ];
+    const [institutions, setInstitutions] = useState([]);
+    const [ambassadorStatuses, setAmbassadorStatuses] = useState([]);
+    const [loadingSettings, setLoadingSettings] = useState(true);
+
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const [instRes, statusRes] = await Promise.all([
+                    fetch('/api/institutions'),
+                    fetch('/api/ambassador-status')
+                ]);
+                if (instRes.ok) setInstitutions(await instRes.json());
+                if (statusRes.ok) setAmbassadorStatuses(await statusRes.json());
+            } catch (err) {
+                console.error('Error fetching ambassador settings:', err);
+            } finally {
+                setLoadingSettings(false);
+            }
+        };
+        fetchSettings();
+    }, []);
+
+    const lagosInstitutions = institutions.filter(i => i.isLagos).map(i => i.name);
+    // Add "Other" if not present
+    if (!lagosInstitutions.includes('Other')) lagosInstitutions.push('Other');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -97,13 +107,16 @@ export default function AmbassadorForm({ onBack }) {
     };
 
     const isStep1Valid = () => {
-        if (formData.status === 'Undergraduate') {
+        const selectedStatus = ambassadorStatuses.find(s => s.label === formData.status);
+        if (!selectedStatus) return false;
+
+        if (selectedStatus.category === 'Academic') {
             if (formData.state.toLowerCase() === 'lagos') {
                 return !!formData.institution;
             } else {
                 return !!formData.outsideLagosInst;
             }
-        } else if (formData.status === 'Professional/Graduate') {
+        } else if (selectedStatus.category === 'Legacy') {
             return formData.profGraduateInfo.length >= 20;
         }
         return false;
@@ -214,73 +227,66 @@ export default function AmbassadorForm({ onBack }) {
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                        <button
-                                            type="button"
-                                            onClick={() => setFormData(prev => ({ ...prev, status: 'Undergraduate' }))}
-                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.status === 'Undergraduate' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-primary-copper/5 border-primary-copper/20 hover:border-primary-copper/40'}`}
-                                        >
-                                            <div className={`w-20 h-20 rounded-[28px] flex items-center justify-center transition-all duration-700 ${formData.status === 'Undergraduate' ? 'bg-primary-copper text-white scale-110 shadow-[0_10px_20px_rgba(210,164,120,0.3)]' : 'bg-white/5 text-primary-copper group-hover:bg-white/10'}`}>
-                                                <GraduationCap size={32} />
-                                            </div>
-                                            <div className="text-center">
-                                                <span className={`block text-xs font-black uppercase tracking-[0.3em] mb-1 transition-colors ${formData.status === 'Undergraduate' ? 'text-primary-copper' : 'text-white/40'}`}>ACADEMIC</span>
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Undergraduate</span>
-                                            </div>
-                                            {formData.status === 'Undergraduate' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
-                                        </button>
-
-                                        <button
-                                            type="button"
-                                            onClick={() => setFormData(prev => ({ ...prev, status: 'Professional/Graduate' }))}
-                                            className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.status === 'Professional/Graduate' ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-primary-copper/5 border-primary-copper/20 hover:border-primary-copper/40'}`}
-                                        >
-                                            <div className={`w-20 h-20 rounded-[28px] flex items-center justify-center transition-all duration-700 ${formData.status === 'Professional/Graduate' ? 'bg-primary-copper text-white scale-110 shadow-[0_10px_20px_rgba(210,164,120,0.3)]' : 'bg-white/5 text-primary-copper group-hover:bg-white/10'}`}>
-                                                <Building2 size={32} />
-                                            </div>
-                                            <div className="text-center">
-                                                <span className={`block text-xs font-black uppercase tracking-[0.3em] mb-1 transition-colors ${formData.status === 'Professional/Graduate' ? 'text-primary-copper' : 'text-white/40'}`}>LEGACY</span>
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Professional</span>
-                                            </div>
-                                            {formData.status === 'Professional/Graduate' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
-                                        </button>
+                                        {ambassadorStatuses.map((stat, i) => (
+                                            <button
+                                                key={i}
+                                                type="button"
+                                                onClick={() => setFormData(prev => ({ ...prev, status: stat.label }))}
+                                                className={`p-10 rounded-[40px] border-2 transition-all duration-700 group flex flex-col items-center gap-6 relative overflow-hidden ${formData.status === stat.label ? 'bg-primary-copper/10 border-primary-copper shadow-[0_0_30px_rgba(210,164,120,0.1)]' : 'bg-primary-copper/5 border-primary-copper/20 hover:border-primary-copper/40'}`}
+                                            >
+                                                <div className={`w-20 h-20 rounded-[28px] flex items-center justify-center transition-all duration-700 ${formData.status === stat.label ? 'bg-primary-copper text-white scale-110 shadow-[0_10px_20px_rgba(210,164,120,0.3)]' : 'bg-white/5 text-primary-copper group-hover:bg-white/10'}`}>
+                                                    {stat.category === 'Academic' ? <GraduationCap size={32} /> : <Building2 size={32} />}
+                                                </div>
+                                                <div className="text-center">
+                                                    <span className="text-lg font-black uppercase tracking-tighter text-white italic">{stat.label}</span>
+                                                </div>
+                                                {formData.status === stat.label && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
+                                            </button>
+                                        ))}
                                     </div>
 
-                                    {formData.status === 'Undergraduate' && (
-                                        <div className="animate-fade-in space-y-6 pt-6">
-                                            {formData.state.toLowerCase() === 'lagos' ? (
-                                                <div className="space-y-4">
-                                                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Select Lagos Institution <span className="text-primary-copper">*</span></label>
-                                                    <select
-                                                        name="institution"
-                                                        value={formData.institution}
-                                                        onChange={handleChange}
-                                                        className="w-full h-16 bg-white border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white transition-all font-medium text-sm appearance-none cursor-pointer"
-                                                    >
-                                                        <option value="" className="bg-white">Select Institution</option>
-                                                        {lagosInstitutions.map((inst, i) => (
-                                                            <option key={i} value={inst} className="bg-white">{inst}</option>
-                                                        ))}
-                                                    </select>
-                                                    {formData.institution === 'Other' && (
-                                                        <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm mt-4" placeholder="Type your institution name..." />
+                                    {(() => {
+                                        const selectedStatus = ambassadorStatuses.find(s => s.label === formData.status);
+                                        if (selectedStatus?.category === 'Academic') {
+                                            return (
+                                                <div className="animate-fade-in space-y-6 pt-6">
+                                                    {formData.state.toLowerCase() === 'lagos' ? (
+                                                        <div className="space-y-4">
+                                                            <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Select Lagos Institution <span className="text-primary-copper">*</span></label>
+                                                            <select
+                                                                name="institution"
+                                                                value={formData.institution}
+                                                                onChange={handleChange}
+                                                                className="w-full h-16 bg-white border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white transition-all font-medium text-sm appearance-none cursor-pointer"
+                                                            >
+                                                                <option value="" className="bg-white">Select Institution</option>
+                                                                {lagosInstitutions.map((inst, i) => (
+                                                                    <option key={i} value={inst} className="bg-white">{inst}</option>
+                                                                ))}
+                                                            </select>
+                                                            {formData.institution === 'Other' && (
+                                                                <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm mt-4" placeholder="Type your institution name..." />
+                                                            )}
+                                                        </div>
+                                                    ) : (
+                                                        <div className="space-y-4">
+                                                            <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Name of Institution (Outside Lagos) <span className="text-primary-copper">*</span></label>
+                                                            <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm" placeholder="Type your institution name..." />
+                                                        </div>
                                                     )}
                                                 </div>
-                                            ) : (
-                                                <div className="space-y-4">
-                                                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Name of Institution (Outside Lagos) <span className="text-primary-copper">*</span></label>
-                                                    <input type="text" name="outsideLagosInst" required value={formData.outsideLagosInst} onChange={handleChange} className="w-full h-16 bg-white/[0.03] border border-white/10 rounded-2xl px-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white/[0.05] transition-all font-medium text-sm" placeholder="Type your institution name..." />
+                                            );
+                                        } else if (selectedStatus?.category === 'Legacy') {
+                                            return (
+                                                <div className="animate-fade-in space-y-4 pt-6">
+                                                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Professional Work or Graduate Study Info (20-50 words) <span className="text-primary-copper">*</span></label>
+                                                    <textarea name="profGraduateInfo" required value={formData.profGraduateInfo} onChange={handleChange} className="w-full h-44 bg-white border border-white/10 rounded-2xl p-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white transition-all font-medium text-sm placeholder:text-black/30 resize-none leading-relaxed" placeholder="Provide details about your current role or study..." />
+                                                    <p className="text-[9px] text-white/20 mt-2 text-right uppercase font-black tracking-[0.2em]">{formData.profGraduateInfo.trim().split(/\s+/).filter(Boolean).length} / 50 words approx</p>
                                                 </div>
-                                            )}
-                                        </div>
-                                    )}
-
-                                    {formData.status === 'Professional/Graduate' && (
-                                        <div className="animate-fade-in space-y-4 pt-6">
-                                            <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 pl-2">Professional Work or Graduate Study Info (20-50 words) <span className="text-primary-copper">*</span></label>
-                                            <textarea name="profGraduateInfo" required value={formData.profGraduateInfo} onChange={handleChange} className="w-full h-44 bg-white border border-white/10 rounded-2xl p-8 text-black outline-none focus:border-primary-copper/50 focus:bg-white transition-all font-medium text-sm placeholder:text-black/30 resize-none leading-relaxed" placeholder="Provide details about your current role or study..." />
-                                            <p className="text-[9px] text-white/20 mt-2 text-right uppercase font-black tracking-[0.2em]">{formData.profGraduateInfo.trim().split(/\s+/).filter(Boolean).length} / 50 words approx</p>
-                                        </div>
-                                    )}
+                                            );
+                                        }
+                                        return null;
+                                    })()}
 
                                     <div className="flex gap-6 pt-8">
                                         <button type="button" onClick={handlePrev} className="w-28 h-18 rounded-2xl bg-white border-2 border-white/10 hover:bg-white/90 text-black flex items-center justify-center transition-all active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.05)]">

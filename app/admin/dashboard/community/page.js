@@ -141,7 +141,7 @@ export default function CommunityManagement() {
                                                 <p className="text-[9px] font-black text-text-muted uppercase tracking-[0.2em] mb-2">Unit Assignment</p>
                                                 <div className="space-y-1">
                                                     <span className="text-xs font-black text-white uppercase tracking-widest block">{item.unitSubSection}</span>
-                                                    <span className="text-[9px] font-bold text-primary-copper uppercase tracking-widest bg-primary-copper/10 px-2 py-0.5 rounded-md inline-block">{item.unitSection}</span>
+                                                    <span className="text-[9px] font-bold text-primary-copper uppercase tracking-widest bg-primary-copper/10 px-2 py-0.5 rounded-md inline-block">{item.unitSection === 'PRODUCT' ? 'TECHNICAL' : 'COMMUNITY'}</span>
                                                 </div>
                                             </div>
                                             <div>

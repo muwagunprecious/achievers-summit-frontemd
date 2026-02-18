@@ -1,68 +1,36 @@
 "use client";
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle } from 'lucide-react';
-
-const faqs = [
-    {
-        question: "What is the Achievers Summit conference and why is everyone talking about it?",
-        answer: "The Achievers Summit is one of Emmanuel Agida International (EAi) flagship leadership and entrepreneurship platform’s where Africa’s emerging leaders, entrepreneurs, and change-makers come together to learn, connect, and level up.\nThink of learning, connecting, and growing all in one place."
-    },
-    {
-        question: "Who can attend the Achievers Summit conference?",
-        answer: "Are you passionate about growth, and making an impact in shaping Africa’s future? This Summit is for YOU. Whether you’re a student, creative, young professional, entrepreneur, innovator, policymaker, or corporate leader."
-    },
-    {
-        question: "Do I need to already be “made” to attend?",
-        answer: "The Achievers summit conference is for anyone becoming an achiever, not just those who are already made."
-    },
-    {
-        question: "What makes the Achievers Summit conference Unique/special?",
-        answer: "This is more than just talks. This is a mix of leadership, entrepreneurship, policy, creativity, and real opportunities. A forum where ideas will meet action and people meet opportunities.\nYou’ll leave not just inspired but ready to act. You definitely don’t want to miss it!"
-    },
-    {
-        question: "When and where will the Achievers summit conference hold?",
-        answer: "The Achievers summit conference will be held in Lagos, Nigeria on 11th - 12th August, 2026. Time and final venue details will be officially announced to attendees."
-    },
-    {
-        question: "What tangible value will I get from attending?",
-        answer: "You stand the chance to gain practical skills, connections, mentorship, insights into policy and business, career pathways, and get direct access to decision makers, the impact is enormous.\nThis is where your next big move can start. Come see for yourself!"
-    },
-    {
-        question: "Who are the speakers and mentors?",
-        answer: "A list of experienced leaders across business, governance, innovation, and the creative economy. People actively shaping Africa’s narrative. Visit; www.achieverssummit.com.ng/speakers for more updates coming soon."
-    },
-    {
-        question: "Can I volunteer for this conference?",
-        answer: "Yes. We're seeking result driven volunteers for structured roles. Individuals looking to gain hands-on experience and behind the scene access to a high-impact Summit. Visit; www.achieverssummit.com.ng to volunteer."
-    },
-    {
-        question: "Is there an ambassadorship opportunity?",
-        answer: "Yes. Passionate young leaders can apply to become Achievers Summit Ambassadors via; www.achieversummit.com.ng/community"
-    },
-    {
-        question: "Will there be networking opportunity?",
-        answer: "Certainly. The summit is designed for meaningful connections and collaborations. Expect meaningful conversations and collaborations with mentors, investors, policymakers, and attendees during the conference."
-    },
-    {
-        question: "Is there a nomination opportunity at The Achievers Summit?",
-        answer: "Yes. The Summit allows the public to nominate outstanding young leaders and changemakers for recognition. Nominations can be submitted via; www.achieverssummit.com.ng"
-    },
-    {
-        question: "Is entry free or paid?",
-        answer: "There are different ticket classes— (from REGULAR to EXCLUSIVE BIZJET), you can choose what works for you. Your ticket class gives access to Keynote & plenary sessions, masterclasses, exhibition arena, deal rooms, a Private Dinner & Award Night, and the conference full experience. Secure your spot now!"
-    },
-    {
-        question: "How do I register?",
-        answer: "To register, visit www.achieverssummit.com.ng. Please note there is limited slots capacity of 5000+ Physical Attendees & 25000+Virtual Audience. So hurry now to secure your spot."
-    },
-    {
-        question: "Can I attend even if I’m not in Lagos?",
-        answer: "Yes. There are virtual participation options for attendees outside Lagos or Nigeria. The 2026 edition blends physical participation with digital amplification. You can join from anywhere."
-    }
-];
+import { ChevronDown, HelpCircle, Loader2 } from 'lucide-react';
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
+    const [faqs, setFaqs] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    React.useEffect(() => {
+        const fetchFaqs = async () => {
+            try {
+                const response = await fetch('/api/faq');
+                if (response.ok) {
+                    const data = await response.json();
+                    setFaqs(data);
+                }
+            } catch (error) {
+                console.error('Error fetching FAQs:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchFaqs();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="py-24 bg-bg-deep flex items-center justify-center">
+                <Loader2 className="animate-spin text-primary-copper" size={48} />
+            </div>
+        );
+    }
 
     return (
         <section id="faq" className="py-24 bg-bg-deep relative overflow-hidden">

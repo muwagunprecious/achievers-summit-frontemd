@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     ChevronRight, ChevronLeft, Send, CheckCircle2,
     User, Mail, Phone, MapPin, Briefcase, Info, AlertCircle, Zap, Users, Loader2
@@ -31,19 +31,28 @@ export default function VolunteerForm({ onBack }) {
         unavailableWhy: ''
     });
 
-    const productUnits = [
-        "Graphics & Creative Design", "Photography", "Videography", "Web Development",
-        "Content Development", "Copy Writing", "Customer / Call Representation",
-        "Data Analysis", "Livestream Operation", "Ambiance & Decoration",
-        "Social Media Management", "Sound Production", "Stage & Lighting",
-        "Digital Marketing"
-    ];
+    const [units, setUnits] = useState([]);
+    const [loadingUnits, setLoadingUnits] = useState(true);
 
-    const serviceUnits = [
-        "Ushering", "Protocol", "Welfare", "Transportation & Mobility",
-        "Registration & Check-In", "Merchandise & Branding", "Security & Crowd Management",
-        "First Aid & Emergency Support"
-    ];
+    useEffect(() => {
+        const fetchUnits = async () => {
+            try {
+                const response = await fetch('/api/units');
+                if (response.ok) {
+                    const data = await response.json();
+                    setUnits(data);
+                }
+            } catch (err) {
+                console.error('Error fetching units:', err);
+            } finally {
+                setLoadingUnits(false);
+            }
+        };
+        fetchUnits();
+    }, []);
+
+    const productUnits = units.filter(u => u.section === 'PRODUCT').map(u => u.name);
+    const serviceUnits = units.filter(u => u.section === 'SERVICE').map(u => u.name);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -196,7 +205,7 @@ export default function VolunteerForm({ onBack }) {
                                                 <Zap size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Product Units</span>
+                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Technical Units</span>
                                             </div>
                                             {formData.unitSection === 'PRODUCT' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
                                         </button>
@@ -210,7 +219,7 @@ export default function VolunteerForm({ onBack }) {
                                                 <Users size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Service Units</span>
+                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Community Units</span>
                                             </div>
                                             {formData.unitSection === 'SERVICE' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
                                         </button>
