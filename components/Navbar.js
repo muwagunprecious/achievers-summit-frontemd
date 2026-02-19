@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import DonateModal from './DonateModal';
+import dynamic from 'next/dynamic';
+
+const DonateModal = dynamic(() => import('./DonateModal'), { ssr: false });
 
 export default function Navbar({ isHidden }) {
     const [isScrolled, setIsScrolled] = useState(false);
