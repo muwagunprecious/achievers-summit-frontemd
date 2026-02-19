@@ -46,6 +46,15 @@ export default function CommunityManagement() {
         (item.unitSubSection && item.unitSubSection.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
+    const getStatusStyle = (status) => {
+        switch (status) {
+            case 'PENDING': return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
+            case 'APPROVED': return 'bg-green-500/10 text-green-500 border-green-500/20';
+            case 'REJECTED': return 'bg-red-500/10 text-red-500 border-red-500/20';
+            default: return 'bg-white/5 text-text-muted border-white/5';
+        }
+    };
+
     const handleExportCSV = () => {
         if (filteredData.length === 0) return;
 

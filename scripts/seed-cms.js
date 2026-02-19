@@ -84,8 +84,8 @@ const institutions = [
 ];
 
 const statuses = [
-    { label: "Undergraduate", category: "Academic" },
-    { label: "Professional", category: "Legacy" }
+    { label: "Professional/Graduate", category: "Legacy" },
+    { label: "Undergraduate", category: "Academic" }
 ];
 
 async function seed() {

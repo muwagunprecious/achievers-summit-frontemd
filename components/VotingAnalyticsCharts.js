@@ -16,6 +16,14 @@ import {
 import { PieChart as PieChartIcon, TrendingUp, Globe } from 'lucide-react';
 
 export default function VotingAnalyticsCharts({ categoryData, hourlyData, colors }) {
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) return <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-[450px]"></div>;
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Category Distribution */}

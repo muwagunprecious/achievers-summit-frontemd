@@ -49,6 +49,10 @@ const nextConfig = {
                 source: '/api/community/:path*',
                 destination: `${apiUrl}/api/community/:path*`,
             },
+            {
+                source: '/api/popups',
+                destination: `${apiUrl}/api/popups`,
+            },
         ];
     },
 }

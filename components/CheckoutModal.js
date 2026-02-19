@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { X, CheckCircle, AlertCircle, Loader2, Send, Download, CreditCard } from 'lucide-react';
-import api from '@/lib/api';
+import { usePaystackPayment } from 'react-paystack';
 
 const ModalState = {
     FORM: 'form',
@@ -27,9 +27,24 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
     // Stabilize the reference
     const [configRef, setConfigRef] = useState('');
 
+    const paystackConfig = {
+        reference: configRef || ('REF_' + Math.floor(Math.random() * 1000000000 + 1)),
+        email: formData.email,
+        amount: Math.round((ticket?.price || 0) * 100),
+        publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+        metadata: {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            ticketType: ticket?.name
+        }
+    };
+
+    const initializePayment = usePaystackPayment(paystackConfig);
+
     useEffect(() => {
         if (isOpen) {
-            setConfigRef('REF_' + Math.floor(Math.random() * 1000000000 + 1));
+            const newRef = 'REF_' + Math.floor(Math.random() * 1000000000 + 1);
+            setConfigRef(newRef);
             setState(ModalState.FORM);
             setErrorMessage('');
             setCreatedTicket(null);
@@ -42,35 +57,10 @@ export default function RegistrationModal({ isOpen, onClose, ticket, onComplete 
         };
     }, [isOpen]);
 
-    const handlePaystackPayment = (ref) => {
-        if (!window.PaystackPop) {
-            console.error('Paystack SDK not loaded');
-            setErrorMessage('Payment system is still loading. Please wait a moment and try again.');
-            setState(ModalState.ERROR);
-            return;
-        }
-
-        const handler = window.PaystackPop.setup({
-            key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
-            email: formData.email,
-            amount: Math.round((ticket?.price || 0) * 100),
-            ref: ref || configRef,
-            metadata: {
-                fullName: formData.fullName,
-                phone: formData.phone,
-                ticketType: ticket?.name
-            },
-            callback: function (response) {
-                // MUST be a regular function, NOT async - Paystack validation rejects async
-                console.log('💳 Paystack Success Callback:', response);
-                handlePaymentSuccess(response);
-            },
-            onClose: function () {
-                console.log('💳 Paystack Window Closed');
-            }
+    const handlePaystackPayment = () => {
+        initializePayment(handlePaymentSuccess, () => {
+            console.log('💳 Paystack Window Closed');
         });
-
-        handler.openIframe();
     };
 
     // Async handler called from the sync Paystack callback

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { X, CheckCircle, AlertCircle, Loader2, CreditCard, Heart } from 'lucide-react';
+import { usePaystackPayment } from 'react-paystack';
 
 const ModalState = {
     FORM: 'form',
@@ -23,9 +24,23 @@ export default function DonateModal({ isOpen, onClose }) {
     const [paymentReference, setPaymentReference] = useState('');
     const [configRef, setConfigRef] = useState('');
 
+    const paystackConfig = {
+        reference: configRef || ('DON_' + Math.floor(Math.random() * 1000000000 + 1)),
+        email: formData.email,
+        amount: Math.round(parseFloat(formData.amount || 0) * 100),
+        publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+        metadata: {
+            fullName: formData.fullName,
+            donation: true
+        }
+    };
+
+    const initializePayment = usePaystackPayment(paystackConfig);
+
     useEffect(() => {
         if (isOpen) {
-            setConfigRef('DON_' + Math.floor(Math.random() * 1000000000 + 1));
+            const newRef = 'DON_' + Math.floor(Math.random() * 1000000000 + 1);
+            setConfigRef(newRef);
             setState(ModalState.FORM);
             setErrorMessage('');
             document.body.style.overflow = 'hidden';
@@ -37,44 +52,25 @@ export default function DonateModal({ isOpen, onClose }) {
         };
     }, [isOpen]);
 
-    const handlePaystackPayment = (ref) => {
-        const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
-
-        if (!publicKey) {
-            console.error('❌ Paystack Public Key is missing from environment variables');
-            setErrorMessage('Payment configuration error: Public Key is missing. Please contact support.');
+    const handlePaystackPayment = () => {
+        if (!paystackConfig.publicKey) {
+            setErrorMessage('Payment configuration error: Public Key is missing.');
             setState(ModalState.ERROR);
             return;
         }
 
-        if (!window.PaystackPop) {
-            setErrorMessage('Payment system is loading. Please try again in a moment.');
-            setState(ModalState.ERROR);
-            return;
-        }
-
-        const handler = window.PaystackPop.setup({
-            key: publicKey,
-            email: formData.email,
-            amount: Math.round(parseFloat(formData.amount) * 100),
-            ref: ref || configRef,
-            metadata: {
-                fullName: formData.fullName,
-                donation: true
-            },
-            callback: function (response) {
+        initializePayment(
+            (response) => {
                 setPaymentReference(response.reference);
                 setState(ModalState.SUCCESS);
             },
-            onClose: function () {
+            () => {
                 console.log('💳 Donation Window Closed');
                 if (state !== ModalState.SUCCESS) {
                     setState(ModalState.FORM);
                 }
             }
-        });
-
-        handler.openIframe();
+        );
     };
 
     const handleChange = (e) => {
