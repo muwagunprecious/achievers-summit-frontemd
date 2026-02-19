@@ -1,7 +1,8 @@
 import React from 'react';
 import StatsCard from '@/components/StatsCard';
-import { BarChart3, Users, TrendingUp, PieChart as PieChartIcon, Download } from 'lucide-react';
+import { BarChart3, Users, TrendingUp, PieChart as PieChartIcon } from 'lucide-react';
 import VotingAnalyticsCharts from '@/components/VotingAnalyticsCharts';
+import ExportVotingCSV from '@/components/ExportVotingCSV';
 import prisma from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -66,7 +67,8 @@ async function getVotingData() {
             leadingCategory,
             leadingCategoryShare,
             peakHour,
-            maxVotesInHour
+            maxVotesInHour,
+            votes // Pass raw votes for export
         };
 
     } catch (error) {
@@ -79,7 +81,8 @@ async function getVotingData() {
             leadingCategory: { name: 'N/A' },
             leadingCategoryShare: 0,
             peakHour: 'N/A',
-            maxVotesInHour: 0
+            maxVotesInHour: 0,
+            votes: []
         };
     }
 }
@@ -93,7 +96,8 @@ export default async function VotingAnalyticsPage() {
         leadingCategory,
         leadingCategoryShare,
         peakHour,
-        maxVotesInHour
+        maxVotesInHour,
+        votes
     } = await getVotingData();
 
     const colors = ['#D2A478', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
@@ -106,10 +110,7 @@ export default async function VotingAnalyticsPage() {
                     <h1 className="text-3xl font-black text-white italic tracking-tighter uppercase">VOTING <span className="text-gradient NOT-italic">INTEL</span></h1>
                     <p className="text-sm text-text-muted font-medium mt-1">Real-time analysis of voting patterns and nominee performance.</p>
                 </div>
-                <button className="btn btn-primary flex items-center gap-2 group px-6 py-3 rounded-xl">
-                    <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-                    <span className="text-xs font-bold tracking-widest uppercase">Export CSV Report</span>
-                </button>
+                <ExportVotingCSV data={votes} />
             </div>
 
             {/* Top Stats */}

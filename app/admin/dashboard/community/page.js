@@ -46,13 +46,57 @@ export default function CommunityManagement() {
         (item.unitSubSection && item.unitSubSection.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
-    const getStatusStyle = (status) => {
-        switch (status) {
-            case 'PENDING': return 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20';
-            case 'APPROVED': return 'bg-green-500/10 text-green-500 border-green-500/20';
-            case 'REJECTED': return 'bg-red-500/10 text-red-500 border-red-500/20';
-            default: return 'bg-white/5 text-text-muted border-white/5';
-        }
+    const handleExportCSV = () => {
+        if (filteredData.length === 0) return;
+
+        const headers = activeTab === 'volunteers'
+            ? ['Full Name', 'Email', 'Phone 1', 'Phone 2', 'State', 'LGA', 'Section', 'Unit', 'Workshop Available', 'Motivation']
+            : ['Full Name', 'Email', 'Phone 1', 'Phone 2', 'State', 'LGA', 'Status', 'Institution', 'Activation Available', 'Motivation'];
+
+        const rows = filteredData.map(item => {
+            if (activeTab === 'volunteers') {
+                return [
+                    item.fullName,
+                    item.email,
+                    item.phone1,
+                    item.phone2,
+                    item.state,
+                    item.lga,
+                    item.unitSection,
+                    item.unitSubSection,
+                    item.availableWorkshop ? 'YES' : 'NO',
+                    `"${(item.whyVolunteer || '').replace(/"/g, '""')}"`
+                ];
+            } else {
+                return [
+                    item.fullName,
+                    item.email,
+                    item.phone1,
+                    item.phone2,
+                    item.state,
+                    item.lga,
+                    item.status,
+                    item.institution || item.outsideLagosInst || 'N/A',
+                    item.availableActivation ? 'YES' : 'NO',
+                    `"${(item.profGraduateInfo || '').replace(/"/g, '""')}"`
+                ];
+            }
+        });
+
+        const csvContent = [
+            headers.join(','),
+            ...rows.map(row => row.join(','))
+        ].join('\n');
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `${activeTab}_export_${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -96,7 +140,10 @@ export default function CommunityManagement() {
                         <Filter size={16} className="group-hover:text-primary-copper transition-colors" />
                         <span className="text-[10px] font-black uppercase tracking-widest">Filter</span>
                     </button>
-                    <button className="flex-1 md:flex-none h-14 px-8 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center gap-3 text-text-muted hover:text-white transition-all group">
+                    <button
+                        onClick={handleExportCSV}
+                        className="flex-1 md:flex-none h-14 px-8 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center gap-3 text-text-muted hover:text-white transition-all group"
+                    >
                         <Download size={16} className="group-hover:text-primary-copper transition-colors" />
                         <span className="text-[10px] font-black uppercase tracking-widest">Export CSV</span>
                     </button>
