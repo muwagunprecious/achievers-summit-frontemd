@@ -80,9 +80,9 @@ export default function CMSPage() {
         }
     };
 
-    const addItem = (type) => {
+    const addItem = (type, itemData = {}) => {
         if (type === 'faq') setFaqs([{ question: '', answer: '', order: 0, isEnabled: true }, ...faqs]);
-        if (type === 'unit') setUnits([{ name: '', section: 'PRODUCT', order: 0 }, ...units]);
+        if (type === 'unit') setUnits([{ name: '', section: itemData?.section || 'PRODUCT', order: 0 }, ...units]);
         if (type === 'institution') setInstitutions([{ name: '', isLagos: true, order: 0 }, ...institutions]);
         if (type === 'status') setStatuses([{ label: '', category: 'Academic', order: 0 }, ...statuses]);
     };
@@ -140,17 +140,19 @@ export default function CMSPage() {
         <div className="space-y-6">
             <div className="flex justify-between items-center mb-8">
                 <h3 className="text-xl font-bold text-white uppercase tracking-tighter italic">VOLUNTEER <span className="text-primary-copper NOT-italic">UNITS</span></h3>
-                <button onClick={() => addItem('unit')} className="btn btn-primary px-6 py-2 rounded-xl flex items-center gap-2 text-xs font-black tracking-widest transition-all active:scale-95">
-                    <Plus size={16} /> ADD UNIT
-                </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 {['PRODUCT', 'SERVICE'].map(section => (
                     <div key={section} className="space-y-6">
-                        <h4 className="text-xs font-black text-primary-gold uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
-                            <div className="w-2 h-2 rounded-full bg-primary-copper animate-pulse"></div>
-                            {section === 'PRODUCT' ? 'TECHNICAL' : 'COMMUNITY'} UNITS
-                        </h4>
+                        <div className="flex justify-between items-center mb-4">
+                            <h4 className="text-xs font-black text-primary-gold uppercase tracking-[0.4em] flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-primary-copper animate-pulse"></div>
+                                {section === 'PRODUCT' ? 'TECHNICAL' : 'SERVICE'} UNITS
+                            </h4>
+                            <button onClick={() => addItem('unit', { section })} className="w-8 h-8 rounded-lg bg-primary-copper/10 text-primary-copper flex items-center justify-center hover:bg-primary-copper hover:text-white transition-all">
+                                <Plus size={16} />
+                            </button>
+                        </div>
                         <div className="space-y-4">
                             {units.filter(u => u.section === section).map((unit, idx) => (
                                 <div key={unit.id || `new-${section}-${idx}`} className="flex gap-3 group">
@@ -172,7 +174,7 @@ export default function CMSPage() {
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
     );
 
     const renderInstitutionsTab = () => (

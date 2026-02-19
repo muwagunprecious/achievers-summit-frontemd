@@ -303,7 +303,7 @@ export default function AmbassadorForm({ onBack }) {
                             {step === 2 && (
                                 <div className="space-y-12 animate-fade-in-up">
                                     <div className="space-y-6">
-                                        <label className="block text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Will you be available to attend the Ambassador Activation Program on Feb 27th in Ikeja, Lagos? <span className="text-primary-copper">*</span></label>
+                                        <label className="block text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Will you be available to attend the Ambassador Activation Program scheduled for the 27th of February at Alausa, Ikeja, Lagos? <span className="text-primary-copper *">*</span></label>
                                         <div className="flex gap-6">
                                             <button
                                                 type="button"
@@ -339,7 +339,7 @@ export default function AmbassadorForm({ onBack }) {
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000"></div>
                                         <Info className="flex-shrink-0 text-primary-copper mt-1" size={24} />
                                         <div className="text-[10px] text-text-muted leading-relaxed uppercase font-black tracking-[0.2em] relative z-10">
-                                            Kindly check your mail from February 20th for notification on application status. Selected ambassadors are meant to immediately sign the ‘Volunteer Agreement’ emailed to them from the 20th of February 2026.
+                                            Kindly check your mail from February 20th for notification on application status (check spam folder too). Selected ambassadors are meant to immediately sign the ‘Volunteer Agreement’ emailed to them from the 20th of February 2026.
                                         </div>
                                     </div>
 

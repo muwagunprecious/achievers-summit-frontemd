@@ -190,10 +190,8 @@ export default function VolunteerForm({ onBack }) {
 
                             {step === 1 && (
                                 <div className="space-y-10 animate-fade-in-up">
-                                    <div className="text-center space-y-2 mb-10">
-                                        <h3 className="text-white text-xl font-black italic uppercase italic tracking-tighter leading-tight">CHOOSE YOUR SECTION</h3>
-                                        <p className="text-text-muted text-xs font-light italic opacity-60">Select the area where you can best contribute your skills.</p>
-                                    </div>
+                                    <h3 className="text-white text-xl font-black italic uppercase italic tracking-tighter leading-tight">SELECT YOUR SECTION</h3>
+                                    <p className="text-text-muted text-xs font-light italic opacity-60 text-center leading-relaxed max-w-sm mx-auto">Kindly select the section of the unit you wish to serve in (either Product or Service unit).</p>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                         <button
@@ -205,7 +203,7 @@ export default function VolunteerForm({ onBack }) {
                                                 <Zap size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Technical Units</span>
+                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Product Units</span>
                                             </div>
                                             {formData.unitSection === 'PRODUCT' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
                                         </button>
@@ -219,7 +217,7 @@ export default function VolunteerForm({ onBack }) {
                                                 <Users size={32} />
                                             </div>
                                             <div className="text-center">
-                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Community Units</span>
+                                                <span className="text-lg font-black uppercase tracking-tighter text-white italic">Service Units</span>
                                             </div>
                                             {formData.unitSection === 'SERVICE' && <div className="absolute top-4 right-4 text-primary-copper animate-pulse"><CheckCircle2 size={24} /></div>}
                                         </button>
@@ -267,7 +265,7 @@ export default function VolunteerForm({ onBack }) {
                                     </div>
 
                                     <div className="space-y-6">
-                                        <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 text-center leading-relaxed max-w-md mx-auto">Will you be available to attend the Volunteer Workshop on Feb 27th in Ikeja, Lagos? <span className="text-primary-copper">*</span></label>
+                                        <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-white/40 text-center leading-relaxed max-w-md mx-auto">Will you be available to attend the Volunteer Workshop scheduled for the 27th of February at Alausa, Ikeja, Lagos? <span className="text-primary-copper">*</span></label>
                                         <div className="flex gap-8">
                                             <button
                                                 type="button"
@@ -299,7 +297,7 @@ export default function VolunteerForm({ onBack }) {
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-copper/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-1000"></div>
                                         <Info className="flex-shrink-0 text-primary-copper mt-1" size={24} />
                                         <div className="text-[10px] text-text-muted leading-relaxed uppercase font-black tracking-[0.2em] relative z-10">
-                                            Kindly check your mail from <span className="text-white">February 20th</span> for notification on application status. Selected Volunteers are expected to immediately sign the <span className="text-white">‘Volunteer Agreement’</span> via email.
+                                            Kindly check your mail from <span className="text-white">February 20th</span> for notification on application status (check spam folder too). Selected Volunteers are meant to immediately sign the <span className="text-white">‘Volunteer Agreement’</span> emailed to them from the 20th of February 2026.
                                         </div>
                                     </div>
 

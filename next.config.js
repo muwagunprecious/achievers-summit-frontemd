@@ -29,6 +29,26 @@ const nextConfig = {
                 source: '/api/paystack/:path*',
                 destination: `${apiUrl}/api/paystack/:path*`,
             },
+            {
+                source: '/api/faq/:path*',
+                destination: `${apiUrl}/api/faq/:path*`,
+            },
+            {
+                source: '/api/units/:path*',
+                destination: `${apiUrl}/api/units/:path*`,
+            },
+            {
+                source: '/api/institutions/:path*',
+                destination: `${apiUrl}/api/institutions/:path*`,
+            },
+            {
+                source: '/api/ambassador-status/:path*',
+                destination: `${apiUrl}/api/ambassador-status/:path*`,
+            },
+            {
+                source: '/api/community/:path*',
+                destination: `${apiUrl}/api/community/:path*`,
+            },
         ];
     },
 }
