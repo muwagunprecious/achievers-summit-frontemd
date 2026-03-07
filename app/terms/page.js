@@ -116,7 +116,7 @@ export default function TermsPage() {
                         </TermSection>
 
                         <div className="mt-20 pt-16 border-t border-white/5 text-center space-y-8">
-                            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary-copper mx-auto">
+                            <div className="w-16 h-16 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper mx-auto">
                                 <Mail size={32} />
                             </div>
                             <p className="text-text-secondary">For any questions regarding these Terms, please contact:</p>
@@ -129,19 +129,6 @@ export default function TermsPage() {
             </section>
 
             <Footer />
-
-            <style jsx>{`
-                .glass-panel {
-                    background: #0a0a0a !important;
-                    backdrop-filter: blur(40px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                }
-                .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            `}</style>
-        </main>
+</main>
     );
 }

@@ -1,9 +1,7 @@
 import "./globals.css";
-import Script from "next/script";
 
 import { Providers } from "@/components/Providers";
 import AnnouncementPopup from "@/components/AnnouncementPopup";
-import StyledJsxRegistry from "./registry";
 
 export const metadata = {
   title: "Achievers Summit 2026 | Connect. Lead. Achieve.",
@@ -17,12 +15,10 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
       </head>
       <body suppressHydrationWarning>
-        <StyledJsxRegistry>
           <Providers>
             {children}
             <AnnouncementPopup />
           </Providers>
-        </StyledJsxRegistry>
       </body>
     </html>
   );

@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import Speakers from '../components/Speakers';
 import FindTicket from '../components/FindTicket';
 import AboutSummit from '../components/AboutSummit';
+import ProgramDetails from '../components/ProgramDetails';
 import FAQ from '../components/FAQ';
 
 const CheckoutModal = dynamic(() => import('../components/CheckoutModal'), { ssr: false });
@@ -35,41 +36,53 @@ export default function Home() {
         <Hero />
       </section>
 
-      <BoldMinds />
+      {/* <BoldMinds /> */}
 
       <AboutSummit />
 
-      {/* Stats Section - Premium Redesign */}
-      <section className="bg-midnight-black pt-20 pb-32 relative overflow-hidden border-none -mt-[1px]" style={{ paddingTop: '80px' }}>
-        <div className="motif-bg opacity-5"></div>
-        <div className="container relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-32 mb-20">
+      <ProgramDetails />
+
+      {/* Impact at a Glance */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="mb-16 text-left border-l-4 border-primary-copper pl-6">
+            <h2 className="text-3xl font-extrabold text-text-primary tracking-tight mb-2 uppercase">
+              Impact at a Glance
+            </h2>
+            <p className="text-text-muted text-lg font-medium max-w-2xl leading-relaxed">
+              Measuring the scale and global reach of the Achievers Summit 2026. Data verified by Emmanuel Agida International.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { label: 'Physical', value: '5000+', desc: 'Attendees' },
-              { label: 'Virtual', value: '25000+', desc: 'Audience' },
-              { label: 'International', value: '200+', desc: 'Delegates' },
-              { label: 'Exhibitors', value: '50+', desc: '' },
-              { label: 'Countries', value: '20+', desc: 'Representation' },
-              { label: 'Global', value: '20+', desc: 'Speakers' },
-              { label: 'VIP Guest', value: '20%', desc: '& Influencers' },
+              { value: '5,000+', label: 'Physical Attendees' },
+              { value: '25,000+', label: 'Virtual Audience' },
+              { value: '200+', label: 'International Delegates' },
+              { value: '50+', label: 'Exhibitors' },
+              { value: '20+', label: 'Countries Represented' },
+              { value: '20+', label: 'Global Speakers' },
             ].map((stat, i) => (
-              <div key={i} className="text-center group py-10">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-primary-copper transition-all duration-700 italic tracking-tighter">
-                  {stat.value}
+              <div
+                key={i}
+                className="bg-white border border-slate-100 p-10 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex flex-col">
+                  <span className="text-5xl font-extrabold text-text-primary mb-3 tracking-tighter">
+                    {stat.value}
+                  </span>
+                  <span className="text-text-muted text-sm font-semibold uppercase tracking-widest">
+                    {stat.label}
+                  </span>
                 </div>
-                <div className="text-xs md:text-sm font-black uppercase tracking-widest text-primary-copper mb-1 leading-tight">{stat.label}</div>
-                <div className="text-[10px] md:text-xs text-text-muted uppercase tracking-widest font-medium leading-tight">{stat.desc}</div>
               </div>
             ))}
           </div>
 
-          <div className="flex justify-center mt-12">
-            <a
-              href="#tickets"
-              className="px-12 py-5 bg-white text-black font-black text-xs uppercase tracking-[0.3em] rounded-full hover:bg-primary-copper hover:text-white transition-all duration-500 shadow-2xl shadow-primary-copper/20 group"
-            >
-              Get Your Pass
-            </a>
+          <div className="mt-12 text-right">
+            <p className="text-[10px] text-slate-400 font-medium uppercase tracking-[0.2em]">
+              Projected Statistics © 2026 Achievers Summit
+            </p>
           </div>
         </div>
       </section>
@@ -78,9 +91,7 @@ export default function Home() {
 
       <ExhibitionStand />
 
-      <section id="tickets">
-        <Tickets onBuy={handleBuy} />
-      </section>
+      <Tickets onBuy={handleBuy} />
 
       <FAQ />
 
@@ -105,9 +116,9 @@ export default function Home() {
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
       `}</style>
     </main>

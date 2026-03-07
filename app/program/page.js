@@ -51,10 +51,10 @@ export default function ProgramPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden border-b border-white/5">
+            <section className="relative py-32 overflow-hidden border-b border-black/5">
                 <div className="container relative z-10 text-center">
                     <div className="text-primary-copper font-black text-[10px] tracking-[0.4em] uppercase mb-6 uppercase">Event Structure</div>
-                    <h1 className="text-5xl md:text-8xl text-white mb-10 font-black italic uppercase tracking-tighter leading-tight">
+                    <h1 className="text-5xl md:text-8xl text-text-primary mb-10 font-black italic uppercase tracking-tighter leading-tight">
                         Summit <br />
                         <span className="text-gradient NOT-italic font-black text-primary-copper">Components.</span>
                     </h1>
@@ -65,18 +65,18 @@ export default function ProgramPage() {
             </section>
 
             {/* Components Grid */}
-            <section className="py-40 bg-midnight-black relative overflow-hidden">
+            <section className="py-40 bg-white relative overflow-hidden">
                 <div className="motif-bg opacity-5"></div>
                 <div className="container relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         {components.map((comp, i) => (
-                            <div key={i} className={`glass-panel p-12 md:p-16 rounded-[56px] border border-white/5 hover:border-primary-copper/30 transition-all duration-700 group relative ${i === components.length - 1 && components.length % 2 !== 0 ? 'md:col-span-2 max-w-4xl mx-auto w-full' : ''}`}>
+                            <div key={i} className={`glass-panel p-12 md:p-16 rounded-xs border border-black/5 hover:border-primary-copper/30 transition-all duration-700 group relative ${i === components.length - 1 && components.length % 2 !== 0 ? 'md:col-span-2 max-w-4xl mx-auto w-full' : ''}`}>
                                 <div className="flex flex-col md:flex-row gap-10 items-start md:items-center">
-                                    <div className="w-24 h-24 bg-white/5 rounded-[32px] flex items-center justify-center text-primary-copper border border-white/10 group-hover:bg-primary-copper group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-2xl">
+                                    <div className="w-24 h-24 bg-black/5 rounded-xs flex items-center justify-center text-primary-copper border border-black/10 group-hover:bg-primary-copper group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-2xl">
                                         {React.cloneElement(comp.icon, { size: 36 })}
                                     </div>
                                     <div className="space-y-6 flex-1">
-                                        <h3 className="text-2xl md:text-4xl font-black text-white uppercase italic tracking-tighter leading-tight border-b border-white/5 pb-6">{comp.title}</h3>
+                                        <h3 className="text-2xl md:text-4xl font-black text-text-primary uppercase italic tracking-tighter leading-tight border-b border-black/5 pb-6">{comp.title}</h3>
                                         <p className="text-text-secondary text-xl font-light leading-relaxed">{comp.desc}</p>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@ export default function ProgramPage() {
                             <Target size={14} />
                             Strategic Alignment
                         </div>
-                        <h2 className="text-4xl md:text-7xl text-white font-black italic uppercase tracking-tighter leading-tight">
+                        <h2 className="text-4xl md:text-7xl text-text-primary font-black italic uppercase tracking-tighter leading-tight">
                             Ready to <span className="text-gradient NOT-italic">Experience Excellence?</span>
                         </h2>
                         <div className="pt-8">
@@ -111,12 +111,12 @@ export default function ProgramPage() {
 
             <style jsx>{`
                 .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(255, 255, 255, 0.7);
                     backdrop-filter: blur(40px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(0, 0, 0, 0.05);
                 }
                 .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
+                    background: linear-gradient(to right, #1A1A1A, var(--primary-copper));
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                 }

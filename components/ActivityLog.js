@@ -22,12 +22,12 @@ const ActivityItem = ({ title, description, createdAt, type }) => {
     if (type === 'edit') { Icon = Edit; color = 'text-blue-500'; }
 
     return (
-        <div className="flex gap-4 p-4 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors rounded-xl">
+        <div className="flex gap-4 p-4 border-b border-black/5 last:border-0 hover:bg-black/3 transition-colors rounded-xs">
             <div className={`mt-1 ${color}`}>
                 <Icon size={16} />
             </div>
             <div>
-                <h4 className="text-sm font-bold text-white mb-1">{title}</h4>
+                <h4 className="text-sm font-bold text-text-primary mb-1">{title}</h4>
                 <p className="text-xs text-text-muted mb-2">{description}</p>
                 <div className="flex items-center gap-2 text-[10px] text-text-muted/60 uppercase tracking-widest">
                     <Clock size={10} />
@@ -40,7 +40,7 @@ const ActivityItem = ({ title, description, createdAt, type }) => {
 
 const ActivityLog = ({ activities = [] }) => {
     return (
-        <div className="glass-panel rounded-3xl p-6 border border-white/5 h-full overflow-hidden flex flex-col">
+        <div className="glass-panel rounded-xs p-6 border border-black/5 h-full overflow-hidden flex flex-col">
             <div className="flex items-center justify-between mb-6">
                 <h3 className="text-text-muted text-xs font-bold uppercase tracking-wider">System Activity</h3>
                 <button className="text-[10px] text-primary-copper font-bold uppercase tracking-widest hover:underline whitespace-nowrap">View All</button>

@@ -17,7 +17,7 @@ export default function ExhibitionStand() {
     };
 
     return (
-        <section id="partner" className="py-20 bg-midnight-black relative overflow-hidden">
+        <section id="partner" className="py-20 bg-white relative overflow-hidden">
             {/* Background Accents */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="motif-bg opacity-[0.015]"></div>
@@ -30,7 +30,7 @@ export default function ExhibitionStand() {
                     <div className="order-1 flex justify-center">
                         <div className="relative group w-full max-w-[750px]">
                             <div
-                                className="relative rounded-[24px] overflow-hidden border border-white/10 bg-midnight-obsidian shadow-xl"
+                                className="relative rounded-xs overflow-hidden border border-black/10 bg-[#F8F6F4] shadow-xl"
                                 style={{ aspectRatio: '4/3' }}
                             >
                                 <img
@@ -38,7 +38,7 @@ export default function ExhibitionStand() {
                                     alt="Strategic Partnership"
                                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-60 pointer-events-none"></div>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ export default function ExhibitionStand() {
                             Strategic Alliance
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl text-white mb-3 italic leading-tight uppercase font-black tracking-tighter">
+                        <h2 className="text-3xl md:text-5xl text-text-primary mb-3 italic leading-tight uppercase font-black tracking-tighter">
                             BECOME A <br />
                             <span className="text-gradient NOT-italic block">STRATEGIC PARTNER.</span>
                         </h2>
@@ -72,12 +72,12 @@ export default function ExhibitionStand() {
                                     desc: "Continental exposure & recognition."
                                 }
                             ].map((item, i) => (
-                                <div key={i} className="flex gap-4 items-center group/item p-2 rounded-2xl hover:bg-white/[0.02] transition-colors">
-                                    <div className="flex-shrink-0 w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-primary-copper border border-white/10 group-hover/item:bg-primary-copper group-hover/item:text-white transition-all">
+                                <div key={i} className="flex gap-4 items-center group/item p-2 rounded-xs hover:bg-black/[0.02] transition-colors">
+                                    <div className="flex-shrink-0 w-10 h-10 glass-panel rounded-xs flex items-center justify-center text-primary-copper border border-black/10 group-hover/item:bg-primary-copper group-hover/item:text-white transition-all">
                                         {item.icon}
                                     </div>
                                     <div>
-                                        <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-0.5">{item.title}</h4>
+                                        <h4 className="text-text-primary font-black uppercase tracking-widest text-[10px] mb-0.5">{item.title}</h4>
                                         <p className="text-[9px] text-text-muted font-medium uppercase tracking-widest">{item.desc}</p>
                                     </div>
                                 </div>
@@ -89,15 +89,12 @@ export default function ExhibitionStand() {
                             <button
                                 onClick={handleBook}
                                 disabled={isLoading}
-                                className="btn btn-primary group !py-3 !px-10 !text-[9px] tracking-[0.5em] shadow-lg shadow-primary-copper/20 hover:shadow-primary-copper/40 transition-all flex items-center justify-center gap-4 min-w-[220px]"
+                                className="btn btn-primary disabled:opacity-50"
                             >
                                 {isLoading ? (
                                     <Loader2 className="w-4 h-4 animate-spin" />
                                 ) : (
-                                    <>
-                                        <span>PARTNER WITH US</span>
-                                        <div className="w-2 h-2 rounded-full bg-white/40 group-hover:bg-white"></div>
-                                    </>
+                                    'Partner with us'
                                 )}
                             </button>
                         </div>
@@ -107,11 +104,11 @@ export default function ExhibitionStand() {
 
             <style jsx>{`
                 .glass-panel {
-                    background: rgba(255, 255, 255, 0.03);
+                    background: rgba(255, 255, 255, 0.7);
                     backdrop-filter: blur(20px);
                 }
-                .bg-midnight-black { background-color: #05000A; }
-                .bg-midnight-obsidian { background-color: #0A0014; }
+                .bg-midnight-black { background-color: #FFFFFF; }
+                .bg-midnight-obsidian { background-color: #F8F6F4; }
                 .text-gradient {
                     background: linear-gradient(135deg, #783A28 0%, #4A2419 100%);
                     -webkit-background-clip: text;

@@ -1,15 +1,34 @@
 const prisma = require('../config/db');
+const { generateTicketPDF } = require('../services/pdfService');
+const { sendTicketEmail } = require('../services/emailService');
 
 // Create a new ticket
 exports.createTicket = async (req, res) => {
     try {
         console.log('🎟️ Create Ticket Request:', req.body);
-        const { ticketType, fullName, email, phone, paymentReference } = req.body;
+        const {
+            ticketType, fullName, email, phone, paymentReference,
+            gender, city, country,
+            disabilityTypes, signLanguageRequired, personalAssistance,
+            sensoryRequirements, sensoryDetails, additionalAccessibility
+        } = req.body;
 
         // 1. Find or Create User
         let user = await prisma.user.findUnique({
             where: { email }
         });
+
+        const accessibilityData = {
+            gender: gender || null,
+            city: city || null,
+            country: country || null,
+            disabilityTypes: Array.isArray(disabilityTypes) ? disabilityTypes : [],
+            signLanguageRequired: signLanguageRequired === true || signLanguageRequired === 'true',
+            personalAssistance: personalAssistance || null,
+            sensoryRequirements: sensoryRequirements === true || sensoryRequirements === 'true',
+            sensoryDetails: sensoryDetails || null,
+            additionalAccessibility: additionalAccessibility || null,
+        };
 
         if (!user) {
             console.log('👤 Creating new user for ticket...');
@@ -18,14 +37,24 @@ exports.createTicket = async (req, res) => {
                     id: 'usr_' + Math.random().toString(36).substr(2, 9),
                     name: fullName,
                     email,
-                    phone
+                    phone,
+                    ...accessibilityData
                 }
             });
             console.log('✅ User created:', user.id);
         } else {
             console.log('✅ Existing user found:', user.id);
+            // Update user with latest demographic/accessibility info
+            user = await prisma.user.update({
+                where: { email },
+                data: {
+                    name: fullName,
+                    phone,
+                    ...accessibilityData
+                }
+            });
+            console.log('✅ User updated with accessibility data');
         }
-
         // 2. Resolve Ticket Category
         console.log('🔍 Resolving category for:', ticketType);
         // Try to find by ID first (if ticketType is ID), otherwise by Name
@@ -73,7 +102,34 @@ exports.createTicket = async (req, res) => {
         });
 
         console.log('✅ Ticket created successfully:', ticket.ticketNumber);
-        res.status(201).json(ticket);
+
+        // 4. Generate PDF and send email (non-blocking — don't fail the ticket creation if email fails)
+        let pdfBase64 = null;
+        try {
+            console.log('📄 Generating ticket PDF...');
+            const pdfBuffer = await generateTicketPDF({
+                fullName,
+                ticketType: category.name,
+                ticketPrice: category.price === 0 ? 'FREE' : `NGN ${category.price.toLocaleString()}`,
+                ticketId: ticketNumber
+            });
+            pdfBase64 = pdfBuffer.toString('base64');
+
+            console.log('📧 Sending ticket email...');
+            await sendTicketEmail({
+                email,
+                fullName,
+                ticketType: category.name,
+                ticketId: ticketNumber,
+                pdfBuffer
+            });
+            console.log('✅ Ticket email sent to:', email);
+        } catch (emailError) {
+            // Log the error but don't fail the ticket creation
+            console.error('⚠️ Email/PDF generation failed (ticket still created):', emailError.message);
+        }
+
+        res.status(201).json({ ...ticket, pdfBase64 });
     } catch (error) {
         console.error('❌ Create Ticket Error:', error);
         res.status(500).json({ error: 'Error creating ticket', details: error.message });

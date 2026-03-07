@@ -93,7 +93,7 @@ export default async function TicketManagementPage() {
             <TicketCategoryList categories={categories} />
 
             {/* Sold Tickets List */}
-            <div className="glass-panel rounded-2xl border border-white/5 overflow-hidden">
+            <div className="glass-panel rounded-xs border border-white/5 overflow-hidden">
                 <div className="p-6 border-b border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                     <h3 className="text-lg font-bold text-white">Recent Transactions</h3>
                     {/* Simplified for brevity - Search/Filter would utilize URL search params in a real server component */}
@@ -101,7 +101,7 @@ export default async function TicketManagementPage() {
                         <input
                             type="text"
                             placeholder="Search attendees..."
-                            className="w-full h-10 bg-white/5 rounded-lg pl-4 pr-4 outline-none text-white text-sm focus:border-primary-copper/30 border border-transparent transition-all"
+                            className="w-full h-10 bg-white/5 rounded-xs pl-4 pr-4 outline-none text-white text-sm focus:border-primary-copper/30 border border-transparent transition-all"
                         />
                     </div>
                 </div>

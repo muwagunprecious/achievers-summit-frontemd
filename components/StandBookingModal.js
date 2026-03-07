@@ -58,10 +58,10 @@ export default function StandBookingModal({ onClose }) {
 
     return (
         <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-midnight-black/95 backdrop-blur-[120px]" onClick={onClose}></div>
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[120px]" onClick={onClose}></div>
 
             <div
-                className="relative bg-midnight-obsidian w-full max-w-md mx-auto rounded-[32px] shadow-[0_0_120px_rgba(0,0,0,0.9)] border border-white/10 flex flex-col animate-fade-in overflow-hidden"
+                className="relative bg-white w-full max-w-md mx-auto rounded-xs shadow-[0_0_120px_rgba(0,0,0,0.15)] border border-black/10 flex flex-col animate-fade-in overflow-hidden"
                 style={{ maxHeight: '80vh', height: '100%' }}
             >
                 <div className="flex-grow overflow-y-auto p-6 md:p-8 custom-scrollbar scroll-smooth">
@@ -69,9 +69,9 @@ export default function StandBookingModal({ onClose }) {
                     <div className="flex justify-between items-start mb-6">
                         <div>
                             <p className="text-[10px] font-black text-primary-copper uppercase tracking-[0.4em] mb-1">Corporate Relations</p>
-                            <h3 className="text-2xl font-black text-white uppercase italic tracking-tighter">BOOK EXHIBITION STAND</h3>
+                            <h3 className="text-2xl font-black text-text-primary uppercase italic tracking-tighter">BOOK EXHIBITION STAND</h3>
                         </div>
-                        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full transition-all text-white border border-white/10">
+                        <button onClick={onClose} className="w-10 h-10 flex items-center justify-center bg-black/5 hover:bg-black/10 rounded-full transition-all text-text-primary border border-black/10">
                             <X size={20} />
                         </button>
                     </div>
@@ -127,13 +127,13 @@ export default function StandBookingModal({ onClose }) {
                                 </div>
                                 <select
                                     required
-                                    className="w-full h-12 px-6 rounded-xl bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 outline-none transition-all font-black text-white text-[11px] appearance-none cursor-pointer uppercase tracking-widest"
+                                    className="w-full h-12 px-6 rounded-xs bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 focus:bg-black/5 outline-none transition-all font-black text-text-primary text-[11px] appearance-none cursor-pointer uppercase tracking-widest"
                                     value={formData.standType}
                                     onChange={(e) => setFormData({ ...formData, standType: e.target.value })}
                                 >
-                                    <option value="Premium" className="bg-midnight-obsidian">PREMIUM EXHIBITION (8x8)</option>
-                                    <option value="Executive" className="bg-midnight-obsidian">EXECUTIVE BOOTH (4x4)</option>
-                                    <option value="Standard" className="bg-midnight-obsidian">STANDARD EXHIBITOR (2x2)</option>
+                                    <option value="Premium" className="bg-white">PREMIUM EXHIBITION (8x8)</option>
+                                    <option value="Executive" className="bg-white">EXECUTIVE BOOTH (4x4)</option>
+                                    <option value="Standard" className="bg-white">STANDARD EXHIBITOR (2x2)</option>
                                 </select>
                             </div>
 
@@ -143,7 +143,7 @@ export default function StandBookingModal({ onClose }) {
                                     <MessageSquare size={12} className="text-text-muted group-focus-within:text-primary-copper transition-all" />
                                 </div>
                                 <textarea
-                                    className="w-full min-h-[80px] p-5 rounded-xl bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 outline-none transition-all font-bold text-white placeholder:text-text-muted/10 text-[11px] uppercase tracking-widest shadow-inner resize-none"
+                                    className="w-full min-h-[80px] p-5 rounded-xs bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 focus:bg-black/5 outline-none transition-all font-bold text-white placeholder:text-text-muted/10 text-[11px] uppercase tracking-widest shadow-inner resize-none"
                                     placeholder="ANY SPECIFIC REQUIREMENTS..."
                                     value={formData.notes}
                                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -154,15 +154,15 @@ export default function StandBookingModal({ onClose }) {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="btn btn-primary w-full h-14 text-[11px] uppercase tracking-[0.6em] disabled:opacity-50 !p-0 shadow-lg shadow-primary-copper/20 hover:scale-[1.02] active:scale-[0.98] transition-all mt-4 flex items-center justify-center gap-3"
+                            className="btn btn-primary w-full h-14 disabled:opacity-50 mt-4"
                         >
                             {isSubmitting ? (
                                 <>
                                     <Loader2 size={16} className="animate-spin" />
-                                    <span>LOGGING REQUEST...</span>
+                                    <span>Submitting...</span>
                                 </>
                             ) : (
-                                'CONFIRM PROTOCOL'
+                                'Submit Request'
                             )}
                         </button>
                     </form>
@@ -170,7 +170,7 @@ export default function StandBookingModal({ onClose }) {
             </div>
 
             <style jsx>{`
-                .bg-midnight-obsidian { background-color: var(--midnight-obsidian); }
+                .bg-white { background-color: var(--midnight-obsidian); }
                 .text-primary-copper { color: var(--primary-copper); }
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 4px;
@@ -179,7 +179,7 @@ export default function StandBookingModal({ onClose }) {
                     background: transparent;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(255, 255, 255, 0.1);
+                    background: rgba(0, 0, 0, 0.05);
                     border-radius: 10px;
                 }
             `}</style>
@@ -199,7 +199,7 @@ function InputField({ label, icon, placeholder, value, onChange, type = "text" }
             <input
                 required
                 type={type}
-                className="w-full h-12 px-6 rounded-xl bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 outline-none transition-all font-bold text-white placeholder:text-text-muted/10 text-[11px] uppercase tracking-widest shadow-inner"
+                className="w-full h-12 px-6 rounded-xs bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 focus:bg-black/5 outline-none transition-all font-bold text-white placeholder:text-text-muted/10 text-[11px] uppercase tracking-widest shadow-inner"
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}

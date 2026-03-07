@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send } fro
 
 export default function Footer() {
     return (
-        <footer className="bg-bg-deep text-white pt-32 pb-16 relative overflow-hidden">
+        <footer className="bg-[#F8F6F4] pt-32 pb-16 relative overflow-hidden">
             {/* Background Motif Accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-copper to-transparent opacity-30"></div>
             <div className="motif-bg opacity-[0.03]"></div>
@@ -23,11 +23,11 @@ export default function Footer() {
                 {/* Navigation Section */}
                 <nav className="mb-12">
                     <ul className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black tracking-[0.3em] uppercase">
-                        <li><a href="/" className="text-text-secondary hover:text-white transition-all duration-300">Home</a></li>
-                        <li><a href="/why-attend" className="text-text-secondary hover:text-white transition-all duration-300">Why Attend</a></li>
-                        <li><a href="/theme" className="text-text-secondary hover:text-white transition-all duration-300">Theme</a></li>
-                        <li><a href="/program" className="text-text-secondary hover:text-white transition-all duration-300">Program</a></li>
-                        <li><a href="/#tickets" className="text-text-secondary hover:text-white transition-all duration-300">Tickets</a></li>
+                        <li><a href="/" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Home</a></li>
+                        <li><a href="/why-attend" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Why Attend</a></li>
+                        <li><a href="/theme" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Theme</a></li>
+                        <li><a href="/program" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Program</a></li>
+                        <li><a href="/#tickets" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Tickets</a></li>
                     </ul>
                 </nav>
 
@@ -39,30 +39,30 @@ export default function Footer() {
                         { Icon: Instagram, href: 'https://instagram.com/achievers_summit' },
                         { Icon: Linkedin, href: 'https://linkedin.com/company/achievers-summit' }
                     ].map((social, i) => (
-                        <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-panel flex items-center justify-center text-text-muted hover:text-primary-copper hover:border-primary-copper/30 transition-all duration-300 rounded-2xl border border-white/5">
+                        <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-panel flex items-center justify-center text-text-muted hover:text-primary-copper hover:border-primary-copper/30 transition-all duration-300 rounded-xs border border-black/5">
                             <social.Icon size={20} />
                         </a>
                     ))}
                 </div>
 
                 {/* Bottom Section */}
-                <div className="w-full pt-12 border-t border-white/5 flex flex-col items-center gap-6">
+                <div className="w-full pt-12 border-t border-black/10 flex flex-col items-center gap-6">
                     <p className="text-[10px] font-black uppercase tracking-[0.4em] text-text-muted">
                         © 2026 Achievers Summit Africa • All Rights Reserved
                     </p>
                     <div className="flex flex-wrap justify-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-text-muted/60">
-                        <a href="/privacy" className="hover:text-white transition-colors">Privacy Protocol</a>
-                        <a href="/terms" className="hover:text-white transition-colors">Digital Terms</a>
-                        <a href="/find-ticket" className="hover:text-white transition-colors">Verified Portal</a>
+                        <a href="/privacy" className="hover:text-primary-copper transition-colors">Privacy Protocol</a>
+                        <a href="/terms" className="hover:text-primary-copper transition-colors">Digital Terms</a>
+                        <a href="/find-ticket" className="hover:text-primary-copper transition-colors">Verified Portal</a>
                     </div>
                 </div>
             </div>
 
             <style jsx>{`
                 .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
+                    background: rgba(255, 255, 255, 0.7);
                     backdrop-filter: blur(24px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(0, 0, 0, 0.05);
                 }
                 .text-primary-copper { color: var(--primary-copper); }
                 .bg-primary-copper { background-color: var(--primary-copper); }

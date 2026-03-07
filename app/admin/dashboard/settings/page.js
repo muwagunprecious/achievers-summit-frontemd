@@ -56,7 +56,7 @@ export default function SettingsPage() {
         <div className="space-y-8">
             {/* Header */}
             <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary-copper/10 rounded-xl flex items-center justify-center text-primary-copper">
+                <div className="w-12 h-12 bg-primary-copper/10 rounded-xs flex items-center justify-center text-primary-copper">
                     <Settings size={24} />
                 </div>
                 <div>
@@ -67,7 +67,7 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* System Toggles */}
-                <div className="glass-panel p-8 rounded-[32px] border border-white/5 space-y-8">
+                <div className="glass-panel p-8 rounded-xs border border-white/5 space-y-8">
                     <h3 className="text-text-muted text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-4 mb-6">Global Switches</h3>
 
                     {[
@@ -99,13 +99,13 @@ export default function SettingsPage() {
                 </div>
 
                 {/* Announcements */}
-                <div className="glass-panel p-8 rounded-[32px] border border-white/5 flex flex-col">
+                <div className="glass-panel p-8 rounded-xs border border-white/5 flex flex-col">
                     <h3 className="text-text-muted text-xs font-bold uppercase tracking-wider border-b border-white/5 pb-4 mb-6 flex items-center gap-2">
                         <Bell size={14} /> Global Announcements
                     </h3>
 
                     <form onSubmit={handleSendAnnouncement} className="flex-1 flex flex-col gap-4">
-                        <div className="bg-white/5 rounded-xl p-4 flex-1">
+                        <div className="bg-white/5 rounded-xs p-4 flex-1">
                             <textarea
                                 required
                                 className="w-full h-full bg-transparent outline-none text-white resize-none placeholder:text-text-muted/50"
@@ -123,7 +123,7 @@ export default function SettingsPage() {
                             <button
                                 type="submit"
                                 disabled={isSending}
-                                className="btn btn-primary px-6 py-3 rounded-xl flex items-center gap-2 font-bold tracking-wider disabled:opacity-50"
+                                className="btn btn-primary px-6 py-3 rounded-xs flex items-center gap-2 font-bold tracking-wider disabled:opacity-50"
                             >
                                 {isSending ? 'SENDING...' : (
                                     <>

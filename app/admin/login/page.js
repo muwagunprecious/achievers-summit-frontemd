@@ -45,17 +45,17 @@ export default function AdminLogin() {
 
             <div className="max-w-md w-full relative z-10">
                 <div className="text-center mb-10">
-                    <div className="w-16 h-16 bg-primary-copper/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-primary-copper/20">
+                    <div className="w-16 h-16 bg-primary-copper/10 rounded-xs flex items-center justify-center mx-auto mb-6 border border-primary-copper/20">
                         <Lock className="text-primary-copper" size={32} />
                     </div>
-                    <h1 className="text-3xl font-black text-white italic tracking-tighter mb-2">ADMIN <span className="text-gradient NOT-italic">PORTAL</span></h1>
+                    <h1 className="text-3xl font-black text-text-primary italic tracking-tighter mb-2">ADMIN <span className="text-gradient NOT-italic">PORTAL</span></h1>
                     <p className="text-text-muted text-sm font-medium">Secure access for Achievers Summit administrators.</p>
                 </div>
 
-                <div className="glass-panel p-8 rounded-3xl border border-white/5 backdrop-blur-xl">
+                <div className="glass-panel p-8 rounded-xs border border-black/5 backdrop-blur-xl">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {error && (
-                            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3 text-red-500 text-xs font-bold uppercase tracking-wide">
+                            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xs flex items-center gap-3 text-red-500 text-xs font-bold uppercase tracking-wide">
                                 <AlertCircle size={16} />
                                 {error}
                             </div>
@@ -63,28 +63,28 @@ export default function AdminLogin() {
 
                         <div className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-white/50 uppercase tracking-widest pl-1">Email Address</label>
+                                <label className="text-[10px] font-black text-black/50 uppercase tracking-widest pl-1">Email Address</label>
                                 <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-black/30" size={18} />
                                     <input
                                         type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="w-full h-14 bg-white/5 rounded-xl pl-12 pr-4 text-white placeholder-white/20 outline-none focus:bg-white/10 focus:border-primary-copper/50 border border-white/5 transition-all"
+                                        className="w-full h-14 bg-black/3 rounded-xs pl-12 pr-4 text-text-primary placeholder-black/20 outline-none focus:bg-black/5 focus:border-primary-copper/50 border border-black/10 transition-all"
                                         placeholder="admin@achieverssummit.com"
                                         required
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-white/50 uppercase tracking-widest pl-1">Password</label>
+                                <label className="text-[10px] font-black text-black/50 uppercase tracking-widest pl-1">Password</label>
                                 <div className="relative">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-black/30" size={18} />
                                     <input
                                         type="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full h-14 bg-white/5 rounded-xl pl-12 pr-4 text-white placeholder-white/20 outline-none focus:bg-white/10 focus:border-primary-copper/50 border border-white/5 transition-all"
+                                        className="w-full h-14 bg-black/3 rounded-xs pl-12 pr-4 text-text-primary placeholder-black/20 outline-none focus:bg-black/5 focus:border-primary-copper/50 border border-black/10 transition-all"
                                         placeholder="••••••••••••"
                                         required
                                     />
@@ -98,7 +98,7 @@ export default function AdminLogin() {
                             className="btn btn-primary w-full h-14 text-xs flex items-center justify-center gap-2 group"
                         >
                             {isLoading ? (
-                                <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                                <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"></span>
                             ) : (
                                 <>
                                     <span>AUTHENTICATE</span>
@@ -110,16 +110,9 @@ export default function AdminLogin() {
                 </div>
 
                 <div className="text-center mt-8">
-                    <p className="text-[10px] text-white/20 uppercase tracking-widest">Authorized Personnel Only</p>
+                    <p className="text-[10px] text-black/20 uppercase tracking-widest">Authorized Personnel Only</p>
                 </div>
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.03);
-                    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
-                }
-            `}</style>
-        </div>
+</div>
     );
 }

@@ -129,7 +129,7 @@ export default function AboutPage() {
 
                     {/* Context & Theme Teaser - Centered */}
                     <div className="max-w-3xl mx-auto">
-                        <div className="glass-panel p-10 md:p-12 rounded-[48px] border border-white/10 bg-white/[0.02] backdrop-blur-xl relative overflow-hidden text-center">
+                        <div className="glass-panel p-10 md:p-12 rounded-xs border border-white/10 bg-white/[0.02] backdrop-blur-xl relative overflow-hidden text-center">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary-copper/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
 
                             <div className="relative z-10">
@@ -162,9 +162,9 @@ export default function AboutPage() {
                 <div className="container relative z-10">
                     <div className="max-w-5xl mx-auto space-y-24">
                         {/* Vision - Centered */}
-                        <div className="glass-panel p-16 rounded-[56px] border border-white/5 relative group text-center">
+                        <div className="glass-panel p-16 rounded-xs border border-white/5 relative group text-center">
                             <div className="flex flex-col items-center mb-10">
-                                <div className="w-16 h-16 bg-primary-copper rounded-[24px] flex items-center justify-center text-white shadow-2xl shadow-primary-copper/30 mb-6">
+                                <div className="w-16 h-16 bg-primary-copper rounded-xs flex items-center justify-center text-white shadow-2xl shadow-primary-copper/30 mb-6">
                                     <Target size={32} />
                                 </div>
                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Vision</h2>
@@ -175,9 +175,9 @@ export default function AboutPage() {
                         </div>
 
                         {/* Mission - Centered */}
-                        <div className="glass-panel p-16 rounded-[56px] border border-white/5 relative group text-center">
+                        <div className="glass-panel p-16 rounded-xs border border-white/5 relative group text-center">
                             <div className="flex flex-col items-center mb-10">
-                                <div className="w-16 h-16 bg-white/5 rounded-[24px] flex items-center justify-center text-primary-copper border border-white/10 mb-6">
+                                <div className="w-16 h-16 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper border border-white/10 mb-6">
                                     <Rocket size={32} />
                                 </div>
                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Mission</h2>
@@ -206,10 +206,10 @@ export default function AboutPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
                         {benefits.map((benefit, i) => (
-                            <div key={i} className="glass-panel p-10 md:p-16 rounded-[48px] border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group relative overflow-hidden">
+                            <div key={i} className="glass-panel p-10 md:p-16 rounded-xs border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute top-0 left-0 w-24 h-24 bg-primary-copper/5 rounded-br-[48px] -translate-x-12 -translate-y-12 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700"></div>
                                 <div className="flex flex-col md:flex-row gap-10 items-start relative z-10 text-center md:text-left items-center md:items-start">
-                                    <div className="flex-shrink-0 w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-2xl">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-2xl">
                                         {React.cloneElement(benefit.icon, { size: 36 })}
                                     </div>
                                     <div className="space-y-4">
@@ -247,7 +247,7 @@ export default function AboutPage() {
                             </p>
                         </div>
 
-                        <div className="glass-panel p-10 rounded-[40px] border border-white/10 bg-white/[0.02] space-y-8">
+                        <div className="glass-panel p-10 rounded-xs border border-white/10 bg-white/[0.02] space-y-8">
                             <h3 className="text-xl text-white font-black italic uppercase tracking-tighter leading-tight text-center">The 2026 Summit seeks to explore how Africa’s new generation can:</h3>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {[
@@ -259,7 +259,7 @@ export default function AboutPage() {
                                     "Reclaim and redefine the continent’s global reputation"
                                 ].map((item, i) => (
                                     <li key={i} className="flex gap-4 items-center group text-left">
-                                        <div className="w-8 h-8 rounded-xl bg-primary-copper/10 border border-primary-copper/30 flex items-center justify-center text-primary-copper text-sm font-black transition-all group-hover:bg-primary-copper group-hover:text-white flex-shrink-0">
+                                        <div className="w-8 h-8 rounded-xs bg-primary-copper/10 border border-primary-copper/30 flex items-center justify-center text-primary-copper text-sm font-black transition-all group-hover:bg-primary-copper group-hover:text-white flex-shrink-0">
                                             {i + 1}
                                         </div>
                                         <span className="text-text-secondary text-base font-light group-hover:text-white transition-colors">{item}</span>
@@ -276,9 +276,9 @@ export default function AboutPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
                         {objectives.map((obj, i) => (
-                            <div key={i} className="glass-panel p-8 rounded-[32px] border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group flex flex-col h-full">
+                            <div key={i} className="glass-panel p-8 rounded-xs border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group flex flex-col h-full">
                                 <div className="flex items-center gap-6 mb-6">
-                                    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 transition-transform">
+                                    <div className="w-14 h-14 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 transition-transform">
                                         {React.cloneElement(obj.icon, { size: 28 })}
                                     </div>
                                     <h3 className="text-xl font-black text-white uppercase italic tracking-tighter leading-tight flex-1">{obj.category}</h3>
@@ -316,8 +316,8 @@ export default function AboutPage() {
                             { icon: <HeartHandshake />, label: "CSO Leaders", desc: "Civil society advocates" },
                             { icon: <Rocket />, label: "Delegates", desc: "High-impact individuals" }
                         ].map((item, i) => (
-                            <div key={i} className="glass-panel p-10 rounded-[40px] border border-white/5 hover:border-primary-copper/30 hover:bg-primary-copper/[0.02] transition-all duration-700 group text-center flex flex-col items-center">
-                                <div className="w-16 h-16 bg-white/5 rounded-[24px] flex items-center justify-center text-primary-copper mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5 shadow-inner">
+                            <div key={i} className="glass-panel p-10 rounded-xs border border-white/5 hover:border-primary-copper/30 hover:bg-primary-copper/[0.02] transition-all duration-700 group text-center flex flex-col items-center">
+                                <div className="w-16 h-16 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5 shadow-inner">
                                     {React.cloneElement(item.icon, { size: 32 })}
                                 </div>
                                 <h4 className="text-white font-black text-sm uppercase tracking-[0.2em] mb-3">{item.label}</h4>
@@ -326,7 +326,7 @@ export default function AboutPage() {
                         ))}
                     </div>
 
-                    <div className="mt-28 p-16 glass-panel rounded-[56px] border border-primary-copper/20 bg-primary-copper/[0.03] text-center max-w-5xl mx-auto">
+                    <div className="mt-28 p-16 glass-panel rounded-xs border border-primary-copper/20 bg-primary-copper/[0.03] text-center max-w-5xl mx-auto">
                         <h3 className="text-3xl md:text-5xl text-white font-black italic uppercase tracking-tighter mb-10">
                             Be Part of the <span className="text-gradient NOT-italic">African narrative.</span>
                         </h3>
@@ -339,19 +339,6 @@ export default function AboutPage() {
             </section>
 
             <Footer />
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(32px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                }
-                .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            `}</style>
-        </main>
+</main>
     );
 }

@@ -36,10 +36,10 @@ export default function ExportVotingCSV({ data }) {
     return (
         <button
             onClick={handleExport}
-            className="btn btn-primary flex items-center gap-2 group px-6 py-3 rounded-xl"
+            className="btn btn-primary"
         >
-            <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-            <span className="text-xs font-bold tracking-widest uppercase">Export CSV Report</span>
+            <Download size={18} />
+            Export CSV Report
         </button>
     );
 }

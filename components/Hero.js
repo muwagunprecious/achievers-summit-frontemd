@@ -1,91 +1,122 @@
 "use client";
 import React from 'react';
-import { MapPin, Calendar, Sparkles, ChevronDown } from 'lucide-react';
 
 export default function Hero() {
     return (
-        <section id="home" className="relative min-h-[80vh] flex items-center bg-[#0D001A] overflow-hidden pt-20">
-            {/* Premium Atmospheric Background */}
-            <div className="absolute inset-0 pointer-events-none z-[1]">
-                <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-primary-copper/10 rounded-full blur-[160px] animate-pulse"></div>
-                <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-primary-copper/5 rounded-full blur-[140px]"></div>
-
-                {/* Subtle Motif Overlay */}
-                <div className="motif-bg opacity-[0.03]"></div>
-            </div>
-
-            <div className="container relative z-10 pt-48 pb-[100px]">
-                <div className="max-w-5xl mx-auto">
-                    <div className="flex flex-col items-center text-center animate-fade-in">
-                        <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/10 px-5 py-2 rounded-full text-white text-xs font-black tracking-widest uppercase mb-10">
-                            <Sparkles size={12} className="text-primary-copper" />
-                            <span>AFRICA’S MOST INFLUENTIAL LEADERSHIP & ENTREPRENEURSHIP SUMMIT</span>
+        <section className="relative bg-[#121212] pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    {/* Left Column: Text Content */}
+                    <div className="flex flex-col text-left z-10">
+                        <div className="mb-8 flex items-center gap-2">
+                            <span className="inline-block px-3 py-1 bg-white/10 rounded-xs text-[10px] font-bold tracking-widest text-white/70 uppercase border border-white/5">
+                                Lagos, Nigeria &bull; Aug 2026
+                            </span>
                         </div>
 
-                        <h1 className="text-white mb-2 w-full flex flex-col md:flex-row justify-between items-center tracking-tighter uppercase" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
-                            <span>CONNECT.</span>
-                            <span className="text-gradient">LEAD.</span>
-                            <span>ACHIEVE.</span>
+                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-medium tracking-tight text-white mb-6 leading-[1.1]">
+                            AFRICA&apos;S MOST INFLUENTIAL <br className="hidden lg:block" />
+                            LEADERSHIP &amp; <br className="hidden lg:block" />
+                            ENTREPRENEURSHIP SUMMIT
                         </h1>
 
-                        <h2 className="text-white text-base md:text-xl font-light italic leading-relaxed mb-12 max-w-4xl mx-auto">
-                            “The Global Emerging Leader: <span className="text-gradient font-black NOT-italic">Redefining the African Narrative”</span>
-                        </h2>
+                        <p className="text-lg text-gray-400 mb-10 max-w-xl font-normal leading-relaxed">
+                            A 3-day high-level experience designed to unite innovators, policymakers, and changemakers redefining the African narrative.
+                        </p>
 
-                        <div className="flex flex-wrap justify-center gap-8 mb-16">
-                            <a href="/tickets" className="btn btn-primary py-4 px-10 group">
-                                <span className="text-xs">Register Now</span>
-                                <div className="absolute inset-x-0 bottom-0 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        <div className="flex flex-wrap items-center gap-4">
+                            <a
+                                className="btn btn-primary"
+                                href="#tickets"
+                            >
+                                Buy ticket
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                             </a>
-                            <a href="/achievers-summit-prospectus-new.pdf" download className="btn btn-outline py-4 px-10 text-xs text-white border-white/10 hover:border-primary-copper transition-all">
-                                Download Prospectus
+                            <a
+                                className="btn bg-white text-black hover:bg-gray-200"
+                                href="#about"
+                            >
+                                View location
                             </a>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-xl border-t border-white/5 pt-10 mb-12">
-                            <div className="flex items-center justify-center md:justify-start gap-5 group">
-                                <div className="w-16 h-16 rounded-3xl glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
-                                    <MapPin size={28} />
+                        <div className="mt-12 flex items-center gap-4 opacity-60">
+                            <p className="text-xs text-gray-500 uppercase tracking-widest">Powered By</p>
+                            <div className="h-px bg-gray-800 w-12"></div>
+                            <span className="text-sm font-semibold text-gray-400">EAI International</span>
+                        </div>
+                    </div>
+
+                    {/* Right Column: Image Grid - Desktop */}
+                    <div className="relative h-full min-h-[500px] w-full hidden lg:block">
+                        <div className="grid grid-cols-2 gap-4 h-full">
+                            {/* Left column images */}
+                            <div className="flex flex-col gap-4 pt-12">
+                                <div className="aspect-square w-full overflow-hidden bg-gray-800">
+                                    <img
+                                        alt="Summit attendee"
+                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                        src="/images/hero/summit-1.jpg"
+                                    />
                                 </div>
-                                <div className="text-left">
-                                    <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Primary Venue</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">Lagos, Nigeria</p>
+                                <div className="aspect-[4/5] w-full overflow-hidden bg-gray-800 relative group">
+                                    <img
+                                        alt="Summit workshop"
+                                        className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+                                        src="/images/hero/summit-2.jpg"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                                        <span className="text-white text-sm font-medium">Digital Workshops</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-center md:justify-start gap-5 group">
-                                <div className="w-16 h-16 rounded-3xl glass-panel flex items-center justify-center text-primary-copper group-hover:bg-primary-copper group-hover:text-white transition-all duration-500">
-                                    <Calendar size={28} />
+                            {/* Right column images */}
+                            <div className="flex flex-col gap-4">
+                                <div className="aspect-[4/3] w-full rounded-full overflow-hidden bg-gray-800 border-4 border-[#121212] relative z-10 transform translate-y-8 shadow-2xl">
+                                    <img
+                                        alt="Team meeting"
+                                        className="w-full h-full object-cover object-top transition-all duration-700"
+                                        src="/images/hero/summit-3.jpg"
+                                    />
                                 </div>
-                                <div className="text-left">
-                                    <p className="text-xs uppercase text-text-muted font-black tracking-widest mb-2">Official Dates</p>
-                                    <p className="text-white font-bold text-xl uppercase italic">11th - 12th August 2026</p>
+                                <div className="aspect-square w-full overflow-hidden bg-gray-800 mt-8">
+                                    <img
+                                        alt="Handshake"
+                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                        src="/images/hero/summit-4.jpg"
+                                    />
+                                </div>
+                                <div className="aspect-video w-full rounded-full overflow-hidden bg-gray-800 relative">
+                                    <img
+                                        alt="Summit speakers"
+                                        className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+                                        src="/images/hero/summit-6.jpg"
+                                    />
                                 </div>
                             </div>
                         </div>
 
+                        {/* Background glow effects */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#783A28]/20 rounded-full blur-3xl -z-10"></div>
+                        <div className="absolute bottom-20 left-10 w-40 h-40 bg-[#CC9933]/10 rounded-full blur-3xl -z-10"></div>
+                    </div>
 
+                    {/* Mobile Image */}
+                    <div className="lg:hidden w-full mt-8">
+                        <div className="aspect-video rounded-xs overflow-hidden relative shadow-xl">
+                            <img
+                                alt="Conference Audience"
+                                className="w-full h-full object-cover"
+                                src="/images/hero/summit-5.jpg"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <span className="text-white font-bold text-lg">Join the Movement</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {/* Floating Mouse Scroll Indicator */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-text-muted">
-                <div className="w-[30px] h-[50px] border-2 border-white/10 rounded-full relative">
-                    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-primary-copper rounded-full animate-bounce"></div>
-                </div>
-            </div>
-
-            <style jsx>{`
-                .text-primary-copper { color: var(--primary-copper); }
-                .bg-primary-copper\/10 { background-color: rgba(161, 136, 127, 0.1); }
-                .bg-primary-copper\/5 { background-color: rgba(161, 136, 127, 0.05); }
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.03);
-                    backdrop-filter: blur(24px);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                }
-            `}</style>
         </section>
     );
 }

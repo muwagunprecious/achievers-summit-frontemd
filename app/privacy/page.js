@@ -131,19 +131,6 @@ export default function PrivacyPage() {
             </section>
 
             <Footer />
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(40px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                }
-                .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            `}</style>
-        </main>
+</main>
     );
 }

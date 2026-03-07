@@ -17,7 +17,7 @@ export default function AdminLayout({ children }) {
             router.replace('/admin/dashboard');
         }
 
-        // Middleware handles protection for non-login pages, 
+        // Middleware handles protection for non-login pages,
         // but this client-side check covers edge cases.
         if (!isLoginPage && !session) {
             router.replace('/admin/login');
@@ -26,7 +26,7 @@ export default function AdminLayout({ children }) {
 
     if (status === 'loading') {
         return (
-            <div className="min-h-screen bg-[#050505] flex items-center justify-center" suppressHydrationWarning>
+            <div className="min-h-screen bg-[#F8F6F4] flex items-center justify-center" suppressHydrationWarning>
                 <div className="animate-spin w-8 h-8 border-2 border-primary-copper border-t-transparent rounded-full"></div>
             </div>
         );
@@ -41,12 +41,12 @@ export default function AdminLayout({ children }) {
     }
 
     return (
-        <div className="flex min-h-screen bg-[#050505]">
+        <div className="flex min-h-screen bg-[#F8F6F4]">
             <AdminSidebar user={session.user} />
             <main className="flex-1 max-h-screen overflow-y-auto relative">
                 <div className="absolute inset-0 pointer-events-none sticky top-0 z-0">
-                    <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-primary-copper/5 rounded-full blur-[150px]"></div>
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary-copper/5 rounded-full blur-[120px]"></div>
+                    <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-primary-copper/3 rounded-full blur-[150px]"></div>
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary-copper/3 rounded-full blur-[120px]"></div>
                     <div className="motif-bg opacity-[0.03] absolute inset-0"></div>
                 </div>
                 <div className="relative z-10 p-8">

@@ -1,5 +1,7 @@
 const crypto = require('crypto');
 const db = require('../config/db');
+const { generateTicketPDF } = require('../services/pdfService');
+const { sendTicketEmail } = require('../services/emailService');
 
 const WEBHOOK_SECRET = process.env.PAYSTACK_SECRET_KEY;
 
@@ -111,7 +113,48 @@ exports.handleEventTicketWebhook = async (req, res) => {
       }
     });
 
+    // Store created ticket info for post-transaction email
+    return { ticketsToCreate, category };
   }, { timeout: 15000 });
+
+  // Send confirmation emails after successful transaction (non-blocking)
+  try {
+    const { customer } = data;
+    const buyerEmail = customer?.email || metadata.email;
+    const buyerName = metadata.fullName || customer?.first_name || 'Attendee';
+
+    if (buyerEmail) {
+      // Look up the tickets we just created
+      const createdTickets = await db.ticket.findMany({
+        where: { ticketNumber: { startsWith: reference } },
+        include: { category: true }
+      });
+
+      for (const ticket of createdTickets) {
+        try {
+          const pdfBuffer = await generateTicketPDF({
+            fullName: buyerName,
+            ticketType: ticket.category.name,
+            ticketPrice: ticket.category.price === 0 ? 'FREE' : `NGN ${ticket.category.price.toLocaleString()}`,
+            ticketId: ticket.ticketNumber
+          });
+
+          await sendTicketEmail({
+            email: buyerEmail,
+            fullName: buyerName,
+            ticketType: ticket.category.name,
+            ticketId: ticket.ticketNumber,
+            pdfBuffer
+          });
+          console.log(`📧 Webhook: Email sent for ticket ${ticket.ticketNumber} to ${buyerEmail}`);
+        } catch (emailErr) {
+          console.error(`⚠️ Webhook: Failed to email ticket ${ticket.ticketNumber}:`, emailErr.message);
+        }
+      }
+    }
+  } catch (emailError) {
+    console.error('⚠️ Webhook: Post-transaction email error:', emailError.message);
+  }
 
   return res.status(200).send();
 };

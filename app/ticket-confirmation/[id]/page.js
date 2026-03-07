@@ -38,7 +38,7 @@ function TicketConfirmationContent() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+            <div className="min-h-screen bg-[#F8F6F4] flex items-center justify-center">
                 <div className="animate-spin w-8 h-8 border-2 border-primary-copper border-t-transparent rounded-full"></div>
             </div>
         );
@@ -46,7 +46,7 @@ function TicketConfirmationContent() {
 
     if (!ticket) {
         return (
-            <div className="min-h-screen bg-[#050505] flex flex-col items-center justify-center text-white gap-4">
+            <div className="min-h-screen bg-[#F8F6F4] flex flex-col items-center justify-center text-text-primary gap-4">
                 <p>Ticket not found.</p>
                 <button onClick={handleBack} className="text-primary-copper underline">Return Home</button>
             </div>

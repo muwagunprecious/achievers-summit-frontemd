@@ -54,7 +54,7 @@ export default function AddSpeakerPage() {
         <div className="max-w-4xl mx-auto space-y-6 pb-12">
             {/* Header */}
             <div className="flex items-center gap-4">
-                <Link href="/admin/dashboard/speakers" className="p-2 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                <Link href="/admin/dashboard/speakers" className="p-2 bg-white/5 rounded-xs hover:bg-white/10 transition-colors">
                     <ArrowLeft size={20} className="text-white" />
                 </Link>
                 <div>
@@ -65,14 +65,14 @@ export default function AddSpeakerPage() {
 
             {/* Error Message */}
             {error && (
-                <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl flex items-center gap-3 text-red-500 text-sm">
+                <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-xs flex items-center gap-3 text-red-500 text-sm">
                     <AlertCircle size={18} />
                     <p>{error}</p>
                 </div>
             )}
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="glass-panel p-8 rounded-3xl border border-white/5 space-y-8">
+            <form onSubmit={handleSubmit} className="glass-panel p-8 rounded-xs border border-white/5 space-y-8">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Basic Info */}
@@ -87,7 +87,7 @@ export default function AddSpeakerPage() {
                                     required
                                     name="name"
                                     type="text"
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                     placeholder="e.g. Dr. Jane Doe"
                                 />
                             </div>
@@ -102,7 +102,7 @@ export default function AddSpeakerPage() {
                                 <input
                                     name="title"
                                     type="text"
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                     placeholder="e.g. CEO, TechCorp"
                                 />
                             </div>
@@ -118,7 +118,7 @@ export default function AddSpeakerPage() {
                                     required
                                     name="topic"
                                     type="text"
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                     placeholder="e.g. AI in Finance"
                                 />
                             </div>
@@ -131,7 +131,7 @@ export default function AddSpeakerPage() {
                                 {!preview ? (
                                     <div
                                         onClick={() => fileInputRef.current?.click()}
-                                        className="w-full h-32 bg-white/5 border-2 border-dashed border-white/10 hover:border-primary-copper/50 rounded-2xl flex flex-col items-center justify-center gap-3 cursor-pointer transition-all group-hover:bg-white/10"
+                                        className="w-full h-32 bg-white/5 border-2 border-dashed border-white/10 hover:border-primary-copper/50 rounded-xs flex flex-col items-center justify-center gap-3 cursor-pointer transition-all group-hover:bg-white/10"
                                     >
                                         <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-text-muted">
                                             <Upload size={20} />
@@ -139,12 +139,12 @@ export default function AddSpeakerPage() {
                                         <span className="text-[10px] font-bold text-text-muted uppercase tracking-widest">Choose Image File</span>
                                     </div>
                                 ) : (
-                                    <div className="relative w-full h-32 rounded-2xl overflow-hidden border border-white/10">
+                                    <div className="relative w-full h-32 rounded-xs overflow-hidden border border-white/10">
                                         <img src={preview} alt="Preview" className="w-full h-full object-cover" />
                                         <button
                                             type="button"
                                             onClick={removePreview}
-                                            className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-red-500 rounded-lg text-white transition-colors"
+                                            className="absolute top-2 right-2 p-1.5 bg-black/50 hover:bg-red-500 rounded-xs text-white transition-colors"
                                         >
                                             <X size={14} />
                                         </button>
@@ -173,7 +173,7 @@ export default function AddSpeakerPage() {
                                 <textarea
                                     required
                                     name="bio"
-                                    className="w-full h-32 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 py-4 outline-none text-white transition-all resize-none"
+                                    className="w-full h-32 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 py-4 outline-none text-white transition-all resize-none"
                                     placeholder="Brief introduction..."
                                 ></textarea>
                             </div>
@@ -189,7 +189,7 @@ export default function AddSpeakerPage() {
                                     <input
                                         name="linkedin"
                                         type="url"
-                                        className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                        className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                         placeholder="Profile URL"
                                     />
                                 </div>
@@ -203,7 +203,7 @@ export default function AddSpeakerPage() {
                                     <input
                                         name="twitter"
                                         type="url"
-                                        className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                        className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                         placeholder="Profile URL"
                                     />
                                 </div>
@@ -217,7 +217,7 @@ export default function AddSpeakerPage() {
                     <button
                         type="submit"
                         disabled={isPending}
-                        className="btn btn-primary px-8 py-3 flex items-center gap-2 rounded-xl disabled:opacity-50"
+                        className="btn btn-primary px-8 py-3 flex items-center gap-2 rounded-xs disabled:opacity-50"
                     >
                         {isPending ? 'SAVING...' : (
                             <>

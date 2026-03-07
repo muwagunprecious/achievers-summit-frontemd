@@ -133,13 +133,22 @@ model TicketCategory {
 }
 
 model User {
-  id        String   @id
-  name      String
-  email     String   @unique
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tickets   Ticket[]
+  id                      String   @id
+  name                    String
+  email                   String   @unique
+  phone                   String?
+  gender                  String?
+  city                    String?
+  country                 String?
+  disabilityTypes         String[] @default([])
+  signLanguageRequired    Boolean  @default(false)
+  personalAssistance      String?
+  sensoryRequirements     Boolean  @default(false)
+  sensoryDetails          String?
+  additionalAccessibility String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+  tickets                 Ticket[]
 }
 
 model Vote {

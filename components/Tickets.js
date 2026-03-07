@@ -1,16 +1,29 @@
 "use client";
 import React from 'react';
-import { Check, Sparkle, Zap, Crown, Rocket, Star, Loader2 } from 'lucide-react';
+import { Check, Star, Crown, Rocket, Zap, Loader2, Gem } from 'lucide-react';
 
-const iconMap = {
-    'REGULAR PASS': <Sparkle size={20} />,
-    'ECONOMY PASS': <Rocket size={20} />,
-    'BUSINESS CLASS PASS': <Zap size={20} />,
-    'FIRST CLASS PASS': <Crown size={20} />,
-    'EXCLUSIVE BIZJET PASS': <Star size={20} />,
+const tierConfig = {
+    'REGULAR': {
+        icon: <Star size={24} />,
+        style: 'standard',
+    },
+    'ECONOMY': {
+        icon: <Rocket size={24} />,
+        style: 'standard',
+    },
+    'BUSINESS CLASS': {
+        icon: <Zap size={24} />,
+        style: 'recommended',
+    },
+    'FIRST CLASS PASS': {
+        icon: <Crown size={24} />,
+        style: 'standard',
+    },
+    'EXCLUSIVE BIZJET PASS': {
+        icon: <Gem size={24} />,
+        style: 'premium',
+    },
 };
-
-const defaultIcon = <Sparkle size={20} />;
 
 export default function Tickets({ onBuy }) {
     const [categories, setCategories] = React.useState([]);
@@ -36,151 +49,209 @@ export default function Tickets({ onBuy }) {
 
     if (isLoading) {
         return (
-            <section id="tickets" className="section bg-bg-deep flex items-center justify-center min-h-[400px]">
-                <div className="text-white font-black tracking-widest animate-pulse">LOADING EXPERIENCES...</div>
+            <section id="tickets" className="py-24 bg-[#F8F6F4] flex items-center justify-center min-h-[400px]">
+                <div className="flex items-center gap-3 text-text-muted">
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span className="text-sm font-medium tracking-wide">Loading passes...</span>
+                </div>
             </section>
         );
     }
 
+    const topRow = categories.slice(0, 3);
+    const bottomRow = categories.slice(3);
+
     return (
-        <section id="tickets" className="pb-32 bg-bg-deep relative overflow-hidden" style={{ paddingTop: '90px' }}>
-            <div className="container">
-                <div className="text-center mb-24 max-w-4xl mx-auto">
-                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">Registration Open</div>
-                    <h2 className="text-5xl md:text-8xl text-white mb-8 italic">Get Your <span className="text-gradient font-black NOT-italic">Official Pass.</span></h2>
-                    <p className="text-xl text-text-secondary font-light">
-                        Get Your Ticket Now - 3,000 Free Regular Tickets and 2,000 Paid Executive Passes Available. Select your preferred experience Level and secure your seat instantly. Each pass is issued as a digital PDF delivered to your email.
+        <section id="tickets" className="py-24 lg:py-32 bg-[#F8F6F4] relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
+
+                {/* Header */}
+                <div className="mb-16">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-4">
+                        Select your pass
+                    </h2>
+                    <p className="text-text-muted text-lg max-w-2xl">
+                        Join us in redefining the African narrative. Secure your spot to connect, learn, and grow with over 5,000 leaders.
                     </p>
                 </div>
 
-                {/* Top Row: 2 Tickets (Centered) */}
-                {/* Top Row: 2 Tickets (Centered) */}
-                <div className="flex flex-col md:flex-row justify-center items-stretch mb-10" style={{ gap: '120px' }}>
-                    {categories.slice(0, 2).map((ticket) => (
-                        <div key={ticket.id} className="w-full flex-shrink-0" style={{ maxWidth: '400px' }}>
-                            <TicketCard
+                {/* Cards Container */}
+                <div className="bg-white rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 p-6 md:p-10 lg:p-12">
+
+                    {/* Top Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                        {topRow.map((ticket) => (
+                            <PassCard
+                                key={ticket.id}
                                 ticket={ticket}
                                 onBuy={onBuy}
                                 loadingTicketId={loadingTicketId}
                                 setLoadingTicketId={setLoadingTicketId}
                             />
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
 
-                {/* Bottom Row: 3 Tickets */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
-                    {categories.slice(2).map((ticket) => (
-                        <TicketCard
-                            key={ticket.id}
-                            ticket={ticket}
-                            onBuy={onBuy}
-                            loadingTicketId={loadingTicketId}
-                            setLoadingTicketId={setLoadingTicketId}
-                        />
-                    ))}
+                    {/* Bottom Row */}
+                    {bottomRow.length > 0 && (
+                        <div className={`grid grid-cols-1 gap-6 lg:gap-8 mt-6 lg:mt-8 ${bottomRow.length === 2 ? 'md:grid-cols-2' : bottomRow.length === 1 ? 'md:grid-cols-1 max-w-md mx-auto' : 'md:grid-cols-3'}`}>
+                            {bottomRow.map((ticket) => (
+                                <PassCard
+                                    key={ticket.id}
+                                    ticket={ticket}
+                                    onBuy={onBuy}
+                                    loadingTicketId={loadingTicketId}
+                                    setLoadingTicketId={setLoadingTicketId}
+                                />
+                            ))}
+                        </div>
+                    )}
+
                 </div>
             </div>
         </section>
     );
 }
 
-function TicketCard({ ticket, onBuy, loadingTicketId, setLoadingTicketId }) {
+function PassCard({ ticket, onBuy, loadingTicketId, setLoadingTicketId }) {
     const [showAll, setShowAll] = React.useState(false);
 
     const active = ticket.isEnabled && ticket.status === 'ACTIVE';
-    const isPopular = ticket.name.includes('BUSINESS');
-    const isLimited = ticket.name.includes('BIZJET');
+    const config = tierConfig[ticket.name] || { icon: <Star size={24} />, style: 'standard' };
+    const isPremium = config.style === 'premium';
+    const isRecommended = config.style === 'recommended';
     const slotsLeft = ticket.capacity - (ticket._count?.tickets || 0);
+    const isLimited = slotsLeft <= 10 && slotsLeft > 0;
+
     const features = ticket.features || [];
-    const hasMoreFeatures = features.length > 4;
-    const displayedFeatures = showAll ? features : features.slice(0, 4);
+    const visibleCount = 4;
+    const hasMore = features.length > visibleCount;
+    const displayedFeatures = showAll ? features : features.slice(0, visibleCount);
+
+    const priceLabel = ticket.price === 0
+        ? 'Free'
+        : `₦${ticket.price.toLocaleString()}`;
+
+    const displayName = ticket.name
+        .replace(' PASS', '')
+        .split(' ')
+        .map(w => w.charAt(0) + w.slice(1).toLowerCase())
+        .join(' ');
 
     return (
         <div
-            className={`group relative glass-panel p-10 flex flex-col h-full transition-all duration-700 border border-white/5 ${active ? 'hover:border-primary-copper/30' : 'opacity-40 grayscale'} ${isPopular && active ? 'shadow-2xl shadow-primary-copper/10' : ''}`}
-            style={{ background: isPopular && active ? 'rgba(161, 136, 127, 0.03)' : 'rgba(255, 255, 255, 0.02)' }}
+            className={`rounded-2xl p-8 flex flex-col transition-all duration-300 relative
+                ${isPremium
+                    ? 'bg-primary-copper text-white shadow-2xl shadow-primary-copper/30 hover:-translate-y-1'
+                    : isRecommended
+                        ? 'bg-white border-2 border-primary-copper/20 hover:border-primary-copper shadow-sm hover:shadow-xl hover:shadow-primary-copper/10 hover:-translate-y-1'
+                        : 'bg-gray-50 hover:-translate-y-1'
+                }
+                ${!active ? 'opacity-50 grayscale pointer-events-none' : ''}`
+            }
         >
+            {/* Sold Out / Closed overlay */}
             {!active && (
-                <div className="absolute inset-0 z-20 flex items-center justify-center p-6 bg-midnight-black/40 backdrop-blur-md rounded-[40px]">
-                    <div className="px-6 py-3 bg-red-500 text-white font-black text-xs uppercase tracking-widest rounded-full shadow-2xl transform -rotate-12">
-                        Category Closed
-                    </div>
+                <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-white/60 backdrop-blur-sm">
+                    <span className="px-5 py-2 bg-red-500 text-white text-xs font-bold uppercase tracking-widest rounded-full shadow-lg -rotate-6">
+                        Closed
+                    </span>
                 </div>
             )}
 
-            {isPopular && active && (
-                <div className="absolute top-8 right-8 text-primary-copper animate-pulse">
-                    <Sparkle size={20} strokeWidth={3} />
+            {/* Recommended badge */}
+            {isRecommended && active && (
+                <div className="absolute -top-3.5 right-8 bg-primary-copper text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Recommended
                 </div>
             )}
 
-
-
-            <div className="mb-12">
-                <div className="w-14 h-14 glass-panel flex items-center justify-center text-primary-copper mb-8 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 rounded-2xl">
-                    {iconMap[ticket.name] || defaultIcon}
+            {/* Limited badge */}
+            {isPremium && active && isLimited && (
+                <div className="absolute -top-3.5 right-8 bg-secondary-gold text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Only {slotsLeft} left
                 </div>
-                <h3 className="text-xl font-black text-white italic tracking-tighter uppercase mb-1">
-                    {ticket.name.replace(' PASS', '')} <span className="text-primary-copper NOT-italic text-xs tracking-widest ml-2">PASS</span>
+            )}
+
+            {/* Icon */}
+            <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-8 ${
+                isPremium
+                    ? 'bg-white/10 border border-white/10 backdrop-blur-sm text-white'
+                    : isRecommended
+                        ? 'bg-gray-50 border border-gray-100 text-primary-copper'
+                        : 'bg-white shadow-sm text-primary-copper'
+            }`}>
+                {config.icon}
+            </div>
+
+            {/* Title */}
+            <div className="mb-6">
+                <h3 className={`text-2xl md:text-3xl font-bold mb-1 leading-tight ${isPremium ? 'text-white' : 'text-text-primary'}`}>
+                    {displayName}<br />
+                    <span className={`text-lg font-normal ${isPremium ? 'text-white/70' : 'text-text-muted'}`}>Pass</span>
                 </h3>
                 {ticket.description && (
-                    <div className={`text-xs font-bold uppercase tracking-widest mb-4 ${ticket.description.includes('Limited') ? 'text-primary-copper animate-pulse' : 'text-text-muted'}`}>
+                    <p className={`text-xs mt-2 font-medium ${isPremium ? 'text-white/60' : 'text-text-muted'}`}>
                         {ticket.description}
-                    </div>
-                )}
-                {active && (
-                    <div className="inline-block px-4 py-1.5 bg-primary-copper/10 border border-primary-copper/30 rounded-full mt-2">
-                        <span className="text-lg font-black text-white tracking-widest">
-                            {ticket.price === 0 ? 'COMPLIMENTARY' : `₦${ticket.price.toLocaleString()}`}
-                        </span>
-                    </div>
+                    </p>
                 )}
             </div>
 
-            <div className="flex-grow flex flex-col justify-between">
-                <div className="mb-8">
-                    <ul className="space-y-4">
-                        {displayedFeatures.map((feature, idx) => (
-                            <li key={idx} className="flex gap-4 items-start group/item">
-                                <div className="flex-shrink-0 w-5 h-5 bg-primary-copper/10 rounded-full flex items-center justify-center border border-primary-copper/20 group-hover/item:bg-primary-copper group-hover/item:text-white transition-all duration-300">
-                                    <Check size={10} className="text-primary-copper group-hover/item:text-white" strokeWidth={4} />
-                                </div>
-                                <span className="text-sm font-medium text-text-secondary group-hover/item:text-white transition-colors tracking-tight leading-relaxed">{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    {hasMoreFeatures && (
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="text-primary-copper text-[10px] font-black uppercase tracking-widest mt-6 hover:underline flex items-center gap-2"
-                        >
-                            {showAll ? 'Show Less' : 'Read More Features'}
-                        </button>
-                    )}
-                </div>
-
-                <div className="mt-auto pt-6">
+            {/* Features */}
+            <div className={`text-sm leading-relaxed mb-8 flex-grow ${isPremium ? 'text-white/80' : 'text-text-secondary'}`}>
+                <ul className="space-y-3">
+                    {displayedFeatures.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                            <Check
+                                size={16}
+                                strokeWidth={2.5}
+                                className={`mt-0.5 shrink-0 ${
+                                    isPremium ? 'text-white/90' : 'text-primary-copper'
+                                }`}
+                            />
+                            <span className={idx === 0 && isRecommended ? 'font-medium text-text-primary' : ''}>
+                                {feature}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+                {hasMore && (
                     <button
-                        onClick={async () => {
-                            if (active) {
-                                setLoadingTicketId(ticket.id);
-                                await onBuy(ticket);
-                                setLoadingTicketId(null);
-                            }
-                        }}
-                        disabled={!active || loadingTicketId === ticket.id}
-                        className={`btn w-full py-4 transition-all duration-500 flex items-center justify-center gap-3 ${isPopular && active ? 'btn-primary shadow-lg shadow-primary-copper/20' : 'btn-outline border-white/10 hover:border-white disabled:opacity-50 disabled:cursor-not-allowed'}`}
+                        onClick={() => setShowAll(!showAll)}
+                        className={`mt-4 text-xs font-semibold underline underline-offset-2 ${
+                            isPremium ? 'text-white/70 hover:text-white' : 'text-primary-copper hover:text-primary-copper-dark'
+                        } transition-colors`}
                     >
-                        {loadingTicketId === ticket.id ? (
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : (
-                            <span className="tracking-widest">{active ? 'GET MY TICKET' : 'Locked'}</span>
-                        )}
+                        {showAll ? 'Show less' : `+${features.length - visibleCount} more benefits`}
                     </button>
-                </div>
+                )}
+            </div>
+
+            {/* CTA Button */}
+            <div className="mt-auto pt-2">
+                <button
+                    onClick={async () => {
+                        if (active) {
+                            setLoadingTicketId(ticket.id);
+                            await onBuy(ticket);
+                            setLoadingTicketId(null);
+                        }
+                    }}
+                    disabled={!active || loadingTicketId === ticket.id}
+                    className={`w-full font-semibold py-4 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 ${
+                        isPremium
+                            ? 'bg-white hover:bg-gray-50 text-primary-copper font-bold shadow-lg'
+                            : 'bg-primary-copper hover:bg-primary-copper-dark text-white shadow-lg shadow-primary-copper/20'
+                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                >
+                    {loadingTicketId === ticket.id ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                        <>
+                            {ticket.price === 0 ? 'Select for Free' : `Buy for ${priceLabel}`}
+                        </>
+                    )}
+                </button>
             </div>
         </div>
     );
 }
-

@@ -50,12 +50,12 @@ export default function PartnershipPage() {
 
     if (status === 'success') {
         return (
-            <main className="min-h-screen bg-midnight-black flex flex-col items-center justify-center p-6 text-center">
-                <div className="max-w-md w-full glass-panel p-12 rounded-[40px] border border-green-500/20 animate-fade-in-up">
+            <main className="min-h-screen bg-white flex flex-col items-center justify-center p-6 text-center">
+                <div className="max-w-md w-full glass-panel p-12 rounded-xs border border-green-500/20 animate-fade-in-up">
                     <div className="w-24 h-24 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mx-auto mb-10">
                         <CheckCircle size={48} className="text-green-500" />
                     </div>
-                    <h2 className="text-4xl font-black italic text-white mb-6 uppercase tracking-tighter">SUCCESS <span className="text-green-500 NOT-italic">AUTHENTICATED.</span></h2>
+                    <h2 className="text-4xl font-black italic text-text-primary mb-6 uppercase tracking-tighter">SUCCESS <span className="text-green-500 NOT-italic">AUTHENTICATED.</span></h2>
                     <p className="text-text-muted text-lg mb-12 font-light italic">
                         Your strategic alliance request has been logged. Our protocol officers will contact you shortly.
                     </p>
@@ -100,7 +100,7 @@ export default function PartnershipPage() {
                                 <span>Strategic Partnership</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter mb-12 leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-black text-text-primary italic tracking-tighter mb-12 leading-tight">
                                 SHAPING THE <br />
                                 <span className="text-gradient NOT-italic">AFRICAN FUTURE.</span>
                             </h1>
@@ -116,11 +116,11 @@ export default function PartnershipPage() {
                                     { title: 'Strategic Impact', desc: 'Influence African innovation and growth.' }
                                 ].map((benefit, i) => (
                                     <div key={i} className="flex gap-6 items-start">
-                                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary-copper flex-shrink-0">
+                                        <div className="w-12 h-12 rounded-xs bg-black/5 border border-black/10 flex items-center justify-center text-primary-copper flex-shrink-0">
                                             <ChevronRight size={20} />
                                         </div>
                                         <div>
-                                            <h4 className="text-white font-black uppercase tracking-widest text-sm mb-1">{benefit.title}</h4>
+                                            <h4 className="text-text-primary font-black uppercase tracking-widest text-sm mb-1">{benefit.title}</h4>
                                             <p className="text-sm text-text-muted italic">{benefit.desc}</p>
                                         </div>
                                     </div>
@@ -131,35 +131,35 @@ export default function PartnershipPage() {
                         </div>
 
                         {/* Right Content: Form */}
-                        <div className="glass-panel p-8 md:p-12 rounded-[40px] border border-white/5 shadow-2xl animate-fade-in-up">
+                        <div className="glass-panel p-8 md:p-12 rounded-xs border border-black/5 shadow-2xl animate-fade-in-up">
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="group">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Company Name</label>
+                                        <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Company Name</label>
                                         <div className="relative">
-                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20"><Building2 size={16} /></div>
+                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-black/20"><Building2 size={16} /></div>
                                             <input
                                                 required
                                                 type="text"
                                                 name="companyName"
                                                 value={formData.companyName}
                                                 onChange={handleChange}
-                                                className="w-full h-14 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl pl-14 pr-6 outline-none text-white transition-all font-bold tracking-widest placeholder:text-white/10"
+                                                className="w-full h-14 bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs pl-14 pr-6 outline-none text-text-primary transition-all font-bold tracking-widest placeholder:text-black/10"
                                                 placeholder="ENTER ORGANIZATION"
                                             />
                                         </div>
                                     </div>
                                     <div className="group">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Contact Protocol</label>
+                                        <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Contact Protocol</label>
                                         <div className="relative">
-                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20"><User size={16} /></div>
+                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-black/20"><User size={16} /></div>
                                             <input
                                                 required
                                                 type="text"
                                                 name="contactPerson"
                                                 value={formData.contactPerson}
                                                 onChange={handleChange}
-                                                className="w-full h-14 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl pl-14 pr-6 outline-none text-white transition-all font-bold tracking-widest placeholder:text-white/10"
+                                                className="w-full h-14 bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs pl-14 pr-6 outline-none text-text-primary transition-all font-bold tracking-widest placeholder:text-black/10"
                                                 placeholder="ENTER FULL NAME"
                                             />
                                         </div>
@@ -168,31 +168,31 @@ export default function PartnershipPage() {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="group">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Official Email</label>
+                                        <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Official Email</label>
                                         <div className="relative">
-                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20"><Mail size={16} /></div>
+                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-black/20"><Mail size={16} /></div>
                                             <input
                                                 required
                                                 type="email"
                                                 name="email"
                                                 value={formData.email}
                                                 onChange={handleChange}
-                                                className="w-full h-14 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl pl-14 pr-6 outline-none text-white transition-all font-bold tracking-widest placeholder:text-white/10"
+                                                className="w-full h-14 bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs pl-14 pr-6 outline-none text-text-primary transition-all font-bold tracking-widest placeholder:text-black/10"
                                                 placeholder="PARTNER@ORG.AFRICA"
                                             />
                                         </div>
                                     </div>
                                     <div className="group">
-                                        <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Contact Line</label>
+                                        <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Contact Line</label>
                                         <div className="relative">
-                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-white/20"><Phone size={16} /></div>
+                                            <div className="absolute left-6 top-1/2 -translate-y-1/2 text-black/20"><Phone size={16} /></div>
                                             <input
                                                 required
                                                 type="tel"
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleChange}
-                                                className="w-full h-14 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl pl-14 pr-6 outline-none text-white transition-all font-bold tracking-widest placeholder:text-white/10"
+                                                className="w-full h-14 bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs pl-14 pr-6 outline-none text-text-primary transition-all font-bold tracking-widest placeholder:text-black/10"
                                                 placeholder="+234 ..."
                                             />
                                         </div>
@@ -200,38 +200,38 @@ export default function PartnershipPage() {
                                 </div>
 
                                 <div className="group">
-                                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Partnership Tier</label>
+                                    <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Partnership Tier</label>
                                     <select
                                         required
                                         name="partnershipType"
                                         value={formData.partnershipType}
                                         onChange={handleChange}
-                                        className="w-full h-14 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl px-6 outline-none text-white transition-all font-black tracking-[0.2em] appearance-none uppercase"
+                                        className="w-full h-14 bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs px-6 outline-none text-text-primary transition-all font-black tracking-[0.2em] appearance-none uppercase"
                                     >
-                                        <option value="" className="bg-midnight-obsidian">Select Tier</option>
-                                        <option value="Platinum Sponsor" className="bg-midnight-obsidian">Platinum Partner</option>
-                                        <option value="Gold Sponsor" className="bg-midnight-obsidian">Gold Partner</option>
-                                        <option value="Silver Sponsor" className="bg-midnight-obsidian">Silver Partner</option>
-                                        <option value="Media Partner" className="bg-midnight-obsidian">Media Alliance</option>
-                                        <option value="Other" className="bg-midnight-obsidian">Strategic Other</option>
+                                        <option value="" className="bg-white">Select Tier</option>
+                                        <option value="Platinum Sponsor" className="bg-white">Platinum Partner</option>
+                                        <option value="Gold Sponsor" className="bg-white">Gold Partner</option>
+                                        <option value="Silver Sponsor" className="bg-white">Silver Partner</option>
+                                        <option value="Media Partner" className="bg-white">Media Alliance</option>
+                                        <option value="Other" className="bg-white">Strategic Other</option>
                                     </select>
                                 </div>
 
                                 <div className="group">
-                                    <label className="block text-[10px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">Strategic Message</label>
+                                    <label className="block text-[10px] font-black uppercase tracking-widest text-text-muted mb-3 ml-1">Strategic Message</label>
                                     <textarea
                                         required
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         rows="4"
-                                        className="w-full bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 rounded-2xl p-6 outline-none text-white transition-all font-bold tracking-widest placeholder:text-white/10 resize-none"
+                                        className="w-full bg-black/3 border-2 border-black/5 focus:border-primary-copper/30 rounded-xs p-6 outline-none text-text-primary transition-all font-bold tracking-widest placeholder:text-black/10 resize-none"
                                         placeholder="TELL US ABOUT YOUR PARTNERSHIP GOALS..."
                                     />
                                 </div>
 
                                 {status === 'error' && (
-                                    <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 flex items-center gap-4 animate-shake">
+                                    <div className="bg-red-500/10 border border-red-500/20 rounded-xs p-6 flex items-center gap-4 animate-shake">
                                         <AlertCircle size={20} className="text-red-400 flex-shrink-0" />
                                         <p className="text-red-200 text-xs font-black tracking-widest uppercase">{errorMessage}</p>
                                     </div>
@@ -268,8 +268,8 @@ export default function PartnershipPage() {
                     background-clip: text;
                 }
                 .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
+                    background: rgba(255, 255, 255, 0.7);
+                    backdrop-filter: blur(40px);
                     border: 1px solid rgba(255, 255, 255, 0.05);
                 }
             `}</style>

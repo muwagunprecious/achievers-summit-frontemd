@@ -82,7 +82,7 @@ export default function BookingManagement() {
                 <input
                     type="text"
                     placeholder="SEARCH ORGANIZATIONS..."
-                    className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-2xl pl-16 pr-6 outline-none text-white font-bold tracking-widest transition-all"
+                    className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-xs pl-16 pr-6 outline-none text-white font-bold tracking-widest transition-all"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -91,9 +91,9 @@ export default function BookingManagement() {
             {/* List */}
             <div className="grid grid-cols-1 gap-6">
                 {filteredBookings.length > 0 ? filteredBookings.map((booking) => (
-                    <div key={booking.id} className="glass-panel p-8 rounded-[40px] border border-white/5 hover:border-primary-copper/30 transition-all duration-500 flex flex-col lg:flex-row gap-10 items-center">
+                    <div key={booking.id} className="glass-panel p-8 rounded-xs border border-white/5 hover:border-primary-copper/30 transition-all duration-500 flex flex-col lg:flex-row gap-10 items-center">
                         <div className="flex items-center gap-6 flex-grow min-w-0 w-full lg:w-auto">
-                            <div className="w-16 h-16 rounded-[20px] bg-primary-copper flex items-center justify-center text-white shadow-lg shadow-primary-copper/20 flex-shrink-0">
+                            <div className="w-16 h-16 rounded-xs bg-primary-copper flex items-center justify-center text-white shadow-lg shadow-primary-copper/20 flex-shrink-0">
                                 <Building2 size={28} />
                             </div>
                             <div className="min-w-0">
@@ -126,7 +126,7 @@ export default function BookingManagement() {
                             </div>
                             <div>
                                 <p className="text-[9px] font-black text-text-muted uppercase tracking-widest mb-1.5">Current Phase</p>
-                                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg border ${getStatusStyle(booking.status)}`}>
+                                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-xs border ${getStatusStyle(booking.status)}`}>
                                     <div className={`w-1.5 h-1.5 rounded-full ${booking.status === 'Approved' ? 'bg-green-500' :
                                             booking.status === 'Contacted' ? 'bg-blue-500' :
                                                 booking.status === 'Rejected' ? 'bg-red-500' :
@@ -137,39 +137,26 @@ export default function BookingManagement() {
                             </div>
                             <div className="flex items-center justify-end">
                                 <div className="relative group/menu">
-                                    <button className="w-12 h-12 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-text-muted hover:text-white transition-all">
+                                    <button className="w-12 h-12 rounded-xs bg-white/5 border border-white/5 flex items-center justify-center text-text-muted hover:text-white transition-all">
                                         <MoreHorizontal size={20} />
                                     </button>
-                                    <div className="absolute right-0 top-full mt-2 w-48 bg-midnight-black border border-white/10 rounded-2xl shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:pointer-events-auto transition-all z-50 p-2 space-y-1">
-                                        <button onClick={() => updateStatus(booking.id, 'Pending')} className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-yellow-500">Mark Pending</button>
-                                        <button onClick={() => updateStatus(booking.id, 'Contacted')} className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-blue-400">Mark Contacted</button>
-                                        <button onClick={() => updateStatus(booking.id, 'Approved')} className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-green-400">Mark Approved</button>
-                                        <button onClick={() => updateStatus(booking.id, 'Rejected')} className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-red-400">Mark Rejected</button>
+                                    <div className="absolute right-0 top-full mt-2 w-48 bg-midnight-black border border-white/10 rounded-xs shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover/menu:opacity-100 group-hover/menu:translate-y-0 group-hover/menu:pointer-events-auto transition-all z-50 p-2 space-y-1">
+                                        <button onClick={() => updateStatus(booking.id, 'Pending')} className="w-full text-left px-4 py-3 rounded-xs hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-yellow-500">Mark Pending</button>
+                                        <button onClick={() => updateStatus(booking.id, 'Contacted')} className="w-full text-left px-4 py-3 rounded-xs hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-blue-400">Mark Contacted</button>
+                                        <button onClick={() => updateStatus(booking.id, 'Approved')} className="w-full text-left px-4 py-3 rounded-xs hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-green-400">Mark Approved</button>
+                                        <button onClick={() => updateStatus(booking.id, 'Rejected')} className="w-full text-left px-4 py-3 rounded-xs hover:bg-white/5 text-[9px] font-black uppercase tracking-widest text-red-400">Mark Rejected</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )) : (
-                    <div className="glass-panel p-20 rounded-[40px] border border-white/5 text-center opacity-50">
+                    <div className="glass-panel p-20 rounded-xs border border-white/5 text-center opacity-50">
                         <Building2 size={48} className="mx-auto mb-6 text-text-muted" />
                         <p className="text-sm font-bold text-text-muted uppercase tracking-[0.4em]">NO EXHIBITION REQUESTS IN PROTOCOL.</p>
                     </div>
                 )}
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(24px);
-                }
-                .text-gradient {
-                    background: linear-gradient(135deg, var(--primary-copper) 0%, var(--primary-gold) 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-            `}</style>
-        </div>
+</div>
     );
 }

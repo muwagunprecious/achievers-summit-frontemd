@@ -12,7 +12,7 @@ import {
 
 export default function DashboardCharts({ data }) {
     return (
-        <div className="lg:col-span-2 glass-panel rounded-3xl p-8 border border-white/5 flex flex-col">
+        <div className="lg:col-span-2 glass-panel rounded-xs p-8 border border-black/5 flex flex-col">
             <div className="flex justify-between items-center mb-6">
                 <h3 className="text-text-muted text-xs font-bold uppercase tracking-wider">Voting Trends (Last 7 Days)</h3>
                 <div className="flex gap-2">
@@ -42,9 +42,9 @@ export default function DashboardCharts({ data }) {
                             tickFormatter={(value) => `${value}`}
                         />
                         <Tooltip
-                            contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid #333', borderRadius: '12px' }}
-                            itemStyle={{ color: '#fff' }}
-                            cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                            contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e5e5e5', borderRadius: '12px' }}
+                            itemStyle={{ color: '#1A1A1A' }}
+                            cursor={{ fill: 'rgba(0,0,0,0.03)' }}
                         />
                         <Bar
                             dataKey="votes"

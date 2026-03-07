@@ -84,10 +84,10 @@ export default function WhyAttendPage() {
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
                         {benefits.map((benefit, i) => (
-                            <div key={i} className="glass-panel p-10 md:p-16 rounded-[48px] border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group relative overflow-hidden">
+                            <div key={i} className="glass-panel p-10 md:p-16 rounded-xs border border-white/5 hover:border-primary-copper/30 transition-all duration-500 group relative overflow-hidden">
                                 <div className="absolute top-0 left-0 w-24 h-24 bg-primary-copper/5 rounded-br-[48px] -translate-x-12 -translate-y-12 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700"></div>
                                 <div className="flex flex-col md:flex-row gap-10 items-start relative z-10 text-center md:text-left items-center md:items-start">
-                                    <div className="flex-shrink-0 w-20 h-20 bg-white/5 rounded-3xl flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-2xl">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white/5 rounded-xs flex items-center justify-center text-primary-copper border border-white/10 group-hover:scale-110 group-hover:bg-primary-copper group-hover:text-white transition-all duration-500 shadow-2xl">
                                         {React.cloneElement(benefit.icon, { size: 36 })}
                                     </div>
                                     <div className="space-y-4">
@@ -121,19 +121,6 @@ export default function WhyAttendPage() {
             </section>
 
             <Footer />
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(40px);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                }
-                .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            `}</style>
-        </main>
+</main>
     );
 }

@@ -47,7 +47,7 @@ export default async function NomineesPage({ searchParams }) {
             </div>
 
             {/* List */}
-            <div className="glass-panel rounded-2xl border border-white/5 overflow-hidden">
+            <div className="glass-panel rounded-xs border border-white/5 overflow-hidden">
                 <div className="p-6 border-b border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
                     <h3 className="text-lg font-bold text-white">All Submissions</h3>
                     <div className="flex items-center gap-2">
@@ -127,19 +127,19 @@ export default async function NomineesPage({ searchParams }) {
                                             {nom.status === 'PENDING' && (
                                                 <>
                                                     <form action={approveNomination.bind(null, nom.id)}>
-                                                        <button type="submit" className="p-2 bg-green-500/10 hover:bg-green-500/20 rounded-lg text-green-500 transition-colors" title="Approve">
+                                                        <button type="submit" className="p-2 bg-green-500/10 hover:bg-green-500/20 rounded-xs text-green-500 transition-colors" title="Approve">
                                                             <CheckCircle size={16} />
                                                         </button>
                                                     </form>
                                                     <form action={rejectNomination.bind(null, nom.id)}>
-                                                        <button type="submit" className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-lg text-red-500 transition-colors" title="Reject">
+                                                        <button type="submit" className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-xs text-red-500 transition-colors" title="Reject">
                                                             <XCircle size={16} />
                                                         </button>
                                                     </form>
                                                 </>
                                             )}
                                             <form action={deleteNomination.bind(null, nom.id)}>
-                                                <button type="submit" className="p-2 hover:bg-white/10 rounded-lg text-text-muted hover:text-white transition-colors" title="Delete">
+                                                <button type="submit" className="p-2 hover:bg-white/10 rounded-xs text-text-muted hover:text-white transition-colors" title="Delete">
                                                     <Trash size={16} />
                                                 </button>
                                             </form>

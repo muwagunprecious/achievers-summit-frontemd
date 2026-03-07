@@ -51,23 +51,23 @@ export default function PartnershipModal({ onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-            <div className="relative w-full max-w-2xl bg-midnight-obsidian rounded-3xl border border-white/10 shadow-2xl overflow-hidden animate-slide-up">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/30 backdrop-blur-md animate-fade-in">
+            <div className="relative w-full max-w-2xl bg-white rounded-xs border border-black/10 shadow-2xl overflow-hidden animate-slide-up">
 
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition-all group"
+                    className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/5 border border-black/10 hover:bg-black/10 transition-all group"
                 >
-                    <X size={20} className="text-white transition-colors" />
+                    <X size={20} className="text-text-primary transition-colors" />
                 </button>
 
                 {/* Header */}
-                <div className="bg-gradient-to-br from-primary-copper/20 to-transparent p-10 border-b border-white/5">
+                <div className="bg-gradient-to-br from-primary-copper/20 to-transparent p-10 border-b border-black/5">
                     <div className="inline-block px-4 py-1.5 rounded-full bg-primary-copper/10 border border-primary-copper/20 text-primary-copper font-black text-[9px] tracking-[0.3em] uppercase mb-4">
                         Strategic Alliance
                     </div>
-                    <h2 className="text-4xl font-black italic text-white mb-2">
+                    <h2 className="text-4xl font-black italic text-text-primary mb-2">
                         Partner <span className="text-gradient NOT-italic">with Us.</span>
                     </h2>
                     <p className="text-text-muted text-sm font-light">
@@ -80,14 +80,14 @@ export default function PartnershipModal({ onClose }) {
                     {status === 'success' ? (
                         <div className="text-center py-12">
                             <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                            <h3 className="text-2xl font-black text-white mb-2">Request Submitted!</h3>
+                            <h3 className="text-2xl font-black text-text-primary mb-2">Request Submitted!</h3>
                             <p className="text-text-muted">Our team will contact you shortly.</p>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                    <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                         Company Name *
                                     </label>
                                     <input
@@ -96,13 +96,13 @@ export default function PartnershipModal({ onClose }) {
                                         value={formData.companyName}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-primary-copper focus:outline-none transition-all"
+                                        className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary placeholder-black/30 focus:border-primary-copper focus:outline-none transition-all"
                                         placeholder="Your Company"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                    <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                         Contact Person *
                                     </label>
                                     <input
@@ -111,13 +111,13 @@ export default function PartnershipModal({ onClose }) {
                                         value={formData.contactPerson}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-primary-copper focus:outline-none transition-all"
+                                        className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary placeholder-black/30 focus:border-primary-copper focus:outline-none transition-all"
                                         placeholder="Full Name"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                    <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                         Email Address *
                                     </label>
                                     <input
@@ -126,13 +126,13 @@ export default function PartnershipModal({ onClose }) {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-primary-copper focus:outline-none transition-all"
+                                        className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary placeholder-black/30 focus:border-primary-copper focus:outline-none transition-all"
                                         placeholder="contact@company.com"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                    <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                         Phone Number *
                                     </label>
                                     <input
@@ -141,14 +141,14 @@ export default function PartnershipModal({ onClose }) {
                                         value={formData.phone}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-primary-copper focus:outline-none transition-all"
+                                        className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary placeholder-black/30 focus:border-primary-copper focus:outline-none transition-all"
                                         placeholder="+234 000 000 0000"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                     Partnership Type *
                                 </label>
                                 <select
@@ -156,20 +156,20 @@ export default function PartnershipModal({ onClose }) {
                                     value={formData.partnershipType}
                                     onChange={handleChange}
                                     required
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary-copper focus:outline-none transition-all"
+                                    className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary focus:border-primary-copper focus:outline-none transition-all"
                                 >
-                                    <option value="" className="bg-midnight-obsidian">Select partnership type</option>
-                                    <option value="Platinum Sponsor" className="bg-midnight-obsidian">Platinum Sponsor</option>
-                                    <option value="Gold Sponsor" className="bg-midnight-obsidian">Gold Sponsor</option>
-                                    <option value="Silver Sponsor" className="bg-midnight-obsidian">Silver Sponsor</option>
-                                    <option value="Media Partner" className="bg-midnight-obsidian">Media Partner</option>
-                                    <option value="Technology Partner" className="bg-midnight-obsidian">Technology Partner</option>
-                                    <option value="Other" className="bg-midnight-obsidian">Other</option>
+                                    <option value="" className="bg-white">Select partnership type</option>
+                                    <option value="Platinum Sponsor" className="bg-white">Platinum Sponsor</option>
+                                    <option value="Gold Sponsor" className="bg-white">Gold Sponsor</option>
+                                    <option value="Silver Sponsor" className="bg-white">Silver Sponsor</option>
+                                    <option value="Media Partner" className="bg-white">Media Partner</option>
+                                    <option value="Technology Partner" className="bg-white">Technology Partner</option>
+                                    <option value="Other" className="bg-white">Other</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label className="block text-xs font-black uppercase tracking-widest text-white/80 mb-2">
+                                <label className="block text-xs font-black uppercase tracking-widest text-text-primary/80 mb-2">
                                     Message *
                                 </label>
                                 <textarea
@@ -178,13 +178,13 @@ export default function PartnershipModal({ onClose }) {
                                     onChange={handleChange}
                                     required
                                     rows="4"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:border-primary-copper focus:outline-none transition-all resize-none"
+                                    className="w-full bg-black/3 border border-black/10 rounded-xs px-4 py-3 text-text-primary placeholder-black/30 focus:border-primary-copper focus:outline-none transition-all resize-none"
                                     placeholder="Tell us about your partnership goals..."
                                 />
                             </div>
 
                             {status === 'error' && (
-                                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex items-center gap-3">
+                                <div className="bg-red-500/10 border border-red-500/20 rounded-xs p-4 flex items-center gap-3">
                                     <AlertCircle size={20} className="text-red-400 flex-shrink-0" />
                                     <p className="text-red-200 text-sm">{errorMessage}</p>
                                 </div>
@@ -193,15 +193,15 @@ export default function PartnershipModal({ onClose }) {
                             <button
                                 type="submit"
                                 disabled={status === 'submitting'}
-                                className="w-full btn btn-primary !py-4 !text-xs tracking-[0.4em] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                                className="btn btn-primary w-full h-14 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {status === 'submitting' ? (
                                     <>
                                         <Loader2 size={16} className="animate-spin" />
-                                        <span>SUBMITTING...</span>
+                                        <span>Submitting...</span>
                                     </>
                                 ) : (
-                                    <span>SUBMIT REQUEST</span>
+                                    <span>Submit Request</span>
                                 )}
                             </button>
                         </form>

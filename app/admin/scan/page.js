@@ -78,8 +78,8 @@ export default function QRScanPage() {
     return (
         <div className="min-h-screen bg-black flex flex-col relative overflow-hidden">
             {/* Header */}
-            <div className="p-6 flex items-center justify-between relative z-10 glass-panel border-b border-white/10">
-                <Link href="/admin/dashboard/tickets" className="flex items-center gap-2 text-text-muted hover:text-white transition-colors">
+            <div className="p-6 flex items-center justify-between relative z-10 glass-panel border-b border-black/10">
+                <Link href="/admin/dashboard/tickets" className="flex items-center gap-2 text-text-muted hover:text-text-primary transition-colors">
                     <ArrowLeft size={20} />
                     <span className="font-bold text-sm tracking-widest">EXIT SCANNER</span>
                 </Link>
@@ -95,10 +95,10 @@ export default function QRScanPage() {
                 {!scanResult ? (
                     <div className="w-full max-w-md space-y-8">
                         {/* Scanner Area */}
-                        <div className="aspect-square bg-gray-900 rounded-3xl border-2 border-primary-copper/30 relative overflow-hidden shadow-[0_0_100px_rgba(210,164,120,0.1)]">
+                        <div className="aspect-square bg-gray-900 rounded-xs border-2 border-primary-copper/30 relative overflow-hidden shadow-[0_0_100px_rgba(210,164,120,0.1)]">
                             {/* Mock Scanner Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-64 h-64 border-2 border-primary-copper/50 rounded-3xl relative">
+                                <div className="w-64 h-64 border-2 border-primary-copper/50 rounded-xs relative">
                                     <div className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-primary-copper -mt-1 -ml-1"></div>
                                     <div className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-primary-copper -mt-1 -mr-1"></div>
                                     <div className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-primary-copper -mb-1 -ml-1"></div>
@@ -137,19 +137,19 @@ export default function QRScanPage() {
                         <form onSubmit={handleManualSubmit} className="relative">
                             <input
                                 type="text"
-                                className="w-full h-14 bg-white/10 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-6 pr-14 outline-none text-white font-mono tracking-wider transition-all"
+                                className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs pl-6 pr-14 outline-none text-text-primary font-mono tracking-wider transition-all"
                                 placeholder="ENTER TICKET ID MANUALLY"
                                 value={manualCode}
                                 onChange={(e) => setManualCode(e.target.value)}
                             />
-                            <button type="submit" className="absolute right-2 top-2 w-10 h-10 bg-primary-copper text-white rounded-lg flex items-center justify-center hover:bg-primary-copper/80 transition-colors">
+                            <button type="submit" className="absolute right-2 top-2 w-10 h-10 bg-primary-copper text-white rounded-xs flex items-center justify-center hover:bg-primary-copper/80 transition-colors">
                                 <Search size={18} />
                             </button>
                         </form>
                     </div>
                 ) : (
                     /* Result Card */
-                    <div className="w-full max-w-md glass-panel p-8 rounded-[40px] border border-white/10 text-center animate-fade-in-up">
+                    <div className="w-full max-w-md glass-panel p-8 rounded-xs border border-black/10 text-center animate-fade-in-up">
                         <div className={`w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center border-4 ${scanResult.status === 'VALID' ? 'bg-green-500/10 border-green-500 text-green-500' :
                             scanResult.status === 'USED' ? 'bg-blue-500/10 border-blue-500 text-blue-500' :
                                 'bg-red-500/10 border-red-500 text-red-500'
@@ -172,10 +172,10 @@ export default function QRScanPage() {
                                     'Access Denied'}
                         </p>
 
-                        <div className="bg-white/5 rounded-2xl p-6 text-left space-y-4 mb-8">
+                        <div className="bg-black/3 rounded-xs p-6 text-left space-y-4 mb-8">
                             <div>
                                 <p className="text-[10px] text-text-muted font-bold uppercase tracking-widest mb-1">Attendee Name</p>
-                                <p className="text-lg font-bold text-white">{scanResult.name}</p>
+                                <p className="text-lg font-bold text-text-primary">{scanResult.name}</p>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
@@ -191,7 +191,7 @@ export default function QRScanPage() {
 
                         <button
                             onClick={resetScan}
-                            className="btn btn-primary w-full h-14 rounded-xl font-bold tracking-widest uppercase flex items-center justify-center gap-2"
+                            className="btn btn-primary w-full h-14 rounded-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2"
                         >
                             <QrCode size={18} />
                             SCAN NEXT
@@ -199,18 +199,6 @@ export default function QRScanPage() {
                     </div>
                 )}
             </div>
-
-            <style jsx>{`
-                @keyframes scan-line {
-                    0% { top: 0%; opacity: 0; }
-                    5% { opacity: 1; }
-                    95% { opacity: 1; }
-                    100% { top: 100%; opacity: 0; }
-                }
-                .animate-scan-line {
-                    animation: scan-line 2s linear infinite;
-                }
-            `}</style>
-        </div>
+</div>
     );
 }

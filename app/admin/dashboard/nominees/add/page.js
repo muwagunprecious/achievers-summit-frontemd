@@ -38,7 +38,7 @@ export default function AddNomineePage() {
         <div className="max-w-4xl mx-auto space-y-6">
             {/* Header */}
             <div className="flex items-center gap-4">
-                <Link href="/admin/dashboard/nominees" className="p-2 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                <Link href="/admin/dashboard/nominees" className="p-2 bg-white/5 rounded-xs hover:bg-white/10 transition-colors">
                     <ArrowLeft size={20} className="text-white" />
                 </Link>
                 <div>
@@ -48,7 +48,7 @@ export default function AddNomineePage() {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="glass-panel p-8 rounded-3xl border border-white/5 space-y-8">
+            <form onSubmit={handleSubmit} className="glass-panel p-8 rounded-xs border border-white/5 space-y-8">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Basic Info */}
@@ -62,7 +62,7 @@ export default function AddNomineePage() {
                                 <input
                                     required
                                     type="text"
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                     placeholder="e.g. John Doe"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -78,7 +78,7 @@ export default function AddNomineePage() {
                                 </div>
                                 <select
                                     required
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all appearance-none cursor-pointer"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all appearance-none cursor-pointer"
                                     value={formData.category}
                                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                                 >
@@ -98,7 +98,7 @@ export default function AddNomineePage() {
                                 </div>
                                 <input
                                     type="url"
-                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 outline-none text-white transition-all"
+                                    className="w-full h-12 bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 outline-none text-white transition-all"
                                     placeholder="https://..."
                                     value={formData.photo}
                                     onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
@@ -117,7 +117,7 @@ export default function AddNomineePage() {
                                 </div>
                                 <textarea
                                     required
-                                    className="w-full h-full min-h-[200px] bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xl pl-12 pr-4 py-4 outline-none text-white transition-all resize-none"
+                                    className="w-full h-full min-h-[200px] bg-white/5 border border-white/10 focus:border-primary-copper/50 rounded-xs pl-12 pr-4 py-4 outline-none text-white transition-all resize-none"
                                     placeholder="Describe why this person is nominated..."
                                     value={formData.achievements}
                                     onChange={(e) => setFormData({ ...formData, achievements: e.target.value })}
@@ -132,7 +132,7 @@ export default function AddNomineePage() {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="btn btn-primary px-8 py-3 flex items-center gap-2 rounded-xl"
+                        className="btn btn-primary px-8 py-3 flex items-center gap-2 rounded-xs"
                     >
                         {isLoading ? 'SAVING...' : (
                             <>

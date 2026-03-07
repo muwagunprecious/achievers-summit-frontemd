@@ -39,11 +39,11 @@ export default function AnnouncementPopup() {
     if (!isVisible || !popup) return null;
 
     return (
-        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-            <div className="bg-midnight-black border-2 border-primary-copper/30 rounded-[32px] p-8 max-w-md w-full relative shadow-[0_0_80px_rgba(210,164,120,0.3)] animate-scale-in">
+        <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/30 backdrop-blur-sm animate-fade-in">
+            <div className="bg-white border-2 border-primary-copper/20 rounded-xs p-8 max-w-md w-full relative shadow-[0_0_80px_rgba(120,58,40,0.1)] animate-scale-in">
                 <button
                     onClick={handleClose}
-                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white/5 hover:bg-white/10 rounded-full transition-all text-white border border-white/10"
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-black/5 hover:bg-black/10 rounded-full transition-all text-text-primary border border-black/10"
                 >
                     <X size={16} />
                 </button>
@@ -52,7 +52,7 @@ export default function AnnouncementPopup() {
                     <div className="w-10 h-10 bg-primary-copper/10 rounded-full flex items-center justify-center">
                         <Bell className="text-primary-copper" size={20} />
                     </div>
-                    <h3 className="text-xl font-black text-white uppercase italic tracking-tight">{popup.title}</h3>
+                    <h3 className="text-xl font-black text-text-primary uppercase italic tracking-tight">{popup.title}</h3>
                 </div>
 
                 <p className="text-text-muted leading-relaxed mb-6 whitespace-pre-line">
@@ -62,7 +62,7 @@ export default function AnnouncementPopup() {
                 {popup.ctaText && popup.ctaLink && (
                     <a
                         href={popup.ctaLink}
-                        className="btn btn-primary w-full h-12 flex items-center justify-center font-bold uppercase tracking-wider text-sm"
+                        className="btn btn-primary w-full"
                     >
                         {popup.ctaText}
                     </a>

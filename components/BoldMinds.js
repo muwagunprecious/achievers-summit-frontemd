@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function BoldMinds() {
     return (
-        <section className="relative w-full overflow-hidden bg-midnight-black">
+        <section className="relative w-full overflow-hidden bg-white">
             {/* Background Image Container */}
             <div className="relative w-full h-[600px] md:h-[850px]">
                 <img
@@ -14,9 +14,9 @@ export default function BoldMinds() {
                 />
 
                 {/* Floating White Card */}
-                <div className="absolute top-10 right-4 w-[90%] glass-panel p-12 shadow-2xl rounded-sm animate-fade-in-up min-h-[400px] flex flex-col justify-center lg:right-[10%] lg:w-[450px]">
+                <div className="absolute top-10 right-4 w-[90%] glass-panel p-12 shadow-2xl rounded-xs animate-fade-in-up min-h-[400px] flex flex-col justify-center lg:right-[10%] lg:w-[450px]">
                     <div className="w-12 h-0.5 bg-primary-copper mb-8"></div>
-                    <h2 className="text-4xl font-heading text-white mb-6 font-medium uppercase italic">
+                    <h2 className="text-4xl font-heading text-text-primary mb-6 font-medium uppercase italic">
                         Bold minds
                     </h2>
                     <p className="text-text-secondary text-xl leading-relaxed font-medium">

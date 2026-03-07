@@ -71,13 +71,13 @@ export default async function DelegateManagement() {
                     <input
                         type="text"
                         placeholder="SEARCH BY NAME OR EMAIL..."
-                        className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-2xl pl-16 pr-6 outline-none text-white font-bold tracking-widest transition-all"
+                        className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-xs pl-16 pr-6 outline-none text-white font-bold tracking-widest transition-all"
                     />
                 </div>
                 <div className="relative group">
                     <Filter size={18} className="absolute left-6 top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary-copper transition-colors" />
                     <select
-                        className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-2xl pl-16 pr-6 outline-none text-white font-black text-xs uppercase tracking-widest appearance-none cursor-pointer"
+                        className="w-full h-16 bg-white/5 border-2 border-white/5 focus:border-primary-copper/30 focus:bg-white/10 rounded-xs pl-16 pr-6 outline-none text-white font-black text-xs uppercase tracking-widest appearance-none cursor-pointer"
                         defaultValue="All"
                     >
                         <option value="All" className="bg-midnight-obsidian">ALL TIERS</option>
@@ -89,7 +89,7 @@ export default async function DelegateManagement() {
             </div>
 
             {/* Table */}
-            <div className="glass-panel rounded-[40px] border border-white/5 overflow-hidden">
+            <div className="glass-panel rounded-xs border border-white/5 overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left">
                         <thead>
@@ -106,7 +106,7 @@ export default async function DelegateManagement() {
                                 <tr key={i} className="hover:bg-white/2 transition-colors group">
                                     <td className="px-10 py-8">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-text-muted group-hover:bg-primary-copper group-hover:text-white transition-all">
+                                            <div className="w-10 h-10 rounded-xs bg-white/5 flex items-center justify-center text-text-muted group-hover:bg-primary-copper group-hover:text-white transition-all">
                                                 <User size={18} />
                                             </div>
                                             <div>

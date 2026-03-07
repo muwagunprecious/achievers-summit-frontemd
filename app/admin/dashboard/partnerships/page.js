@@ -79,7 +79,7 @@ export default function PartnershipsPage() {
                     <button
                         key={status}
                         onClick={() => setFilter(status === 'all' ? 'all' : status)}
-                        className={`px-4 py-2 rounded-lg text-xs font-black uppercase tracking-wider transition-all ${filter === (status === 'all' ? 'all' : status)
+                        className={`px-4 py-2 rounded-xs text-xs font-black uppercase tracking-wider transition-all ${filter === (status === 'all' ? 'all' : status)
                             ? 'bg-primary-copper text-white'
                             : 'bg-white/5 text-white/60 hover:bg-white/10'
                             }`}
@@ -92,14 +92,14 @@ export default function PartnershipsPage() {
             {/* Partnerships Grid */}
             <div className="grid grid-cols-1 gap-6">
                 {filteredPartnerships.length === 0 ? (
-                    <div className="text-center py-12 bg-white/5 rounded-2xl border border-white/10">
+                    <div className="text-center py-12 bg-white/5 rounded-xs border border-white/10">
                         <p className="text-text-muted">No partnership requests found</p>
                     </div>
                 ) : (
                     filteredPartnerships.map((partnership) => (
                         <div
                             key={partnership.id}
-                            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary-copper/30 transition-all"
+                            className="bg-white/5 border border-white/10 rounded-xs p-6 hover:border-primary-copper/30 transition-all"
                         >
                             <div className="flex justify-between items-start mb-4">
                                 <div>
@@ -130,7 +130,7 @@ export default function PartnershipsPage() {
                                 </div>
                             </div>
 
-                            <div className="bg-white/5 rounded-lg p-4 mb-4">
+                            <div className="bg-white/5 rounded-xs p-4 mb-4">
                                 <div className="flex items-start gap-2 mb-2">
                                     <FileText size={16} className="text-primary-copper mt-1" />
                                     <span className="text-xs font-black uppercase tracking-wider text-white/60">Message</span>
@@ -142,7 +142,7 @@ export default function PartnershipsPage() {
                                 <button
                                     onClick={() => handleStatusUpdate(partnership.id, 'Approved')}
                                     disabled={partnership.status === 'Approved'}
-                                    className={`flex-1 h-12 rounded-xl border flex items-center justify-center gap-2 text-xs font-black uppercase tracking-wider transition-all ${partnership.status === 'Approved'
+                                    className={`flex-1 h-12 rounded-xs border flex items-center justify-center gap-2 text-xs font-black uppercase tracking-wider transition-all ${partnership.status === 'Approved'
                                         ? 'bg-green-500/10 border-green-500/20 text-green-500/50 cursor-not-allowed'
                                         : 'bg-green-500/5 border-green-500/20 text-green-500 hover:bg-green-500 hover:text-white'
                                         }`}
@@ -152,7 +152,7 @@ export default function PartnershipsPage() {
                                 <button
                                     onClick={() => handleStatusUpdate(partnership.id, 'Rejected')}
                                     disabled={partnership.status === 'Rejected'}
-                                    className={`flex-1 h-12 rounded-xl border flex items-center justify-center gap-2 text-xs font-black uppercase tracking-wider transition-all ${partnership.status === 'Rejected'
+                                    className={`flex-1 h-12 rounded-xs border flex items-center justify-center gap-2 text-xs font-black uppercase tracking-wider transition-all ${partnership.status === 'Rejected'
                                         ? 'bg-red-500/10 border-red-500/20 text-red-500/50 cursor-not-allowed'
                                         : 'bg-red-500/5 border-red-500/20 text-red-500 hover:bg-red-500 hover:text-white'
                                         }`}
@@ -164,15 +164,6 @@ export default function PartnershipsPage() {
                     ))
                 )}
             </div>
-
-            <style jsx>{`
-                .text-gradient {
-                    background: linear-gradient(135deg, var(--primary-copper) 0%, var(--primary-gold) 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-            `}</style>
-        </div>
+</div>
     );
 }
