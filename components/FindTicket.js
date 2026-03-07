@@ -1,13 +1,29 @@
 "use client";
-import React, { useState } from 'react';
-import { Search, AlertCircle, Fingerprint, Loader2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Search, AlertCircle, Loader2 } from 'lucide-react';
 import TicketResult from './TicketResult';
+
+function useReveal() {
+    const ref = useRef(null);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => { if (entry.isIntersecting) { el.classList.add('visible'); observer.unobserve(el); } },
+            { threshold: 0.15 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+    return ref;
+}
 
 export default function FindTicket() {
     const [searchName, setSearchName] = useState('');
     const [foundTicket, setFoundTicket] = useState(null);
     const [error, setError] = useState('');
     const [isSearching, setIsSearching] = useState(false);
+    const ref = useReveal();
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -21,11 +37,11 @@ export default function FindTicket() {
             if (response.ok) {
                 setFoundTicket(data);
             } else {
-                setError(data.error || "No registration record matches this name.");
+                setError(data.error || "No ticket found for this name.");
             }
         } catch (err) {
             console.error("Search Error:", err);
-            setError("Authentication protocol failure. Please try again.");
+            setError("Something went wrong. Please try again.");
         } finally {
             setIsSearching(false);
         }
@@ -36,82 +52,48 @@ export default function FindTicket() {
     }
 
     return (
-        <section id="find-ticket" className="section bg-white relative overflow-hidden">
-            {/* Soft Ambient Light */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-copper/5 rounded-full blur-[200px] pointer-events-none"></div>
+        <section id="find-ticket" className="section bg-surface-alt">
+            <div ref={ref} className="reveal max-w-[600px] mx-auto px-6 lg:px-16 text-center">
+                <p className="section-label justify-center">Find your ticket</p>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text mb-4">
+                    Already registered?
+                </h2>
+                <p className="text-text-secondary text-lg mb-10">
+                    Enter your full name to retrieve your ticket and download your delegate pass.
+                </p>
 
-            <div className="container relative z-10">
-                <div className="max-w-4xl mx-auto text-center">
-                    <div className="inline-flex w-24 h-24 glass-panel items-center justify-center mb-12 shadow-2xl border border-black/5 text-primary-copper">
-                        <Search size={40} strokeWidth={2.5} />
+                <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 mb-6">
+                    <input
+                        type="text"
+                        placeholder="Full name"
+                        className="flex-grow h-12 px-4 rounded-sm bg-white border border-border text-text placeholder:text-text-muted focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/20 transition-all text-sm"
+                        value={searchName}
+                        onChange={(e) => setSearchName(e.target.value)}
+                        required
+                    />
+                    <button
+                        type="submit"
+                        disabled={isSearching}
+                        className="btn bg-brand text-white hover:bg-brand-dark border-brand hover:border-brand-dark h-12 px-6 disabled:opacity-50"
+                    >
+                        {isSearching ? (
+                            <Loader2 size={16} className="animate-spin" />
+                        ) : (
+                            <>
+                                <Search size={15} />
+                                Search
+                            </>
+                        )}
+                    </button>
+                </form>
+
+                {error && (
+                    <div className="flex items-center justify-center gap-2 text-red-600 text-sm bg-red-50 border border-red-100 rounded-sm p-4 animate-fade-in">
+                        <AlertCircle size={16} />
+                        <span>{error}</span>
                     </div>
-
-                    <h2 className="text-5xl md:text-7xl mb-8 font-black uppercase italic tracking-tighter">
-                        Recover Your <span className="text-gradient font-black NOT-italic">Credentials.</span>
-                    </h2>
-                    <p className="text-text-secondary text-xl mb-16 font-light max-w-2xl mx-auto">
-                        Verify your registration to retrieve your high-security digital delegate pass or print-ready high-resolution documentation.
-                    </p>
-
-                    <div className="max-w-2xl mx-auto glass-panel p-3 rounded-xs border border-black/5 mb-14">
-                        <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-2">
-                            <div className="flex-grow relative">
-                                <input
-                                    type="text"
-                                    placeholder="Enter Registered Full Name"
-                                    className="w-full h-16 pl-8 pr-4 rounded-xs bg-black/3 border border-transparent focus:border-primary-copper/30 outline-none transition-all text-lg font-bold text-text-primary placeholder:font-medium placeholder:text-text-muted/40 uppercase tracking-widest"
-                                    value={searchName}
-                                    onChange={(e) => setSearchName(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                disabled={isSearching}
-                                className="btn btn-primary h-14 px-8 disabled:opacity-50"
-                            >
-                                {isSearching ? (
-                                    <>
-                                        <Loader2 size={16} className="animate-spin" />
-                                        <span>Verifying...</span>
-                                    </>
-                                ) : (
-                                    'Retrieve Pass'
-                                )}
-                            </button>
-                        </form>
-                    </div>
-
-                    {error && (
-                        <div className="flex items-center justify-center gap-3 text-red-400 mb-14 animate-fade-in bg-red-500/5 p-5 rounded-xs border border-red-500/20 max-w-xl mx-auto backdrop-blur-xl">
-                            <AlertCircle size={22} />
-                            <span className="text-sm font-black uppercase tracking-widest">{error}</span>
-                        </div>
-                    )}
-
-                    <div className="flex items-center justify-center gap-6 py-10 border-t border-black/10 max-w-xl mx-auto">
-                        <div className="w-12 h-12 rounded-xs glass-panel flex items-center justify-center text-primary-copper border border-black/5">
-                            <Fingerprint size={24} />
-                        </div>
-                        <div className="text-left">
-                            <strong className="text-primary-copper uppercase tracking-[0.3em] text-[10px] block mb-2 font-black">Secure Authentication</strong>
-                            <p className="text-[11px] text-text-muted font-medium leading-relaxed max-w-md">
-                                Session data is encrypted and processed locally. Your registration integrity is maintained through our zero-knowledge retrieval protocol.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                )}
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.7);
-                    backdrop-filter: blur(24px);
-                    border: 1px solid rgba(0, 0, 0, 0.05);
-                    border-radius: 40px;
-                }
-                .text-primary-copper { color: var(--primary-copper); }
-            `}</style>
         </section>
     );
 }

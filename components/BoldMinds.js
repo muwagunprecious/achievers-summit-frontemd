@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function BoldMinds() {
@@ -7,10 +8,13 @@ export default function BoldMinds() {
         <section className="relative w-full overflow-hidden bg-white">
             {/* Background Image Container */}
             <div className="relative w-full h-[600px] md:h-[850px]">
-                <img
-                    src="/images/banner.jpeg"
+                <Image
+                    src="/images/past-edition/img_1449.jpeg"
                     alt="Auditorium"
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                    loading="lazy"
                 />
 
                 {/* Floating White Card */}

@@ -1,121 +1,136 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { ArrowRight, MapPin, Calendar, ChevronDown } from 'lucide-react';
+
+function useCountdown(targetDate) {
+    const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    useEffect(() => {
+        const tick = () => {
+            const diff = new Date(targetDate) - new Date();
+            if (diff <= 0) return;
+            setTime({
+                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((diff / (1000 * 60)) % 60),
+                seconds: Math.floor((diff / 1000) % 60),
+            });
+        };
+        tick();
+        const id = setInterval(tick, 1000);
+        return () => clearInterval(id);
+    }, [targetDate]);
+    return time;
+}
 
 export default function Hero() {
+    const countdown = useCountdown('2026-08-12T09:00:00');
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => setScrollY(window.scrollY);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <section className="relative bg-[#121212] pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden min-h-screen flex items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    {/* Left Column: Text Content */}
-                    <div className="flex flex-col text-left z-10">
-                        <div className="mb-8 flex items-center gap-2">
-                            <span className="inline-block px-3 py-1 bg-white/10 rounded-xs text-[10px] font-bold tracking-widest text-white/70 uppercase border border-white/5">
-                                Lagos, Nigeria &bull; Aug 2026
-                            </span>
-                        </div>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
+            {/* Parallax Background Image */}
+            <div
+                className="absolute inset-0"
+                style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+            >
+                <Image
+                    src="/images/past-edition/ed-020.jpg"
+                    alt="Achievers Summit past edition"
+                    fill
+                    priority
+                    quality={75}
+                    sizes="100vw"
+                    className="object-cover opacity-35 animate-ken-burns"
+                    style={{ height: '120%' }}
+                />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/50 to-neutral-950" />
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-sans font-medium tracking-tight text-white mb-6 leading-[1.1]">
-                            AFRICA&apos;S MOST INFLUENTIAL <br className="hidden lg:block" />
-                            LEADERSHIP &amp; <br className="hidden lg:block" />
-                            ENTREPRENEURSHIP SUMMIT
-                        </h1>
+            {/* Subtle grain overlay for premium feel */}
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'1\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat', backgroundSize: '128px 128px' }} />
 
-                        <p className="text-lg text-gray-400 mb-10 max-w-xl font-normal leading-relaxed">
-                            A 3-day high-level experience designed to unite innovators, policymakers, and changemakers redefining the African narrative.
-                        </p>
-
-                        <div className="flex flex-wrap items-center gap-4">
-                            <a
-                                className="btn btn-primary"
-                                href="#tickets"
-                            >
-                                Buy ticket
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                            </a>
-                            <a
-                                className="btn bg-white text-black hover:bg-gray-200"
-                                href="#about"
-                            >
-                                View location
-                            </a>
-                        </div>
-
-                        <div className="mt-12 flex items-center gap-4 opacity-60">
-                            <p className="text-xs text-gray-500 uppercase tracking-widest">Powered By</p>
-                            <div className="h-px bg-gray-800 w-12"></div>
-                            <span className="text-sm font-semibold text-gray-400">EAI International</span>
-                        </div>
+            {/* Content */}
+            <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-16 py-32 lg:py-40 w-full">
+                <div className="max-w-3xl">
+                    {/* Event tag */}
+                    <div className="flex flex-wrap items-center gap-3 mb-8 animate-fade-in">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white/80 bg-white/[0.08] backdrop-blur-md border border-white/[0.08] rounded-sm">
+                            <Calendar size={13} />
+                            August 12 – 14, 2026
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white/80 bg-white/[0.08] backdrop-blur-md border border-white/[0.08] rounded-sm">
+                            <MapPin size={13} />
+                            Lagos, Nigeria
+                        </span>
                     </div>
 
-                    {/* Right Column: Image Grid - Desktop */}
-                    <div className="relative h-full min-h-[500px] w-full hidden lg:block">
-                        <div className="grid grid-cols-2 gap-4 h-full">
-                            {/* Left column images */}
-                            <div className="flex flex-col gap-4 pt-12">
-                                <div className="aspect-square w-full overflow-hidden bg-gray-800">
-                                    <img
-                                        alt="Summit attendee"
-                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                                        src="/images/hero/summit-1.jpg"
-                                    />
-                                </div>
-                                <div className="aspect-[4/5] w-full overflow-hidden bg-gray-800 relative group">
-                                    <img
-                                        alt="Summit workshop"
-                                        className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
-                                        src="/images/hero/summit-2.jpg"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                                        <span className="text-white text-sm font-medium">Digital Workshops</span>
+                    {/* Headline */}
+                    <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6 animate-fade-in delay-100">
+                        Africa 2019s Premier
+                        <br />
+                        Leadership &amp;
+                        <br />
+                        <span className="text-brand-light">Innovation Summit</span>
+                    </h1>
+
+                    {/* Subtitle */}
+                    <p className="text-lg lg:text-xl text-white/50 max-w-xl mb-10 leading-relaxed animate-fade-in delay-200">
+                        A 3-day high-level experience uniting innovators, policymakers, and changemakers redefining the African narrative.
+                    </p>
+
+                    {/* CTAs */}
+                    <div className="flex flex-wrap items-center gap-4 mb-16 animate-fade-in delay-300">
+                        <a href="#tickets" className="btn btn-lg bg-white text-neutral-900 hover:bg-neutral-100 border-white hover:border-neutral-100">
+                            Get your ticket
+                            <ArrowRight size={16} />
+                        </a>
+                        <a href="#about" className="btn btn-lg border border-white/15 text-white hover:bg-white/[0.06]">
+                            Learn more
+                        </a>
+                    </div>
+
+                    {/* Countdown */}
+                    <div className="animate-fade-in delay-400">
+                        <p className="text-[11px] font-medium text-white/30 uppercase tracking-[0.2em] mb-4">Event starts in</p>
+                        <div className="flex gap-6">
+                            {[
+                                { value: countdown.days, label: 'Days' },
+                                { value: countdown.hours, label: 'Hours' },
+                                { value: countdown.minutes, label: 'Min' },
+                                { value: countdown.seconds, label: 'Sec' },
+                            ].map((item) => (
+                                <div key={item.label} className="text-center">
+                                    <div className="text-3xl lg:text-4xl font-bold text-white tabular-nums tracking-tight">
+                                        {String(item.value).padStart(2, '0')}
                                     </div>
+                                    <div className="text-[10px] text-white/30 font-medium mt-1 tracking-wider">{item.label}</div>
                                 </div>
-                            </div>
-
-                            {/* Right column images */}
-                            <div className="flex flex-col gap-4">
-                                <div className="aspect-[4/3] w-full rounded-full overflow-hidden bg-gray-800 border-4 border-[#121212] relative z-10 transform translate-y-8 shadow-2xl">
-                                    <img
-                                        alt="Team meeting"
-                                        className="w-full h-full object-cover object-top transition-all duration-700"
-                                        src="/images/hero/summit-3.jpg"
-                                    />
-                                </div>
-                                <div className="aspect-square w-full overflow-hidden bg-gray-800 mt-8">
-                                    <img
-                                        alt="Handshake"
-                                        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                                        src="/images/hero/summit-4.jpg"
-                                    />
-                                </div>
-                                <div className="aspect-video w-full rounded-full overflow-hidden bg-gray-800 relative">
-                                    <img
-                                        alt="Summit speakers"
-                                        className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
-                                        src="/images/hero/summit-6.jpg"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Background glow effects */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#783A28]/20 rounded-full blur-3xl -z-10"></div>
-                        <div className="absolute bottom-20 left-10 w-40 h-40 bg-[#CC9933]/10 rounded-full blur-3xl -z-10"></div>
-                    </div>
-
-                    {/* Mobile Image */}
-                    <div className="lg:hidden w-full mt-8">
-                        <div className="aspect-video rounded-xs overflow-hidden relative shadow-xl">
-                            <img
-                                alt="Conference Audience"
-                                className="w-full h-full object-cover"
-                                src="/images/hero/summit-5.jpg"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
-                                <span className="text-white font-bold text-lg">Join the Movement</span>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Floating past edition thumbnails — right side */}
+            <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-3 z-10 animate-fade-in delay-600">
+                {['/images/past-edition/img_9354.jpg', '/images/past-edition/img_5335.jpeg', '/images/past-edition/img_1633.jpeg'].map((src, i) => (
+                    <div key={i} className="w-16 h-16 rounded-sm overflow-hidden border border-white/10 opacity-60 hover:opacity-100 transition-opacity duration-500 relative" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
+                        <Image src={src} alt="Past edition" fill sizes="64px" className="object-cover" loading="lazy" />
+                    </div>
+                ))}
+                <div className="text-[9px] text-white/20 font-medium tracking-wider text-center mt-1">PAST<br/>EDITIONS</div>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+                <ChevronDown size={22} className="text-white/20" />
             </div>
         </section>
     );

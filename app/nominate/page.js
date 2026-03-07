@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from 'react';
-import { User, Mail, Phone, Award, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { Award, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 
 export default function NominationPage() {
-    const [status, setStatus] = useState('IDLE'); // IDLE, SUBMITTING, SUCCESS, ERROR
+    const [status, setStatus] = useState('IDLE');
     const [formData, setFormData] = useState({
         nomineeName: '',
         nomineeEmail: '',
@@ -37,7 +38,6 @@ export default function NominationPage() {
         Object.keys(formData).forEach(key => formDataObj.append(key, formData[key]));
 
         try {
-            // Dynamically import action to avoid client-side bundling issues if any
             const { submitNomination } = await import('./actions');
             const result = await submitNomination(formDataObj);
 
@@ -55,28 +55,23 @@ export default function NominationPage() {
         }
     };
 
+    const inputClass = "w-full h-12 bg-surface-alt border border-border rounded-lg px-4 text-text text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-all";
+
     if (status === 'SUCCESS') {
         return (
-            <main className="min-h-screen bg-bg-deep relative overflow-hidden flex flex-col items-center justify-center p-6">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="motif-bg opacity-10"></div>
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-copper/10 rounded-full blur-[100px]"></div>
-                </div>
-
-                <div className="glass-panel p-10 rounded-xs border border-primary-copper/30 max-w-lg text-center relative z-10 animate-fade-in-up">
-                    <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <CheckCircle2 size={40} />
+            <main className="min-h-screen bg-surface flex flex-col items-center justify-center p-6">
+                <Navbar variant="light" />
+                <div className="max-w-md w-full card p-10 text-center">
+                    <div className="w-16 h-16 bg-green-50 border border-green-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 size={32} className="text-green-600" />
                     </div>
-                    <h1 className="text-3xl font-black text-text-primary italic tracking-tighter mb-4">NOMINATION <span className="text-gradient NOT-italic">RECEIVED</span></h1>
-                    <p className="text-text-muted mb-8 text-sm leading-relaxed">
+                    <h2 className="text-2xl font-bold text-text mb-3">Nomination received</h2>
+                    <p className="text-text-secondary mb-8 text-sm leading-relaxed">
                         Thank you for submitting your nomination. Our committee will review the details and get back to you shortly.
                     </p>
-                    <button
-                        onClick={() => window.location.href = '/'}
-                        className="btn btn-primary px-8 py-3 rounded-xs w-full"
-                    >
-                        RETURN HOME
-                    </button>
+                    <a href="/" className="btn bg-brand text-white hover:bg-brand-dark border-brand hover:border-brand-dark w-full justify-center mb-3">
+                        Return home
+                    </a>
                     <button
                         onClick={() => {
                             setStatus('IDLE');
@@ -84,9 +79,9 @@ export default function NominationPage() {
                                 nomineeName: '', nomineeEmail: '', nomineePhone: '', nomineeWhatsApp: '', nomineeTwitter: '', nomineeLinkedIn: '', nomineeInstagram: '', category: '', reason: '', nominatorName: '', nominatorEmail: ''
                             });
                         }}
-                        className="mt-4 text-xs font-bold text-text-muted uppercase tracking-widest hover:text-text-primary transition-colors"
+                        className="text-sm text-text-secondary hover:text-brand transition-colors"
                     >
-                        Submit Another Nomination
+                        Submit another nomination
                     </button>
                 </div>
             </main>
@@ -94,210 +89,117 @@ export default function NominationPage() {
     }
 
     return (
-        <main className="min-h-screen bg-bg-deep relative">
-            <Navbar />
+        <main className="min-h-screen bg-surface">
+            <Navbar variant="light" />
 
-            {/* Background Effects */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-                <div className="motif-bg opacity-5 absolute inset-0"></div>
-                <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-primary-copper/5 rounded-full blur-[150px]"></div>
-            </div>
+            <PageHero
+                label="Call for nominations"
+                heading={<>Recognize<br />excellence.</>}
+                subtitle="Know someone making waves in their industry? Nominate them for the prestigious Achievers Awards 2026."
+                image="/images/past-edition/img_9836.jpg"
+                imageAlt="Award ceremony"
+            />
 
-            <div className="relative z-10 pt-48 pb-20 px-6 max-w-4xl mx-auto">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-copper/30 bg-primary-copper/10 text-primary-copper text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
-                        <Award size={14} />
-                        <span>Call for Nominations</span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl font-black text-text-primary italic tracking-tighter mb-6">RECOGNIZE <span className="text-gradient NOT-italic">EXCELLENCE</span></h1>
-                    <p className="max-w-xl mx-auto text-text-muted text-sm md:text-base leading-relaxed">
-                        Know someone who is making waves in their industry? Nominate them for the prestigious Achievers Awards 2026.
-                    </p>
-                </div>
+            <section className="section bg-surface">
+                <div className="max-w-3xl mx-auto px-6 lg:px-16">
+                    <div className="card p-8 md:p-10">
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            {/* Section 1: Nominee Details */}
+                            <div className="space-y-5">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="w-7 h-7 rounded-md bg-brand-50 flex items-center justify-center text-xs font-bold text-brand">01</span>
+                                    <h3 className="font-semibold text-text">Nominee details</h3>
+                                </div>
 
-                <form onSubmit={handleSubmit} className="glass-panel p-8 md:p-12 rounded-xs border border-black/5 shadow-2xl space-y-10">
+                                <div className="grid sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Full name *</label>
+                                        <input required type="text" className={inputClass} placeholder="Nominee\'s name" value={formData.nomineeName} onChange={(e) => setFormData({ ...formData, nomineeName: e.target.value })} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Category *</label>
+                                        <select required className={inputClass + " appearance-none"} value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
+                                            <option value="" disabled>Select category</option>
+                                            {categories.map(cat => (
+                                                <option key={cat} value={cat}>{cat}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
 
-                    {/* Section 1: Nominee Details */}
-                    <div className="space-y-6">
-                        <h3 className="text-lg font-black text-text-primary italic tracking-wider flex items-center gap-3">
-                            <span className="w-8 h-8 rounded-xs bg-black/5 flex items-center justify-center text-xs not-italic text-text-muted">01</span>
-                            NOMINEE DETAILS
-                        </h3>
+                                <div className="grid sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Email *</label>
+                                        <input required type="email" className={inputClass} placeholder="nominee@example.com" value={formData.nomineeEmail} onChange={(e) => setFormData({ ...formData, nomineeEmail: e.target.value })} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Phone *</label>
+                                        <input required type="tel" className={inputClass} placeholder="+234 ..." value={formData.nomineePhone} onChange={(e) => setFormData({ ...formData, nomineePhone: e.target.value })} />
+                                    </div>
+                                </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Full Name</label>
-                                <input
-                                    required
-                                    type="text"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="Nominee's Name"
-                                    value={formData.nomineeName}
-                                    onChange={(e) => setFormData({ ...formData, nomineeName: e.target.value })}
-                                />
-                            </div>
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Proposed Category</label>
-                                <div className="relative">
-                                    <select
-                                        required
-                                        className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all appearance-none cursor-pointer"
-                                        value={formData.category}
-                                        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                    >
-                                        <option value="" disabled className="bg-white text-black">Select Category</option>
-                                        {categories.map(cat => (
-                                            <option key={cat} value={cat} className="bg-white text-black">{cat}</option>
-                                        ))}
-                                    </select>
-                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">▼</div>
+                                <div className="grid sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">WhatsApp</label>
+                                        <input type="tel" className={inputClass} placeholder="+234 ..." value={formData.nomineeWhatsApp} onChange={(e) => setFormData({ ...formData, nomineeWhatsApp: e.target.value })} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Twitter</label>
+                                        <input type="text" className={inputClass} placeholder="@username" value={formData.nomineeTwitter} onChange={(e) => setFormData({ ...formData, nomineeTwitter: e.target.value })} />
+                                    </div>
+                                </div>
+
+                                <div className="grid sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">LinkedIn</label>
+                                        <input type="text" className={inputClass} placeholder="linkedin.com/in/..." value={formData.nomineeLinkedIn} onChange={(e) => setFormData({ ...formData, nomineeLinkedIn: e.target.value })} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Instagram</label>
+                                        <input type="text" className={inputClass} placeholder="@username" value={formData.nomineeInstagram} onChange={(e) => setFormData({ ...formData, nomineeInstagram: e.target.value })} />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-text mb-1.5">Reason for nomination *</label>
+                                    <textarea required className={inputClass + " h-auto py-3 resize-none"} rows="4" placeholder="Tell us why this person deserves the award..." value={formData.reason} onChange={(e) => setFormData({ ...formData, reason: e.target.value })} />
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Email Address</label>
-                                <input
-                                    required
-                                    type="email"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="nominee@example.com"
-                                    value={formData.nomineeEmail}
-                                    onChange={(e) => setFormData({ ...formData, nomineeEmail: e.target.value })}
-                                />
-                            </div>
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Phone Number</label>
-                                <input
-                                    required
-                                    type="tel"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="+123 456 789"
-                                    value={formData.nomineePhone}
-                                    onChange={(e) => setFormData({ ...formData, nomineePhone: e.target.value })}
-                                />
-                            </div>
-                        </div>
+                            <div className="h-px bg-border" />
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">WhatsApp Number</label>
-                                <input
-                                    type="tel"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="+234 XXX XXX XXXX"
-                                    value={formData.nomineeWhatsApp}
-                                    onChange={(e) => setFormData({ ...formData, nomineeWhatsApp: e.target.value })}
-                                />
-                            </div>
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Twitter Handle</label>
-                                <input
-                                    type="text"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="@username"
-                                    value={formData.nomineeTwitter}
-                                    onChange={(e) => setFormData({ ...formData, nomineeTwitter: e.target.value })}
-                                />
-                            </div>
-                        </div>
+                            {/* Section 2: Nominator Details */}
+                            <div className="space-y-5">
+                                <div className="flex items-center gap-3 mb-2">
+                                    <span className="w-7 h-7 rounded-md bg-brand-50 flex items-center justify-center text-xs font-bold text-brand">02</span>
+                                    <h3 className="font-semibold text-text">Your details</h3>
+                                </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">LinkedIn Profile</label>
-                                <input
-                                    type="text"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="linkedin.com/in/username"
-                                    value={formData.nomineeLinkedIn}
-                                    onChange={(e) => setFormData({ ...formData, nomineeLinkedIn: e.target.value })}
-                                />
+                                <div className="grid sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Your name *</label>
+                                        <input required type="text" className={inputClass} placeholder="Your name" value={formData.nominatorName} onChange={(e) => setFormData({ ...formData, nominatorName: e.target.value })} />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-text mb-1.5">Your email *</label>
+                                        <input required type="email" className={inputClass} placeholder="you@email.com" value={formData.nominatorEmail} onChange={(e) => setFormData({ ...formData, nominatorEmail: e.target.value })} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Instagram Handle</label>
-                                <input
-                                    type="text"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="@username"
-                                    value={formData.nomineeInstagram}
-                                    onChange={(e) => setFormData({ ...formData, nomineeInstagram: e.target.value })}
-                                />
-                            </div>
-                        </div>
 
-                        <div className="group">
-                            <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Achievements & Reason for Nomination</label>
-                            <textarea
-                                required
-                                className="w-full h-32 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs p-6 outline-none text-text-primary transition-all resize-none"
-                                placeholder="Tell us why this person deserves the award (achievements, impact, etc.)"
-                                value={formData.reason}
-                                onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-                            ></textarea>
-                        </div>
+                            <button type="submit" disabled={status === 'SUBMITTING'} className="btn bg-brand text-white hover:bg-brand-dark border-brand hover:border-brand-dark w-full justify-center disabled:opacity-50">
+                                {status === 'SUBMITTING' ? (
+                                    <><Loader2 size={18} className="animate-spin" /> Submitting...</>
+                                ) : (
+                                    <>Submit nomination <Send size={16} /></>
+                                )}
+                            </button>
+                            <p className="text-center text-xs text-text-secondary">By submitting, you agree to our terms and privacy policy.</p>
+                        </form>
                     </div>
+                </div>
+            </section>
 
-                    <div className="w-full h-px bg-black/5"></div>
-
-                    {/* Section 2: Your Details */}
-                    <div className="space-y-6">
-                        <h3 className="text-lg font-black text-text-primary italic tracking-wider flex items-center gap-3">
-                            <span className="w-8 h-8 rounded-xs bg-black/5 flex items-center justify-center text-xs not-italic text-text-muted">02</span>
-                            YOUR DETAILS
-                        </h3>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Your Name</label>
-                                <input
-                                    required
-                                    type="text"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="Your Name"
-                                    value={formData.nominatorName}
-                                    onChange={(e) => setFormData({ ...formData, nominatorName: e.target.value })}
-                                />
-                            </div>
-                            <div className="group">
-                                <label className="block text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3 ml-1">Your Email</label>
-                                <input
-                                    required
-                                    type="email"
-                                    className="w-full h-14 bg-black/3 border border-black/10 focus:border-primary-copper/50 rounded-xs px-6 outline-none text-text-primary transition-all"
-                                    placeholder="your@email.com"
-                                    value={formData.nominatorEmail}
-                                    onChange={(e) => setFormData({ ...formData, nominatorEmail: e.target.value })}
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="pt-6">
-                        <button
-                            type="submit"
-                            disabled={status === 'SUBMITTING'}
-                            className="btn btn-primary w-full h-16 text-sm uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-3 rounded-xs disabled:opacity-50"
-                        >
-                            {status === 'SUBMITTING' ? (
-                                <>
-                                    <Loader2 size={18} className="animate-spin" />
-                                    <span>TRANSMITTING...</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span>SUBMIT NOMINATION</span>
-                                    <Send size={18} />
-                                </>
-                            )}
-                        </button>
-                        <p className="text-center text-[10px] text-text-muted uppercase tracking-widest mt-4">
-                            By submitting, you agree to our terms and privacy policy.
-                        </p>
-                    </div>
-
-                </form>
-            </div>
             <Footer />
         </main>
     );

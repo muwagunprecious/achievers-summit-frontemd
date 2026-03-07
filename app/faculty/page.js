@@ -1,23 +1,29 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../../components/Navbar';
-import Speakers from '../../components/Speakers';
 import Footer from '../../components/Footer';
+import PageHero from '../../components/PageHero';
+import Speakers from '../../components/Speakers';
 
 export default function FacultyPage() {
     return (
-        <main className="min-h-screen bg-bg-deep pt-40">
-            <Navbar />
-            <div className="container py-20">
-                <div className="text-center mb-24">
-                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-4">The Faculty</div>
-                    <h1 className="text-5xl md:text-7xl text-white mb-8 italic">World Class <span className="text-gradient font-black NOT-italic">Visionaries.</span></h1>
-                    <p className="text-xl text-text-secondary font-light max-w-3xl mx-auto">
-                        A convergence of industry titans, policy makers, and pioneers shaping the global African narrative.
-                    </p>
+        <main className="min-h-screen bg-surface">
+            <Navbar variant="light" />
+
+            <PageHero
+                label="The faculty"
+                heading={<>World-class<br />visionaries.</>}
+                subtitle="A convergence of industry titans, policymakers, and pioneers shaping the global African narrative."
+                image="/images/past-edition/img_9356.jpg"
+                imageAlt="Summit speakers"
+            />
+
+            <section className="section bg-surface">
+                <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+                    <Speakers />
                 </div>
-                <Speakers />
-            </div>
+            </section>
+
             <Footer />
         </main>
     );

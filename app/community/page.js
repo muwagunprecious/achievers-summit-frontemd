@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { Users, UserPlus, MessageCircle, ArrowRight, ShieldCheck, Zap, Heart } from 'lucide-react';
+import PageHero from '../../components/PageHero';
+import { Heart, ShieldCheck, MessageCircle, ArrowRight } from 'lucide-react';
 import VolunteerForm from '../../components/VolunteerForm';
 import AmbassadorForm from '../../components/AmbassadorForm';
 
 export default function CommunityPage() {
-    const [activeForm, setActiveForm] = useState(null); // 'volunteer' or 'ambassador'
+    const [activeForm, setActiveForm] = useState(null);
 
     if (activeForm === 'volunteer') {
         return <VolunteerForm onBack={() => setActiveForm(null)} />;
@@ -18,81 +19,72 @@ export default function CommunityPage() {
     }
 
     return (
-        <main className="min-h-screen bg-bg-deep pt-48">
-            <Navbar />
+        <main className="min-h-screen bg-surface">
+            <Navbar variant="light" />
 
-            {/* Hero Section */}
-            <section className="relative py-12 overflow-hidden border-b border-black/5">
-                <div className="container relative z-10 text-center">
-                    <div className="text-primary-copper font-black text-xs tracking-widest uppercase mb-6">Our Community</div>
-                    <h1 className="text-5xl md:text-8xl text-text-primary mb-10 font-black italic uppercase tracking-tighter leading-tight">
-                        Grow with <br />
-                        <span className="text-gradient NOT-italic font-black">Achievers.</span>
-                    </h1>
-                    <p className="text-sm text-text-secondary font-light max-w-lg mx-auto leading-relaxed mb-4">
-                        Join a vibrant movement of young African leaders. Whether you want to serve as a volunteer or lead as an ambassador, there's a place for you in our community.
-                    </p>
-                </div>
-            </section>
+            <PageHero
+                label="Our community"
+                heading={<>Grow with<br />Achievers.</>}
+                subtitle="Join a vibrant movement of young African leaders. Whether you want to serve as a volunteer or lead as an ambassador, there’s a place for you in our community."
+                image="/images/past-edition/img_5484.jpeg"
+                imageAlt="Community members at the summit"
+            />
 
-            {/* Options Section */}
-            <section className="py-4 relative overflow-hidden bg-white">
-                <div className="motif-bg opacity-5"></div>
-                <div className="container relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <section className="section bg-surface">
+                <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+                    <p className="section-label">Get involved</p>
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text mb-14 max-w-2xl">Choose your path</h2>
+                    <div className="grid sm:grid-cols-3 gap-6 max-w-4xl">
                         {/* Volunteer Card */}
-                        <div className="glass-panel p-3 rounded-xs border border-black/5 hover:border-primary-copper/30 transition-all duration-500 group flex flex-col h-full">
-                            <div className="w-6 h-6 bg-primary-copper/10 rounded-xs flex items-center justify-center text-primary-copper mb-2 border border-primary-copper/20 group-hover:scale-110 transition-transform">
-                                <Heart size={14} />
+                        <div className="card p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+                            <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center text-brand mb-4">
+                                <Heart size={20} />
                             </div>
-                            <h3 className="text-sm font-black text-text-primary italic uppercase tracking-tighter mb-1">Volunteer</h3>
-                            <p className="text-text-secondary [font-size:8px] font-light mb-2 flex-grow leading-[1.1]">
+                            <h3 className="font-semibold text-text mb-2">Volunteer</h3>
+                            <p className="text-sm text-text-secondary leading-relaxed mb-6 flex-grow">
                                 Give back to the continent by serving in our various product and service units. Gain experience and make an impact.
                             </p>
                             <button
                                 onClick={() => setActiveForm('volunteer')}
-                                className="btn btn-primary w-full py-1.5 flex items-center justify-center gap-1.5"
+                                className="btn bg-brand text-white hover:bg-brand-dark border-brand hover:border-brand-dark w-full justify-center text-sm"
                             >
-                                <span className="font-black [font-size:8px] tracking-widest uppercase text-white">APPLY</span>
-                                <ArrowRight size={10} />
+                                Apply now <ArrowRight size={14} />
                             </button>
                         </div>
 
                         {/* Ambassador Card */}
-                        <div className="glass-panel p-3 rounded-xs border border-black/5 hover:border-black/20 transition-all duration-500 group flex flex-col h-full">
-                            <div className="w-6 h-6 bg-black/10 rounded-xs flex items-center justify-center text-text-primary mb-2 border border-black/10 group-hover:scale-110 transition-transform">
-                                <ShieldCheck size={14} />
+                        <div className="card p-6 flex flex-col h-full hover:shadow-md transition-shadow">
+                            <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center text-brand mb-4">
+                                <ShieldCheck size={20} />
                             </div>
-                            <h3 className="text-sm font-black text-text-primary italic uppercase tracking-tighter mb-1">Ambassador</h3>
-                            <p className="text-text-secondary [font-size:8px] font-light mb-2 flex-grow leading-[1.1]">
-                                Become a campus or professional representative. Lead the narrative and represent the Achievers Summit in your region.
+                            <h3 className="font-semibold text-text mb-2">Ambassador</h3>
+                            <p className="text-sm text-text-secondary leading-relaxed mb-6 flex-grow">
+                                Become a campus or professional representative. Lead the narrative and represent the summit in your region.
                             </p>
                             <button
                                 onClick={() => setActiveForm('ambassador')}
-                                className="btn btn-primary w-full py-1.5 flex items-center justify-center gap-1.5 transition-all"
+                                className="btn bg-brand text-white hover:bg-brand-dark border-brand hover:border-brand-dark w-full justify-center text-sm"
                             >
-                                <span className="font-black [font-size:8px] tracking-widest uppercase text-white">BECOME</span>
-                                <ArrowRight size={10} />
+                                Become one <ArrowRight size={14} />
                             </button>
                         </div>
 
                         {/* WhatsApp Card */}
-                        <div className="glass-panel p-3 rounded-xs border border-black/5 hover:border-green-500/30 transition-all duration-500 group flex flex-col h-full bg-green-500/[0.02]">
-                            <div className="w-6 h-6 bg-green-500/10 rounded-xs flex items-center justify-center text-green-500 mb-2 border border-green-500/20 group-hover:scale-110 transition-transform">
-                                <MessageCircle size={14} />
+                        <div className="card p-6 flex flex-col h-full hover:shadow-md transition-shadow border-green-100">
+                            <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600 mb-4">
+                                <MessageCircle size={20} />
                             </div>
-                            <h3 className="text-sm font-black text-text-primary italic uppercase tracking-tighter mb-1">WhatsApp Community</h3>
-                            <p className="text-text-secondary [font-size:8px] font-light mb-2 flex-grow leading-[1.1]">
-                                Join our official WhatsApp group to get real-time updates, network with other members, and never miss an announcement.
+                            <h3 className="font-semibold text-text mb-2">WhatsApp Community</h3>
+                            <p className="text-sm text-text-secondary leading-relaxed mb-6 flex-grow">
+                                Join our official WhatsApp group for real-time updates, networking, and announcements.
                             </p>
                             <a
                                 href="https://chat.whatsapp.com/BVSQbb1TcNkD8ZYwHmwtyO"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-primary bg-green-600 border-green-600 hover:bg-green-700 w-full py-1.5 flex items-center justify-center gap-1.5"
+                                className="btn bg-green-600 text-white hover:bg-green-700 border-green-600 hover:border-green-700 w-full justify-center text-sm"
                             >
-                                <span className="font-black [font-size:8px] tracking-widest uppercase text-white">JOIN</span>
-                                <ArrowRight size={10} />
+                                Join group <ArrowRight size={14} />
                             </a>
                         </div>
                     </div>
@@ -100,18 +92,6 @@ export default function CommunityPage() {
             </section>
 
             <Footer />
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.02);
-                    backdrop-filter: blur(32px);
-                }
-                .text-gradient {
-                    background: linear-gradient(to right, #ffffff, var(--primary-copper));
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-            `}</style>
         </main>
     );
 }

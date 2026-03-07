@@ -32,17 +32,11 @@ export default async function VotingPage() {
     ];
 
     return (
-        <main className="min-h-screen bg-bg-deep relative">
-            <Navbar />
-
-            {/* Background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-[20%] right-[-10%] w-[800px] h-[800px] bg-primary-copper/5 rounded-full blur-[150px]"></div>
-                <div className="motif-bg opacity-5 absolute inset-0"></div>
+        <main className="min-h-screen bg-surface">
+            <Navbar variant="light" />
+            <div className="pt-32">
+                <VotingInterface categories={categories} initialNominees={nominees} />
             </div>
-
-            <VotingInterface categories={categories} initialNominees={nominees} />
-
             <Footer />
         </main>
     );

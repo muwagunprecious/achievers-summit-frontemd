@@ -21,9 +21,9 @@ export default function TicketsPage() {
     };
 
     return (
-        <main className="min-h-screen bg-bg-deep pt-40">
-            <Navbar isHidden={!!selectedTicket} />
-            <div className="py-20">
+        <main className="min-h-screen bg-surface pt-32">
+            <Navbar variant="light" isHidden={!!selectedTicket} />
+            <div className="py-12">
                 <Tickets onBuy={handleBuy} />
             </div>
 

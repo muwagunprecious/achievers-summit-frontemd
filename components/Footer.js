@@ -1,72 +1,96 @@
 "use client";
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-[#F8F6F4] pt-32 pb-16 relative overflow-hidden">
-            {/* Background Motif Accent */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-copper to-transparent opacity-30"></div>
-            <div className="motif-bg opacity-[0.03]"></div>
-
-            <div className="container relative z-10 flex flex-col items-center">
-                {/* Logo Section */}
-                <div className="flex flex-col items-center mb-16 group cursor-pointer">
-                    <div className="w-40 h-32 flex items-center justify-center transform group-hover:scale-105 transition-all duration-500 mb-6">
-                        <img src="/logo.png" alt="Achievers Summit Logo" className="w-full h-full object-contain" />
+        <footer className="bg-neutral-950 text-white">
+            <div className="max-w-[1200px] mx-auto px-6 lg:px-16 pt-20 pb-10">
+                {/* Top grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+                    {/* Brand */}
+                    <div className="col-span-2 md:col-span-1">
+                        <img src="/logo.png" alt="Achievers Summit" className="h-14 w-auto mb-4 brightness-0 invert" />
+                        <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+                            Africa&apos;s premier leadership and innovation conference. August 12–14, 2026 · Lagos, Nigeria.
+                        </p>
                     </div>
-                    <p className="text-text-secondary text-lg font-light leading-relaxed max-w-xl mx-auto text-center">
-                        Catalyzing the next era of African excellence through visionary leadership and institutional transformation.
-                    </p>
+
+                    {/* Quick links */}
+                    <div>
+                        <h4 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Event</h4>
+                        <ul className="space-y-2.5">
+                            {[
+                                { label: 'About', href: '/about' },
+                                { label: 'Program', href: '/program' },
+                                { label: 'Speakers', href: '/#speakers' },
+                                { label: 'Tickets', href: '/#tickets' },
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href} className="text-sm text-white/60 hover:text-white transition-colors">{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Get involved</h4>
+                        <ul className="space-y-2.5">
+                            {[
+                                { label: 'Community', href: '/community' },
+                                { label: 'Nominate', href: '/nominate' },
+                                { label: 'Partnership', href: '/partnership' },
+                                { label: 'Volunteer', href: '/community' },
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href} className="text-sm text-white/60 hover:text-white transition-colors">{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Support</h4>
+                        <ul className="space-y-2.5">
+                            {[
+                                { label: 'Find ticket', href: '/find-ticket' },
+                                { label: 'FAQ', href: '/#faq' },
+                                { label: 'Privacy', href: '/privacy' },
+                                { label: 'Terms', href: '/terms' },
+                            ].map((link) => (
+                                <li key={link.label}>
+                                    <a href={link.href} className="text-sm text-white/60 hover:text-white transition-colors">{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
-                {/* Navigation Section */}
-                <nav className="mb-12">
-                    <ul className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black tracking-[0.3em] uppercase">
-                        <li><a href="/" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Home</a></li>
-                        <li><a href="/why-attend" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Why Attend</a></li>
-                        <li><a href="/theme" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Theme</a></li>
-                        <li><a href="/program" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Program</a></li>
-                        <li><a href="/#tickets" className="text-text-secondary hover:text-primary-copper transition-all duration-300">Tickets</a></li>
-                    </ul>
-                </nav>
-
-                {/* Social Section */}
-                <div className="flex justify-center gap-6 mb-20">
-                    {[
-                        { Icon: Facebook, href: 'https://facebook.com/achieverssummit' },
-                        { Icon: Twitter, href: 'https://twitter.com/achieverssummit' },
-                        { Icon: Instagram, href: 'https://instagram.com/achievers_summit' },
-                        { Icon: Linkedin, href: 'https://linkedin.com/company/achievers-summit' }
-                    ].map((social, i) => (
-                        <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-panel flex items-center justify-center text-text-muted hover:text-primary-copper hover:border-primary-copper/30 transition-all duration-300 rounded-xs border border-black/5">
-                            <social.Icon size={20} />
-                        </a>
-                    ))}
-                </div>
-
-                {/* Bottom Section */}
-                <div className="w-full pt-12 border-t border-black/10 flex flex-col items-center gap-6">
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-text-muted">
-                        © 2026 Achievers Summit Africa • All Rights Reserved
+                {/* Bottom */}
+                <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="text-xs text-white/30">
+                        &copy; 2026 Achievers Summit Africa. All rights reserved.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-8 text-[9px] font-black uppercase tracking-[0.2em] text-text-muted/60">
-                        <a href="/privacy" className="hover:text-primary-copper transition-colors">Privacy Protocol</a>
-                        <a href="/terms" className="hover:text-primary-copper transition-colors">Digital Terms</a>
-                        <a href="/find-ticket" className="hover:text-primary-copper transition-colors">Verified Portal</a>
+                    <div className="flex items-center gap-4">
+                        {[
+                            { Icon: Facebook, href: 'https://facebook.com/achieverssummit' },
+                            { Icon: Twitter, href: 'https://twitter.com/achieverssummit' },
+                            { Icon: Instagram, href: 'https://instagram.com/achievers_summit' },
+                            { Icon: Linkedin, href: 'https://linkedin.com/company/achievers-summit' },
+                        ].map((social, i) => (
+                            <a
+                                key={i}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white/30 hover:text-white transition-colors"
+                            >
+                                <social.Icon size={18} />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                .glass-panel {
-                    background: rgba(255, 255, 255, 0.7);
-                    backdrop-filter: blur(24px);
-                    border: 1px solid rgba(0, 0, 0, 0.05);
-                }
-                .text-primary-copper { color: var(--primary-copper); }
-                .bg-primary-copper { background-color: var(--primary-copper); }
-            `}</style>
         </footer>
     );
 }
