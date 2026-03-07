@@ -37,7 +37,7 @@ export default function Hero() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-950">
             {/* Parallax Background Image */}
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 h-[120%]"
                 style={{ transform: `translateY(${scrollY * 0.3}px)` }}
             >
                 <Image
@@ -47,8 +47,7 @@ export default function Hero() {
                     priority
                     quality={75}
                     sizes="100vw"
-                    className="object-cover opacity-35 animate-ken-burns"
-                    style={{ height: '120%' }}
+                    className="object-cover object-top opacity-35 animate-ken-burns"
                 />
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/70 via-neutral-950/50 to-neutral-950" />
@@ -73,7 +72,7 @@ export default function Hero() {
 
                     {/* Headline */}
                     <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-bold text-white leading-[1.05] tracking-[-0.03em] mb-6 animate-fade-in delay-100">
-                        Africa 2019s Premier
+                        Africa  Premier
                         <br />
                         Leadership &amp;
                         <br />
@@ -122,7 +121,7 @@ export default function Hero() {
             <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-3 z-10 animate-fade-in delay-600">
                 {['/images/past-edition/img_9354.jpg', '/images/past-edition/img_5335.jpeg', '/images/past-edition/img_1633.jpeg'].map((src, i) => (
                     <div key={i} className="w-16 h-16 rounded-sm overflow-hidden border border-white/10 opacity-60 hover:opacity-100 transition-opacity duration-500 relative" style={{ animationDelay: `${0.6 + i * 0.1}s` }}>
-                        <Image src={src} alt="Past edition" fill sizes="64px" className="object-cover" loading="lazy" />
+                        <Image src={src} alt="Past edition" fill sizes="64px" className="object-cover object-top" loading="lazy" />
                     </div>
                 ))}
                 <div className="text-[9px] text-white/20 font-medium tracking-wider text-center mt-1">PAST<br/>EDITIONS</div>

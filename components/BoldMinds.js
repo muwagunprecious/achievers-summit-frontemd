@@ -13,7 +13,7 @@ export default function BoldMinds() {
                     alt="Auditorium"
                     fill
                     sizes="100vw"
-                    className="object-cover"
+                    className="object-cover object-top"
                     loading="lazy"
                 />
 

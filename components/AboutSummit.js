@@ -29,10 +29,10 @@ export default function AboutSummit() {
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                     <div>
                         <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold leading-[1.12] tracking-tight text-text mb-6">
-                            Uniting Africa 2019s boldest minds to shape what2019s next
+                            Uniting Africa  boldest minds to shape what next
                         </h2>
                         <p className="text-text-secondary text-lg leading-relaxed mb-6">
-                            The Achievers Summit is an International Youth Day conference convened by Emmanuel Agida International (EAI). Over three days, it brings together policymakers, entrepreneurs, and global leaders for actionable dialogue on Africa 2019s future.
+                            The Achievers Summit is an International Youth Day conference convened by Emmanuel Agida International (EAI). Over three days, it brings together policymakers, entrepreneurs, and global leaders for actionable dialogue on Africa  future.
                         </p>
                         <p className="text-text-secondary leading-relaxed mb-8">
                             Through keynotes, workshops, and curated networking, attendees gain the insights and connections to drive real impact 2014 in business, governance, and community development.
@@ -47,7 +47,7 @@ export default function AboutSummit() {
                         <div className="img-reveal aspect-[4/3] relative">
                             <Image
                                 alt="Achievers Summit past edition"
-                                className="object-cover"
+                                className="object-cover object-top"
                                 src="/images/past-edition/img_9354.jpg"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -61,14 +61,14 @@ export default function AboutSummit() {
                         </div>
                         {/* Small accent image */}
                         <div className="absolute -top-4 -right-4 w-20 h-20 rounded-sm overflow-hidden border-2 border-white shadow-md hidden lg:block relative">
-                            <Image src="/images/past-edition/img_1672.jpeg" alt="" fill sizes="80px" className="object-cover" loading="lazy" />
+                            <Image src="/images/past-edition/img_1672.jpeg" alt="" fill sizes="80px" className="object-cover object-top" loading="lazy" />
                         </div>
                     </div>
                 </div>
 
                 <div className="grid sm:grid-cols-3 gap-8 mt-20 pt-16 border-t border-border">
                     {[
-                        { title: "Keynotes & Panels", desc: "Hear from world-class leaders and policymakers shaping the continent2019s trajectory." },
+                        { title: "Keynotes & Panels", desc: "Hear from world-class leaders and policymakers shaping the continent trajectory." },
                         { title: "Curated Networking", desc: "Connect with founders, investors, and change-makers through structured sessions." },
                         { title: "Actionable Workshops", desc: "Walk away with practical frameworks you can apply the very next day." },
                     ].map((item) => (

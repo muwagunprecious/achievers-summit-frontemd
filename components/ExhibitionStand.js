@@ -31,7 +31,7 @@ export default function ExhibitionStand() {
                             alt="Exhibitors at past Achievers Summit"
                             fill
                             sizes="(max-width: 1024px) 100vw, 50vw"
-                            className="object-cover"
+                            className="object-cover object-top"
                             loading="lazy"
                         />
                     </div>

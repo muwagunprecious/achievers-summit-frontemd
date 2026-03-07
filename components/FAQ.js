@@ -1,27 +1,29 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Plus, Minus, Loader2 } from 'lucide-react';
-
-function useReveal() {
-    const ref = useRef(null);
-    useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        const obs = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } },
-            { threshold: 0.15 }
-        );
-        obs.observe(el);
-        return () => obs.disconnect();
-    }, []);
-    return ref;
-}
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
     const [faqs, setFaqs] = useState([]);
     const [loading, setLoading] = useState(true);
-    const sectionRef = useReveal();
+    const sectionRef = useRef(null);
+
+    /* Reveal observer — uses callback ref pattern so it fires
+       even when the element mounts *after* initial render (loading → content). */
+    const revealRef = useCallback((node) => {
+        if (!node) return;
+        sectionRef.current = node;
+        const obs = new IntersectionObserver(
+            ([e]) => {
+                if (e.isIntersecting) {
+                    node.classList.add('visible');
+                    obs.unobserve(node);
+                }
+            },
+            { threshold: 0.1 }
+        );
+        obs.observe(node);
+    }, []);
 
     useEffect(() => {
         const fetchFaqs = async () => {
@@ -49,7 +51,7 @@ export default function FAQ() {
     }
 
     return (
-        <section id="faq" ref={sectionRef} className="reveal section bg-surface">
+        <section id="faq" ref={revealRef} className="reveal section bg-surface">
             <div className="max-w-[800px] mx-auto px-6 lg:px-16">
                 <p className="section-label">FAQ</p>
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text mb-4"

@@ -53,7 +53,7 @@ function PastEditionMarquee() {
             <div className="flex animate-marquee" style={{ width: 'max-content' }}>
                 {[...MARQUEE_IMAGES, ...MARQUEE_IMAGES].map((src, i) => (
                     <div key={i} className="w-[180px] h-[120px] mx-1.5 rounded-sm overflow-hidden shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-500 relative">
-                        <Image src={src} alt="" fill sizes="180px" className="object-cover" loading="lazy" />
+                        <Image src={src} alt="" fill sizes="180px" className="object-cover object-top" loading="lazy" />
                     </div>
                 ))}
             </div>
@@ -80,7 +80,7 @@ function ParallaxSection() {
     return (
         <section ref={ref} className="parallax-section relative h-[70vh] min-h-[500px] flex items-center justify-center">
             <div
-                className="absolute inset-0"
+                className="absolute inset-0 h-[130%]"
                 style={{ transform: `translateY(${scrollY * 0.15}px)` }}
             >
                 <Image
@@ -88,8 +88,7 @@ function ParallaxSection() {
                     alt="Achievers Summit past edition"
                     fill
                     sizes="100vw"
-                    className="object-cover"
-                    style={{ height: '130%' }}
+                    className="object-cover object-top"
                     loading="lazy"
                 />
             </div>
@@ -133,7 +132,7 @@ function PastEditionGrid() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
                     {images.map((img, i) => (
                         <div key={i} className={`img-reveal aspect-[4/3] relative ${img.span}`}>
-                            <Image src={img.src} alt="Past Achievers Summit" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" loading="lazy" />
+                            <Image src={img.src} alt="Past Achievers Summit" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover object-top" loading="lazy" />
                         </div>
                     ))}
                 </div>

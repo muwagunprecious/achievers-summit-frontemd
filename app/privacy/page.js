@@ -108,7 +108,7 @@ export default function PrivacyPage() {
                             <p>We retain your personal data for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required by law. Typically, this is for 36 months after the event.</p>
                         </PrivacySection>
 
-                        <PrivacySection title="10. Children2019s Privacy">
+                        <PrivacySection title="10. Children Privacy">
                             <p>The Summit is targeted at youth. If you are under the age of majority in your country, you confirm you have obtained consent from a parent or guardian.</p>
                         </PrivacySection>
 

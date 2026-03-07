@@ -23,7 +23,7 @@ export default function ThemePage() {
         "Lead governance reforms",
         "Build enterprises that compete globally",
         "Innovate around African solutions",
-        "Reclaim and redefine the continent2019s global reputation"
+        "Reclaim and redefine the continent global reputation"
     ];
 
     return (
@@ -45,9 +45,9 @@ export default function ThemePage() {
                         <p className="section-label">Theme rationale</p>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-text mb-8">Why this theme matters</h2>
                         <div className="space-y-5 text-text-secondary leading-relaxed">
-                            <p>Africa is experiencing a historic demographic shift, with over 60% of its population under the age of 25. This generation of emerging leaders has the potential to reimagine Africa 2019s trajectory in governance, innovation, entrepreneurship, technology, education, and global diplomacy.</p>
+                            <p>Africa is experiencing a historic demographic shift, with over 60% of its population under the age of 25. This generation of emerging leaders has the potential to reimagine Africa  trajectory in governance, innovation, entrepreneurship, technology, education, and global diplomacy.</p>
                             <p>Despite enormous potential, young Africans still face systemic barriers including limited access to opportunities, low civic participation, constrained economic mobility, and insufficient platforms for leadership expression.</p>
-                            <p>The theme reflects a central reality: today2019s youth are no longer limited by geography. Technology, migration, global markets, and transnational collaboration have positioned African youth to participate meaningfully in global transformation.</p>
+                            <p>The theme reflects a central reality: today youth are no longer limited by geography. Technology, migration, global markets, and transnational collaboration have positioned African youth to participate meaningfully in global transformation.</p>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ export default function ThemePage() {
             <section className="section bg-surface-alt">
                 <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
                     <p className="section-label">Areas of focus</p>
-                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-text mb-10 max-w-2xl">The 2026 Summit seeks to explore how Africa 2019s new generation can:</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-text mb-10 max-w-2xl">The 2026 Summit seeks to explore how Africa  new generation can:</h2>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {explores.map((item, i) => (
                             <div key={i} className="flex gap-3 items-center p-4 rounded-xl bg-surface border border-border">
