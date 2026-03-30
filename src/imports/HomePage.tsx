@@ -1,3 +1,4 @@
+import Link from "next/link";
 import svgPaths from "./svg-d59ucq01a4";
 import pageBackgroundImage from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import guinnessWorldRecordsLogo from "../assets/6cb05554d847983ba98df62bf618e0ed09416277.png";
@@ -6,7 +7,9 @@ import galaAwardsImage from "../assets/40f51e4ed0f594a247768f9083463e03f4e1f69f.
 import investorDealRoomImage from "../assets/0f1ad41e769990f5a72dce9044fd4b883f226dd2.png";
 import ideaPitchImage from "../assets/b5ecab226d6ca5b9df6b2fbc32e9ed7bcfa59b2a.png";
 import eaiShowcaseImage from "../assets/0422e9f3cfd48efb086c69a8f846ae0bb6a2e413.png";
-import footerBackgroundImage from "../assets/54dc54e70d7c6c97156869d642c5acd90ba03655.png";
+import AchieversFooter from "../app/components/footer/AchieversFooter";
+import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import { ActionButton, FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgGroup4 } from "./svg-hy664";
 
 function SectionEyebrow({
@@ -23,64 +26,6 @@ function SectionEyebrow({
       <div className="bg-[#f0f1f4] h-[2.5px] shrink-0 w-[35px]" />
       <div className={`flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] tracking-[1.6px] whitespace-nowrap ${textClassName}`.trim()}>
         <p className="leading-[1.02]">{label}</p>
-      </div>
-    </div>
-  );
-}
-
-function FilledActionButton({
-  label,
-  backgroundClassName = "bg-[#a4c6e6]",
-  textClassName = "text-[#050b11]",
-  withArrow = true,
-}: {
-  label: string;
-  backgroundClassName?: string;
-  textClassName?: string;
-  withArrow?: boolean;
-}) {
-  return (
-    <div className={`${backgroundClassName} content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0`.trim()}>
-      <div className={`flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[19px] text-center tracking-[-1.14px] whitespace-nowrap ${textClassName}`.trim()}>
-        <p className="leading-[1.02]">{label}</p>
-      </div>
-      {withArrow ? (
-        <div className="relative shrink-0 size-[24px]" data-name="Arrow_alt_lright">
-          <div className="absolute bottom-[33.33%] flex items-center justify-center left-1/4 right-1/4 top-[33.33%]">
-            <div className="-scale-y-100 flex-none h-[8px] rotate-180 w-[12px]">
-              <div className="relative size-full">
-                <div className="absolute inset-[-8.84%_-8.33%_-8.84%_-11.79%]">
-                  <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14.4142 9.41421">
-                    <path d={svgPaths.p27fef900} fill="var(--stroke-0, #050B11)" id="Vector 9" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function OutlinedActionButton({
-  label,
-  borderClassName = "border-[#ffd966]",
-  textClassName = "text-[#ffd966]",
-}: {
-  label: string;
-  borderClassName?: string;
-  textClassName?: string;
-}) {
-  return (
-    <div className="h-full relative shrink-0">
-      <div aria-hidden="true" className={`absolute border border-solid inset-0 pointer-events-none ${borderClassName}`.trim()} />
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="content-stretch flex h-full items-center justify-center px-[28px] py-[14px] relative">
-          <div className={`flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[19px] text-center tracking-[-1.14px] whitespace-nowrap ${textClassName}`.trim()}>
-            <p className="leading-[1.02]">{label}</p>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -412,20 +357,27 @@ function MainContentPatternOverlay() {
 }
 
 function ContentTracksSection() {
-  const trackRows = [
-    [
-      { number: "01", title: "TECHNOLOGY, AI & INNOVATION" },
-      { number: "02", title: "MEDIA, CONTENT & DIGITAL STORYTELLING", titleClassName: "w-[474px]" },
-    ],
-    [
-      { number: "03", title: "CREATIVE ECONOMY, DESIGN & CULTURE" },
-      { number: "04", title: "GOVERNANCE, POLICY & CIVIC LEADERSHIP" },
-    ],
-    [
-      { number: "05", title: "BUSINESS, FINANCE & ENTREPRENEURSHIP" },
-      { number: "06", title: "LEADERSHIP, EDUCATION & THE FUTURE OF WORK", cardClassName: "h-[77px] justify-between" },
-    ],
-  ];
+  const trackRows: Array<
+    Array<{
+      number: string;
+      title: string;
+      titleClassName?: string;
+      cardClassName?: string;
+    }>
+  > = [
+      [
+        { number: "01", title: "TECHNOLOGY, AI & INNOVATION" },
+        { number: "02", title: "MEDIA, CONTENT & DIGITAL STORYTELLING", titleClassName: "w-[474px]" },
+      ],
+      [
+        { number: "03", title: "CREATIVE ECONOMY, DESIGN & CULTURE" },
+        { number: "04", title: "GOVERNANCE, POLICY & CIVIC LEADERSHIP" },
+      ],
+      [
+        { number: "05", title: "BUSINESS, FINANCE & ENTREPRENEURSHIP" },
+        { number: "06", title: "LEADERSHIP, EDUCATION & THE FUTURE OF WORK", cardClassName: "h-[77px] justify-between" },
+      ],
+    ];
 
   return (
     <div className="absolute content-stretch flex flex-col gap-[60px] items-start left-1/2 pt-[120px] top-0 w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
@@ -448,7 +400,7 @@ function ContentTracksSection() {
             {row.map((track) => (
               <div
                 key={track.number}
-                className={`bg-[rgba(164,198,230,0.1)] content-stretch flex flex-1 flex-col items-start min-w-[min(100%,320px)] p-[24px] relative shrink-0 ${track.cardClassName || ""}`.trim()}
+                className={`bg-[rgba(164,198,230,0.1)] content-stretch flex flex-1 flex-col items-start min-w-[min(100%,320px)] p-[24px] relative shrink-0 ${"cardClassName" in track ? track.cardClassName || "" : ""}`.trim()}
               >
                 <div aria-hidden="true" className="absolute border border-[#a4c6e6] border-solid inset-0 pointer-events-none" />
                 <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
@@ -456,7 +408,7 @@ function ContentTracksSection() {
                     <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-[#f0f1f4] text-[18px] tracking-[0.72px]">
                       <p className="leading-[1.2]">{track.number}</p>
                     </div>
-                    <div className={`flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center relative shrink-0 text-[#a4c6e6] text-[24px] tracking-[-1.44px] ${track.titleClassName || ""}`.trim()}>
+                    <div className={`flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center relative shrink-0 text-[#a4c6e6] text-[24px] tracking-[-1.44px] ${"titleClassName" in track ? track.titleClassName || "" : ""}`.trim()}>
                       <p className="leading-[1.4]">{track.title}</p>
                     </div>
                   </div>
@@ -508,7 +460,7 @@ function SummitHighlightsSection() {
           key: "guinness",
           media: (
             <div className="relative shrink-0 size-[103px]" data-name="GWR LOGO 1">
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={guinnessWorldRecordsLogo} />
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={guinnessWorldRecordsLogo.src} />
             </div>
           ),
           cardClassName: "gap-[10px] h-full items-start",
@@ -528,7 +480,7 @@ function SummitHighlightsSection() {
           media: (
             <div className="overflow-clip relative shrink-0 size-[103px]">
               <div className="-translate-x-1/2 -translate-y-1/2 absolute left-[calc(50%+3.69px)] size-[142.627px] top-1/2" data-name="EAF-removebg-preview 1">
-                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={eafLogoImage} />
+                <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={eafLogoImage.src} />
               </div>
             </div>
           ),
@@ -551,7 +503,7 @@ function SummitHighlightsSection() {
           key: "gala",
           media: (
             <div className="h-[92.612px] relative shrink-0 w-[103px]" data-name="image 3">
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={galaAwardsImage} />
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={galaAwardsImage.src} />
             </div>
           ),
           cardClassName: "h-full items-start",
@@ -568,7 +520,7 @@ function SummitHighlightsSection() {
           key: "deal-room",
           media: (
             <div className="h-[92.612px] relative shrink-0 w-[103px]" data-name="image 2">
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={investorDealRoomImage} />
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={investorDealRoomImage.src} />
             </div>
           ),
           cardClassName: "gap-[10px] h-full items-start",
@@ -587,7 +539,7 @@ function SummitHighlightsSection() {
           key: "idea-pitch",
           media: (
             <div className="h-[92.612px] relative shrink-0 w-[103px]" data-name="image 1">
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={ideaPitchImage} />
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={ideaPitchImage.src} />
             </div>
           ),
           cardClassName: "h-full items-start justify-between",
@@ -653,9 +605,9 @@ function SummitHighlightsSection() {
             </div>
           </div>
           <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
-            <FilledActionButton label="Get your ticket" />
+            <FilledActionButton href="/tickets" label="Get your ticket" />
             <div className="flex flex-row items-center self-stretch">
-              <OutlinedActionButton label="Become a sponsor" />
+              <OutlinedActionButton href="/get-involved#become-a-sponsor" label="Become a sponsor" />
             </div>
           </div>
         </div>
@@ -683,7 +635,7 @@ function SponsorsTeaserSection() {
             </div>
           </div>
           <div className="content-stretch flex h-[52px] items-center relative shrink-0">
-            <FilledActionButton label="Become a sponsor" backgroundClassName="bg-[#ffd966]" withArrow={false} />
+            <FilledActionButton backgroundClassName="bg-[#ffd966]" href="/get-involved#become-a-sponsor" label="Become a sponsor" withArrow={false} />
           </div>
         </div>
       </div>
@@ -703,19 +655,14 @@ function SpeakersSection() {
             </div>
           </div>
           <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
-            <FilledActionButton label="Get your ticket" />
+            <FilledActionButton href="/tickets" label="Get your ticket" />
             <div className="flex flex-row items-center self-stretch">
-              <OutlinedActionButton label="Apply to speak" />
+              <OutlinedActionButton href="/get-involved#apply-to-speak" label="Apply to speak" />
             </div>
           </div>
         </div>
       </div>
-      <div className="content-stretch flex h-[52px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
-        <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
-        <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
-          <p className="leading-[1.02]">View more speakers</p>
-        </div>
-      </div>
+      <ActionButton borderClassName="border-[#f0f1f4]" label="View more speakers" textClassName="text-[#f0f1f4]" variant="outline" />
     </div>
   );
 }
@@ -747,7 +694,7 @@ function ScheduleSection() {
   ];
 
   return (
-    <div className="content-stretch flex flex-col items-end relative shrink-0 w-full">
+    <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" id="event-schedule">
       <div className="content-stretch flex flex-col gap-[60px] items-start relative shrink-0 w-[1248px]">
         <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
           <SectionEyebrow label="SCHEDULE" />
@@ -758,9 +705,9 @@ function ScheduleSection() {
               </div>
             </div>
             <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
-              <FilledActionButton label="Get your ticket" />
+              <FilledActionButton href="/tickets" label="Get your ticket" />
               <div className="flex flex-row items-center self-stretch">
-                <OutlinedActionButton label="View full schedule" />
+                <OutlinedActionButton href="/#event-schedule" label="View full schedule" />
               </div>
             </div>
           </div>
@@ -812,7 +759,7 @@ function AboutEaiSection() {
               </div>
               <div className="h-[261px] overflow-clip relative shrink-0 w-[372px]">
                 <div className="-translate-y-1/2 absolute left-0 size-[372px] top-[calc(50%+0.5px)]" data-name="EAI 1">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={eaiShowcaseImage} />
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={eaiShowcaseImage.src} />
                 </div>
               </div>
             </div>
@@ -907,9 +854,9 @@ function ClosingCtaSection() {
         </div>
       </div>
       <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
-        <FilledActionButton label="Get your ticket" />
+        <FilledActionButton href="/tickets" label="Get your ticket" />
         <div className="flex flex-row items-center self-stretch">
-          <OutlinedActionButton label="Become a sponsor" />
+          <OutlinedActionButton href="/get-involved#become-a-sponsor" label="Become a sponsor" />
         </div>
       </div>
     </div>
@@ -929,16 +876,18 @@ function ScheduleAboutAndCtaSection() {
 
 function MainContentSections() {
   return (
-    <div className="absolute h-[6552px] left-1/2 top-[2314px] w-full max-w-[1440px] -translate-x-1/2">
-      <div className="absolute h-[9545px] inset-x-0 top-[-9px] w-full" data-name="Asset 1 3">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage} />
+    <div className="absolute bottom-0 left-1/2 top-[2314px] w-full -translate-x-1/2">
+      <div className="absolute inset-x-0 bottom-0 top-[-9px] w-full" data-name="Asset 1 3">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
       </div>
       <MainContentPatternOverlay />
       <ContentTracksSection />
       <SummitHighlightsSection />
       <SponsorsTeaserSection />
       <SpeakersSection />
-      <ScheduleAboutAndCtaSection />
+      <AchieversFooter />
+      {/* <ScheduleAboutAndCtaSection /> */}
+
     </div>
   );
 }
@@ -1017,66 +966,68 @@ function HeroPatternBackdrop() {
 }
 
 function HeaderNavigation() {
-  const navLinks = ["Schedule", "Speakers", "Get Involved", "Awards"];
+  const navLinks = [
+    { label: "Schedule", href: "#schedule" },
+    { label: "Speakers", href: "#speakers" },
+    { label: "Get Involved", href: "#get-involved" },
+    { label: "Awards", href: "#awards" },
+  ];
 
   return (
-    <div className="absolute content-stretch flex w-full max-w-[1440px] items-center justify-between left-1/2 top-0 -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
-      <div className="h-[40px] relative shrink-0 w-[71.209px]" data-name="Vector">
-        <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
-          <g id="Vector">
-            <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p36c93572} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p18710ab2} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2b892e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p9d47a9} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p235c1a80} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p7caf500} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2ea08c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2b289840} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p1d95f110} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pc116300} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3e342200} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p18717c00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p86cad72} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p31cd8080} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p8d0f690} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3b7fa680} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pca4c3c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2dddc480} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pd6575c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2273acf0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p26460100} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p232cbb00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p1cf9ed00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3fdcac00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pacfcb00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p20ec5a00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p327cabc0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pf00080} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2c80e880} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2a7e1e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p19d6a400} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p33096e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
-          </g>
-        </svg>
-      </div>
-      <div className="content-stretch hidden gap-8 items-start justify-end px-[24px] py-[12px] relative shrink-0 lg:flex xl:gap-[60px]">
-        {navLinks.map((linkLabel) => (
-          <div key={linkLabel} className="content-stretch flex items-center justify-center relative shrink-0">
-            <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-              <p className="leading-[1.02]">{linkLabel}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="content-stretch hidden gap-4 items-center relative shrink-0 md:flex xl:gap-[52px]">
-        <FilledActionButton label="Get your ticket" />
-        <div className="flex flex-row items-center self-stretch">
-          <OutlinedActionButton label="Become a sponsor" />
-        </div>
-      </div>
-    </div>
+    <header className="absolute w-full max-w-[1440px] left-1/2 top-0 -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
+      <nav aria-label="Primary" className="content-stretch flex items-center justify-between">
+        <Link aria-label="Go to homepage" className="block h-[40px] relative shrink-0 w-[71.209px]" href="/" data-name="Vector">
+          <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
+            <g id="Vector">
+              <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p36c93572} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p18710ab2} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2b892e00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p9d47a9} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p235c1a80} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p7caf500} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2ea08c0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2b289840} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p1d95f110} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.pc116300} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p3e342200} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p18717c00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p86cad72} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p31cd8080} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p8d0f690} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p3b7fa680} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.pca4c3c0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2dddc480} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.pd6575c0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2273acf0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p26460100} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p232cbb00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p1cf9ed00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p3fdcac00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.pacfcb00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p20ec5a00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p327cabc0} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.pf00080} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2c80e880} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p2a7e1e00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p19d6a400} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p33096e00} fill="var(--fill-0, #F0F1F4)" />
+              <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
+            </g>
+          </svg>
+        </Link>
+        <ul className="content-stretch hidden gap-8 items-start justify-end px-[24px] py-[12px] relative shrink-0 lg:flex xl:gap-[60px]">
+          {navLinks.map((link) => (
+            <li key={link.label} className="content-stretch flex items-center justify-center relative shrink-0 list-none">
+              <Link className="font-['Inter:Regular',sans-serif] font-normal leading-[1.02] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href={link.href}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <HeaderActionButtons className="hidden md:flex xl:gap-[52px]" />
+      </nav>
+    </header>
   );
 }
 
@@ -1174,19 +1125,19 @@ function HeroSectionContent() {
           ))}
         </div>
         <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
-          <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[0px] text-center">
-            <p className="mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">
+          <h1 className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[0px] text-center">
+            <span className="block mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">
               <span className="leading-[1.05]">{`AFRICA’S `}</span>
               <span className="font-['Oswald:Bold',sans-serif] font-bold leading-[1.05] text-[#f0f1f4]">MOST</span>
               <span className="leading-[1.05]">{` `}</span>
-            </p>
-            <p className="mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">
+            </span>
+            <span className="block mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">
               <span className="font-['Oswald:Bold',sans-serif] font-bold leading-[1.05] text-[#f0f1f4]">INFLUENTIAL</span>
               <span className="leading-[1.05]">{` LEADERSHIP `}</span>
-            </p>
-            <p className="leading-[1.05] mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">{`AND ENTREPRENEURSHIP `}</p>
-            <p className="leading-[1.05] text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">SUMMIT</p>
-          </div>
+            </span>
+            <span className="block leading-[1.05] mb-0 text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">{`AND ENTREPRENEURSHIP `}</span>
+            <span className="block leading-[1.05] text-[clamp(40px,7vw,72px)] whitespace-pre-wrap">SUMMIT</span>
+          </h1>
         </div>
         <div className="content-stretch flex items-center justify-center relative shrink-0 w-full max-w-[692px] px-4">
           <div className="flex flex-[1_0_0] flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] min-h-px min-w-px not-italic relative text-[#a4c6e6] text-[24px] text-center tracking-[-1.44px]">
@@ -1194,9 +1145,9 @@ function HeroSectionContent() {
           </div>
         </div>
         <div className="content-stretch flex flex-wrap justify-center gap-4 items-center relative shrink-0 md:gap-[52px]">
-          <FilledActionButton label="Get your ticket" />
+          <FilledActionButton href="/tickets" label="Get your ticket" />
           <div className="flex flex-row items-center self-stretch">
-            <OutlinedActionButton label="Become a sponsor" />
+            <OutlinedActionButton href="/get-involved#become-a-sponsor" label="Become a sponsor" />
           </div>
         </div>
       </div>
@@ -1215,192 +1166,6 @@ function HeroSectionContent() {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FooterPatternSvg() {
-  return (
-    <div className="absolute h-[1350px] left-[-144.51px] top-0 w-[2155.5px]" data-name="Group">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 2155.5 1350">
-        <g id="Group" opacity="0.07">
-          <path d={svgPaths.p43f3cf2} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector" />
-          <path d={svgPaths.p317ae700} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_2" />
-          <path d={svgPaths.p116ee600} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_3" />
-          <path d={svgPaths.p292694c0} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_4" />
-          <path d={svgPaths.p10ec7700} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_5" />
-          <path d={svgPaths.p785ef00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_6" />
-          <path d={svgPaths.p3d327100} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_7" />
-          <path d={svgPaths.p24775e00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_8" />
-          <path d={svgPaths.p13f4ec00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_9" />
-          <path d={svgPaths.p9454900} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_10" />
-          <path d={svgPaths.p9b9ccc0} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_11" />
-          <path d={svgPaths.p397d0700} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_12" />
-          <path d={svgPaths.p202d0e70} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_13" />
-          <path d={svgPaths.p2f194c80} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_14" />
-          <path d={svgPaths.p25cd2a30} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_15" />
-          <path d={svgPaths.pb3ab040} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_16" />
-          <path d={svgPaths.p1faf9b00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_17" />
-          <path d={svgPaths.p4044d80} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_18" />
-          <path d={svgPaths.p11eedd80} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_19" />
-          <path d={svgPaths.p8ee4700} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_20" />
-          <path d={svgPaths.p2c4e5e00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_21" />
-          <path d={svgPaths.p2c216180} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_22" />
-          <path d={svgPaths.p101a1e00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_23" />
-          <path d={svgPaths.p1a8ca400} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_24" />
-          <path d={svgPaths.p53b7d00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_25" />
-          <path d={svgPaths.p3ecd4500} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_26" />
-          <path d={svgPaths.p3030a930} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_27" />
-          <path d={svgPaths.p1341472} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_28" />
-          <path d={svgPaths.p1ec25600} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_29" />
-          <path d={svgPaths.p1b26dd00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_30" />
-          <path d={svgPaths.p35cbb500} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_31" />
-          <path d={svgPaths.p231dd080} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_32" />
-          <path d={svgPaths.p3a070900} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_33" />
-          <path d={svgPaths.p2b30c300} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_34" />
-          <path d={svgPaths.p3b06e200} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_35" />
-          <path d={svgPaths.p29efe000} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_36" />
-          <path d={svgPaths.p1c87800} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_37" />
-          <path d={svgPaths.p24128f00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_38" />
-          <path d={svgPaths.p6297500} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_39" />
-          <path d={svgPaths.p30812d80} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_40" />
-          <path d={svgPaths.p69e7cf0} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_41" />
-          <path d={svgPaths.p37f17300} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_42" />
-          <path d={svgPaths.p18b3ce00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_43" />
-          <path d={svgPaths.p22972080} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_44" />
-          <path d={svgPaths.p2f9262c0} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_45" />
-          <path d={svgPaths.p12df2bf0} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_46" />
-          <path d={svgPaths.p35d28580} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_47" />
-          <path d={svgPaths.p3d1f5d00} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_48" />
-          <path d={svgPaths.p1cd00100} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_49" />
-          <path d={svgPaths.p11d14000} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_50" />
-          <path d={svgPaths.p2309ea80} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_51" />
-          <path d={svgPaths.p3cfcc900} fill="var(--fill-0, #A4C6E6)" fillOpacity="0.2" id="Vector_52" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function FooterSection() {
-  const footerLinkColumns = [
-    { title: "QUICK LINKS", links: ["Schedule", "Speakers", "Get Involved", "Awards"] },
-    { title: "SUPPORT", links: ["FAQ", "Contact"] },
-  ];
-
-  return (
-    <div className="absolute bg-white bottom-0 h-[400px] left-0 overflow-clip w-full">
-      <div className="absolute inset-0 h-[400px] w-full" data-name="Asset 2 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={footerBackgroundImage} />
-      </div>
-      <FooterPatternSvg />
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col gap-[45px] items-start left-1/2 top-1/2 w-[calc(100%-32px)] max-w-[1252px]">
-        <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
-          <div className="content-stretch flex flex-col gap-[22px] items-start relative shrink-0 w-[312.5px]">
-            <div className="h-[40px] relative shrink-0 w-[71.209px]" data-name="Vector">
-              <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
-                <g id="Vector">
-                  <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p36c93572} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p18710ab2} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2b892e00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p9d47a9} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p235c1a80} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p7caf500} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2ea08c0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2b289840} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p1d95f110} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.pc116300} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p3e342200} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p18717c00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p86cad72} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p31cd8080} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p8d0f690} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p3b7fa680} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.pca4c3c0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2dddc480} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.pd6575c0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2273acf0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p26460100} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p232cbb00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p1cf9ed00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p3fdcac00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.pacfcb00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p20ec5a00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p327cabc0} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.pf00080} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2c80e880} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p2a7e1e00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p19d6a400} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p33096e00} fill="var(--fill-0, #F0F1F4)" />
-                  <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
-                </g>
-              </svg>
-            </div>
-            <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-              <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#a4c6e6] text-[18px] tracking-[0.36px] w-full">
-                <p className="leading-[1.2]">Africa’s most influential leadership and entrepreneurship conference. August 11-13, 2026. Lagos, Nigeria.</p>
-              </div>
-            </div>
-          </div>
-          <div className="content-stretch flex gap-[60px] items-start relative shrink-0 w-[376px]">
-            {footerLinkColumns.map((column) => (
-              <div key={column.title} className="content-stretch flex flex-col gap-[30px] items-start px-[24px] py-[12px] relative shrink-0">
-                <div className="content-stretch flex items-center justify-center px-[2px] relative shrink-0">
-                  <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[18px] text-center tracking-[0.72px] whitespace-nowrap">
-                    <p className="leading-[1.2]">{column.title}</p>
-                  </div>
-                </div>
-                {column.links.map((linkLabel) => (
-                  <div key={linkLabel} className="content-stretch flex items-center justify-center relative shrink-0">
-                    <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-                      <p className="leading-[1.2]">{linkLabel}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-          <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#a4c6e6] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-            <p className="leading-[1.02]">© 2026 Achievers Summit Africa. All rights reserved.</p>
-          </div>
-          <div className="content-stretch flex gap-[20px] items-center relative shrink-0">
-            <div className="relative shrink-0 size-[24px]" data-name="facebook">
-              <div className="absolute inset-[9.38%_26.46%_9.38%_26.04%]" data-name="Vector">
-                <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.4004 19.5">
-                  <path clipRule="evenodd" d={svgPaths.p30e34e00} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-                </svg>
-              </div>
-            </div>
-            <div className="relative shrink-0 size-[24px]" data-name="twitter">
-              <div className="absolute inset-[13.59%_5.21%_12.37%_5.2%]" data-name="Vector">
-                <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.5015 17.7684">
-                  <path clipRule="evenodd" d={svgPaths.p2f091a0} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-                </svg>
-              </div>
-            </div>
-            <div className="relative shrink-0 size-[24px]" data-name="instagram">
-              <div className="absolute inset-[12.5%_12.5%_0.78%_12.5%]" data-name="Group">
-                <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 20.814">
-                  <g id="Group">
-                    <g id="Vector" />
-                    <path clipRule="evenodd" d={svgPaths.p364f5900} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector_2" />
-                  </g>
-                </svg>
-              </div>
-            </div>
-            <div className="relative shrink-0 size-[24px]" data-name="linkedin">
-              <div className="absolute inset-[5.21%_5.21%_9.38%_9.38%]" data-name="Vector">
-                <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 20.5 20.5">
-                  <path clipRule="evenodd" d={svgPaths.pfb94c00} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-                </svg>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1462,17 +1227,19 @@ function ImpactAndMediaSection() {
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-[9266px] w-full overflow-x-hidden bg-[#050b11]" data-name="Home page">
-      <div className="absolute h-[1110px] inset-x-0 top-0 w-full" data-name="Asset 1 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage} />
-      </div>
-      <MainContentSections />
-      <HeroPatternBackdrop />
-      <HeaderNavigation />
-      <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />
-      <HeroSectionContent />
-      <FooterSection />
-      <ImpactAndMediaSection />
-    </div>
+    <ResponsiveArtboard fillViewportWidth>
+      <section className="relative min-h-full w-full bg-[#050b11]" data-name="Home page">
+        <div className="absolute h-[1110px] inset-x-0 top-0 w-full" data-name="Asset 1 1">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
+        </div>
+
+        <MainContentSections />
+        <HeroPatternBackdrop />
+        <HeaderNavigation />
+        <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />
+        <HeroSectionContent />
+        <ImpactAndMediaSection />
+      </section>
+    </ResponsiveArtboard>
   );
 }

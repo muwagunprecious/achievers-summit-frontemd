@@ -1,7 +1,9 @@
 import svgPaths from "./svg-kwrf4g3at9";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import imgRectangle from "../assets/63caad3c84f14f7fefab8dc92388c88c9c704d8d.png";
-import imgAsset21 from "../assets/54dc54e70d7c6c97156869d642c5acd90ba03655.png";
+import AchieversFooter from "../app/components/footer/AchieversFooter";
+import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgVector, imgGroup1, imgGroup2, imgGroup3 } from "./svg-ymxpu";
 
 function Group1() {
@@ -388,53 +390,8 @@ function Frame7() {
   );
 }
 
-function Frame5() {
-  return (
-    <div className="bg-[#a4c6e6] content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
-      <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#050b11] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
-        <p className="leading-[1.02]">Get your ticket</p>
-      </div>
-      <div className="relative shrink-0 size-[24px]" data-name="Arrow_alt_lright">
-        <div className="absolute bottom-[33.33%] flex items-center justify-center left-1/4 right-1/4 top-[33.33%]">
-          <div className="-scale-y-100 flex-none h-[8px] rotate-180 w-[12px]">
-            <div className="relative size-full">
-              <div className="absolute inset-[-8.84%_-8.33%_-8.84%_-11.79%]">
-                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 14.4142 9.41421">
-                  <path d={svgPaths.p27fef900} fill="var(--stroke-0, #050B11)" id="Vector 9" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Frame6() {
-  return (
-    <div className="h-full relative shrink-0">
-      <div aria-hidden="true" className="absolute border border-[#ffd966] border-solid inset-0 pointer-events-none" />
-      <div className="flex flex-row items-center justify-center size-full">
-        <div className="content-stretch flex h-full items-center justify-center px-[28px] py-[14px] relative">
-          <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#ffd966] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
-            <p className="leading-[1.02]">Become a sponsor</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Frame10() {
-  return (
-    <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
-      <Frame5 />
-      <div className="flex flex-row items-center self-stretch">
-        <Frame6 />
-      </div>
-    </div>
-  );
+  return <HeaderActionButtons className="gap-[52px]" />;
 }
 
 function Frame9() {
@@ -622,7 +579,7 @@ function Group6() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -828,7 +785,7 @@ function Group10() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -1034,7 +991,7 @@ function Group14() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -1240,7 +1197,7 @@ function Group18() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -1465,7 +1422,7 @@ function Group22() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -1671,7 +1628,7 @@ function Group26() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -1877,7 +1834,7 @@ function Group37() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -2083,7 +2040,7 @@ function Group42() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -2308,7 +2265,7 @@ function Group47() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -2514,7 +2471,7 @@ function Group52() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -2720,7 +2677,7 @@ function Group57() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -2926,7 +2883,7 @@ function Group62() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -3151,7 +3108,7 @@ function Group67() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -3357,7 +3314,7 @@ function Group72() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -3563,7 +3520,7 @@ function Group77() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -3769,7 +3726,7 @@ function Group82() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -3994,7 +3951,7 @@ function Group87() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -4200,7 +4157,7 @@ function Group92() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -4406,7 +4363,7 @@ function Group97() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -4612,7 +4569,7 @@ function Group102() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -4837,7 +4794,7 @@ function Group107() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -5043,7 +5000,7 @@ function Group112() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -5249,7 +5206,7 @@ function Group117() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -5455,7 +5412,7 @@ function Group122() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -5680,7 +5637,7 @@ function Group127() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -5886,7 +5843,7 @@ function Group132() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -6092,7 +6049,7 @@ function Group137() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -6298,7 +6255,7 @@ function Group142() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -6523,7 +6480,7 @@ function Group147() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -6729,7 +6686,7 @@ function Group152() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -6935,7 +6892,7 @@ function Group157() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -7141,7 +7098,7 @@ function Group162() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -7366,7 +7323,7 @@ function Group167() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -7572,7 +7529,7 @@ function Group172() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -7778,7 +7735,7 @@ function Group177() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -7984,7 +7941,7 @@ function Group182() {
         <div className="-scale-y-100 flex-none rotate-180">
           <div className="h-[486.566px] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[133.617px_62.256px] mask-size-[181.347px_290.625px] relative w-[389.253px]" data-name="Rectangle" style={{ maskImage: `url('${imgVector}')` }}>
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle} />
+              <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle.src} />
             </div>
           </div>
         </div>
@@ -8195,279 +8152,19 @@ function Group187() {
   );
 }
 
-function Group186() {
-  return (
-    <div className="absolute contents left-[-144.51px] top-0" data-name="Group">
-      <Group187 />
-    </div>
-  );
-}
-
-function Frame20() {
-  return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#a4c6e6] text-[18px] tracking-[0.36px] w-full">
-        <p className="leading-[1.2]">Africa’s most influential leadership and entrepreneurship conference. August 11-13, 2026. Lagos, Nigeria.</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame25() {
-  return (
-    <div className="content-stretch flex flex-col gap-[22px] items-start relative shrink-0 w-[312.5px]">
-      <div className="h-[40px] relative shrink-0 w-[71.209px]" data-name="Vector">
-        <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
-          <g id="Vector">
-            <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p36c93572} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p18710ab2} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2b892e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p9d47a9} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p235c1a80} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p7caf500} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2ea08c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2b289840} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p1d95f110} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pc116300} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3e342200} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p18717c00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p86cad72} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p31cd8080} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p8d0f690} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3b7fa680} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pca4c3c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2dddc480} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pd6575c0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2273acf0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p26460100} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p232cbb00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p1cf9ed00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3fdcac00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pacfcb00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p20ec5a00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p327cabc0} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.pf00080} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2c80e880} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p2a7e1e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p19d6a400} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p33096e00} fill="var(--fill-0, #F0F1F4)" />
-            <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
-          </g>
-        </svg>
-      </div>
-      <Frame20 />
-    </div>
-  );
-}
-
-function Frame() {
-  return (
-    <div className="content-stretch flex items-center justify-center px-[2px] relative shrink-0">
-      <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[18px] text-center tracking-[0.72px] whitespace-nowrap">
-        <p className="leading-[1.2]">QUICK LINKS</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame11() {
-  return (
-    <div className="content-stretch flex items-center justify-center px-[2px] relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">Schedule</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame12() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">Speakers</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame14() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">Get Involved</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame15() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">Awards</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame8() {
-  return (
-    <div className="content-stretch flex flex-col gap-[30px] items-start px-[24px] py-[12px] relative shrink-0">
-      <Frame />
-      <Frame11 />
-      <Frame12 />
-      <Frame14 />
-      <Frame15 />
-    </div>
-  );
-}
-
-function Frame16() {
-  return (
-    <div className="content-stretch flex items-center justify-center px-[2px] relative shrink-0">
-      <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[18px] text-center tracking-[0.72px] whitespace-nowrap">
-        <p className="leading-[1.2]">SUPPORT</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame17() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">FAQ</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame18() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#5b6e7f] text-[18px] text-center tracking-[0.36px] whitespace-nowrap">
-        <p className="leading-[1.2]">Contact</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame21() {
-  return (
-    <div className="content-stretch flex flex-col gap-[30px] items-start px-[24px] py-[12px] relative shrink-0">
-      <Frame16 />
-      <Frame17 />
-      <Frame18 />
-    </div>
-  );
-}
-
-function Frame26() {
-  return (
-    <div className="content-stretch flex gap-[60px] items-start relative shrink-0 w-[376px]">
-      <Frame8 />
-      <Frame21 />
-    </div>
-  );
-}
-
-function Frame30() {
-  return (
-    <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
-      <Frame25 />
-      <Frame26 />
-    </div>
-  );
-}
-
-function Group188() {
-  return (
-    <div className="absolute inset-[12.5%_12.5%_0.78%_12.5%]" data-name="Group">
-      <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 18 20.814">
-        <g id="Group">
-          <g id="Vector" />
-          <path clipRule="evenodd" d={svgPaths.p364f5900} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector_2" />
-        </g>
-      </svg>
-    </div>
-  );
-}
-
-function Frame28() {
-  return (
-    <div className="content-stretch flex gap-[20px] items-center relative shrink-0">
-      <div className="relative shrink-0 size-[24px]" data-name="facebook">
-        <div className="absolute inset-[9.38%_26.46%_9.38%_26.04%]" data-name="Vector">
-          <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 11.4004 19.5">
-            <path clipRule="evenodd" d={svgPaths.p30e34e00} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-          </svg>
-        </div>
-      </div>
-      <div className="relative shrink-0 size-[24px]" data-name="twitter">
-        <div className="absolute inset-[13.59%_5.21%_12.37%_5.2%]" data-name="Vector">
-          <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 21.5015 17.7684">
-            <path clipRule="evenodd" d={svgPaths.p2f091a0} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-          </svg>
-        </div>
-      </div>
-      <div className="relative shrink-0 size-[24px]" data-name="instagram">
-        <Group188 />
-      </div>
-      <div className="relative shrink-0 size-[24px]" data-name="linkedin">
-        <div className="absolute inset-[5.21%_5.21%_9.38%_9.38%]" data-name="Vector">
-          <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 20.5 20.5">
-            <path clipRule="evenodd" d={svgPaths.pfb94c00} fill="var(--fill-0, #5B6E7F)" fillRule="evenodd" id="Vector" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Frame29() {
-  return (
-    <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#a4c6e6] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-        <p className="leading-[1.02]">© 2026 Achievers Summit Africa. All rights reserved.</p>
-      </div>
-      <Frame28 />
-    </div>
-  );
-}
-
-function Frame31() {
-  return (
-    <div className="-translate-y-1/2 absolute content-stretch flex flex-col gap-[45px] items-start left-[94px] top-1/2 w-[1252px]">
-      <Frame30 />
-      <Frame29 />
-    </div>
-  );
-}
-
-function Frame19() {
-  return (
-    <div className="absolute bg-white bottom-0 h-[400px] left-0 overflow-clip w-[1440px]">
-      <div className="absolute h-[400px] left-0 top-0 w-[1440px]" data-name="Asset 2 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset21} />
-      </div>
-      <Group186 />
-      <Frame31 />
-    </div>
-  );
-}
-
 export default function Speakers() {
   return (
-    <div className="relative size-full" data-name="Speakers">
-      <div className="absolute h-[5338.39px] left-0 top-0 w-[1440px]" data-name="Asset 1 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11} />
+    <ResponsiveArtboard fillViewportWidth>
+      <div className="relative min-h-full w-full" data-name="Speakers">
+        <div className="absolute inset-0" data-name="Asset 1 1">
+          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
+        </div>
+        <ClipPathGroup />
+        <Frame9 />
+        <Frame13 />
+        <Frame41 />
+        <AchieversFooter />
       </div>
-      <ClipPathGroup />
-      <Frame9 />
-      <Frame13 />
-      <Frame41 />
-      <Frame19 />
-    </div>
+    </ResponsiveArtboard>
   );
 }
