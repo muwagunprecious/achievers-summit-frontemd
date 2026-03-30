@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { type ReactNode } from "react";
 import svgPaths from "./svg-d59ucq01a4";
 import pageBackgroundImage from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import guinnessWorldRecordsLogo from "../assets/6cb05554d847983ba98df62bf618e0ed09416277.png";
@@ -28,6 +29,22 @@ function SectionEyebrow({
         <p className="leading-[1.02]">{label}</p>
       </div>
     </div>
+  );
+}
+
+function MainSectionShell({
+  children,
+  className = "",
+  id,
+}: {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <section id={id} className={`relative z-10 mx-auto w-[calc(100%-32px)] max-w-[1248px] ${className}`.trim()}>
+      {children}
+    </section>
   );
 }
 
@@ -346,7 +363,7 @@ function MainContentPatternFirstSvg() {
 
 function MainContentPatternOverlay() {
   return (
-    <div className="absolute contents left-0 top-0" data-name="Clip path group">
+    <div aria-hidden="true" className="absolute inset-0 pointer-events-none" data-name="Clip path group">
       <MainContentPatternSecondSvg />
       <MainContentPatternThirdSvg />
       <MainContentPatternFourthSvg />
@@ -380,7 +397,7 @@ function ContentTracksSection() {
     ];
 
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] items-start left-1/2 pt-[120px] top-0 w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <MainSectionShell className="content-stretch flex flex-col gap-[60px] items-start">
       <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
         <SectionEyebrow label="CONTENT TRACKS" />
         <div className="content-stretch flex items-end relative shrink-0 w-full">
@@ -418,7 +435,7 @@ function ContentTracksSection() {
           </div>
         ))}
       </div>
-    </div>
+    </MainSectionShell>
   );
 }
 
@@ -595,7 +612,7 @@ function SummitHighlightsSection() {
   );
 
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] items-start left-1/2 top-[701px] w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <MainSectionShell className="content-stretch flex flex-col gap-[60px] items-start">
       <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
         <SectionEyebrow label="CATALYZING A GENERATIONAL LEGACY" />
         <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
@@ -619,13 +636,13 @@ function SummitHighlightsSection() {
           </div>
         ))}
       </div>
-    </div>
+    </MainSectionShell>
   );
 }
 
 function SponsorsTeaserSection() {
   return (
-    <div className="absolute content-stretch flex flex-col items-start left-1/2 top-[1633px] w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <MainSectionShell className="content-stretch flex flex-col items-start">
       <div className="content-stretch flex flex-col gap-[40px] items-start relative shrink-0 w-full">
         <SectionEyebrow label="SPONSORS" />
         <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
@@ -639,13 +656,13 @@ function SponsorsTeaserSection() {
           </div>
         </div>
       </div>
-    </div>
+    </MainSectionShell>
   );
 }
 
 function SpeakersSection() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] items-center justify-center left-1/2 top-[1861px] w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <MainSectionShell className="content-stretch flex flex-col gap-[60px] items-center justify-center" id="speakers">
       <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
         <SectionEyebrow label="SPEAKERS" />
         <div className="content-stretch flex items-end justify-between relative shrink-0 w-full">
@@ -663,7 +680,7 @@ function SpeakersSection() {
         </div>
       </div>
       <ActionButton borderClassName="border-[#f0f1f4]" label="View more speakers" textClassName="text-[#f0f1f4]" variant="outline" />
-    </div>
+    </MainSectionShell>
   );
 }
 
@@ -695,7 +712,7 @@ function ScheduleSection() {
 
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" id="event-schedule">
-      <div className="content-stretch flex flex-col gap-[60px] items-start relative shrink-0 w-[1248px]">
+      <div className="content-stretch flex flex-col gap-[60px] items-start relative shrink-0 w-full">
         <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
           <SectionEyebrow label="SCHEDULE" />
           <div className="content-stretch flex items-end justify-between relative shrink-0 w-full">
@@ -865,30 +882,31 @@ function ClosingCtaSection() {
 
 function ScheduleAboutAndCtaSection() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[120px] items-start left-1/2 top-[3280.56px] w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <MainSectionShell className="content-stretch flex flex-col gap-[120px] items-start" id="schedule">
       <ScheduleSection />
       <AboutEaiSection />
       <FaqSection />
       <ClosingCtaSection />
-    </div>
+    </MainSectionShell>
   );
 }
 
 function MainContentSections() {
   return (
-    <div className="absolute bottom-0 left-1/2 top-[2314px] w-full -translate-x-1/2">
-      <div className="absolute inset-x-0 bottom-0 top-[-9px] w-full" data-name="Asset 1 3">
+    <section className="relative overflow-hidden bg-[#050b11]" data-name="Main content">
+      <div className="absolute inset-0" data-name="Asset 1 3">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
       </div>
       <MainContentPatternOverlay />
-      <ContentTracksSection />
-      <SummitHighlightsSection />
-      <SponsorsTeaserSection />
-      <SpeakersSection />
+      <div className="relative flex flex-col gap-[120px] py-[120px]">
+        <ContentTracksSection />
+        <SummitHighlightsSection />
+        <SponsorsTeaserSection />
+        <SpeakersSection />
+        <ScheduleAboutAndCtaSection />
+      </div>
       <AchieversFooter />
-      {/* <ScheduleAboutAndCtaSection /> */}
-
-    </div>
+    </section>
   );
 }
 
@@ -967,14 +985,14 @@ function HeroPatternBackdrop() {
 
 function HeaderNavigation() {
   const navLinks = [
-    { label: "Schedule", href: "#schedule" },
-    { label: "Speakers", href: "#speakers" },
-    { label: "Get Involved", href: "#get-involved" },
-    { label: "Awards", href: "#awards" },
+    { label: "Schedule", href: "/#schedule" },
+    { label: "Speakers", href: "/#speakers" },
+    { label: "Get Involved", href: "/get-involved" },
+    { label: "Awards", href: "/awards" },
   ];
 
   return (
-    <header className="absolute w-full max-w-[1440px] left-1/2 top-0 -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
+    <header className="absolute z-20 w-full max-w-[1440px] left-1/2 top-0 -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
       <nav aria-label="Primary" className="content-stretch flex items-center justify-between">
         <Link aria-label="Go to homepage" className="block h-[40px] relative shrink-0 w-[71.209px]" href="/" data-name="Vector">
           <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
@@ -1018,8 +1036,8 @@ function HeaderNavigation() {
         </Link>
         <ul className="content-stretch hidden gap-8 items-start justify-end px-[24px] py-[12px] relative shrink-0 lg:flex xl:gap-[60px]">
           {navLinks.map((link) => (
-            <li key={link.label} className="content-stretch flex items-center justify-center relative shrink-0 list-none">
-              <Link className="font-['Inter:Regular',sans-serif] font-normal leading-[1.02] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href={link.href}>
+            <li key={link.label} className="content-stretch flex items-center justify-center relative shrink-0 list-none ">
+              <Link className="font-['Inter:Regular',sans-serif] font-normal leading-[1.02] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] p-2 bg-red-400 cursor-pointer text-center tracking-[0.8px] whitespace-nowrap" href={link.href}>
                 {link.label}
               </Link>
             </li>
@@ -1111,7 +1129,7 @@ function HeroSectionContent() {
   ];
 
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] min-h-[998px] items-center left-1/2 py-[120px] top-[112px] w-[calc(100%-32px)] max-w-[1248px] -translate-x-1/2">
+    <div className="relative mx-auto flex min-h-[998px] w-[calc(100%-32px)] max-w-[1248px] flex-col items-center gap-[60px] py-[120px] pt-[112px]">
       <div className="content-stretch flex flex-col gap-[45px] items-center relative shrink-0 w-full">
         <div className="content-stretch flex flex-wrap justify-center gap-4 items-center relative shrink-0 md:gap-10 xl:gap-[80px]">
           {metaBadges.map((badge) => (
@@ -1182,46 +1200,59 @@ function ImpactAndMediaSection() {
   ];
 
   return (
-    <div className="absolute h-[1204px] left-0 top-[1110px] w-full">
-      <div className="absolute h-[1204px] left-0 top-0 w-full">
-        <div className="absolute bg-[#f0f1f4] h-[1204px] left-0 top-0 w-full" data-name="Asset 1 2" />
-        <div className="-translate-x-1/2 -translate-y-1/2 absolute content-stretch flex flex-col gap-[60px] items-start left-1/2 top-1/2 w-[calc(100%-32px)] max-w-[1248px]">
-          <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-            {stats.map((stat) => (
-              <div key={stat.label} className={`content-stretch flex flex-col gap-[30px] items-center relative shrink-0 ${stat.label === "Content Tracks" ? stat.widthClassName : ""}`.trim()}>
-                <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
-                  <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#050b11] text-[72px] text-center whitespace-nowrap">
-                    <p className="leading-[1.05]">{stat.value}</p>
-                  </div>
-                </div>
-                <div className={`content-stretch flex items-center justify-center relative shrink-0 ${stat.widthClassName}`.trim()}>
-                  <div className="flex flex-[1_0_0] flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] min-h-px min-w-px not-italic relative text-[#050b11] text-[32px] text-center">
-                    <p className="leading-[1.02]">{stat.label}</p>
-                  </div>
+    <section className="relative w-full bg-[#f0f1f4] py-[120px]" data-name="Impact and media">
+      <MainSectionShell className="content-stretch flex flex-col gap-[60px] items-start">
+        <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
+          {stats.map((stat) => (
+            <div key={stat.label} className={`content-stretch flex flex-col gap-[30px] items-center relative shrink-0 ${stat.label === "Content Tracks" ? stat.widthClassName : ""}`.trim()}>
+              <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
+                <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#050b11] text-[72px] text-center whitespace-nowrap">
+                  <p className="leading-[1.05]">{stat.value}</p>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="content-stretch flex flex-col gap-[60px] items-center relative shrink-0 w-full">
-            <div className="h-[510px] relative shrink-0 w-[1028px]">
-              <div className="-translate-x-1/2 absolute bg-[#d9d9d9] h-[510px] left-1/2 top-0 w-[1028px]" />
-              <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] left-[514px] not-italic text-[32px] text-black text-center top-[245.5px] whitespace-nowrap">
+              <div className={`content-stretch flex items-center justify-center relative shrink-0 ${stat.widthClassName}`.trim()}>
+                <div className="flex flex-[1_0_0] flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] min-h-px min-w-px not-italic relative text-[#050b11] text-[32px] text-center">
+                  <p className="leading-[1.02]">{stat.label}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="content-stretch flex flex-col gap-[60px] items-center relative shrink-0 w-full">
+          <div className="h-[510px] relative shrink-0 w-[1028px]">
+            <div className="absolute inset-0 bg-[#d9d9d9]" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic text-[32px] text-black text-center whitespace-nowrap">
                 <p className="leading-[1.02]">Youtube Video</p>
               </div>
             </div>
-            <FilledActionButton label="Download summit prospectus" />
-            <div className="content-stretch flex flex-col gap-[24px] items-end leading-[0] not-italic relative shrink-0 text-[#050b11] text-[32px] w-full">
-              <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-center w-full">
-                <p className="leading-[1.02]">"The conversation Africa needs is not happening in boardrooms behind closed doors. It is happening here — in the open, with urgency, and with the next generation in the room."</p>
-              </div>
-              <div className="flex flex-col font-['Inter:Bold',sans-serif] font-bold justify-center relative shrink-0 text-right w-full">
-                <p className="leading-[1.02]">―Emmanuel Agida, Convener</p>
-              </div>
+          </div>
+          <FilledActionButton label="Download summit prospectus" />
+          <div className="content-stretch flex flex-col gap-[24px] items-end leading-[0] not-italic relative shrink-0 text-[#050b11] text-[32px] w-full">
+            <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-center w-full">
+              <p className="leading-[1.02]">"The conversation Africa needs is not happening in boardrooms behind closed doors. It is happening here — in the open, with urgency, and with the next generation in the room."</p>
+            </div>
+            <div className="flex flex-col font-['Inter:Bold',sans-serif] font-bold justify-center relative shrink-0 text-right w-full">
+              <p className="leading-[1.02]">―Emmanuel Agida, Convener</p>
             </div>
           </div>
         </div>
+      </MainSectionShell>
+    </section>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="relative min-h-[1110px]" data-name="Hero section">
+      <div className="absolute h-[1110px] inset-x-0 top-0 w-full" data-name="Asset 1 1">
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
       </div>
-    </div>
+      <HeroPatternBackdrop />
+      <HeaderNavigation />
+      <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />
+      <HeroSectionContent />
+    </section>
   );
 }
 
@@ -1229,16 +1260,9 @@ export default function HomePage() {
   return (
     <ResponsiveArtboard fillViewportWidth>
       <section className="relative min-h-full w-full bg-[#050b11]" data-name="Home page">
-        <div className="absolute h-[1110px] inset-x-0 top-0 w-full" data-name="Asset 1 1">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
-        </div>
-
-        <MainContentSections />
-        <HeroPatternBackdrop />
-        <HeaderNavigation />
-        <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />
-        <HeroSectionContent />
+        <HeroSection />
         <ImpactAndMediaSection />
+        <MainContentSections />
       </section>
     </ResponsiveArtboard>
   );

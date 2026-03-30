@@ -5,6 +5,12 @@ import { cn } from "./utils";
 const ACTION_BUTTON_ARROW_PATH =
   "M1.41421 4.70711L0.707107 4L0 4.70711L0.707107 5.41421L1.41421 4.70711ZM13.4142 5.70711C13.9665 5.70711 14.4142 5.25939 14.4142 4.70711C14.4142 4.15482 13.9665 3.70711 13.4142 3.70711V4.70711V5.70711ZM5.41421 0.707107L4.70711 0L0.707107 4L1.41421 4.70711L2.12132 5.41421L6.12132 1.41421L5.41421 0.707107ZM1.41421 4.70711L0.707107 5.41421L4.70711 9.41421L5.41421 8.70711L6.12132 8L2.12132 4L1.41421 4.70711ZM1.41421 4.70711V5.70711H13.4142V4.70711V3.70711H1.41421V4.70711Z";
 
+const ACTION_BUTTON_BASE_CLASSNAME =
+  "relative inline-flex shrink-0 appearance-none items-center justify-center border-0 p-0 no-underline outline-none transition-[transform,box-shadow,filter,background-color,border-color,color] duration-150 ease-out motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-60";
+
+const ACTION_BUTTON_INTERACTION_CLASSNAME =
+  "cursor-pointer hover:-translate-y-px hover:brightness-[1.03] active:translate-y-0 active:brightness-100 focus-visible:ring-2 focus-visible:ring-[#ffd966] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050b11]";
+
 type ButtonActionButtonProps = Omit<
   ButtonHTMLAttributes<HTMLButtonElement>,
   "children"
@@ -108,7 +114,9 @@ export function ActionButton(props: ActionButtonProps) {
       return (
         <a
           className={cn(
-            "h-full relative shrink-0 appearance-none bg-transparent border-0 cursor-pointer p-0 disabled:cursor-not-allowed",
+            ACTION_BUTTON_BASE_CLASSNAME,
+            ACTION_BUTTON_INTERACTION_CLASSNAME,
+            "h-full bg-transparent",
             className,
           )}
           href={href}
@@ -133,7 +141,9 @@ export function ActionButton(props: ActionButtonProps) {
     return (
       <button
         className={cn(
-          "h-full relative shrink-0 appearance-none bg-transparent border-0 cursor-pointer p-0 disabled:cursor-not-allowed",
+          ACTION_BUTTON_BASE_CLASSNAME,
+          ACTION_BUTTON_INTERACTION_CLASSNAME,
+          "h-full bg-transparent",
           className,
         )}
         type={type}
@@ -174,7 +184,9 @@ export function ActionButton(props: ActionButtonProps) {
     return (
       <a
         className={cn(
-          "content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none border-0 cursor-pointer disabled:cursor-not-allowed",
+          ACTION_BUTTON_BASE_CLASSNAME,
+          ACTION_BUTTON_INTERACTION_CLASSNAME,
+          "content-stretch gap-[10px] px-[28px] py-[14px]",
           props.backgroundClassName ?? "bg-[#a4c6e6]",
           className,
         )}
@@ -201,7 +213,9 @@ export function ActionButton(props: ActionButtonProps) {
   return (
     <button
       className={cn(
-        "content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none border-0 cursor-pointer disabled:cursor-not-allowed",
+        ACTION_BUTTON_BASE_CLASSNAME,
+        ACTION_BUTTON_INTERACTION_CLASSNAME,
+        "content-stretch gap-[10px] px-[28px] py-[14px]",
         props.backgroundClassName ?? "bg-[#a4c6e6]",
         className,
       )}

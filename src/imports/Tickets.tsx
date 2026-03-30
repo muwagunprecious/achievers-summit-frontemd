@@ -1,3 +1,4 @@
+import Link from "next/link";
 import svgPaths from "./svg-ypp4aki881";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import AchieversFooter from "../app/components/footer/AchieversFooter";
@@ -342,9 +343,9 @@ function ClipPathGroup() {
 function Frame1() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-        <p className="leading-[1.02]">Schedule</p>
-      </div>
+      <Link className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href="/#schedule">
+        <span className="leading-[1.02]">Schedule</span>
+      </Link>
     </div>
   );
 }
@@ -352,9 +353,9 @@ function Frame1() {
 function Frame4() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-        <p className="leading-[1.02]">Speakers</p>
-      </div>
+      <Link className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href="/speakers">
+        <span className="leading-[1.02]">Speakers</span>
+      </Link>
     </div>
   );
 }
@@ -362,9 +363,9 @@ function Frame4() {
 function Frame2() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-        <p className="leading-[1.02]">Get Involved</p>
-      </div>
+      <Link className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href="/get-involved">
+        <span className="leading-[1.02]">Get Involved</span>
+      </Link>
     </div>
   );
 }
@@ -372,9 +373,9 @@ function Frame2() {
 function Frame3() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0">
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap">
-        <p className="leading-[1.02]">Awards</p>
-      </div>
+      <Link className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[0.8px] whitespace-nowrap" href="/awards">
+        <span className="leading-[1.02]">Awards</span>
+      </Link>
     </div>
   );
 }
@@ -396,8 +397,8 @@ function Frame10() {
 
 function Frame9() {
   return (
-    <div className="absolute content-stretch flex items-center justify-between px-[96px] py-[30px] right-0 top-0 w-[1440px]">
-      <div className="h-[40px] relative shrink-0 w-[71.209px]" data-name="Vector">
+    <div className="absolute z-20 content-stretch flex items-center justify-between px-[96px] py-[30px] right-0 top-0 w-[1440px]">
+      <Link aria-label="Go to homepage" className="block h-[40px] relative shrink-0 w-[71.209px]" data-name="Vector" href="/">
         <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
           <g id="Vector">
             <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
@@ -436,7 +437,7 @@ function Frame9() {
             <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
           </g>
         </svg>
-      </div>
+      </Link>
       <Frame7 />
       <Frame10 />
     </div>
@@ -541,7 +542,7 @@ function Frame110() {
 
 function Frame95() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] items-center justify-center left-[96px] py-[120px] top-[112px] w-[1248px]">
+    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center pb-[120px] pt-[112px]">
       <Frame138 />
       <Frame110 />
     </div>
@@ -3198,7 +3199,7 @@ function Frame152() {
 
 function Frame153() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[60px] items-center left-[96px] top-[698px] w-[1248px]">
+    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center">
       <Frame38 />
       <Frame152 />
     </div>
@@ -3251,7 +3252,7 @@ function Frame220() {
 
 function Frame219() {
   return (
-    <div className="-translate-x-1/2 absolute bg-[rgba(255,217,102,0.1)] content-stretch flex flex-col items-center justify-center left-1/2 py-[60px] top-[4234px] w-[1248px]">
+    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px]">
       <Frame220 />
     </div>
   );
@@ -3260,7 +3261,7 @@ function Frame219() {
 export default function Tickets() {
   return (
     <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full" data-name="Tickets">
+      <div className="relative min-h-full w-full overflow-hidden" data-name="Tickets">
         <div className="absolute inset-0" data-name="Asset 1 1">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
         </div>
@@ -3268,9 +3269,9 @@ export default function Tickets() {
         <Frame9 />
         <Frame13 />
         <Frame95 />
-        <AchieversFooter />
         <Frame153 />
         <Frame219 />
+        <AchieversFooter />
       </div>
     </ResponsiveArtboard>
   );
