@@ -1,7 +1,6 @@
 import Link from "next/link";
 import svgPaths from "./svg-rvfzaej0w8";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
-import AchieversFooter from "../app/components/footer/AchieversFooter";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-mo805";
@@ -1554,26 +1553,21 @@ function Frame46() {
       <div className="flex flex-col font-['Oswald:SemiBold',sans-serif] font-semibold justify-center relative shrink-0 text-[48px] w-full">
         <p className="leading-[1.05]">YOUR SEAT AT THE TABLE IS WAITING</p>
       </div>
-      <div className="flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center not-italic relative shrink-0 text-[24px] tracking-[-1.44px] w-full">
+      <div className="flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center not-italic relative shrink-0 text-[24px] tracking-[-1.44px] w-full ">
         <p className="leading-[1.4]">Three days. Four tracks. One conversation that changes everything.</p>
       </div>
     </div>
   );
 }
 
-function Frame43() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
-      <Frame46 />
-    </div>
-  );
-}
 
 function Frame54() {
   return (
     <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
       <Frame42 />
-      <Frame43 />
+      <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
+        <Frame46 />
+      </div>
     </div>
   );
 }
@@ -1599,7 +1593,7 @@ function Frame22() {
 
 function Frame68() {
   return (
-    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px]">
+    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px] mb-32">
       <Frame54 />
       <Frame22 />
     </div>
@@ -1614,14 +1608,12 @@ export default function GetInvolved() {
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
         </div>
         <ClipPathGroup />
-        <Frame9 />
         <Frame13 />
         <Frame64 />
         <Frame65 />
         <Frame66 />
         <Frame67 />
         <Frame68 />
-        <AchieversFooter />
       </div>
     </ResponsiveArtboard>
   );

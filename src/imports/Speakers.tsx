@@ -2,7 +2,6 @@ import Link from "next/link";
 import svgPaths from "./svg-kwrf4g3at9";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import imgRectangle from "../assets/63caad3c84f14f7fefab8dc92388c88c9c704d8d.png";
-import AchieversFooter from "../app/components/footer/AchieversFooter";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgVector, imgGroup1, imgGroup2, imgGroup3 } from "./svg-ymxpu";
@@ -448,40 +447,23 @@ function Frame13() {
   return <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />;
 }
 
-function Frame23() {
-  return (
-    <div className="content-stretch flex gap-[13px] items-center relative shrink-0">
-      <div className="bg-[#f0f1f4] h-[2.5px] shrink-0 w-[35px]" />
-      <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[1.6px] whitespace-nowrap">
-        <p className="leading-[1.02]">SPEAKERS</p>
-      </div>
-    </div>
-  );
-}
 
-function Frame22() {
-  return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0 w-[718px]">
-      <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[72px] w-full">
-        <p className="leading-[1.05]">MEET OUR SPEAKERS</p>
-      </div>
-    </div>
-  );
-}
-
-function Frame24() {
-  return (
-    <div className="content-stretch flex items-end relative shrink-0 w-full">
-      <Frame22 />
-    </div>
-  );
-}
-
-function Frame27() {
+function MeetOurSpeakersheader() {
   return (
     <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
-      <Frame23 />
-      <Frame24 />
+      <div className="content-stretch flex gap-[13px] items-center relative shrink-0">
+        <div className="bg-[#f0f1f4] h-[2.5px] shrink-0 w-[35px]" />
+        <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] text-center tracking-[1.6px] whitespace-nowrap">
+          <p className="leading-[1.02]">SPEAKERS</p>
+        </div>
+      </div>
+      <div className="content-stretch flex items-end relative shrink-0 w-full">
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-[718px]">
+          <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[72px] w-full">
+            <p className="leading-[1.05]">MEET OUR SPEAKERS</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -686,8 +668,67 @@ function Frame54() {
 function Frame51() {
   return (
     <div className="content-stretch flex flex-col gap-[25px] items-center justify-center relative shrink-0">
-      <Group29 />
-      <Frame54 />
+      <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid place-items-start relative shrink-0">
+        <div className="col-1 h-[387.278px] ml-0 mt-0 relative row-1 w-[278px]" data-name="Vector">
+          <div className="absolute inset-[-0.12%_-0.17%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 278.919 388.197">
+              <path d={svgPaths.p365c4f00} fill="var(--fill-0, #688FC5)" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <div className="col-1 h-[364.267px] ml-[11.51px] mt-[11.51px] relative row-1 w-[254.989px]" data-name="Vector">
+          <div className="absolute inset-[-0.13%_-0.18%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 255.908 365.186">
+              <path d={svgPaths.p39f1d500} fill="var(--fill-0, #A4C6E6)" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <div className="col-1 h-[318.24px] ml-[34.52px] mt-[34.52px] relative row-1 w-[208.962px]" data-name="Vector">
+          <div className="absolute inset-[-0.14%_-0.22%]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 209.881 319.159">
+              <path d={svgPaths.p24665500} fill="var(--fill-0, #688FC5)" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <ClipPathGroup1 />
+        <Group9 />
+        <div className="col-1 h-[49.073px] ml-[139px] mt-0 relative row-1 w-0" data-name="Vector">
+          <div className="absolute inset-[0_-0.46px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 0.918815 49.0729">
+              <path d="M0.459408 0V49.0729" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <div className="col-1 h-[49.073px] ml-[139px] mt-[338.21px] relative row-1 w-0" data-name="Vector">
+          <div className="absolute inset-[0_-0.46px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 0.918815 49.0729">
+              <path d="M0.459408 0V49.0729" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <div className="col-1 h-0 ml-[228.93px] mt-[193.64px] relative row-1 w-[49.073px]" data-name="Vector">
+          <div className="absolute inset-[-0.46px_0]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49.0728 0.918815">
+              <path d="M49.0728 0.459408H0" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+        <div className="col-1 h-0 ml-0 mt-[193.64px] relative row-1 w-[49.078px]" data-name="Vector">
+          <div className="absolute inset-[-0.46px_0]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 49.0779 0.918815">
+              <path d="M49.0779 0.459408H0" id="Vector" stroke="var(--stroke-0, black)" strokeMiterlimit="10" strokeWidth="0.918815" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[10px] items-center not-italic relative shrink-0 text-center whitespace-nowrap">
+        <div className="flex flex-col font-['Inter:Bold',sans-serif] font-bold justify-center relative shrink-0 text-[#ffd966] text-[32px]">
+          <p className="leading-[1.02]">JAMIE DAVIDS</p>
+        </div>
+        <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-[#f0f1f4] text-[18px] tracking-[0.72px]">
+          <p className="leading-[1.2]">Tech Founder</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -8073,19 +8114,19 @@ function Frame50() {
   );
 }
 
-function Frame41() {
+function MeetOurSpeakersPage() {
   return (
     <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center pb-[120px] pt-[112px]">
-      <Frame27 />
-      <Frame42 />
-      <Frame43 />
-      <Frame44 />
+      <MeetOurSpeakersheader />
+      {/* <Frame42 /> */}
+      {/* <Frame43 /> */}
+      {/* <Frame44 />
       <Frame45 />
       <Frame46 />
       <Frame47 />
       <Frame48 />
       <Frame49 />
-      <Frame50 />
+      <Frame50 /> */}
     </div>
   );
 }
@@ -8160,11 +8201,9 @@ export default function Speakers() {
         <div className="absolute inset-0" data-name="Asset 1 1">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
         </div>
-        <ClipPathGroup />
-        <Frame9 />
-        <Frame13 />
-        <Frame41 />
-        <AchieversFooter />
+        {/* <ClipPathGroup /> */}
+        {/* <Frame13 /> */}
+        <MeetOurSpeakersPage />
       </div>
     </ResponsiveArtboard>
   );

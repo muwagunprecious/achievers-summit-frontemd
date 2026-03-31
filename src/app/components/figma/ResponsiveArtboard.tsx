@@ -6,10 +6,12 @@ type ResponsiveArtboardProps = {
   children: ReactNode;
   desktopWidth?: number;
   fillViewportWidth?: boolean;
+  className?: string;
 };
 
 export default function ResponsiveArtboard({
   children,
+  className = "",
   desktopWidth = 1440,
   fillViewportWidth: _fillViewportWidth = false,
 }: ResponsiveArtboardProps) {
@@ -20,10 +22,10 @@ export default function ResponsiveArtboard({
   return (
     <section
       id="responsive-artboard"
-      className="relative w-full overflow-x-hidden bg-[#050b11]"
+      className={`relative w-full ${className} overflow-x-hidden bg-[#050b11]`}
     >
       <div
-        className="relative mx-auto w-full max-w-[1440px]"
+        className="relative mx-auto w-full"
         style={artboardStyle}
       >
         <div className="relative w-full">

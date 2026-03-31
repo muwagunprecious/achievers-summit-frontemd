@@ -2,7 +2,6 @@ import Link from "next/link";
 import svgPaths from "./svg-3bfh2d5hv7";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import imgImg20260324Wa00411 from "../assets/1801a13c0e2ec37954c9bc5c7519913e2d7f6049.png";
-import AchieversFooter from "../app/components/footer/AchieversFooter";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-8tb0s";
@@ -619,7 +618,7 @@ function Frame30() {
 
 function Frame27() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[25px] items-start leading-[0] min-h-px min-w-px relative text-[#f0f1f4] text-center">
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[25px] items-start leading-[0] min-h-px min-w-px relative text-[#f0f1f4] text-center ">
       <div className="flex flex-col font-['Oswald:SemiBold',sans-serif] font-semibold justify-center relative shrink-0 text-[48px] w-full">
         <p className="leading-[1.05]">YOUR SEAT AT THE TABLE IS WAITING</p>
       </div>
@@ -666,11 +665,19 @@ function Frame20() {
   );
 }
 
-function Frame41() {
+function LastPartOfTheVideo() {
   return (
-    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px]">
-      <Frame39 />
-      <Frame20 />
+    <div className="relative mb-28 z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px]">
+      <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
+        <Frame30 />
+        <Frame31 />
+      </div>
+      <div className="content-stretch flex gap-[52px] items-center relative shrink-0">
+        <Frame21 />
+        <div className="flex flex-row items-center self-stretch">
+          <Frame22 />
+        </div>
+      </div>
     </div>
   );
 }
@@ -678,16 +685,14 @@ function Frame41() {
 export default function Awards() {
   return (
     <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full overflow-hidden" data-name="Awards">
-        <div className="absolute inset-0" data-name="Asset 1 1">
+      <div className="relative min-h-full w-full overflow-hidden " data-name="Awards">
+        <div className="absolute inset-0 " data-name="Asset 1 1">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
         </div>
         <ClipPathGroup />
-        <Frame9 />
         <Frame13 />
         <Frame40 />
-        <Frame41 />
-        <AchieversFooter />
+        <LastPartOfTheVideo />
       </div>
     </ResponsiveArtboard>
   );

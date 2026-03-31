@@ -1,8 +1,8 @@
 import Link from "next/link";
 import svgPaths from "./svg-ypp4aki881";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
-import AchieversFooter from "../app/components/footer/AchieversFooter";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import TicketCategoryBrowser from "../app/components/tickets/TicketCategoryBrowser";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-gh5ys";
 
@@ -3199,10 +3199,7 @@ function Frame152() {
 
 function Frame153() {
   return (
-    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col gap-[60px] items-center">
-      <Frame38 />
-      <Frame152 />
-    </div>
+    <TicketCategoryBrowser galaNight={<Frame158 />} group={<Frame177 />} summit={<Frame148 />} />
   );
 }
 
@@ -3219,7 +3216,7 @@ function Frame221() {
 
 function Frame31() {
   return (
-    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[25px] items-center justify-center leading-[0] min-h-px min-w-px relative text-[#f0f1f4] text-center">
+    <div className="content-stretch flex flex-[1_0_0] flex-col gap-[25px] items-center justify-center leading-[0] min-h-px min-w-px relative text-[#f0f1f4] text-center ">
       <div className="flex flex-col font-['Oswald:SemiBold',sans-serif] font-semibold justify-center min-w-full relative shrink-0 text-[48px] w-[min-content]">
         <p className="leading-[1.05]">NEED ASSISTANCE?</p>
       </div>
@@ -3233,45 +3230,28 @@ function Frame31() {
   );
 }
 
-function Frame222() {
-  return (
-    <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
-      <Frame31 />
-    </div>
-  );
-}
 
-function Frame220() {
-  return (
-    <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
-      <Frame221 />
-      <Frame222 />
-    </div>
-  );
-}
-
-function Frame219() {
-  return (
-    <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px]">
-      <Frame220 />
-    </div>
-  );
-}
 
 export default function Tickets() {
   return (
     <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full overflow-hidden" data-name="Tickets">
+      <div className="relative min-h-full   w-full overflow-hidden" data-name="Tickets">
         <div className="absolute inset-0" data-name="Asset 1 1">
           <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
         </div>
         <ClipPathGroup />
-        <Frame9 />
         <Frame13 />
         <Frame95 />
         <Frame153 />
-        <Frame219 />
-        <AchieversFooter />
+        {/* className="relative flex flex-col gap-[120px] py-[120px]" */}
+        <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px] my-[114px]">
+          <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
+            <Frame221 />
+            <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
+              <Frame31 />
+            </div>
+          </div>
+        </div>
       </div>
     </ResponsiveArtboard>
   );

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { type ReactNode } from "react";
 import svgPaths from "./svg-d59ucq01a4";
 import pageBackgroundImage from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
@@ -8,9 +7,8 @@ import galaAwardsImage from "../assets/40f51e4ed0f594a247768f9083463e03f4e1f69f.
 import investorDealRoomImage from "../assets/0f1ad41e769990f5a72dce9044fd4b883f226dd2.png";
 import ideaPitchImage from "../assets/b5ecab226d6ca5b9df6b2fbc32e9ed7bcfa59b2a.png";
 import eaiShowcaseImage from "../assets/0422e9f3cfd48efb086c69a8f846ae0bb6a2e413.png";
-import AchieversFooter from "../app/components/footer/AchieversFooter";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
-import { ActionButton, FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
+import { ActionButton, FilledActionButton, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgGroup4 } from "./svg-hy664";
 
 function SectionEyebrow({
@@ -905,7 +903,6 @@ function MainContentSections() {
         <SpeakersSection />
         <ScheduleAboutAndCtaSection />
       </div>
-      <AchieversFooter />
     </section>
   );
 }
@@ -980,72 +977,6 @@ function HeroPatternBackdrop() {
         <HeroPatternSvg />
       </div>
     </div>
-  );
-}
-
-function HeaderNavigation() {
-  const navLinks = [
-    { label: "Schedule", href: "/#schedule" },
-    { label: "Speakers", href: "/#speakers" },
-    { label: "Get Involved", href: "/get-involved" },
-    { label: "Awards", href: "/awards" },
-  ];
-
-  return (
-    <header className="absolute z-20 w-full max-w-[1440px] left-1/2 top-0 -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
-      <nav aria-label="Primary" className="content-stretch flex items-center justify-between">
-        <Link aria-label="Go to homepage" className="block h-[40px] relative shrink-0 w-[71.209px]" href="/" data-name="Vector">
-          <svg className="absolute block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 71.2088 40">
-            <g id="Vector">
-              <path d={svgPaths.p29b7f5c0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p36c93572} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p18710ab2} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2b892e00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p9d47a9} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p235c1a80} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p7caf500} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2ea08c0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2b289840} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p1d95f110} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.pc116300} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p3e342200} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p18717c00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p86cad72} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p31cd8080} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p8d0f690} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p3b7fa680} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.pca4c3c0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2dddc480} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.pd6575c0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2273acf0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p26460100} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p232cbb00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p1cf9ed00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p3fdcac00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.pacfcb00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p20ec5a00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p327cabc0} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.pf00080} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2c80e880} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p2a7e1e00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p19d6a400} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p33096e00} fill="var(--fill-0, #F0F1F4)" />
-              <path d={svgPaths.p3c3c6b00} fill="var(--fill-0, #F0F1F4)" />
-            </g>
-          </svg>
-        </Link>
-        <ul className="content-stretch hidden gap-8 items-start justify-end px-[24px] py-[12px] relative shrink-0 lg:flex xl:gap-[60px]">
-          {navLinks.map((link) => (
-            <li key={link.label} className="content-stretch flex items-center justify-center relative shrink-0 list-none ">
-              <Link className="font-['Inter:Regular',sans-serif] font-normal leading-[1.02] not-italic relative shrink-0 text-[#f0f1f4] text-[16px] p-2 bg-red-400 cursor-pointer text-center tracking-[0.8px] whitespace-nowrap" href={link.href}>
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <HeaderActionButtons className="hidden md:flex xl:gap-[52px]" />
-      </nav>
-    </header>
   );
 }
 
@@ -1249,7 +1180,6 @@ function HeroSection() {
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={pageBackgroundImage.src} />
       </div>
       <HeroPatternBackdrop />
-      <HeaderNavigation />
       <div className="absolute h-[33px] left-[86.18px] top-[939px] w-[46px]" />
       <HeroSectionContent />
     </section>
@@ -1259,7 +1189,7 @@ function HeroSection() {
 export default function HomePage() {
   return (
     <ResponsiveArtboard fillViewportWidth>
-      <section className="relative min-h-full w-full bg-[#050b11]" data-name="Home page">
+      <section className="relative min-h-full w-full " data-name="Home page">
         <HeroSection />
         <ImpactAndMediaSection />
         <MainContentSections />

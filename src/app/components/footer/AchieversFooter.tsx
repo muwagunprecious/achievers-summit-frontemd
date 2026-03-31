@@ -1,5 +1,6 @@
 import footerBackgroundImage from "../../../assets/54dc54e70d7c6c97156869d642c5acd90ba03655.png";
 import svgPaths from "../../../imports/svg-d59ucq01a4";
+import { SITE_NAV_LINKS } from "../navigation/site-links";
 
 type SvgPathKey = keyof typeof svgPaths;
 
@@ -95,13 +96,6 @@ const FOOTER_LOGO_KEYS: readonly SvgPathKey[] = [
   "p3c3c6b00",
 ];
 
-const QUICK_LINKS = [
-  { label: "Schedule", href: "/#event-schedule" },
-  { label: "Speakers", href: "/speakers" },
-  { label: "Get Involved", href: "/get-involved" },
-  { label: "Awards", href: "/awards" },
-] as const;
-
 const SUPPORT_LINKS = [
   { label: "FAQ", href: "#" },
   { label: "Contact", href: "#" },
@@ -122,6 +116,7 @@ const SOCIAL_ICONS = [
 export default function AchieversFooter() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#0a1628] min-h-[400px]">
+
       <img
         alt=""
         className="absolute inset-0 h-full w-full object-cover pointer-events-none"
@@ -162,7 +157,7 @@ export default function AchieversFooter() {
               <p className="font-['Inter',sans-serif] text-[18px] font-semibold leading-[1.2] tracking-[0.72px] text-[#f0f1f4]">
                 QUICK LINKS
               </p>
-              {QUICK_LINKS.map((link) => (
+              {SITE_NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   className="font-['Inter',sans-serif] text-[18px] leading-[1.2] tracking-[0.36px] text-[#5b6e7f] transition-colors hover:text-[#a4c6e6]"

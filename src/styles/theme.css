@@ -2,6 +2,8 @@
 
 :root {
   --font-size: 16px;
+  --font-family-body: "Inter", sans-serif;
+  --font-family-heading: "Oswald", sans-serif;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -135,6 +137,20 @@
 
   html {
     font-size: var(--font-size);
+    font-family: var(--font-family-body);
+  }
+
+  body {
+    font-family: var(--font-family-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-family-heading);
   }
 
   h1 {
@@ -162,15 +178,27 @@
   }
 
   label {
+    font-family: var(--font-family-body);
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   button {
+    font-family: var(--font-family-body);
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+  }
+
+  input,
+  textarea,
+  select,
+  p,
+  a,
+  li,
+  span {
+    font-family: var(--font-family-body);
   }
 
   input {

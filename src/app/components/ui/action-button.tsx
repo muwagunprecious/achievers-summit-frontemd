@@ -33,14 +33,14 @@ type BaseActionButtonProps = {
 
 type FilledActionButtonProps = BaseActionButtonProps &
   (ButtonActionButtonProps | LinkActionButtonProps) & {
-  backgroundClassName?: string;
-  withArrow?: boolean;
-};
+    backgroundClassName?: string;
+    withArrow?: boolean;
+  };
 
 type OutlinedActionButtonProps = BaseActionButtonProps &
   (ButtonActionButtonProps | LinkActionButtonProps) & {
-  borderClassName?: string;
-};
+    borderClassName?: string;
+  };
 
 type ActionButtonProps =
   | ({ variant?: "filled" } & FilledActionButtonProps)
