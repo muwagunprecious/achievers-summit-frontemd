@@ -7,6 +7,7 @@ import scheduleBackgroundImage from "../assets/9a94605462226bd31c365fa846bd61d7d
 import ariseNewsLogo from "../assets/1b1f795c112b646e853ef6e91307a07776ffd155.png";
 import guardianLogo from "../assets/c2c7430ab03d6250f4a33933ad6087250cfe918d.png";
 import tvcNewsLogo from "../assets/e3fb1d28ff7b189a557184ab906d97f3bd0ebbda.png";
+import ScheduleMobilePage from "../app/components/mobile/ScheduleMobilePage";
 import {
   additionalInfo,
   day1Schedule,
@@ -381,30 +382,35 @@ export default function SchedulePage() {
   const [activeDay, setActiveDay] = useState(1);
 
   return (
-    <div className="relative isolate overflow-hidden bg-[#050b11]">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <Image
-          alt=""
-          className="object-cover opacity-40"
-          fill
-          priority
-          sizes="100vw"
-          src={scheduleBackgroundImage}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050b11]/60 via-[#050b11]/80 to-[#050b11]" />
-      </div>
+    <>
+      <ScheduleMobilePage />
+      <div className="hidden md:block">
+        <div className="relative isolate overflow-hidden bg-[#050b11]">
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <Image
+              alt=""
+              className="object-cover opacity-40"
+              fill
+              priority
+              sizes="100vw"
+              src={scheduleBackgroundImage}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050b11]/60 via-[#050b11]/80 to-[#050b11]" />
+          </div>
 
-      <div className="relative z-10">
-        <ScheduleHero activeDay={activeDay} onDayChange={setActiveDay} />
-        <ScheduleTimeline
-          dayLabel={dayHeadings[activeDay - 1]}
-          items={schedules[activeDay - 1]}
-        />
-        <StagesSection />
-        <TracksSection />
-        <MediaPartners />
-        <SupportSection />
+          <div className="relative z-10">
+            <ScheduleHero activeDay={activeDay} onDayChange={setActiveDay} />
+            <ScheduleTimeline
+              dayLabel={dayHeadings[activeDay - 1]}
+              items={schedules[activeDay - 1]}
+            />
+            <StagesSection />
+            <TracksSection />
+            <MediaPartners />
+            <SupportSection />
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

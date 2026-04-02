@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model EventTicket {
+  id                      String   @id @default(cuid())
+  ticketId                String   @unique
+  ticketSlug              String   @default("")
+  ticketType              String
+  ticketPrice             String
+  fullName                String
+  email                   String
+  phone                   String
+  reference               String   @unique
+  status                  String   @default("VALID")
+  gender                  String?
+  city                    String?
+  country                 String?
+  disabilityTypes         String?
+  otherDisability         String?
+  signLanguageRequired    Boolean  @default(false)
+  personalAssistance      String?
+  sensoryRequirements     Boolean  @default(false)
+  sensoryDetails          String?
+  additionalAccessibility String?
+  purchaseDate            DateTime @default(now())
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model Transaction {
+  id         String   @id @default(cuid())
+  reference  String   @unique
+  email      String
+  fullName   String
+  phone      String
+  amount     Float
+  ticketSlug String   @default("")
+  ticketType String
+  status     String   @default("PENDING")
+  provider   String   @default("PAYSTACK")
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

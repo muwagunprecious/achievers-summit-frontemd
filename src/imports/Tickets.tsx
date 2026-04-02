@@ -2,6 +2,7 @@ import Link from "next/link";
 import svgPaths from "./svg-ypp4aki881";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import TicketsMobilePage from "../app/components/mobile/TicketsMobilePage";
 import TicketCategoryBrowser from "../app/components/tickets/TicketCategoryBrowser";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-gh5ys";
@@ -902,7 +903,7 @@ function Frame144() {
 
 function Frame19() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="general-admission" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -920,7 +921,7 @@ function Frame19() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -1202,7 +1203,7 @@ function Frame147() {
 
 function Frame20() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="standard-pass" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -1220,7 +1221,7 @@ function Frame20() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -1501,7 +1502,7 @@ function Frame151() {
 
 function Frame21() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="business-class" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -1519,7 +1520,7 @@ function Frame21() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -1810,7 +1811,7 @@ function Frame156() {
 
 function Frame22() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="investors-pass" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -1828,7 +1829,7 @@ function Frame22() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -2148,7 +2149,7 @@ function Frame161() {
 
 function Frame23() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="gala-night-single" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -2166,7 +2167,7 @@ function Frame23() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -2473,7 +2474,7 @@ function Frame166() {
 
 function Frame24() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="gala-night-couple" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -2491,7 +2492,7 @@ function Frame24() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -2810,7 +2811,7 @@ function Frame190() {
 
 function Frame25() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="innovators-pass" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -2828,7 +2829,7 @@ function Frame25() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -3111,7 +3112,7 @@ function Frame209() {
 
 function Frame26() {
   return (
-    <div className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0">
+    <button className="content-stretch flex gap-[10px] items-center justify-center px-[28px] py-[14px] relative shrink-0 appearance-none bg-transparent border-0 text-left" data-ticket-slug="group-pass" type="button">
       <div aria-hidden="true" className="absolute border border-[#f0f1f4] border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#f0f1f4] text-[19px] text-center tracking-[-1.14px] whitespace-nowrap">
         <p className="leading-[1.02]">Get this pass</p>
@@ -3129,7 +3130,7 @@ function Frame26() {
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -3234,25 +3235,30 @@ function Frame31() {
 
 export default function Tickets() {
   return (
-    <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full   w-full overflow-hidden" data-name="Tickets">
-        <div className="absolute inset-0" data-name="Asset 1 1">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
-        </div>
-        <ClipPathGroup />
-        <Frame13 />
-        <Frame95 />
-        <Frame153 />
-        {/* className="relative flex flex-col gap-[120px] py-[120px]" */}
-        <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px] my-[114px]">
-          <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
-            <Frame221 />
-            <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
-              <Frame31 />
+    <>
+      <TicketsMobilePage />
+      <div className="hidden md:block">
+        <ResponsiveArtboard fillViewportWidth>
+          <div className="relative min-h-full   w-full overflow-hidden" data-name="Tickets">
+            <div className="absolute inset-0" data-name="Asset 1 1">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
+            </div>
+            <ClipPathGroup />
+            <Frame13 />
+            <Frame95 />
+            <Frame153 />
+            {/* className="relative flex flex-col gap-[120px] py-[120px]" */}
+            <div className="relative z-10 mx-auto flex w-[calc(100%-32px)] max-w-[1248px] flex-col items-center justify-center bg-[rgba(255,217,102,0.1)] py-[60px] my-[114px]">
+              <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full">
+                <Frame221 />
+                <div className="content-stretch flex items-center justify-center relative shrink-0 w-full">
+                  <Frame31 />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </ResponsiveArtboard>
       </div>
-    </ResponsiveArtboard>
+    </>
   );
 }

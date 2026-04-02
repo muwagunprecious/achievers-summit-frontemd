@@ -3,6 +3,7 @@ import svgPaths from "./svg-3bfh2d5hv7";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import imgImg20260324Wa00411 from "../assets/1801a13c0e2ec37954c9bc5c7519913e2d7f6049.png";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import AwardsMobilePage from "../app/components/mobile/AwardsMobilePage";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-8tb0s";
 
@@ -684,16 +685,21 @@ function LastPartOfTheVideo() {
 
 export default function Awards() {
   return (
-    <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full overflow-hidden " data-name="Awards">
-        <div className="absolute inset-0 " data-name="Asset 1 1">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
-        </div>
-        <ClipPathGroup />
-        <Frame13 />
-        <Frame40 />
-        <LastPartOfTheVideo />
+    <>
+      <AwardsMobilePage />
+      <div className="hidden md:block">
+        <ResponsiveArtboard fillViewportWidth>
+          <div className="relative min-h-full w-full overflow-hidden " data-name="Awards">
+            <div className="absolute inset-0 " data-name="Asset 1 1">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
+            </div>
+            <ClipPathGroup />
+            <Frame13 />
+            <Frame40 />
+            <LastPartOfTheVideo />
+          </div>
+        </ResponsiveArtboard>
       </div>
-    </ResponsiveArtboard>
+    </>
   );
 }

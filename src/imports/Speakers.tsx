@@ -3,6 +3,7 @@ import svgPaths from "./svg-kwrf4g3at9";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import imgRectangle from "../assets/63caad3c84f14f7fefab8dc92388c88c9c704d8d.png";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import SpeakersMobilePage from "../app/components/mobile/SpeakersMobilePage";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgVector, imgGroup1, imgGroup2, imgGroup3 } from "./svg-ymxpu";
 
@@ -8196,15 +8197,20 @@ function Group187() {
 
 export default function Speakers() {
   return (
-    <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full overflow-hidden" data-name="Speakers">
-        <div className="absolute inset-0" data-name="Asset 1 1">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
-        </div>
-        {/* <ClipPathGroup /> */}
-        {/* <Frame13 /> */}
-        <MeetOurSpeakersPage />
+    <>
+      <SpeakersMobilePage />
+      <div className="hidden md:block">
+        <ResponsiveArtboard fillViewportWidth>
+          <div className="relative min-h-full w-full overflow-hidden" data-name="Speakers">
+            <div className="absolute inset-0" data-name="Asset 1 1">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
+            </div>
+            {/* <ClipPathGroup /> */}
+            {/* <Frame13 /> */}
+            <MeetOurSpeakersPage />
+          </div>
+        </ResponsiveArtboard>
       </div>
-    </ResponsiveArtboard>
+    </>
   );
 }

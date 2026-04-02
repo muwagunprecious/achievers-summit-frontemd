@@ -45,11 +45,11 @@ const SITE_LOGO_KEYS: readonly SvgPathKey[] = [
 
 export default function SiteNavbar() {
   return (
-    <header className="absolute left-1/2 top-0 z-20 w-full max-w-[1440px] -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
+    <header className="lg:absolute left-1/2 top-0 z-20 w-full max-w-[1440px] -translate-x-1/2 px-6 py-[30px] md:px-10 xl:px-[96px]">
       <nav aria-label="Primary" className="content-stretch flex items-center justify-between">
         <Link
           aria-label="Go to homepage"
-          className="block h-[40px] relative shrink-0 w-[71.209px]"
+          className="h-[40px] hidden md:block relative shrink-0 w-[71.209px]"
           data-name="Vector"
           href="/"
         >

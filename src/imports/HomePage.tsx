@@ -8,6 +8,7 @@ import investorDealRoomImage from "../assets/0f1ad41e769990f5a72dce9044fd4b883f2
 import ideaPitchImage from "../assets/b5ecab226d6ca5b9df6b2fbc32e9ed7bcfa59b2a.png";
 import eaiShowcaseImage from "../assets/0422e9f3cfd48efb086c69a8f846ae0bb6a2e413.png";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import HomeMobilePage from "../app/components/mobile/HomeMobilePage";
 import { ActionButton, FilledActionButton, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgGroup4 } from "./svg-hy664";
 
@@ -372,64 +373,50 @@ function MainContentPatternOverlay() {
 }
 
 function ContentTracksSection() {
-  const trackRows: Array<
-    Array<{
-      number: string;
-      title: string;
-      titleClassName?: string;
-      cardClassName?: string;
-    }>
-  > = [
-      [
-        { number: "01", title: "TECHNOLOGY, AI & INNOVATION" },
-        { number: "02", title: "MEDIA, CONTENT & DIGITAL STORYTELLING", titleClassName: "w-[474px]" },
-      ],
-      [
-        { number: "03", title: "CREATIVE ECONOMY, DESIGN & CULTURE" },
-        { number: "04", title: "GOVERNANCE, POLICY & CIVIC LEADERSHIP" },
-      ],
-      [
-        { number: "05", title: "BUSINESS, FINANCE & ENTREPRENEURSHIP" },
-        { number: "06", title: "LEADERSHIP, EDUCATION & THE FUTURE OF WORK", cardClassName: "h-[77px] justify-between" },
-      ],
-    ];
+  const tracks: Array<{
+    number: string;
+    title: string;
+    titleClassName?: string;
+  }> = [
+    { number: "01", title: "TECHNOLOGY, AI & INNOVATION" },
+    { number: "02", title: "MEDIA, CONTENT & DIGITAL STORYTELLING", titleClassName: "sm:max-w-[474px]" },
+    { number: "03", title: "CREATIVE ECONOMY, DESIGN & CULTURE" },
+    { number: "04", title: "GOVERNANCE, POLICY & CIVIC LEADERSHIP" },
+    { number: "05", title: "BUSINESS, FINANCE & ENTREPRENEURSHIP" },
+    { number: "06", title: "LEADERSHIP, EDUCATION & THE FUTURE OF WORK" },
+  ];
 
   return (
     <MainSectionShell className="content-stretch flex flex-col gap-[60px] items-start">
       <div className="content-stretch flex flex-col gap-[45px] items-start relative shrink-0 w-full">
         <SectionEyebrow label="CONTENT TRACKS" />
         <div className="content-stretch flex items-end relative shrink-0 w-full">
-          <div className="content-stretch flex flex-col items-start relative shrink-0 w-[718px]">
-            <div className="flex flex-col font-['Oswald:SemiBold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[48px] w-full">
+          <div className="content-stretch flex flex-col items-start relative shrink-0 w-full">
+            <div className="flex flex-col font-['Oswald:SemiBold',sans-serif] font-semibold justify-center leading-[0] relative shrink-0 text-[#f0f1f4] text-[40px] sm:text-[48px] w-full">
               <p className="leading-[1.05]">6 CONTENT TRACKS</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="content-stretch flex flex-col gap-[22px] items-start relative shrink-0 w-full">
-        {trackRows.map((row, rowIndex) => (
+      <div className="grid w-full grid-cols-1 gap-[22px] lg:grid-cols-2">
+        {tracks.map((track) => (
           <div
-            key={`track-row-${rowIndex + 1}`}
-            className="content-stretch flex flex-wrap items-center justify-between gap-[22px] relative shrink-0 w-full"
+            key={track.number}
+            className="relative flex min-h-[118px] items-center bg-[rgba(164,198,230,0.1)] px-[24px] py-[28px] sm:px-[32px] sm:py-[30px]"
           >
-            {row.map((track) => (
-              <div
-                key={track.number}
-                className={`bg-[rgba(164,198,230,0.1)] content-stretch flex flex-1 flex-col items-start min-w-[min(100%,320px)] p-[24px] relative shrink-0 ${"cardClassName" in track ? track.cardClassName || "" : ""}`.trim()}
-              >
-                <div aria-hidden="true" className="absolute border border-[#a4c6e6] border-solid inset-0 pointer-events-none" />
-                <div className="content-stretch flex items-start justify-between relative shrink-0 w-full">
-                  <div className="content-stretch flex flex-[1_0_0] items-center justify-between leading-[0] min-h-px min-w-px not-italic relative text-center whitespace-nowrap">
-                    <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-[#f0f1f4] text-[18px] tracking-[0.72px]">
-                      <p className="leading-[1.2]">{track.number}</p>
-                    </div>
-                    <div className={`flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center relative shrink-0 text-[#a4c6e6] text-[24px] tracking-[-1.44px] ${"titleClassName" in track ? track.titleClassName || "" : ""}`.trim()}>
-                      <p className="leading-[1.4]">{track.title}</p>
-                    </div>
-                  </div>
+            <div aria-hidden="true" className="absolute border border-[#a4c6e6] border-solid inset-0 pointer-events-none" />
+            <div className="grid w-full grid-cols-[44px_minmax(0,1fr)] items-center gap-x-[18px] sm:grid-cols-[52px_minmax(0,1fr)] sm:gap-x-[32px]">
+              <div className="flex h-full items-center">
+                <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center relative shrink-0 text-[#f0f1f4] text-[18px] tracking-[0.72px] text-left">
+                  <p className="leading-[1.2]">{track.number}</p>
                 </div>
               </div>
-            ))}
+              <div className="flex min-w-0 items-center justify-end">
+                <div className={`font-['Inter:Medium',sans-serif] font-medium text-[#a4c6e6] text-[24px] tracking-[-1.44px] text-right w-full ${track.titleClassName || ""}`.trim()}>
+                  <p className="leading-[1.4]">{track.title}</p>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -1188,12 +1175,17 @@ function HeroSection() {
 
 export default function HomePage() {
   return (
-    <ResponsiveArtboard fillViewportWidth>
-      <section className="relative min-h-full w-full " data-name="Home page">
-        <HeroSection />
-        <ImpactAndMediaSection />
-        <MainContentSections />
-      </section>
-    </ResponsiveArtboard>
+    <>
+      <HomeMobilePage />
+      <div className="hidden md:block">
+        <ResponsiveArtboard fillViewportWidth>
+          <section className="relative min-h-full w-full " data-name="Home page">
+            <HeroSection />
+            <ImpactAndMediaSection />
+            <MainContentSections />
+          </section>
+        </ResponsiveArtboard>
+      </div>
+    </>
   );
 }

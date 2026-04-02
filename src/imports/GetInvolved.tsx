@@ -2,6 +2,7 @@ import Link from "next/link";
 import svgPaths from "./svg-rvfzaej0w8";
 import imgAsset11 from "../assets/9a94605462226bd31c365fa846bd61d7daad5991.png";
 import ResponsiveArtboard from "../app/components/figma/ResponsiveArtboard";
+import GetInvolvedMobilePage from "../app/components/mobile/GetInvolvedMobilePage";
 import { FilledActionButton, HeaderActionButtons, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup } from "./svg-mo805";
 
@@ -1602,19 +1603,24 @@ function Frame68() {
 
 export default function GetInvolved() {
   return (
-    <ResponsiveArtboard fillViewportWidth>
-      <div className="relative min-h-full w-full overflow-hidden" data-name="Get Involved">
-        <div className="absolute inset-0" data-name="Asset 1 1">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
-        </div>
-        <ClipPathGroup />
-        <Frame13 />
-        <Frame64 />
-        <Frame65 />
-        <Frame66 />
-        <Frame67 />
-        <Frame68 />
+    <>
+      <GetInvolvedMobilePage />
+      <div className="hidden md:block">
+        <ResponsiveArtboard fillViewportWidth>
+          <div className="relative min-h-full w-full overflow-hidden" data-name="Get Involved">
+            <div className="absolute inset-0" data-name="Asset 1 1">
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgAsset11.src} />
+            </div>
+            <ClipPathGroup />
+            <Frame13 />
+            <Frame64 />
+            <Frame65 />
+            <Frame66 />
+            <Frame67 />
+            <Frame68 />
+          </div>
+        </ResponsiveArtboard>
       </div>
-    </ResponsiveArtboard>
+    </>
   );
 }
