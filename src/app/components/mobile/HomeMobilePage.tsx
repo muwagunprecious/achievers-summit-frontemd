@@ -19,6 +19,8 @@ import {
   MobileSectionLabel,
 } from "./shared";
 
+const HOME_TVC_EMBED_URL = "https://www.youtube.com/embed/2eujHrQJ_ok?rel=0";
+
 const stats = [
   { value: "5,000+", label: "Attendees" },
   { value: "25,000+", label: "Virtual audience" },
@@ -326,8 +328,15 @@ export default function HomeMobilePage() {
             </div>
 
             <div className="mx-auto mt-16 max-w-xl text-center">
-              <div className="mb-8 flex aspect-video w-full items-center justify-center rounded bg-[#d9d9d9]">
-                <p className="text-[20px] text-[#050b11]">Youtube Video</p>
+              <div className="mb-8 aspect-video w-full overflow-hidden rounded bg-[#d9d9d9]">
+                <iframe
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="size-full"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  src={HOME_TVC_EMBED_URL}
+                  title="Achievers Summit TVC"
+                />
               </div>
               <Link
                 className="mb-12 inline-flex items-center gap-2 bg-[#a4c6e6] px-5 py-3 tracking-[-0.96px] text-[#050b11]"

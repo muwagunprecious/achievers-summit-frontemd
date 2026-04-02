@@ -12,6 +12,8 @@ import HomeMobilePage from "../app/components/mobile/HomeMobilePage";
 import { ActionButton, FilledActionButton, OutlinedActionButton } from "../app/components/ui/action-button";
 import { imgGroup, imgGroup4 } from "./svg-hy664";
 
+const HOME_TVC_EMBED_URL = "https://www.youtube.com/embed/2eujHrQJ_ok?rel=0";
+
 function SectionEyebrow({
   label,
   className = "",
@@ -1138,12 +1140,14 @@ function ImpactAndMediaSection() {
         </div>
         <div className="content-stretch flex flex-col gap-[60px] items-center relative shrink-0 w-full">
           <div className="h-[510px] relative shrink-0 w-[1028px]">
-            <div className="absolute inset-0 bg-[#d9d9d9]" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic text-[32px] text-black text-center whitespace-nowrap">
-                <p className="leading-[1.02]">Youtube Video</p>
-              </div>
-            </div>
+            <iframe
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 size-full"
+              referrerPolicy="strict-origin-when-cross-origin"
+              src={HOME_TVC_EMBED_URL}
+              title="Achievers Summit TVC"
+            />
           </div>
           <FilledActionButton label="Download summit prospectus" />
           <div className="content-stretch flex flex-col gap-[24px] items-end leading-[0] not-italic relative shrink-0 text-[#050b11] text-[32px] w-full">
